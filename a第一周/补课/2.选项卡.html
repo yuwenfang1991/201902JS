@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 306px;
+      margin: 20px auto;
+    }
+
+    .container ul {
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .container ul li {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      float: left;
+      border: 1px solid pink;
+      cursor: pointer;
+    }
+
+    .container #panel>div {
+      display: none;
+      width: 304;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      border: 1px solid pink;
+    }
+
+    /* li选中样式 */
+    .container ul li.active {
+      background-color: coral;
+      color: #ffffff;
+    }
+
+    /* div选中样式 */
+    .container #panel>div.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <ul id="tabs">
+      <li>中国A股</li>
+      <li class="active">港股</li>
+      <li>全球</li>
+    </ul>
+
+    <!-- 面板 -->
+    <div id="panel">
+      <div>中国A股</div>
+      <div class="active">港股</div>
+      <div>全球</div>
+    </div>
+  </div>
+
+  <script>
+    // 第一步
+    var tabs = document.getElementById('tabs')
+    var tabList = tabs.getElementsByTagName('li')
+
+    var panel = document.getElementById('panel')
+    var panelList = panel.getElementsByTagName('div')
+
+
+    // 第二步
+    for (var i = 0; i < tabList.length; i++) {
+
+
+      tabList[i].onclick = function () {
+
+
+      }
+
+    }
+
+    // 第三步
+
+    for (var i = 0; i < tabList.length; i++) {
+
+      tabList[i].ind = i
+
+      tabList[i].onclick = function () {
+
+      }
+
+    }
+
+    // 第四步
+
+    for (var i = 0; i < tabList.length; i++) {
+
+      tabList[i].ind = i
+
+      tabList[i].onclick = function () {
+
+        for (var l = 0; l < tabList.length; l++) {
+          // 将li的类名清空
+          tabList[l].className = ''
+          // 将div的类名清空
+          panelList[l].className = ''
+        }
+
+      }
+
+    }
+
+    // 第四步
+
+    for (var i = 0; i < tabList.length; i++) {
+
+      tabList[i].ind = i
+
+      tabList[i].onclick = function () {
+
+        for (var l = 0; l < tabList.length; l++) {
+          // 将li的类名清空
+          tabList[l].className = ''
+          // 将div的类名清空
+          panelList[l].className = ''
+        }
+
+        this.className = 'active'
+
+        // this.ind 当前点击li的索引
+        panelList[this.ind].className = 'active'
+      }
+
+    }
+
+
+    // 1.获取操作元素 所有的li（tabList） 所有的div（panelList）
+    // 2.通过for循环 给所有的li (tabList) 绑定点击事件onclick
+    // 3.在for循环过程中 将当前索引i的值 保存到当前元素自身的ind属性
+    // 4.当点击的时候，将所有li和所有div元素的类名清空
+    // 5.给当前点击的li添加类名active 
+    // 6.同时根据当前点击li的索引 this.ind 去集合panelList中根据索引，找出对应元素
+    // panelList[this.ind].className = 'active'
+
+    // 根据当前点击的li的索引 去panelList集合里找出对应的div 让它有active类名
+  </script>
+</body>
+
+</html>

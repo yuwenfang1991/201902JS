@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 id="title"></h3>
+    <p id="text"></p>
+    <script>
+        // 引用数据类型就是用来存储多个值的(集合)
+        // 语法
+        //var obj = {属性名1:属性值,属性名2:属性值...};
+        // 创建一个对象 属性是以键值对形式存在的
+        //属性名：属性值(键值对)
+        // key:value
+        // 多个属性之间用逗号隔开
+        // 定义了一个对象 存储数据 
+
+        // var obj = {
+        //     title:"豆瓣电影Top10",
+        //     name:'zhufeng',
+        //     age:10,
+        //     sex:'男'
+        // };
+        // 关于对象的增删改查
+        // 如何获取对象中的某个属性
+        // 1. 对象名.属性名
+        // 通过obj这个对象 找到属性title
+        // console.log(obj.title);
+        // console.log(obj.age);
+        // 2. 对象名['属性名']
+        // console.log(obj['sex']);
+        // console.log(obj['name']);
+        // 先获取元素
+        // var bt = document.getElementById('title');
+        // var text = document.getElementById('text');
+        // bt.innerHTML = obj.title;
+        // text.innerHTML = obj.text;
+        // 获取属性需要注意的
+        // 对象p名.属性名
+        // 数字作为属性名 是不能使用第一种方式获取属性名
+        var o = {
+            0: '你好',
+            1: 'hello'
+        }
+        //错误写法   console.log(o.0);
+        // console.log(o[0]); // '你好'
+        // 如果用第二种方法 属性名 没有加引号 会把当做变量来解析
+        // console.log(o[sex]);
+        // 在JS中会把所有的单词当做变量来解析
+        // var c = 100;
+        // console.log(c);
+        var obj2 = {
+            title: 'hello',
+            id: 24,
+            0: 2019
+        }
+        console.log('title:' + obj2.title + '\n' + 'id:' + obj2.id + '\n' + '0:' + obj2[0]);
+
+        // 2.增加属性
+        var con = {
+            id: 24
+        };
+        console.log('增加前', con);
+        // con.city = 'Beijing';
+        // con.name = 'zhufeng';
+        con['city'] = 'Beijing';
+        con['name'] = 'zhufeng';
+
+        console.log('增加后', con);
+        // 3.修改属性
+        var n = {
+            title: 'hello'
+        };
+        // 将对象 n的title属性 修改为24
+        console.log('修改前', n);
+        n.title = 24;
+
+        n.text = 'hello';
+        console.log('修改后', n);
+        // 4.删除属性
+        var info = {
+            age: 20,
+            name: 'zhufeng'
+        }
+        // 真删除
+        // console.log('删除前',info);
+        // delete info.age;
+        // console.log('删除后',info);
+        // 假删除
+        console.log('删除前', info);
+        info.age = null;
+        console.log('删除后', info);
+
+        // 如何创建一个对象
+        // 创建对象的目的 就是用来存储多个值（存储数据）
+        var obj = {
+            name: 'zhufeng',
+            id: 24,
+            10: '数字属性'
+        }
+        // 对象增删改查
+        // 查
+        // 1.对象名.属性名
+        console.log(obj.name);
+        // 2.对象名['属性名']
+        console.log(obj['name']);
+        //获取一个数字属性
+        console.log(obj['10']);
+        // 增加
+        obj.title = 'hello zhufeng';
+        obj['text'] = 'hello world';
+        console.log(obj);
+        // 修改 把原有的属性 重新赋值
+        obj.name = 'xiugai';
+        console.log(obj);
+        // 删
+        delete obj.id;
+        console.log(obj);
+        // 假删除
+        info.name = null;
+        console.log(obj);
+        // 对象里不能有重复的属性 如果有的话 是以最后一个为准
+        var num = {
+            id: 20,
+            id: 30,
+            id: 40,
+            id: 2019
+        };
+        console.log(num); // {id: 2019}
+    </script>
+</body>
+
+</html>

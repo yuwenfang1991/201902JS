@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box" class="box">根据我点击的行为 做相应是事情 事件</div>
+
+  <h1 id="title">页面有个div 我想点击它的时候 做一些事情（执行一些代码）</h1>
+  <script>
+    // 页面有个div 我想点击它的时候 做一些事情（执行一些代码）
+    // 根据我的行为 做相应是事情 事件
+
+    var box = document.getElementById('box')
+
+    // 给box绑定一个点击事件
+
+    // 监听这个元素 点击事件
+    // box.onclick = function () {
+    //   // 当box这个元素 被点击的时候 就会执行这里面代码
+    //   console.log('我是一个被点击div')
+    // }
+
+    // 元素.style.backgroundColor = 'red'
+    box.onclick = function () {
+      // this 指的就是当前绑定事件的元素 box
+      console.log(this === box) // true
+
+      this.style.backgroundColor = 'blue'
+    }
+
+    var title = document.getElementById('title')
+
+    // 事件函数中的this 指向的是当前绑定事件的元素
+    title.onclick = function() {
+      console.log(this === title)
+    }
+
+  </script>
+</body>
+
+</html>

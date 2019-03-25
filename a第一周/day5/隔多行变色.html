@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style>
+        .list {
+            margin: auto;
+            width: 300px;
+            text-align: center;
+
+        }
+
+        .list li {
+            padding: 2px 5px;
+            font-size: 15px;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .list li:hover {
+            background: rgb(7, 255, 193) !important;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="news" class="list">
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+    </ul>
+    <script>
+        // 隔多行变色
+        var news = document.getElementById('news');
+        var list = news.getElementsByTagName('li');
+        // 封装
+        // 定义一个人changeColor
+        function changeColor() {
+            for (i = 0; i < list.length; i++) {
+                if (i % 3 === 0) {
+                    list[i].style.backgroundColor = 'pink';
+                } else if (i % 3 === 1) {
+                    list[i].style.backgroundColor = 'orange';
+                } else {
+                    list[i].style.backgroundColor = 'red';
+                }
+                // switch (i % 5) {
+                //     case 0:
+                //         list[i].style.backgroundColor = 'pink';
+                //         break;
+                //     case 1:
+                //         list[i].style.backgroundColor = 'green';
+                //         break;
+                //     case 2:
+                //         list[i].style.backgroundColor = 'red';
+                //         break;
+                //     case 3:
+                //         list[i].style.backgroundColor = 'yellow';
+                //         break;
+                //     case 4:
+                //         list[i].style.backgroundColor = 'blue';
+                //         break;
+                //     default:
+                //         list[i].style.backgroundColor = 'orange';
+                // }
+            }
+        }
+        // 函数执行
+        changeColor();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>break和continue</title>
+</head>
+
+<body>
+    <script>
+        // break（中断）
+        // continue（跳到下一轮）
+        // break
+        // 只要在循环体中遇到break 整个循环体就结束了 
+        // 包括break后面代码都不会执行了 以及i++也不执行了
+        for (var i = 0; i < 10; i++) {
+            // 当i=5的时候 整个循环就结束了
+            if (i == 5) {
+                break; // 一旦遇到break整个循环就结束了
+
+            }
+            console.log('i', i); // 0 1 2 3 4 
+        }
+        console.log('end', i); // end 5
+
+        // continue 直接跳到下一轮 就把continue后面代码忽略掉 并不会中断循环
+        for (var i = 0; i < 10; i++) {
+            if (i < 5) { // i小于5的时候 遇到continue 
+                // 不会执行continue后面的代码 直接跳到下一轮循环
+                continue;
+            }
+            console.log('i', i) // 5 6 7 8 9
+        }
+    </script>
+</body>
+
+</html>

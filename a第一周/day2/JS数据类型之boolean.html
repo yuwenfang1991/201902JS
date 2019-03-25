@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //boolean:true(真) false(假)
+        // 其他类型都可以转换成boolean类型（true或false）
+        // 0 '' null NaN undefined 这五个值转换为Boolean类型都是false 其余都是true
+        // 怎么转换为Boolean类型
+        // Boolean()将其他类型的值 转换为boolean
+        console.log(Boolean(0)) //false
+        console.log(Boolean('')); //false
+        console.log(Boolean(null)); //false
+        console.log(Boolean(NaN)); //false
+        console.log(Boolean(undefined)); //false
+
+        // !! 操作符 等价于 Boolean（）
+        console.log(!!0) //false
+        console.log(!!'') //false
+        // ! 取反
+        // 先转换为Boolean再取反
+        console.log('!0', !0)
+        console.log('!空字符串', !'')
+        console.log('!null', !null)
+        console.log('!NaN', !NaN)
+        console.log('!undefined', !undefined)
+
+        // 0 '' null NaN undefined 这五个值取反都是true 其余都是false
+    </script>
+</body>
+
+</html>

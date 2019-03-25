@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box {
+            width: 900px;
+            height: 700px;
+            background: #a26b5a;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #box1 {
+            font: 30px/50px "微软雅黑";
+            color: #14ac51;
+            padding-left: 20px;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 30px;
+            background: #9ab12e;
+            font: 18px/30px "微软雅黑";
+            color: #fff;
+            text-align: center;
+            position: absolute;
+            top: 30px;
+            left: 340px;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background: pink;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            border-radius: 15px;
+            border: 1px solid #5aac6f;
+        }
+
+        #box4 {
+            width: 300px;
+            height: 200px;
+            background: #87a4bf;
+            border-radius: 10px;
+            position: absolute;
+            right: 30px;
+            bottom: 90px;
+            padding-top: 20px;
+            display: none;
+        }
+
+        #box4 .color {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        #box4 li {
+
+            float: left;
+            font: 14px/40px "微软雅黑";
+
+        }
+
+        #box4 .color .red {
+            width: 40px;
+            height: 40px;
+            background: red;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #f1f1f1;
+            margin-left: 28px;
+        }
+
+        #box4 .color .blue {
+            width: 40px;
+            height: 40px;
+            background: blue;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #f1f1f1;
+            margin-left: 10px;
+        }
+
+        #box4 .color .green {
+            width: 40px;
+            height: 40px;
+            background: green;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #f1f1f1;
+            margin-left: 10px;
+        }
+
+        #box4 .width {
+            height: 40px;
+            margin-bottom: 10px;
+        }
+
+        #box4 .width1 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #box4 .width2 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #box4 .width3 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #box4 .height {
+            height: 40px;
+        }
+
+        #box4 .height1 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #box4 .height2 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #box4 .height3 {
+            width: 40px;
+            height: 40px;
+            background: #f1f1f1;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        #bottom {
+            height: 40px;
+            margin-top: 10px;
+            padding-left: 110px;
+        }
+
+        #bottom button {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h2 id="box1">请为下面DIV设置样式:</h2>
+        <div id="box2">鼠标划过</div>
+        <div id="box3"></div>
+        <div id="box4">
+            <ul class="color">
+                <li>
+                    请选择背景颜色:
+                </li>
+                <input id="selector" type="color">
+                <li id="red" class="red">红</li>
+                <li id='blue' class="blue">黄</li>
+                <li id="green" class="green">绿</li>
+            </ul>
+            <ul class="width">
+                <li>请选择宽度（PX）:</li>
+                <li id="width1" class="width1">200</li>
+                <li id="width2" class="width2">300</li>
+                <li id="width3" class="width3">400</li>
+            </ul>
+            <ul class="height">
+                <li>请选择高度（PX）:</li>
+                <li id="height1" class="height1">200</li>
+                <li id="height2" class="height2">300</li>
+                <li id="height3" class="height3">400</li>
+            </ul>
+            <p id="bottom">
+                <button id="btn">恢复</button>
+                <button id="btn1">确定</button>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        var box2 = document.getElementById('box2')
+        var box4 = document.getElementById('box4')
+        var box3 = document.getElementById('box3')
+        var red = document.getElementById('red')
+        var blue = document.getElementById('blue')
+        var green = document.getElementById('green')
+        var width1 = document.getElementById('width1')
+        var width2 = document.getElementById('width2')
+        var width3 = document.getElementById('width3')
+        var height1 = document.getElementById('height1')
+        var height2 = document.getElementById('height2')
+        var height3 = document.getElementById('height3')
+        var btn = document.getElementById('btn')
+        var btn1 = document.getElementById('btn1')
+
+
+        // 点击找到隐藏
+        box2.onmouseover = function () {
+            box4.style.display = 'block'
+        }
+
+        // 红色
+        red.onclick = function () {
+            box3.style.backgroundColor = 'red';
+        }
+        // 蓝色
+        blue.onclick = function () {
+            box3.style.backgroundColor = 'blue';
+        }
+        // 绿色
+        green.onclick = function () {
+            box3.style.backgroundColor = 'green';
+        }
+
+        // 宽200
+        width1.onclick = function () {
+            box3.style.width = '200px'
+        }
+        // 宽300
+        width2.onclick = function () {
+            box3.style.width = '300px'
+        }
+        // 宽400
+        width3.onclick = function () {
+            box3.style.width = '400px'
+        }
+
+        // 高200
+        height1.onclick = function () {
+            box3.style.height = '200px'
+        }
+        // 高300
+        height2.onclick = function () {
+            box3.style.height = '300px'
+        }
+        // 高400
+        height3.onclick = function () {
+            box3.style.height = '400px'
+        }
+
+        // 恢复
+        btn.onclick = function () {
+            box3.style.background = 'pink'
+            box3.style.width = '100px'
+            box3.style.height = '100px'
+        }
+        // 确定
+        btn1.onclick = function () {
+            box4.style.display = 'none'
+        }
+
+
+        var selector = document.getElementById('selector')
+        selector.onchange = function () {
+            console.log(this.value)
+            box3.style.backgroundColor = this.value;
+        }
+
+    </script>
+</body>
+
+</html>

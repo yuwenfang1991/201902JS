@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数表达式
+        // var fn = function (a) {
+        //     console.log('a', a);
+        //     console.log(arguments);
+        //     return '返回值';
+        // }
+        // console.log(typeof fn); //"function"
+        // var ref = fn(100);
+        // console.log(ref);
+
+        // 变量提升
+
+        // 可以在函数定义之前调用执行
+        // fe();
+        // function fe() {
+        //     console.log(123);
+        // }
+        // foo()会报错 不能在函数定义之前执行
+        var foo = function () {
+            console.log('foo');
+        }
+        foo();
+        // 没名字的函数 称为匿名函数
+
+        function add1(a, b) {
+            return a + b;
+        }
+        var add2 = function (a, b) {
+            return a + b;
+        }
+
+        // 自执行函数
+        ;
+        (function (a) {
+            console.log('a', a)
+        })('hello 自执行');
+
+        // 自执行其他写法
+        ~ function () {
+            console.log('~ 自执行');
+
+        }();
+        + function() {
+            console.log('+ 自执行');
+
+        }();
+        ! function() {
+            console.log('! 自执行');
+
+        }();
+
+        // 接收自执行函数的返回值
+        var res = (function(a) {
+            return 'beijing';
+        })()
+        console.log(res);
+
+        // (function() {
+
+        //     return function() { //闭包
+
+        //     }
+        // })()
+        var con = confirm('你确定离开当前页面吗？');
+        if(con) {
+            window.location.href = 'http://www.baidu.com';
+        } else {
+            console.log('继续浏览');
+        }
+    </script>
+</body>
+
+</html>

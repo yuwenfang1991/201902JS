@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="event">
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找，找</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找，</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找，</li>
+        <li>他就会感觉，卷要是丢了，就麻烦了，他可能就会说，你赶紧回去找找，找</li>
+    </ul>
+    <script>
+        // 目的：点击哪个li 就将这个li元素索引值弹出来
+        // 先获取页面中元素
+        // 页面中元素就是一个对象 我们可以给它增加或者修改属性
+        // 先获取ul
+        var event = document.getElementById('event');
+        // 再通过ul元素获取到里面的所有li
+        var list = event.getElementsByTagName('li');
+        // 元素集合[li,li,li,li,li]
+        // console.log(list);
+
+        // 循环绑定点击事件
+        // 通过for循环 给集合每一个li绑定一个点击事件
+        for (var i = 0; i < list.length; i++) {
+            // console.log('循环中',i,list[i]);
+            // console.dir(list[i]);
+            // 给此时元素对象 自身增加ind属性 保存当前索引i的值
+            // 自定义属性
+            list[i].ind = i;
+            list[i].onclick = function () {
+                // 不能直接使用变量i
+                alert(this.ind);
+                // this.style.backgroundColor='red';
+            }
+        }
+
+        // 在事件函数中 不能直接使用变量i作为索引
+        // 一打开页面的时候 for循环就已经循环结束了 变量i早已经 加加完了变成了10
+        // 一个一个绑定点击事件 效率太低了
+    </script>
+</body>
+
+</html>

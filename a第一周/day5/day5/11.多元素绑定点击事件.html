@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="news">
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？1</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？2</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？3</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？4</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？5</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？6</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？7</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？8</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？9</li>
+    <li>一个国家可以印几百万亿钞票去其他国家购买黄金吗？10</li>
+  </ul>
+
+  <script>
+    // 先获取页面中的元素
+
+    // 先获取ul
+    var news = document.getElementById('news')
+
+    // 再通过ul元素获取到里面的所有li元素
+    var list = news.getElementsByTagName('li')
+
+    // 元素集合 [li, li, li, li, li]
+    // console.log(list)
+
+    // 循环绑定点击事件
+    // 通过for循环 给集合中每一个li绑定点击事件
+    for (var i = 0; i < list.length; i++) {
+      // console.log(i, list[i])
+
+      list[i].onclick = function () {
+        alert(this.innerHTML)
+      }
+    }  
+
+    // 一个一个绑定点击事件 效率太低了
+    // list[0].onclick = function () {
+    //   console.log('我是第一个li')
+    // }
+
+    // list[1].onclick = function () {
+    //   console.log('我是第二个li')
+    // }
+
+    // list[2].onclick = function () {
+    //   console.log('我是第三个li')
+    // }
+  </script>
+</body>
+</html>

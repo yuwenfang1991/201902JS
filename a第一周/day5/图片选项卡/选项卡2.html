@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.min.css">
+    <style>
+        .container {
+            width: 520px;
+            margin: 10px auto;
+        }
+
+        .container ul {
+            display: block;
+        }
+
+        .container ul li {
+            width: 70px;
+            height: 75px;
+            text-align: center;
+            float: left;
+            font-size: 15px;
+            line-height: 75px;
+            border: 2px solid blanchedalmond;
+            cursor: pointer;
+        }
+
+        .container #panel div {
+            display: none;
+            width: 300px;
+            height: 250px;
+        }
+
+        .container ul li.active {
+            background-color: blanchedalmond;
+            color: #fff;
+        }
+
+        .container #panel div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul id="tabs">
+            <li class="active">中国A股</li>
+            <li>港股</li>
+            <li>全球</li>
+            <li>外汇</li>
+            <li>期货</li>
+        </ul>
+        <div id="panel">
+            <div class="active"><img src="./image/1.jpg"></div>
+            <div><img src="./image/2.jpg"></div>
+            <div><img src="./image/3.jpg"></div>
+            <div><img src="./image/4.jpg"></div>
+            <div><img src="./image/5.jpg"></div>
+        </div>
+    </div>
+    <script>
+        // 获取ul
+        var tab = document.getElementById('tabs');
+        // 根据获取的ul获取li
+        var list = tab.getElementsByTagName('li');
+        var panel = document.getElementById('panel');
+        var panelList = panel.getElementsByTagName('div');
+        // console.log(list);
+        // 给li绑定单击事件
+        for (var i = 0; i < list.length; i++) {
+            list[i].int = i;
+            list[i].onclick = function () {
+                for (var a = 0; a < list.length; a++) {
+                    list[a].className = '';
+                    panelList[a].className = '';
+                }
+                this.className = 'active';
+                panelList[this.int].className = 'active';
+            }
+        }
+    </script>
+</body>
+
+</html>

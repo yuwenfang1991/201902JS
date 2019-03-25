@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // if语句 条件语句 进行判断
+        // 语法
+        // if(条件) {
+        // 条件为true时执行代码
+        // }
+        /*
+            大于 >
+            小于 <
+            大于等于 >=
+            小于等于 <=
+            相对等于 ==
+            绝对等于 ===
+            不等于 !=
+        */
+        // 绿灯
+        var text = "绿灯";
+        if (text === "绿灯") {
+            console.log("前方是绿灯，可以通行");
+        }
+        // true
+        if (2 > 1) {
+            console.log("2 > 1");
+        }
+        // false
+        if (6 < 3) {
+            console.log("6 < 3");
+        }
+        // if else
+        // 如果……否则……
+        // 语法
+        // if(条件) {
+        //      条件为true时 执行代码
+        // } else {
+        //      条件为false时 执行代码
+        // }
+        var light = '红灯';
+        if (light === '绿灯') {
+            console.log("当前是绿灯 请通过");
+        } else {
+            console.log("请等一等 当前不是绿灯");
+        }
+        // 多条件
+        /* 
+          if (条件 1) {
+                当条件 1 为 true 时执行的代码
+            } else if (条件 2) {
+                当条件 2 为 true 时执行的代码
+            } else {
+                当条件 1 和 条件 2 都不为 true 时执行的代码
+            }
+        */
+        /*
+              var light = '黄灯';
+              if (light === '绿灯') {
+                  console.log("当前是绿灯 请通过");
+              } else if(light === '黄灯') {
+                  console.log("请等一等 当前是黄灯");
+              } else {
+                  console.log("请一直等 当前是红灯");
+              }
+        */
+        // var time = 'morning'
+
+        // if (time === 'morning') {
+        //     console.log('Good morning 😊')
+        // } else if (time === 'noon') {
+        //     console.log('Good noon 😃')
+        // } else if (time === 'afternoon') {
+        //     console.log('Good afternoon 🙂')
+        // } else {
+        //     console.log('Good evening 🌙')
+        // }
+        // 其他的所有类型 都可以转换为boolean值(true或false)
+        // 0 '' undefined null NaN 这五个值 转换为Boolean都是false 其余都是true
+        // if () 会把小括号里的内容 隐式转换为boolean值
+
+        // true 条件成立
+        // false 条件不成立
+
+        if (0) {
+            console.log(0000000);
+        }
+        if(2 + 3) {
+            console.log('hello world'); 
+        }
+        if(-1 + 1) {
+            console.log('bye bye world'); 
+        }
+        
+        // 定义一个变量age
+        // 如果 age 等于 1 输出 hello 1
+        // 如果 age 等于 10 输出 hello 10
+        // 如果 age 等于 20 输出 hello 20
+        // 否则 输出 hello world 
+        var age = 20;
+        if(age == 1) {
+            console.log('hello 1');
+        }else if(age == 10) {
+            console.log('hello 10');
+        }else if(age == 20) {
+            console.log('hello 20');
+        } else {
+            console.log('hello world!');
+        }
+    </script>
+</body>
+
+</html>

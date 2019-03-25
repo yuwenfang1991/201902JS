@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            height: 280px;
+            margin: auto;
+        }
+
+        .container ul {
+            list-style: none;
+            overflow: hidden;
+        }
+
+        .container #list li {
+            display: inline-block;
+            width: 50px;
+            line-height: 30px;
+            border: 1px solid burlywood;
+            text-align: center;
+            float: left;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .container #panel div {
+            width: 204px;
+            height: 150px;
+            border: 1px solid gold;
+            text-align: center;
+            line-height: 150px;
+            display: none;
+        }
+
+        .container #list li.active {
+            background-color: gold;
+            height: 32px;
+            border: none;
+        }
+
+        .container #panel div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul id="list">
+            <li class="active">关注</li>
+            <li>推荐</li>
+            <li>导航</li>
+            <li>新闻</li>
+        </ul>
+        <div id="panel">
+            <div class="active">关注</div>
+            <div>推荐</div>
+            <div>导航</div>
+            <div>新闻</div>
+        </div>
+    </div>
+    <script>
+        var list = document.getElementById('list');
+        var newList = list.getElementsByTagName('li');
+        var panel = document.getElementById('panel');
+        var panelList = panel.getElementsByTagName('div');
+        for (var i = 0; i < newList.length; i++) {
+            newList[i].ind = i;
+            newList[i].onclick = function () {
+
+                for (var f = 0; f < newList.length; f++) {
+                    newList[f].className = '';
+                    panelList[f].className = '';
+                }
+                this.className = 'active';
+                panelList[this.ind].className = 'active';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 id="title"></h3>
+    <p id="c"></p>
+    <script>
+        // js中的输出方式 就把js中的内容 输出显示到页面中
+        // 输出到页面中 DOM里面提供的方法
+        // var text ='我是页面中的内容';
+        // innerHTML 将内容输出到指定页面元素中
+        // innerText
+
+        // 将变量text存储的数据内容 输出到页面当中
+        // JS把内容直接放到body里面了
+        //document.write(text);
+        //document.write('<h1>JavaScript</h1>');
+        // 获取ID名为title的页面标签h3
+        var a = document.getElementById('title');
+        // 元素.innerHTML = 元素内容
+        // 将内容输出显示到页面h3标签中
+        // a.innerHTML = '我是页面中的 标题3';
+
+
+        // var text ='测试';
+        //var c = document.getElementById('c');
+        //c.innerHTML = text;
+
+        // innerHTML 和innerText作用一样
+        // 区别
+        // innerText不能够识别标签内容
+        // innerHTML能够识别标签内容
+
+        // innerText将内容作当做普通文本 直接输出到页面元素中
+        //a.innerText = '<i>我是页面中的标题3434</i>';
+        a.innerHTML = '<i>我是页面中的标题3434</i>';
+        // 页面中输出方式
+        // document.write('<h3>hello</h3>');将内容直接输出到body中,能够识别标签
+        // innerHTML/innerText将内容输出到指定元素标签内
+        // innerHTML/innerText区别
+
+        //弹窗输出 会阻塞浏览器渲染页面
+        // alert('弹窗内容');//普通提示框
+        // confirm('你确认要退出登录');//确认框
+        // prompt('你的名字是什么？');//输入框
+
+
+        // 控制台输出（通常进行JS代码调试）
+        // 控制台会显示出一些JS代码运行时错误信息
+        // console.log('控制台输出');
+        //console.dir('')//在控制台输出更详细的内容
+        //var ele = document.getElementById('title');
+        //console.log(ele);
+        //console.dir(ele);
+        var ele = 123;
+        console.log(ele);
+    </script>
+</body>
+
+</html>

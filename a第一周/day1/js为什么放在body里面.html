@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script>
+        // 获取元素必须要等html元素解析完才行
+        // 在js中 根据ID名 获取页面中元素（html标签）
+        var doc = document.getElementById('box');
+        Console.log(doc);
+
+        // 为了保证能够在JS中 获取到加载后的元素 
+        // 一般都是把JS 放在body底部
+
+        // 此时 获取div的时候 页面中还没有加载这个HTML元素
+    </script> -->
+    <!-- 打开浏览器的时候 从上到下 解析 html css js -->
+</head>
+
+<body>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ff3344;
+        }
+    </style>
+    <div class="box" id="box">12328923</div>
+    <!-- DOM就是通过js操作html标签 -->
+    <script>
+        // 获取元素必须要等html元素解析完才行
+        //    在js中 根据ID名 获取页面中元素（html标签）
+        var asc = document.getElementById('box');
+        console.log(asc);
+    </script>
+    <!-- 
+        JS引入方式
+        注意的
+        JS存放位置
+        1.JS 一般最好是放在body底部（要先让浏览器加载HTML 然后再JS获取元素）
+        2.外链式和内嵌式不能混用在一个script标签当中
+     -->
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+    <link rel="stylesheet" href="reset.min.css">
+    <style>
+        .list {
+            margin: auto;
+            width: 300px;
+            text-align: center;
+
+        }
+
+        .list li {
+            padding: 2px 5px;
+            font-size: 15px;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .list li:hover {
+            background: rgb(7, 255, 193) !important;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="news" class="list">
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+    </ul>
+    <script>
+        // 原生JS中 要想操作元素 就要先获取元素
+        // 获取ul
+        var news = document.getElementById('news');
+        // document整个文档范围内
+        // document相当于获取 整个文档中的所有li元素
+        // document.getElementsByTagName('li');
+        // 通过ul 获取它里面所有li
+        var list = news.getElementsByTagName('li');
+
+
+        // 定义一个变量
+        var n = 0;
+
+        // // while循环
+        // // while循环帮我们把元素一次取出来
+        while (n < list.length) {
+
+            // if语句
+            // if (n % 2 === 0) {
+            //     // console.log(n);
+            //     list[n].style.backgroundColor = 'blue';
+            // } else {
+            //     list[n].style.backgroundColor = 'red';
+            // }
+
+            // switch 语句
+            switch (n % 3) {
+                case 0:
+                    list[n].style.backgroundColor = 'pink';
+                    break;
+                case 1:
+                    list[n].style.backgroundColor = 'red';
+                    break;
+                default:
+                    list[n].style.backgroundColor = 'orange';
+            }
+            n++;
+        }
+
+        // 奇数行一种颜色
+        // 偶数行一种颜色
+        // 索引是偶数 => 页面中奇数行
+        // 索引是奇数 => 页面中偶数行
+        // 如何判断奇偶数 
+        // 能够被二整除的 就是 偶数 否则就是奇数
+        //  % 取模 取余
+        // i % 2 === 0 索引i是偶数
+
+        //获取元素
+        // 元素集合[索引]
+        // 元素集合中 有多少个元素就循环多少次
+        // 在for循环中 把变量i当索引来用
+        // for循环
+        // for (var n = 0; n < list.length; n++) {
+
+        //     // if语句
+        //     //    if(n%2 === 0) { //索引偶数
+        //     //         list[n].style.backgroundColor = 'yellow';
+        //     //    } else { //索引为奇数
+        //     //         list[n].style.backgroundColor = 'red';
+        //     //    }
+        //     // 如何设置元素的背景色
+        //     // 元素对象.style.backgroundColor = 'red'; 
+
+        //     // switch 语句
+        //     // switch (n % 2) {
+        //     //     case 0:
+        //     //         list[n].style.backgroundColor = 'pink';
+        //     //         break;
+        //     //     default:
+        //     //         list[n].style.backgroundColor = 'red';
+        //     // }
+
+        //     // 三元运算符
+        //     // n % 2 === 0 ? list[n].style.backgroundColor = 'red' : list[n].style.backgroundColor = 'pink';
+        //     // 精简版
+        //     // list[n].style.backgroundColor = n % 2 === 0 ? 'red' : 'pink';
+        // }
+
+
+        // for 循环
+        // i = 0 list[0] 第一个li元素 背景颜色为pink
+        // i = 1 list[1] 第二个li元素 背景颜色为red
+        // i = 2 list[2] 第三个li元素 背景颜色为pink
+        // ……
+        // 隔多行变色
+    </script>
+</body>
+
+</html>

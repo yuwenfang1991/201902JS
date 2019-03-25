@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 306px;
+      margin: 20px auto;
+    }
+
+    .container ul {
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .container ul li {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      float: left;
+      border: 1px solid pink;
+      cursor: pointer;
+    }
+
+    .container #panel>div {
+      display: none;
+      width: 304;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      border: 1px solid pink;
+    }
+
+    /* li选中样式 */
+    .container ul li.active {
+      background-color: coral;
+      color: #ffffff;
+    }
+
+    /* div选中样式 */
+    .container #panel>div.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <ul id="tabs">
+      <li>中国A股</li>
+      <li class="active">港股</li>
+      <li>全球</li>
+    </ul>
+
+    <!-- 面板 -->
+    <div id="panel">
+      <div>中国A股</div>
+      <div class="active">港股</div>
+      <div>全球</div>
+    </div>
+  </div>
+
+  <script>
+    var tabs = document.getElementById('tabs');
+    var tabList = tabs.getElementsByTagName('li');
+
+    var panel = document.getElementById('panel');
+    var panelList = panel.getElementsByTagName('div');
+
+
+
+    // 给集合中所有的li 绑定点击事件
+
+    // 把集合中li元素 依次取出来
+
+    // for循环中 把i当做索引来用
+
+    for (var i = 0; i < tabList.length; i++) {
+
+      // 保存到li元素自身
+      tabList[i].ind = i;
+
+      tabList[i].onmouseover = function () {
+
+        // 添加active类名之前 先将所有元素类名 清空一遍
+        for(var l = 0; l < tabList.length; l++) {
+          // 将li的类名清空
+          tabList[l].className = '';
+          // 将div的类名清空
+          panelList[l].className = '';
+        }
+
+        // 当点击li的索引 this.ind
+        this.className = 'active';
+
+        // 根据当前点击li的索引（this.ind） 去div集合中找到对应的div 让它显示
+        panelList[this.ind].className = 'active';
+      }
+    }
+    // console.log('end', i);
+
+
+    // for (var i = 0; i < tabList.length; i++) {
+
+    //   // console.log('循环中', i, tabList[i])
+    //   // console.dir(tabList[i])
+
+    //   // 每次循环中索引值 保存到当前元素对象自身
+    //   tabList[i].ind = i
+
+      // 第一次循环时 i = 0 
+      // tabList[0].ind = 0
+      // tabList[0].onclick = function () {
+      //   this === tabList[0]  
+      //   console.log(this.ind)
+      // }
+
+      // 第二次循环时 i = 1 
+      // tabList[1].ind = 1
+      // tabList[1].onclick = function () {
+      //   this === tabList[1]  
+      //   console.log(this.ind)
+      // }
+
+      // 第三次循环时 i = 2 
+      // tabList[2].ind = 2
+      // tabList[2].onclick = function () {
+      //   this === tabList[2]  
+      //   console.log(this.ind)
+      // }
+
+    //   // 当前点击是哪个li元素 就会触发哪个li元素自身的事件函数 输出它里面的this
+    //   tabList[i].onclick = function () {
+    //     // console.log(this); // 当前点击的这个li元素
+    //   }
+    // }
+
+    
+
+
+
+    // 元素集合[索引]
+
+    // [li, li, li]
+    // [div, div, div]
+
+    // 需要再点击li的时候 得到这个li索引 ind
+    // 根据这个li的索引ind 去 div集合里面找出对应的div元素 panelList[ind]
+
+
+
+
+    // for循环 其实也是 一个一个的给每个li绑定点击事件的
+
+    // 当我点击这个元素时候 它就会触发 它自己的click事件
+
+
+    // 第一次循环
+    // tabList[0].onclick = function() {
+    // console.log(this);
+    // }
+
+    // 第二次循环
+    // tabList[1].onclick = function() {
+    // console.log(this);
+    // }
+
+    // 第三次循环
+    // tabList[2].onclick = function() {
+    // console.log(this);
+    // }
+
+
+    // click点击
+    // 元素.onclick = function() {}
+
+    // tabList[0].onclick = function () {
+    //   // this 事件函数中的this 指向当前绑定事件的元素对象
+    //   console.log(this === tabList[0])
+    // }
+
+    // tabList[1].onclick = function () {
+    //   console.log(this === tabList[1])
+    // }
+
+    // tabList[2].onclick = function () {
+    //   console.log(this === tabList[2])
+    // }
+  </script>
+</body>
+
+</html>

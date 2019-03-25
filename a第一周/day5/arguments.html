@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arguments</title>
+</head>
+
+<body>
+    <script>
+        function fe(a, b, c, d, e, f, g) {
+            // [10, 20, 30, 40, 50]
+            arguments; // 实参集合
+        }
+
+        fe(10, 20, 30, 40, 50);
+        fe(10, 20, 10, 20, 30, 40, 50, 10, 20, 30, 40, 50);
+
+        fe(10, 20, 10);
+        fe(10);
+
+
+        // arguments 实参集合 类数组
+        // function fn(a, b) {
+        //   // 传入多个实参 arguments中就有多少个实参
+
+        //   // ['hello', 'world'];
+        //   // console.log('args', arguments[0]);
+        //   // console.log('args', arguments[1]);
+
+        //   console.log(a, b);
+        //   // ['hello', 'world'];
+        //   console.log(arguments[0]);
+        //   arguments.length // 代表当前传入的实参个数
+        // }
+        // fn('hello', ' world');
+
+
+        // 函数中接收参数
+        // 1.通过形参接收
+        // 2.arguments
+
+
+        // function out() {
+        //   console.log(arguments);
+        //   for (var i = 0; i < arguments.length; i++) {
+        //     console.log(i, arguments[i]);
+        //   }
+        // }
+
+
+        // 形参和arguments有一种映射关系
+        // 形参的值变了 arguments中的对应位置的值也跟着变
+        // arguments的值变了 对应位置的形参值也跟着变
+        function num(a, b) {
+            console.log('b', b);
+            // a = 1000;
+            // console.log(a, b);
+            // console.log(arguments);
+            arguments[1] = 2019;
+            console.log(arguments);
+            console.log(b);
+        }
+        num(10, 20);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 对象数据类型 用来存储多个值的 浏览器会为它分配一块儿空间内存
+    
+    // 如何创建一个对象
+    // 每个属性 key(属性名):value(属性值)
+    // 多个属性之间用逗号隔开
+
+    // var obj = {
+    //   属性名1: 属性值,
+    //   key1: value1,
+    //   key2: value2
+    // }
+
+    var obj = {
+      id: 1,
+      age: 18,
+      name: 'beijing',
+      1: '数字作为索引'
+    }
+
+    // 对象的操作
+    // 获取对象中某个属性
+    // 1.对象名.属性名
+    console.log(obj.name); // 'beijing'
+
+    // 2.对象名['属性名'] 注意属性名要加上引号
+    console.log(obj['id']); // 1
+
+    // obj.1 第一种获取方式 不支持数字作为属性名
+    console.log(obj[1]); // '数字作为索引'
+
+    // 增加属性
+    // 对象名.属性名 = 属性值
+    // 对象名['属性名'] = 属性值
+    obj.title = 'title';
+
+    // 给obj这个对象 增加一个属性名为0 属性值为2019的一个属性
+    obj[0] = 2019;
+
+    // 修改属性
+    obj.age = '修改age';
+
+    obj[0] = 2020;
+
+    // 删除属性
+
+    // 真删除
+    // console.log(obj)
+    // delete obj.id
+    // console.log(obj)
+
+    // 假删除 就是把 属性值 赋值为null 但是这个属性 依然存在
+    console.log(obj);
+    obj.id = null;
+    console.log(obj);
+
+
+    var title = document.getElementById('title');
+    console.log(typeof title); // "object"
+
+    console.dir(title); // "object"
+
+    title.innerHTML = '输出内容';
+    console.log(title.innerHTML);
+
+    // 获取元素的id名
+    console.log(title.id); // "title"
+
+    // 获取元素的class名
+    console.log(title.className); // "h3h3"
+
+    var message = {};
+    // 获取一个不存在的属性 返回undefined
+    console.log(message.title); // undefined
+
+    // 对象中不能有重复的属性 否则后面会覆盖掉前面的属性
+    var context = {
+      id: 100,
+      id: 300
+    }
+    console.log(context.id); // 300
+
+    </script>
+</body>
+</html>

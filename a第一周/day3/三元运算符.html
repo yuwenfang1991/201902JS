@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三元运算符</title>
+</head>
+
+<body>
+    <script>
+        // 三元运算符
+        //  语法：
+        // 条件？为true时执行 : false时执行
+        var price = 11;
+        if (price < 10) {
+            console.log('比较便宜');
+        } else {
+            console.log('太贵了');
+        }
+        price < 10 ? console.log('比较便宜') : console.log('太贵了,能不能便宜点');
+
+        // 将简单的if语句 改写成三元运算
+        if (price == 10) {
+            console.log('价格刚刚好');
+        }
+        // null undefined 相当于用来占位 避免语法报错
+        price == 10 ? console.log('比较刚好') : null;
+        // 三元运算符 冒号以及后面内容 是不能省略的
+        // 错误写法 会报语法错误
+        // price === 10 ? console.log('价格刚好')
+
+
+        // = 赋值运算符
+        // 三元运算符 优先级 要高于 赋值运算符
+        // var num = 10 < 1 ? 'hello' : 'world';
+        // console.log(num) // "world"
+        var num
+        if (10 < 1) {
+            num = 'hello'
+        } else {
+            num = 'world'
+        }
+    </script>
+</body>
+
+</html>

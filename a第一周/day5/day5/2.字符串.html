@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="art"></div>
+  <script>
+    // 字符串: 用'' "" `` 包起来的内容 一个个的字符
+    // 里面每一项都把称为字符 'abc'
+
+    // 字符串中加号+
+
+    // 字符串的拼接
+    // 其他类型值和字符串相加时，不是求和 而是进行字符串拼接
+    1 + '2' // '12'
+    100 + '100' // '100100'
+    true + 'abc' // 'trueabc'
+    '2'+'2' // '22'
+
+    var a = 'hello'
+    var b = ' world!'
+
+    // 'hello' + ' world!'
+    console.log(a + b) // 'hello world!'
+
+    // ES6 提供了模板字符串 更加方便的进行字符串拼接
+    
+    var data = {
+      title: '当下好找工作嘛',
+      auth: 'yck',
+      desc: '想必大家现在经常能看到某某公司又裁员了，会担心是不是找不到工作了。其实总的来说虽然当下的环境确实不怎么好，但是有裁员的公司，也肯定有招人的公司，并且招人的公司一定比裁员的公司多得多，就比如我司「宋小菜」就有很多的 HC。'
+    }
+
+
+    // 将对象的内容 拼接成html片段
+    var context = `
+      <h2>${data.title}</h2>
+      <h3><i>${data.auth}</i></h3>
+      <p>${data.desc}</p>
+    `
+
+    // 将拼接好的内容输出到页面
+    var art = document.getElementById('art')
+    art.innerHTML = context
+   
+
+    var city = 'beijing'
+    // 反引号 ESC键 👇按键
+    // ` ${变量/表达式}` 支持拼接变量
+    var str = `this city is ${city}`
+    // console.log(str)
+
+   
+
+
+  </script>
+</body>
+</html>

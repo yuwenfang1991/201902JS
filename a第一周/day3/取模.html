@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>取模</title>
+</head>
+
+<body>
+    <script>
+        // % 取模（取余）获取余数
+        // 得到3%2的余数
+        /* 
+            console.log(3 % 2);//1
+            console.log(0 % 2);//0
+            console.log(1 % 2);//1
+            console.log(2 % 2);//0
+            console.log(3 % 2);//1
+            console.log(4 % 2);//0
+         */
+
+        // 模几 返值情况就有几种
+        // 比如%2 返回值情况两种 0 1
+        // 比如%3 返回值情况三种 0 1 2
+        // 比如%4 返回值情况四种 0 1 2 3
+
+        console.log(0 % 4) // 0
+        console.log(1 % 4) // 1
+        console.log(2 % 4) // 2
+        console.log(3 % 4) // 3
+        console.log(4 % 4) // 0
+        console.log(5 % 4) // 1
+        console.log(6 % 4) // 2
+        console.log(7 % 4) // 3
+        console.log(8 % 4) // 3
+        // 如果一个数 %2 0 说明是偶数
+        // 如果一个数 %2 1 说明是奇数
+        // 定义一个变量 num
+        // 如果num除以2 余数等于0 输出"这是一个偶数"
+        // 如果num除以2 余数等于1 输出"这是一个奇数"
+        //     var num = 3;
+        //     if (num % 2 == 0) {
+        //         console.log('这是一个偶数');
+        //     } else {
+        //         console.log('这是一个奇数');
+        //     }
+        //     switch (num % 2) {
+        //         case 0:
+        //             console.log('这是一个偶数');
+        //             break;
+        //         default:
+        //             console.log('这是一个奇数');
+        //     }
+        //     switch (num % 3) {
+        //         case 0:
+        //             console.log('情况一');
+        //             break;
+        //         case 1:
+        //             console.log('情况二');
+        //             break;
+        //         case 2:
+        //             console.log('情况三');
+        //             break;
+        //         default:
+        //             console.log('情况四');
+        //     }
+        // 0 '' null undefined NaN 转换为boolean类型都是false 其余都是true
+        // if语句的小括号 会隐式将条件 转换为boolean值（true或false）再进行判断执行
+        // true 条件成立 false 条件不成立
+
+        // num%2 返回值情况 0 1
+
+
+        var num = 2
+        if (!(num % 2)) { // 2 % 2 = 0
+            console.log("“这是个偶数”")
+        } else {
+            console.log("“这是个奇数”")
+        }
+
+        // var num = 3
+        // if (num%2) { // 3%2 = 1 应该是奇数 1 == true
+        //   console.log(num, "是个奇数")
+        // } else {
+        //   console.log(num, "是个偶数")
+        // }
+
+        if (num % 2 === 0) {
+            console.log("“这是个偶数”")
+        } else {
+            console.log("“这是个奇数”")
+        }
+    </script>
+</body>
+
+</html>

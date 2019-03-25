@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>获取页面元素</title>
+</head>
+
+<body>
+    <div id="box">box box</div>
+    <h3 class="title">h3 h3</h3>
+    <h3 class="title">h3 h3</h3>
+    <h3 class="title">h3 h3</h3>
+    <h3 class="title">h3 h3</h3>
+    <h3 class="title">h3 h3</h3>
+    <h3 class="title">h3 h3</h3>
+    <script>
+        // DOM里提供 document对象（文档对象）
+
+        // 根据id名获取一个元素（html标签）
+        // document.getElementById('id名')
+
+        var box = document.getElementById('box');
+        console.log('box', box);
+
+        // 根据class名获取一个元素
+        // document.getElementsByClassName('class名')
+
+        // 对于从0排列的数字属性名 称为索引
+
+        // [h3] 元素集合（类数组）
+        // 通过类名获取元素 返回的是个元素集合 获取到的元素对象都在集合里面
+
+        var list = document.getElementsByClassName('title');
+        console.log(list); // [h3, h3, h3, h3, h3, h3]
+
+        // 根据索引（数字属性名）获取元素集合中 某一个元素对象
+        // 元素集合[索引]
+
+        // 获取集合中第三个元素
+        console.log(list[2]);
+
+        // 获取集合中第一个元素
+        console.log(list[0]);
+
+        // 根据标签名获取元素
+        // document.getElementsByTagName('标签名')
+
+        var news = document.getElementsByTagName('h3');
+        console.log(news); // [h3, h3, h3, h3, h3, h3]
+
+        console.log(news[5]);
+
+        // 集合中元素个数
+        console.log(news.length);
+
+
+
+        // 获取元素
+        // 根据id名获取元素 直接返回一个元素对象
+        // document.getElementById('id名')
+
+        // 根据class名获取元素 返回的是元素集合
+        // document.getElementsByClassName('class名')
+
+        // 根据标签名获取元素 返回的是元素集合
+        // document.getElementsByTagName('标签名')
+
+        // console.log(box)
+        // html标签 在JS中是以对象形式存在的 称为元素对象 
+        // console.dir(box)
+
+        // console.log(typeof box) // "object"
+
+        // var document = {
+        //   getElementById: function () {}
+        // }
+    </script>
+</body>
+
+</html>

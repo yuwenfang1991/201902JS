@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // JS数据类型之Number
+        // Number 属于基本数据类型
+        // 都什么属于Number
+        // Number 正数 负数 小数 0 NaN(非数字 Not a number)
+        // 将其他类型转换为Number类型
+        // Number()
+        // parseInt()
+        // parseFloat()
+
+        // Number() 严格转换
+
+        // 转换的字符串中 如果包含非有效数字字符 就直接返回NaN
+        // Number('10') // 10   
+        // Number('10px') // NaN   
+
+        // 以下转换为数字都是0
+        // Number('') // 0
+        // Number(null) // 0
+        // Number([]) // 0
+
+
+        // Number(false) // 0
+        // Number(true) // 1
+
+        // 对于数组 toString() 先转换为字符串 然后再转换成数字
+        // Number([10]) // Number('10') => 10
+
+        // +操作符 等价于 Number()
+        // + '10' // 10
+        // + null // 0
+
+        // 提取数字 从左往右进行提取 将字符串中数字字符提取出来 
+        // 如果中途遇到非数字字符停止提取 将提取到的内容以数字形式返回
+        // parseInt
+        // Number('10') // 10   
+        // Number('10px') // NaN   
+
+        // parseInt('10') // 10   
+        // parseInt('10px200') // 10
+
+        // 不支持小数 可以进行取整
+        // parseInt(10.56) // 10
+        // parseInt('10.56px') // 10
+
+        // parseFloat 比parseInt多识别一个小数点 可以提取小数部分
+        // parseFloat(10.56) // 10.56
+        // parseFloat('10.56px') // 10.56
+
+
+        // isNaN() 检测一个值是不是NaN(非数字)
+
+        // isNaN(val) 如果返回true 说明val这个值是NaN(非有效数字)
+        // isNaN(val) 如果返回false 说明val这个值是有效数字
+
+
+        // isNaN()在检测的时候 先用Number()转换一下 再进行判断是不是NaN
+        // isNaN(null) // isNaN(Number(null)) => isNaN(0) => false
+
+
+        // JS中数据类型之Boolean
+        // 1. Boolean类型的转换
+        // 0 ''
+        // null undefined NaN 转换为Boolean类型都是false 其余都是true
+
+        // 2. Boolean类型转换的方法
+        // Boolean()
+        // Boolean(0) // false
+        // Boolean('') // false
+        // Boolean(null) // false
+        // Boolean(undefined) // false
+        // Boolean(NaN) // false
+        // // 其余的
+        // Boolean(1) // true
+        // Boolean('abc') // true
+        // Boolean([]) // true
+        // !!操作符
+        // !!等价于Boolean() 将其他类型转换为Boolean类型
+
+        // !!0 // false
+        // !!NaN // false
+        // !!1 // true
+        // 3.!取反
+        // !值 先将值转换为Boolean值（ true或false） 再进行取反 true => false
+
+        // !!0 // false
+        // !0 // true
+        // !true // false
+        // !1 //false
+    </script>
+</body>
+
+</html>

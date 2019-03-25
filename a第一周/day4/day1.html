@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3 id="mess"></h3>
+    <p id="context"><i>1.变量（标识符）<span>可以变化的量</span> 存储值和代表值</i></p>
+    <script>
+        // 1.变量（标识符） 可以变化的量 存储值和代表值
+        // var 变量名 = 值
+        // 一个等号是赋值
+        // 变量默认值 undefined
+        // 变量定义后可以多次赋值
+        var str = 'hello';
+        var num = 100;
+        // 使用num所存储的值 加上100 进行求和
+        // console.log(num + 100);
+        var text;
+        console.log(text); //undefined（未定义） 变量的默认值
+        var title = 'hello beijing';
+        title = 'hello world';
+        title = 'hello';
+        console.log(title);
+        // 常量 值 一旦定义 以后就不能修改的
+        // 语法：const 变量名 = '值'
+        // 定义时 一定要赋值
+        // const text = '常量';
+        // text = 123; //不能被修改
+        // JS中输出（显示）方式
+        // 页面中输出
+        document.write('页面显示内容'); //将JS中数据 直接输出到html文档中（body）
+        // 将指定内容输出到页面元素中
+        // innerHTML 可以识别标签文本内容
+        // innerText 不能识别标签内容
+
+        // JS中操作页面元素 就要先获取到页面元素
+        // 页面中标签 在JS中是以对象形式存在（元素对象/DOM对象）
+        var mess = document.getElementById('mess')
+        // console.log(mess)
+        // console.dir(mess)
+        // mess.innerHTML = '<i>输出到页面h3中的内容</i>'
+        mess.innerText = '<i>输出到页面h3中的内容</i>'
+
+
+        // 获取元素中的内容
+        var context = document.getElementById('context')
+
+        // innerHTML包含所有内容
+        console.log(context.innerHTML) // "<i>1.变量（标识符）<span>可以变化的量</span> 存储值和代表值</i>"
+
+        // innerText不包含标签内容
+        console.log(context.innerText) // "1.变量（标识符）可以变化的量 存储值和代表值"
+
+
+        // 弹窗形式输出
+        // alert('提示框') // 提示框
+        // confirm('确认框') // 确认框
+        // prompt('今天星期几?') // 输入框
+
+        // 控制台输出（调试）
+        // console.log()
+        // console.dir() // 输出更详细的内容
+        // console.log('log', context)
+        // console.dir(context)
+
+        // 数据类型
+
+        // 1.基本数据类型 操作的是值
+        // number string boolean null undefined (symbol)
+
+        // 单独文件
+        var a = 1
+
+        // 2.引用数据类型 操作的是引用地址
+        // 对象数据类型 object {} array [] regexp /\d+/ Date 日期对象 Math 数学工具对象
+        // 函数数据类型 function
+
+        // 文件夹
+        var obj = {
+            id: 1,
+            name: 'zhufeng'
+        }
+
+        // 数据类型检测
+        // typeof
+        // instanceof
+        // constructor
+        // Object.prototype.toString.call()
+
+
+        // typeof 1 // "number"
+        // typeof '' // "string"
+        // typeof null // "object"
+        // typeof undefined // "undefined"
+
+        // typeof {} // "object"
+        // typeof [] // "object"
+
+        // typeof function fe(){} // "function"
+
+        // typeof NaN // "number"
+        // 变量
+        // 1.什么是变量 变量的默认值
+        // 2.定义变量的语法
+        // 3.变量的使用
+        // 4.变量的命名规范
+        // JS数据类型
+        // 1.都有哪些
+        // 数据类型检测
+        // typeof（缺陷） typeof null
+        // instanceof
+        // constructor
+        // Object.prototype.toString.call()
+    </script>
+</body>
+
+</html>

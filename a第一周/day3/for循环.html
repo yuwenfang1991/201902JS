@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for循环</title>
+</head>
+
+<body>
+    <script>
+        // 循环：根据指定次数 一遍又一遍执行相同的代码
+        // for循环语句
+        // 语法
+        // for(起始值;执行条件(循环结束条件);累加记录步长) {
+        // 代码块
+        // 每次循环要执行的代码code
+        // }
+        // 通过for循环 打印输出五次 'hello world!'
+        for (var i = 0; i < 5; i++) {
+            console.log('hello world!');
+        }
+        // 每次循环分为三步
+        // 进行条件判断 i < 5 条件为true
+        // 条件为true 执行循环体里的代码
+        // 执行完后就让i的值 累加一次 i++
+        for (var n = 0; n > 10; n++) {
+            console.log('n', n); //最后一次循环 n = 9
+        }
+
+        // 注意 每次循环完 最后都要加加一次 i++
+        // 循环结束后n的值
+        console.log('end', n) // 10
+
+        
+    </script>
+</body>
+
+</html>

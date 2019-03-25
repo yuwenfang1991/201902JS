@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作符 或者与并且</title>
+</head>
+
+<body>
+    <script>
+        // 逻辑或 || (或者)
+        // 逻辑与 && (并且)
+
+        // 主要是在if语句中应用
+        // || 相当于或者 or
+        // if (条件1 || 条件2) {
+        // 只要其中一个条件为true, 就执行这里代码  
+        // }
+        var n = 1;
+        // 变量 n 的值 等于1或2的时候 都可以执行里面的代码
+        if (n == 1 || n == 2) {
+            console.log('1或者2都可以');
+        }
+
+        // null 转换为Boolean  false
+        // 1 转换为Boolean true
+        if (null || 1) {
+            console.log('hello true');
+        }
+        if (null || '') {
+            console.log('hello 123');
+        }
+
+        // 语法
+        // && 相当于并且 and
+        // if (条件1 && 条件2) {
+            // 两边条件都为true时 就执行这里代码
+        // }
+        var n = 2;
+        if (n == 2 && n != 3) {
+            console.log('hello true');
+        }
+
+        var score = 75;
+        if(score >= 70 && score <80) {
+            console.log('您的成绩中等');
+        }
+    </script>
+</body>
+
+</html>

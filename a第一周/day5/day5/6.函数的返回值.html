@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function add(a, b) {
+    //   // console.log(a + b)
+    //   // return 后面指定的是什么值 返回的就是什么值
+    //   return 100
+    // }
+
+    // // 函数名()让函数执行的意思
+    // // 同时这个整体 代表着此时函数执行后返回值
+    // var val = add(10, 20)
+
+    // console.log('val', val)
+
+    // 传参 输入
+    // 返回值 输出
+
+    // 写一个求和函数
+    // 函数执行的时候传入两个值 并且将 求和的结果 返回
+    function add(a, b) {
+      return a + b // 10 + 20
+    }
+
+    // 传入两个实参 进行求和 并且接收函数返回的结果
+    var total = add(10, 20)
+    // console.log('total', total)
+
+
+    function fe() {
+      return
+    }
+
+    // 没有指定函数返回值时 默认值undefined
+    // 写了return 没有指定返回值 也是undefined
+    console.log(fe()) // undefined
+
+
+    // 在函数里面一旦遇到return 整个函数就结束执行了 并且return后面代码不会执行
+    function fun() {
+      return 123
+      console.log('hello fun')
+    }
+    console.log('返回值', fun())
+    var n = fun()
+
+
+  </script>
+</body>
+</html>

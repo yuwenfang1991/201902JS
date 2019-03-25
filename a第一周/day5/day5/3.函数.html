@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 函数 具备一定功能的代码 相当于一台机器
+
+
+    // 内置函数
+    // alert()出来一个弹窗
+    // alert()
+
+    // 我们也可以 自己创建函数 让它具备一定功能
+
+    // console.log(typeof alert) // "function"
+
+    // 定义函数
+    // 语法
+    // function 函数名() { // 函数体
+    //   // 代码
+    // }
+
+    // function关键字 相当于var 只不过function声明的变量是函数数据类型的
+
+    // 函数执行
+    // 函数名()
+
+    // 函数的定义
+    // function write() {
+    //   console.log(123)
+    // }
+
+    // 函数执行 执行函数体里的代码
+    // write()
+
+
+    // 函数分为 定义 + 执行
+    function fn() { // 函数体
+      // 代码code
+      console.log('hello')
+    }
+
+    // 函数名()
+    fn()
+
+    // 函数可以执行多次
+    fn()
+    fn()
+    fn()
+    fn()
+
+    // fn 代表的是函数体
+    // console.log(fn)
+
+
+
+    var obj = {
+      id: 123
+    }
+
+    // var num = obj
+    function fe(num) {
+
+      console.log(num === obj)
+      console.log(arguments[0] === obj)
+      num.id = 123
+      arguments[0].id = 123
+    }
+    fe(obj)
+  </script>
+</body>
+</html>

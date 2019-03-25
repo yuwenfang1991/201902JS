@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>==和===的区别</title>
+</head>
+
+<body>
+    <script>
+        // JS ES5版本
+        // 八进制用零作为前缀表示的  012  8 + 2 = 10
+        // == 相对等于 会进行类型转换
+        // 当比较两个值的时候 如果类型不同 会转换成相同类型 再进行比较
+        // 其他类型 跟 数字进行比较时 先转换成数字 再进行比较
+        // Number()
+        console.log('2' == 2); //Number('2') == 2 => true
+        console.log('' == 0); //Number('') == 0 => true
+        console.log([] == 0); //Number([]) == 0 => true
+        console.log(false == 0); //Number(false) == 0 => true
+        console.log(true == 1); //Number(true) == 1 => true
+        // 其他类型 跟 Boolean进行比较时 两边值都转换成数字 再进行比较
+        '' == false; //Number('') == Number(false) => true
+        [1] == false; //Number([1]]) == Number(false) => 1 == 0 => false
+        // 字符串和引用类型进行比较 把引用类型转换成字符串
+        // 每个对象数据类型 toString() 转换成字符串
+        var obj = {};
+
+        // obj.toString() => "[object Object]"
+        // abc' == "[object Object]"
+        'abc' == obj; // false
+
+        console.log("[object Object]" == obj)
+
+        var obj2 = {
+            id: 1,
+            title: 'title'
+        }
+
+        // {} 普通对象 转换成字符串 都是 "[object Object]"
+        obj2.toString(); // "[object Object]"
+
+        var arr = [1];
+
+        // arr.toString() => '1'
+
+        '1' == arr; // '1' == arr.toString() => '1' == '1' => true
+
+        var ary = [1, 2, 3, 4];
+
+        '2' == ary; // '2' == "1,2,3,4"
+
+        // ary.toString() => "1,2,3,4"
+        "1,2,3,4" == ary; // "1,2,3,4" == "1,2,3,4" => true
+
+        // 引用类型与引用类型进行比较
+
+        // 只要你创建一个对象 var 变量 = {}
+        // 浏览器就会分配一块儿新的内存
+
+        // o1 o2 存储的是两块不同内存的引用地址
+
+        // 内存1 xxxfff111
+        var o1 = {
+            id: 1
+        }
+
+        // 内存2 xxxfff222
+        var o2 = {
+            id: 1
+        }
+
+        // 内存3 xxxfff333
+        var a1 = [];
+
+        // xxxfff111 == xxxfff222
+        console.log(o1 == o2);
+
+        // xxxfff111 == xxxfff333
+        console.log(o1 == a1);
+
+        // 假设引用地址 xx2
+        var o4 = {
+            title: 'o4'
+        }
+
+        // o5 = xx2
+        var o5 = o4;
+
+        // xx2 == xx2
+        console.log(o5 == o4);
+
+        // 特殊记
+        // NaN 跟任何值都不相等（包括跟自己）
+
+        NaN == NaN; // false
+
+        NaN == null;
+        NaN == 0;
+
+        // null 和 undefined 相对比较 为true
+        console.log(null == undefined); // true
+
+        // 它两和其他类型都不相等
+        null == 0; // false
+
+
+
+        // == 相对比较时 类型转换规则
+        // 1.其他类型跟数字进行比较时 先转换成数字 再进行比较
+        // 2.其他类型跟boolean值进行比较 两边值都转换成数字 再比较
+        // 3.字符串和引用类型进行比较 把引用类型转换成字符串
+        // 4.引用类型和引用类型比较 比较的是引用地址
+        // 5.特殊记 NaN null undefined
+
+        // === 绝对等于 不会进行类型转换
+        // 两边类型不同 直接返回false
+        // 如果类型相同 就比较具体值
+        // 引用类型和引用类型比较 比较的是引用地址
+
+        // '1' == 1 //true
+        // '1' === 1 //false
+        // null === undefined; //false
+        // 尽量用=== 比较严格
+        // 0 '' null undefined NaN 都是false
+
+        // []转换成boolean 是true  取反后 false
+
+        // ![] => !true => false
+        console.log([] == ![]); // [] == false => 0 == 0 => true
+        /* 
+         * 1.其他值和数字比较时，两边都是转换为数字(number())在进行比较
+         * 2.其他值跟boolean值进行比较时 两边值都转换成数字 再进行比较
+         * 3.字符串和引用类型进行比较 把引用类型转换成字符串  比较
+         * 4.引用类型和引用类型比较 比较的是引用地址
+         * 5.特殊记 
+         * NaN和任何值比较都不相等 包括自己
+         * 相对比较时  null == undefined (true) 但它俩和其他值比较时都不相等
+         */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3 id="title">默认内容</h3>
+  <script>
+    // 传参 把函数外面参数 传到函数里面用
+    // function add() {
+    //    console.log(10 + 10)
+    // }
+    // add()
+
+    // 形参主要是用来接收传递进来的实参
+  
+    // function add(a, b) { // 形参（形式上的参数）
+    //   console.log(a, b)
+    // }
+    // // 函数执行时传入的参数 实参（实际参数值）
+    // add(10, 20)
+    
+    
+
+    // 形参和实参是一一对应
+    // function output(mess, num, e) {
+    //   console.log(mess, num, e)
+    // }
+    // output('hello', 200, 0)
+    // output('guofeng', 300, 0)
+    // output('zhanghua', 400, 0)
+    // output('linxing', 500, 0)
+
+
+    // 形参就是一个函数中的变量 用来接收实参 默认值undefined
+    // function fe(a) {
+    //   console.log(a)
+    // }
+    // fe()
+    // fe('hello')
+
+    // 求和
+    // function add(a, b) {
+    //   console.log(a + b)
+    // }
+    // add(10, 20)
+    // add(30, 20)
+
+    // alert('12313123')
+
+    // 函数特性 封装 复用
+    var title = document.getElementById('title')
+    // 动态改变h3的内容
+    function h3Text(a) {
+      title.innerHTML = a
+    }
+
+
+//  h3Text('nihao')
+  </script>
+</body>
+</html>

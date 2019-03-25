@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>switch</title>
+</head>
+
+<body>
+    <script>
+        // switch 条件语句
+        // 语法
+        /* 
+         switch (值 / 变量) {
+                 case 1: //case 等于的意思
+                     // 等于1的时候 执行的代码
+                     break; //相当于结束中断
+                 case 2:
+                     // 等于2的时候 执行的代码
+                     break;
+                 case 3:
+                     // 等于3的时候 执行的代码
+                     break;
+                 default: //相当于else
+                     // 以上都不成立时 执行这里的代码
+             } 
+         */
+
+        var num = 3;
+        switch (num) {
+            case 1:
+                console.log('数字1');
+                break; //相当于结束中断
+            case 2:
+                console.log('数字2');
+                break;
+            case 3:
+                console.log('数字3');
+                break;
+            default: //相当于else
+                console.log('随便哪个数字啦');
+        }
+        var day = 3;
+        switch (day) {
+            case 1:
+                console.log('今天是周一 上班');
+                break;
+            case 2:
+                console.log('今天是周二 上班');
+                break;
+            case 3:
+                console.log('今天是周三 上班');
+                break;
+            case 4:
+                console.log('今天是周四 休息');
+                break;
+            case 5:
+                console.log('今天是周五 上班');
+                break;
+            case 6:
+                console.log('今天是周六 上班');
+                break;
+            case 7:
+                console.log('今天是周日 休息');
+                break;
+            default:
+                console.log('今天 爱星期几 星期几, 我只想休息~😏')
+
+        }
+        // 通常 每个case 后面要加一个break
+        // 如果不加break 就会继续往下执行 知道碰到下一break
+        var num = 1
+
+        switch (num) {
+            case 1:
+                console.log('数字1');
+                //  break;
+            case 2:
+                console.log('数字2');
+                //  break;
+            case 3:
+                console.log('数字3');
+                //  break;
+            default:
+                console.log('随便哪个数字啦');
+        }
+    </script>
+</body>
+
+</html>

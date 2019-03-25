@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+              
+       // 检测数据类型
+        /* 
+            typeof
+            instanceof
+            constructor
+            Object.prototype.toString.call() 
+        */
+        // typeof
+        // 语法
+        // typeof 值/变量
+        // Number
+        var n = 2019;
+        console.log(typeof n);//"number" typeof n => typeof 2019
+        console.log(typeof 1);//"number"
+        // String
+        console.log(typeof "你好"); //"String"
+        // Boolean
+        console.log(typeof true); //"Boolean"
+        console.log(typeof false);//"Boolean"
+        // Null
+        console.log(typeof null); //"object" 空指针对象 先特殊记
+        // undefined 
+        console.log(typeof undefined);//"undefined"
+
+
+
+        // 普通对象{}
+        var obj = {id: 1};
+        console.log(typeof obj); //"object"
+
+        // 数组[]
+        var arr = [1,2,3];
+        console.log(typeof arr); //"object"
+        //正则
+        var reg = /\d+/;
+        console.log(typeof reg); //"object"
+        // 缺陷 typeof 不能够具体细分 对象数据类型中 数组 正则 普通对象
+
+        // 函数
+        function fe() {}
+        console.log(typeof fe);//"function"
+        // typeof 通常用来检测基本数据类型和函数
+        // typeof的返回值都哪些
+        // "number" "string" "boolean" "undefined" "object" "function" 
+       
+    
+
+    </script>
+</body>
+</html>

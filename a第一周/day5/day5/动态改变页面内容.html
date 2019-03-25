@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .cover {
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="art"></div>
+  <script>
+    var data1 = {
+      img: 'https://user-gold-cdn.xitu.io/2019/2/21/1690d4fa3f791282?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1',
+      title: '当下好找工作嘛',
+      auth: 'yck',
+      desc: '想必大家现在经常能看到某某公司又裁员了，会担心是不是找不到工作了。其实总的来说虽然当下的环境确实不怎么好，但是有裁员的公司，也肯定有招人的公司，并且招人的公司一定比裁员的公司多得多，就比如我司「宋小菜」就有很多的 HC。'
+    }
+
+    var data2 = {
+      img: 'https://user-gold-cdn.xitu.io/2019/2/19/16904ca844317be3?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1',
+      title: '前端错误收集',
+      auth: '卑微微笑',
+      desc: '随着公司业务的发展，前端项目也越来越多。有的时候客户反馈的一个问题，需要耗费大量的时间去查。错误信息不能第一时间获取，多少会给公司带来损失。这个时候我们就需要一套错误收集机制，去提前发现代码中存在的问题，在客户反馈之前把问题提前处理掉。或者在收到客户反馈的时候可以查到对应的错误栈来帮助我们快速去定位以及解决问题。下面主要介绍vue和微信小程序错误收集的方法。'
+    }
+
+    var data3 = {
+      img: 'https://user-gold-cdn.xitu.io/2019/2/20/1690a41d60bb00b3?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1',
+      title: '金三银四，你可以行动了',
+      auth: '吴同學',
+      desc: '又要交房租了，工资怎么还不发？每个月总觉得钱不够花，工资总是跟不上消费，什么时候能涨个工资呢？'
+    }
+
+    function changeArt(data) {
+
+      // 传递进来的数据
+      console.log(data)
+
+      var str = `
+      <img class="cover" src=${data.img} >
+      <h1>${data.title}</h1>
+      <div><i>${data.auth}</i></div> 
+      <p>${data.desc}</p>
+    `
+
+      var art = document.getElementById('art')
+      art.innerHTML = str
+    }
+
+    changeArt(data2)
+  </script>
+</body>
+
+</html>

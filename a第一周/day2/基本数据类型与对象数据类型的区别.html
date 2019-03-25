@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 基本数据类型与对象数据类型的区别
+        // 基本数据类型 操作的是值
+        // var num = 100;
+        // 引用数据类型操作的是地址
+        // 对于对象数据类型 会为对象 单独分配一块内存 来存储多个值
+        // var num = {
+        //     num1: 100,
+        //     num2: 200,
+        //     num3: 300
+        // }
+        // JS代码主要运行在浏览器里
+        // 浏览器会为我们JS代码提供运行环境 全局作用域（地球）
+        // alert('你好');
+         // var num = 100;
+
+    // obj2 实质上存储的就是 这个对象 内存地址（引用地址）
+    // var obj2 = { id: 123, title: 'hello' };
+
+
+    // 根据obj2存储的地址 来找到里面的叫title的这个属性
+
+    // obj2.title;
+
+    // 基本数据类型 操作的是值（直接存储的就是一个具体的值）
+    // 引用数据类型 操作的是引用地址（存储的是一个引用地址）
+
+    // info存储引用地址 xxxfff11
+    var info = {
+      name: 'gaohuan',
+      age: 18,
+      iphone: 13811111111
+    };
+
+    // 把变量info存储的值 给变量text一份
+    
+    // 把info变量存储的地址 又给了text一份
+    var text = info;
+    // info = xxxfff11;
+    // text = xxxfff11;
+
+    // 通过text存储引用地址 找到这块儿内存 将里面的age属性的值修改为28
+    text.age = 28; // xxxfff11.age = 28
+
+    // xxxfff11.age
+    console.log(info.age); // 28
+
+    // var a = 2;
+ 
+    // // 将变量a存储的值 有给变量b一份
+    // var b = a; // b = 2
+    // console.log('b', b);
+    </script>
+</body>
+
+</html>

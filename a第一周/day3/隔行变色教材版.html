@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+        <li>asdfffffffffffffffffff</li>
+    </ul>
+    <script>
+        var list = document.getElementsByTagName("li")
+        // [li, li, li, li, li]
+        console.log(list) // 元素集合
+        // 让集合中第一个li元素背景颜色为红色
+        //    list[0].style.backgroundColor = 'red'
+        //    list[1].style.backgroundColor = 'red'
+        //    list[2].style.backgroundColor = 'red'
+        //    list[3].style.backgroundColor = 'red'
+        //    list[3].style.backgroundColor = 'red'
+        //    list[3].style.backgroundColor = 'red'
+        //    list[3].style.backgroundColor = 'red'
+        //    list[3].style.backgroundColor = 'red'
+
+        // 要想获取集合中元素 需要通过索引
+
+        // 把循环中变量i当作索引来用
+
+        // 集合中有多少个就 循环多少次
+
+        // 索引为偶数 一种颜色 red
+        // 索引为奇数 一种颜色 pink
+
+        // 如何判断索引是奇数还是偶数
+
+        // i%2 为0 说明索引是偶数
+        // i%2 为1 说明索引是奇数
+
+        // for循环帮我们把元素一次取出来
+        // 把变量i当作索引来用
+        // 集合中有多少个元素就循环多少次
+        for (var i = 0; i < list.length; i++) {
+            //        console.log(i, list[i])
+
+            if (i % 2 === 0) {
+                list[i].style.backgroundColor = 'red'
+            } else {
+                list[i].style.backgroundColor = 'pink'
+            }
+
+        }
+    </script>
+</body>
+
+</html>

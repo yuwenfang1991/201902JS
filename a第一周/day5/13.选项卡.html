@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 306px;
+      margin: 20px auto;
+    }
+
+    .container ul {
+      list-style: none;
+      overflow: hidden;
+    }
+
+    .container ul li {
+      width: 100px;
+      height: 35px;
+      text-align: center;
+      line-height: 35px;
+      float: left;
+      border: 1px solid pink;
+      cursor: pointer;
+    }
+
+    .container #panel>div {
+      display: none;
+      width: 304px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      border: 1px solid pink;
+    }
+
+    /* li选中样式 */
+    .container ul li.active {
+      background-color: coral;
+      color: #ffffff;
+    }
+
+    /* div选中样式 */
+    .container #panel>div.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <ul id="tabs">
+      <li class="active">中国A股</li>
+      <li>港股</li>
+      <li>全球</li>
+    </ul>
+
+    <!-- 面板 -->
+    <div id="panel">
+       <div class="active">中国A股</div>
+       <div>港股</div>
+       <div>全球</div>
+    </div>
+  </div>
+
+  <script>
+    // 点击li的时候 
+    // 先将所有li的类名清空 然后再给我点击的这个li元素添加active类名
+
+    // 对与面板div
+    // 先将所有div的类名清空 然后再给对应的div元素添加active类名
+
+    // 获取操作元素
+    var tab = document.getElementById('tabs')
+    var tabList = tab.getElementsByTagName('li')
+
+    var panel = document.getElementById('panel')
+    var panelList = panel.getElementsByTagName('div')
+
+    console.log(tabList)
+    console.log(panelList)
+
+    // 操作元素类名
+    // 元素对象.className = ''
+
+    // 先给li绑定点击事件
+    for (var i = 0; i < tabList.length; i++) {
+
+      // 把当前索引 保存到当前li元素对象自身
+      tabList[i].ind = i
+
+      tabList[i].onclick = function () {
+        // 先将所有li和所有div类名清空
+        for (var k = 0; k < tabList.length; k++) {
+          tabList[k].className = ''
+          panelList[k].className = ''
+        }
+
+        // 给相应元素添加类名
+        // 当前点击哪个li 这个this就是谁
+        this.className = 'active'
+
+        // 根据当前点击的li元素的索引 找到对应div面板 给它添加选中样式
+        panelList[this.ind].className = 'active'
+      }
+
+    }
+    
+  </script>
+</body>
+</html>
