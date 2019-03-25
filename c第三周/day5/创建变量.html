@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 创建变量的方式有两种：
+        // 1. 字面量方式创建 
+       /*  var a = 1;
+        var obj = {};
+        var t = "svsvd"; */
+
+        // 2.实例创建
+        // 几种基本的数据类型和引用数据类型
+        // number string boolean null undefined object array function...
+        // console.log(num); //Uncaught ReferenceError: num is not defined
+        console.log(Number); //Number() { [native code] }
+        console.log(String);
+        // Number 是一个函数 是所有数字的类
+        var t = 188;  
+        var num = new Number(100); //创建Number的实例 
+        console.log(t instanceof Number); //false
+        console.log(num instanceof Number); //true
+        // 1.如果是字面量方式创建的基本数据类型的实例，不是一个标准的实例；所以使用instanceof会返回false；但是如果是引用数据类型，则返回true；
+
+        var obj = {};
+        console.log(obj instanceof Object); //true
+        var y = new Number(100); // 100
+        console.log(new Number(100)+100);
+
+        // 常见内置类：
+        // Number String Boolean Null Undefined
+        // Object Array RegExp Date Function...
+
+        // 类一定是一个函数或者方法
+        console.log(typeof Math); //"object"
+        console.log(new Object);
+        console.log(new Array);
+
+        // 在浏览器中禁止调用Null 和Undefined这两个类
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var obj = {a:1};
+        // 1.开辟一个堆内存
+        // 2.把对象中的键值对存储到堆内存中
+        // 3.把这个空间地址赋值给对象名
+        var obj = {
+            a:1,
+
+        }
+
+        // 函数分为定义和执行
+        // 定义：function 函数名() {}
+        // 1.开辟一个空间地址，是一个堆内存；aabbcc
+        // 2.把函数体中的代码当做字符串存进去
+        // 3.把函数的空间地址赋值给函数名
+
+        // 函数的执行
+        // 1.形成一个私有的作用域；作用域是栈内存
+        // 2.形参赋值
+        // 3.变量提升
+        // 4.代码从上到下执行
+        // 5.作用域是否销毁
+
+        // 执行：函数名();
+
+        function bar() {
+            console.log(num); //函数
+            function num() {
+
+            }
+        }
+        bar(100);
+
+        // 不销毁作用域的条件
+        // 1.返回一个引用数据类型的值
+        // 2.并且被外界变量接收
+    </script>
+</body>
+</html>

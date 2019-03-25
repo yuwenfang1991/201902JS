@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1. 单例模式  2.工厂模式  3.构造函数模式  4. 原型模式
+    //
+    /*function person(name,age) {
+        var  obj = {};
+        obj.name=name;
+        obj.age =age;
+        return obj;
+    }
+    var li = person("李文利",40);*/
+
+    // 构造函数模式
+
+  /*  function Person(name,age) {
+        // 如果是构造函数，当函数执行之前，
+        // 1.先默认创建一个空对象
+        // 2.并且让当前作用域下的this指向实例；
+        /!*var  obj = {};
+        this=obj;*!/
+        var a =100;
+        this.name=name;
+        this.age =age;
+        // 3. 函数执行完，把当前作用域下的this返回出去
+        /!*return this;*!/
+    }
+    var  per1 = new Person;
+    var  per2 = Person();*/
+    //per1就是person的一个实例；
+    // new ： 操作符；放到函数执行的前面；那么后面的函数就变成一个构造函数；
+    /*console.log(per1);// {name: "李文利", age: 40}
+    console.log(per2);*/// undefined
+    // 1. 普通函数和构造函数的区别：
+    // 1) : 构造函数执行前面需要加new操作符；
+    // 2) : 如果构造函数不需要传参数，那么可以省略小括号；
+    // 3) : 构造函数中的this指向当前的实例；
+    // 4) : 形成私有作用域--> 形参赋值-->变量提升-->(先默认创建对象，并且让this指向这个对象)代码从上到下运行-->(把当前作用域下的this返回出去) 作用域是否销毁
+    // 5) : 构造函数为了区分普通函数，一般情况下，构造函数名首字母需要大写；
+    // 6) : 如果return一个基本数据类型值，不能覆盖原有的实例；如果return一个引用的数据类型值，会将默认返回的那个实例给覆盖掉；
+    function Person(name,age) {
+        // var obj = {}  this--> obj
+        var a = 100;
+        this.name = name;
+        this.age = age;
+        return "1233";
+    }
+    var  per1 = new Person;
+    console.log(per1);
+</script>
+</body>
+</html>

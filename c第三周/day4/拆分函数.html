@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .news {
+            width: 750px;
+            height: 750px;
+            margin: 0px auto;
+            /* text-align: center; */
+        }
+
+        .news #list {
+            width: 304px;
+            margin: 50px auto;
+        }
+
+        .news #list li {
+            text-align: center;
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            border: 1px solid darkgoldenrod;
+            font-size: 18px;
+            /* float: left; */
+
+        }
+
+        .news #panel div {
+            margin: auto;
+            text-align: center;
+            width: 302px;
+            height: 200px;
+            border: 1px solid tomato;
+            line-height: 150px;
+            display: none;
+        }
+
+        .news #list li.active {
+            background-color: gold;
+            height: 32px;
+            border: none;
+        }
+
+        .news #panel div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news">
+        <ul id="list">
+            <li class="active">国际</li>
+            <li>军事</li>
+            <li>财经</li>
+        </ul>
+        <div id="panel">
+            <div class="active">国际</div>
+            <div>军事</div>
+            <div>财经</div>
+        </div>
+    </div>
+    <script>
+        // 获取操作元素
+        const list = document.getElementById('list');
+        const tabList = document.getElementsByTagName('li');
+        const panel = document.getElementById('panel');
+        const tabPanel = panel.getElementsByTagName('div');
+        // 获取所有li
+        // 闭包
+        // for (var i = 0; i < tabList.length; i++) {
+        //    
+        //     (function(i) {
+        //         tabList[i].onclick = function () {
+        //             for (var j = 0; j < tabList.length; j++) {
+        //                 tabList[j].className = '';
+        //                 tabPanel[j].className = '';
+        //             }
+        //             this.className = 'active';
+        //             tabPanel[i].className = 'active';
+        //         }
+        //     })(i)
+        // }
+        // let
+        for (let i = 0; i < tabList.length; i++) {
+            tabList[i].onclick = function () {
+                // for (var j = 0; j < tabList.length; j++) {
+                //     tabList[j].className = '';
+                //     tabPanel[j].className = '';
+                // }
+                clearStyle();
+                // this.className = 'active';
+                // tabPanel[i].className = 'active';
+                select(i);
+            }
+        }
+
+        function clearStyle() {
+            for (var j = 0; j < tabList.length; j++) {
+                tabList[j].className = '';
+                tabPanel[j].className = '';
+            }
+        }
+
+        function select(i) {
+            tabList[i].className = 'active';
+            tabPanel[i].className = 'active';
+        }
+    </script>
+</body>
+
+</html>

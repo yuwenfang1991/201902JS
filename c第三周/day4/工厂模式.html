@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         * 工厂模式
+         * 1.把实现相同功能的代码进行"封装",以此来实现“批量生产”（后期想要实现这个功能，我们只需要执行函数即可）
+         * 2.“低耦合高内聚”：减少页面中的冗余代码，提高代码的重复使用率
+         *
+         */
+
+        // 学员信息管理
+        const aHua = {
+            name: '华哥',
+            hobby: '吃饭 睡觉 打豆豆',
+            sayHi() {
+                console.log(`my name is ${this.name} I like ${this.hobby}`);
+            }
+        }
+        aHua.sayHi();
+
+        const aFeng = {
+            name: '峰哥',
+            hobby: '吃饭 睡觉 打阿华',
+            sayHi() {
+                console.log(`my name is ${this.name} I like ${this.hobby}`);
+            }
+        };
+        aFeng.sayHi(); 
+        
+        // 工厂模式 将冗余代码 封装在函数里面
+        // 每个人使用时 只需要调用这个工厂函数 传递相应参数
+
+        function createProfile(name,hobby) {
+            return {
+            name,
+            hobby,
+            sayHi() {
+                console.log(`my name is ${this.name} I like ${this.hobby}`);
+            }
+            };
+        };
+       const linxing = createProfile('linxing','唱歌','打游戏');
+       console.log(linxing);
+
+       const ace = createProfile('zhanghua','good good study day day up');
+       console.log(ace);
+    </script>
+</body>
+</html>

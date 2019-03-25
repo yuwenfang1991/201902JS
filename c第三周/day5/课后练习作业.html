@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一题
+        // console.log(num); // undefined
+        // if(!("num " in window)) {
+        //     var num = 100;
+        // }
+        // console.log(num); // 100
+
+        // 第二题
+        // var name = "中国";
+        // var age = 5000;
+        // name = (function(name,age) {
+        //     arguments[0] || this.age;
+        //     age = age || this.age;
+        // })(name);
+        // console.log(name,age);
+
+        // 第三题
+        // var ary = [100, 200];
+        // ~ function (ary) {
+        //     ary.length--;  
+        //     ary = [];
+        //     ary[ary.length] = 300;  
+        //     alert(ary); //300
+        // }(ary);
+        // alert(ary);//100
+
+        // 第四题
+        // function fn(i) {
+        //     return function(n) {
+        //         console.log(n*(++i));
+        //     }
+        // }
+        // var f = fn(2);
+        // f(3); //9
+        // f(4);//16
+        // fn(5)(6);//36
+        // fn(7)(8)//64
+
+        // 第五题
+        // var num = 1; // 4
+        // var obj = {
+        //     num: 2
+        // };
+        // obj.fn = (function (num) { // 2
+        //     this.num = num * 2; // 4
+        //     num++; // 3
+        //     return function (n) {
+        //         this.num += n; // 22 
+        //         num++; // 5
+        //         console.log(num);
+        //     }
+        // })(obj.num);
+        // var fn = obj.fn;
+        // fn(10); // 4
+        // obj.fn(20); // 5
+        // console.log(num, obj.num); //14 22
+
+        // 第六题
+        function Fn(num) {
+            this.x = this.y = num; // this.x = 10; this.y = 10; 
+        }
+        Fn.prototype = {
+            x:20,
+            sum:function() {
+                console.log(this.x +this.y);//20
+            }
+        };
+        var f = new Fn(10);
+        console.log(f.sum === Fn.prototype.sum); // true
+        f.sum();//20
+        Fn.prototype.sum();
+        console.log(f.constructor);//object
+    </script>
+</body>
+
+</html>
