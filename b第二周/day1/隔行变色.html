@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>隔行变色</title>
+    <style>
+        .list {
+            margin: 0 auto;
+            width: 300px;
+            
+
+        }
+
+        .list li {
+            padding: 2px 5px;
+            font-size: 15px;
+            height: 30px;
+            overflow: hidden;
+            text-align: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        /* .list li:hover {
+            background: rgb(7, 255, 193) !important;
+
+        } */
+
+        .bg0 {
+            background-color: burlywood;
+        }
+
+        .bg1 {
+            background-color: palevioletred;
+        }
+        .hover {
+            background: rgb(7, 255, 193);
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="news" class="list">
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+    </ul>
+    <script>
+        var news = document.getElementById('news');
+        var list = news.getElementsByTagName('li');
+        // bg0 bg1
+        // 元素对象.className = '';
+        for (var i = 0; i < list.length; i++) {
+            // console.log(i, i % 2);
+            // console.log('bg' + i % 2);
+            // list[i].className = 'bg' + i % 2;
+            // 实现隔行变色
+            list[i].className = `bg${i % 2}`;
+            // 将索引保存到 当前元素自身
+            list[i].ind = i;
+            // 鼠标滑过事件当前绑定元素
+            // 我滑过谁 这里面this就是谁
+            list[i].onmouseover = function() {
+                // this 就代表
+                // console.log('mouseover');
+                this.className = 'hover';
+            }
+            // 鼠标滑出事件
+            list[i].onmouseout = function() {
+                // console.log('mouseout');
+                this.className = `bg${ this.ind % 2}`;
+               
+            }
+        }
+        // 当 i = 0 0 % 2 'bg' + 0
+        // 当 i = 1 1 % 2 'bg' + 1
+        // 当 i = 2 2 % 2 'bg' + 0
+        // 当 i = 3 3 % 2 'bg' + 1
+        // ...
+        // for (var i = 0; i < list.length; i++) {
+        //     if(i%2) {
+        //         list[i].style.backgroundColor = 'red';
+        //     } else{
+        //         list[i].style.backgroundColor = 'yellow';
+        //     }
+        // }
+        // 1.鼠标滑过那个li 就给这个li添加hover类名
+        // 2.如何知道 滑出元素 之前的类名是bg0还是bg1
+        // 3.鼠标滑出的时候 得到当前滑出元素的索引 然后用 索引%2 重新计算出类名
+        // 鼠标滑过li时 给它一个滑过样式 hover
+        // 鼠标离开时 变成以前的样式
+
+    </script>
+</body>
+
+</html>

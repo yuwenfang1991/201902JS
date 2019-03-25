@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM创建和添加</title>
+</head>
+
+<body>
+    <div id="box">
+        <h2>boxbox</h2>
+    </div>
+    <script>
+        //创建元素 createElement
+        // document.createElement('标签名');
+        // 参数：标签名 h1 ul div li p ...
+        // 返回值：新创建的DOM对象(元素对象);
+        // 我们可以像操作现成的元素对象一样操作
+        // 插入新元素
+        // 容器.appendChild(新元素)向当前容器对象末尾追加新元素
+        var h3 = document.createElement('h3');
+        // console.log(h3);
+        // 给元素添加内容
+        h3.innerHTML = '我是一个h3';
+        // console.log(h3);
+        // appendChild() 追加或者添加子节点
+
+        // 父容器.appendChild(子节点)
+        //将h3元素 追加到body底部 
+        document.body.appendChild(h3);
+
+        box.appendChild(h3);
+
+        // insertBefore()
+        // 插入到指定节点的前面
+        // 父容器.insertBefore(新元素, 旧元素（参照元素）)
+        // 通过节点关系获取子元素
+        var h2 = box.children[0];
+        setTimeout(function () {
+            box.insertBefore(h3, h2)
+        }, 2000)
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机验证码</title>
+    <style>
+        .char-code {
+            width: 150px;
+            height: 25px;
+            line-height: 35px;
+            font-size: 25px;
+            text-align: center;
+            /* border: 1px solid blanchedalmond; */
+            margin: 20px auto;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="char-code" id="charCode"></div>
+    <input type="text" id="strText">
+    <input type="button" value=" 获取验证码" id="btn">
+
+    <script>
+        function createCode(len) {
+             // 如果传递进来的值 不是数字类型或者是NaN 我们需要设置一个默认值
+             var len = len || 4;
+            var str = 'abcdefghijklmnopqrstwvuxyzABCDEFGHIJKLMNOPQRSTWVUXYZ0123456789';
+            var strCode = '';
+            for(var i =0; i<len;) {
+                var ind = Math.round(Math.random()*(str.length-1));
+                var char = str[ind];
+                if(!strCode.includes(char)) {
+                    strCode += char;
+                    i++;
+                }  
+            }
+            return strCode;
+        }
+       var btn = document.getElementById('btn');
+       var strText = document.getElementById('strText');
+       var charCode = document.getElementById('charCode');
+       btn.onclick = function() {
+           charCode.innerHTML = createCode(strText.value);
+       }
+    </script>
+</body>
+
+</html>

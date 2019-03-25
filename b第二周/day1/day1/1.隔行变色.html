@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    ul li {
+      list-style: none
+    }
+
+    .bg0 {
+      background-color: red;
+    }
+
+    .bg1 {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <ul id="news">
+    <li>习近平这样擘画京津冀协同发展1</li>
+    <li>习近平这样擘画京津冀协同发展2</li>
+    <li>习近平这样擘画京津冀协同发展3</li>
+    <li>习近平这样擘画京津冀协同发展4</li>
+    <li>习近平这样擘画京津冀协同发展5</li>
+    <li>习近平这样擘画京津冀协同发展6</li>
+    <li>习近平这样擘画京津冀协同发展7</li>
+    <li>习近平这样擘画京津冀协同发展8</li>
+    <li>习近平这样擘画京津冀协同发展9</li>
+    <li>习近平这样擘画京津冀协同发展10</li>
+  </ul>
+  <script>
+    var news = document.getElementById('news')
+    // [li, li, li]
+    var list = news.getElementsByTagName('li')
+
+    // bg0 bg1
+    // 元素对象.className = ''
+    for (var i = 0; i < list.length; i++) {
+      // console.log(i, i % 2)
+      // console.log('bg' + i % 2)
+
+      // list[i].className = 'bg' + i % 2
+      list[i].className = `bg${i % 2}`
+    }
+
+    // 当i = 0  0 % 2  'bg' + 0
+    // 当i = 1  1 % 2  'bg' + 1
+    // 当i = 2  2 % 2  'bg' + 0
+    // 当i = 3  3 % 2  'bg' + 1
+    // ...
+    
+    // for (var i = 0; i < list.length; i++) {
+    //   if (i % 2 === 0) {
+    //     list[i].style.backgroundColor = 'red'
+    //   } else {
+    //     list[i].style.backgroundColor = 'pink'
+    //   }
+    // }
+  </script>
+</body>
+</html>

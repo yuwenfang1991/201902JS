@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机验证码</title>
+    <style>
+        .char-code {
+            width: 150px;
+            height: 25px;
+            line-height: 35px;
+            font-size: 25px;
+            text-align: center;
+            /* border: 1px solid blanchedalmond; */
+            margin: 20px auto;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="char-code" id="charCode"></div>
+    <input type="text" id="strText">
+    <input type="button" value=" 获取验证码" id="btn">
+
+    <script>
+        // var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        // str.length 62
+        // str 索引（0~str.length-1）
+        // 1.生成四个随机索引 根据索引找到相应字符 拼接起来
+        // 2. 0 ~ str.length-1 随机整数
+        // var strCode = '';
+        // for (var i = 0; i < 4; i++) {
+        //     // 生成一个 0~61的随机索引
+        //     var ind = Math.round(Math.random() * str.length - 1)
+        //     // 根据索引ind 获取相应的字符
+
+        //     // 将每一次得到的字符拼接起来
+        //     strCode += str[ind];
+        // }
+        // console.log(strCode);
+        //  var str = ''
+        //  str += 'a'
+        //  str += 'b'
+        //  str += 'c'
+        //  console.log(str) // "abc"
+        function createCode(len) {
+
+            // 如果传递进来的值 不是数字类型或者是NaN 我们需要设置一个默认值
+            // if (typeof len !== 'number' || isNaN(len)) {
+            //     len = 4;
+            // }
+            var len = len || 4;
+            var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var strCode = '';
+            for (var i = 0; i < len;) {
+                // 生成一个 0~61的随机索引
+                var ind = Math.round(Math.random() * (str.length - 1));
+                // 根据索引ind 获取相应的字符
+                var char = str[ind];
+                // 如果strCode不存在这个字符 再进行拼接
+                // includes(ES6新方法):判断一个字符串中 是否包含某个字符 包含true 否则false
+                if (!strCode.includes(char)) {
+                    // 进行字符拼接
+                    // 将每一次得到的字符拼接起来
+                    strCode += char;
+                    i++; //拼接一次就累加一次
+                }
+
+
+            }
+            return strCode;
+        }
+        // console.log(createCode())
+        var btn = document.getElementById('btn');
+        var charCode = document.getElementById('charCode');
+        var strText = document.getElementById('strText');
+        btn.onclick = function () {
+            // console.log(strText.value);
+            charCode.innerHTML = createCode(strText.value);
+        }
+    </script>
+</body>
+
+</html>

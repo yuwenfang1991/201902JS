@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 四舍五入
+        Math.round(1.5) // 2
+
+        // 向上取整
+        Math.ceil(1.1) // 2
+
+        // 向下取整
+        Math.floor(1.1) // 1
+
+        // 绝对值
+        Math.abs(-1) // 1
+
+        // 最大值
+        Math.max(5, 1, 2, 3) // 5
+
+        // 最小值
+        Math.min(5, 1, 2, 3) // 1
+
+
+        // 获取数组中最大值、最小值
+
+        var arr = [5, 11, 2, 3]
+
+        // 克隆数组
+        var newArr = [...arr]
+
+        // 方式一 
+        // ES7中 扩展运算符 ... 将数组展开
+        console.log(Math.max(...arr)) // 11
+        console.log(Math.min(...arr)) // 2
+
+        // 方式二
+        // eval将字符串 当做JS代码（表达式）运行
+
+        // 当数组和字符串 拼接时 会发生隐式转换 调用自身toString()
+
+        // "Math.max(5, 11, 2, 3)"
+        eval(`Math.max(${arr})`) // 11
+
+        // "Math.min(5, 11, 2, 3)"
+        eval(`Math.min(${arr})`) // 2
+
+
+        // 随机小数 [0 ~ 1）包含0 不包含1
+        Math.random()
+
+        // n ~ m之间随机小数
+        // Math.random() * (m - n) + n
+
+        // 求1到9之间随机小数
+        Math.random() * (9 - 1) + 1
+
+        // n ~ m之间随机整数
+        // Math.round(Math.random() * (m - n) + n)
+
+        // 求1到9之间随机整数 (包含 开头 和 结尾)
+        Math.round(Math.random() * (9 - 1) + 1)
+
+
+        // 求0 到 100之间随机整数
+        Math.round(Math.random() * (100 - 0) + 0)
+        Math.round(Math.random() * 100)
+        Math.round(Math.random() * 10)
+
+        // 求0 到 m 之间随机整数
+        // Math.round(Math.random() * m)
+
+        // n ~ m之间随机小数
+        // Math.random() * (m - n) + n
+
+        // n ~ m之间随机整数
+        // Math.round(Math.random() * (m - n) + n)
+
+        // 求0 到 m 之间随机整数
+        // Math.round(Math.random() * m)
+
+
+        // 获取数组中最大值
+        // 扩展运算符 ... 将数组展开
+
+
+        var arr = [5, 11, 2, 3];
+
+        // 克隆数组
+        var newArr = [...arr];
+        // 方式一
+        Math.max(...arr);
+        Math.min(...arr);
+
+        // 方式二
+        // eval将字符串 当作JS代码（表达式）运行
+        // 当数组和字符串 拼接时 会发生隐式转换 调用自身toString()
+
+        // "Math.max(5, 11, 2, 3)"
+        eval(`Math.max(${arr})`); // 11
+
+        // "Math.min(5,11,2,3)"
+        eval(`Math.min(${arr})`); // 2
+    </script>
+</body>
+
+</html>

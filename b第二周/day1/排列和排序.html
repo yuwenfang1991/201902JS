@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 排序
+        // 从小到大
+        // 从大到小
+        // sort()
+        // 原数组会发生改变
+        // 返回值：排序后的原数组
+        var arr = [1, 4, 2, 6, 5];
+        // console.log(arr);
+        var res = arr.sort();
+        // console.log(arr);
+        // console.log(res);
+        // console.log(res === arr); //true
+        // 直接使用sort() 默认情况下 只能排序10以内数字
+        var arr = [1, 13, 4, 26, 100, 2, 6, 5];
+        var res = arr.sort();
+        // console.log(arr); //[1, 100, 13, 2, 26, 4, 5, 6]
+        var arr = [1, 13, 4, 26, 100, 2, 6, 5];
+
+        // 从小到大排序
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        // console.log(arr);
+
+        var arr = [3, 1, 2, 'a', 'd', 6];
+        arr.sort(); //可以对字母排序
+        // console.log(arr);//[1, 2, 3, 6, "a", "d"]
+
+        // 排列 reverse
+        // 将原数组 倒着排列
+        // var arr = [1,2,3,4];
+        var arr = ['d','f','a','w','y','l'];
+        arr.reverse();
+        console.log(arr);
+    </script>
+</body>
+
+</html>

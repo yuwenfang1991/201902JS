@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // indexOf
+    // 查找某个值 在数组中的索引位置
+    // 返回值 查找到的那一项的索引
+
+    var arr = [1, 'a', 2, 'b', 3, 'c']
+
+    //  var res = arr.indexOf('b') // 3
+
+    // 如果查找不到 就返回-1 说明数组中不存在这一项
+    var res = arr.indexOf(20) // -1
+
+    // console.log('返回值', res)
+
+
+    // lastIndexOf
+    // 查找 值在数组中 最后一次出现的索引位置
+
+    var arr = [1, 'b', 2, 'b', 3]
+
+    // 找到的是 最前面'b'
+    console.log(arr.indexOf('b')) // 1
+
+    // 找到的是 最后面'b'
+    console.log(arr.lastIndexOf('b')) // 3
+
+    var arr2 = [1, 'b', 20, 3]
+    console.log(arr2.indexOf('b')) // 1
+    console.log(arr2.lastIndexOf('b')) // 1
+
+
+    // 查找一个值 是否存在于这个数组中 'l'
+
+    // var res = arr2.indexOf('l')
+    var res = arr2.indexOf(20)
+
+    if (res === -1) {
+      console.log('当前数组中 不存在这个字符')
+    } else {
+      console.log(`这个值的索引位置: ${res}`)
+    }
+
+  </script>
+</body>
+
+</html>

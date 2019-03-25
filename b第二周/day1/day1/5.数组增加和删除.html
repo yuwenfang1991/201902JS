@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+     // push
+     // 作用：向数组末尾添加一项或多项
+     // 返回值：添加后的数组长度
+     // 原数组：发生改变
+     var arr = [1, 2, 3]
+
+    //  console.log('添加前的数组', arr) // [1, 2, 3]
+
+     var result = arr.push(10, 20)
+
+    //  console.log('添加后的数组', arr) // [1, 2, 3, 10, 20]
+    // console.log('return', result)
+
+    // unshift
+    // 作用：向数组开头添加一项或者多项
+    // 返回值：添加后的数组长度
+    // 原数组：发生改变
+    var arr = [1, 2, 3]
+
+    // console.log('添加前', arr) // [1, 2, 3]
+
+    var result = arr.unshift(40, 50, 60)
+    
+    // console.log('添加后', arr) // [40, 50, 60, 1, 2, 3]
+    // console.log('返回值', result) // 6
+
+    // pop
+    // 作用：删除数组末尾最后一项
+    // 原数组：发生改变
+    // 返回值：返回的是 删除的那一项
+
+    var arr = [1, 2, 3, 'hello']
+
+    // console.log('删除前', arr) // [1, 2, 3, 'hello']
+
+    var result = arr.pop()
+
+    // console.log('删除后', arr) // [1, 2, 3]
+    // console.log('返回值', result) // 'hello'
+
+
+    // shift
+    // 作用：删除数组开头第一项
+    // 原数组：发生改变
+    // 返回值：删除的那一项
+
+    var arr = ['hello', 1, 2, 3]
+
+    console.log('删除前', arr) // ['hello', 1, 2, 3]
+
+    var result = arr.shift()
+
+    console.log('删除后', arr) // [1, 2, 3]
+    console.log('返回值', result) // 'hello'
+  </script>
+</body>
+</html>

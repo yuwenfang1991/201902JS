@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sum() {
+            var total = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                var num = Number(arguments[i]);
+                // isNaN()检测一个值是不是NaN
+                // 如果是NaN 返回true 不累加
+                // 如果不是NaN 返回false 累加
+                if (!isNaN(num)) {
+                    // 将每次循环出来的值 累加到total自身保存起来
+                    total += num;
+                }
+
+            }
+            return total;
+        }
+        var res = sum(10, 20, 30, 50, NaN);
+        console.log(res);
+    </script>
+</body>
+
+</html>

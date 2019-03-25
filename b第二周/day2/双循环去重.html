@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 外层循环出来的每一个项当前项cur 内层循环 循环出来 当前项的每个后一项last
+        //  用当前项cur和每一个后一项last 进行比较 ===
+        // 与cur进行比较 如果有相同的(===) 就删除这一项 splice(j,1)
+        // var arr1 = [1, 1, 1, 2, 3, 2, 3, 2, 3, 2, 3, 1];
+
+        // 当我们用splice删除前面某一项时候 后面的就会往前挪一位,我们称为数组塌陷
+        // 由于我们在删除的时候 后面的会往前挪一位
+        // 我们需要再删除的时候 让我们再从当前这个索引位置比较一次
+        // 把当前项cur的后一项依次提取出来进行比较
+        // for (var i = 0; i < arr1.length - 1; i++) {
+        //     // 当前项 i当前索引
+        //     var cur = arr1[i];
+        //     // 把后一项依次取出来进行对比
+        //     for (var j = i + 1; j > arr1.length; j++) {
+        //         var last = arr1[j];
+        //         //   数组中有和当前项 重复的值  
+        //         if (cur === last) {
+        //             arr1.splice(j, 1);
+        //             j--;
+        //         }
+        //     }
+        // }
+        var arr = [1, 1, 1, 2, 3, 2, 3, 2, 3, 2, 3, 1];
+        for (var i = 0; i < arr.length - 1; i++) {
+            // 当前项 i当前索引
+            var cur = arr[i]; // cur 标识本轮循环的当前项
+            // console.log(cur);
+            // 把后一项依次取出来进行对比
+            // 用前一项和后一项作比较
+            for (var j = i + 1; j < arr.length;) {
+                // 判断cur 和后面的项是否相等
+                var last = arr[j];
+                // console.log(last)
+                //   数组中有和当前项 重复的值  
+                // cur === last ? arr.splice(j, 1) : j++;
+                if (cur === last) {
+                    // splice(j,1) 从索引j处开始，删除1个 将删除的内容组成新数组返回
+                    arr.splice(j, 1);
+                } else {
+                    j++;
+                }
+                
+            } 
+            
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数调用自己本身 必须要有结束条件
+        // function fn() {
+        //     console.log('fn');
+        //     fn(); //死循环 栈溢出
+        // }
+        // fn();
+
+
+        // var n = 0;
+        // for (var i = 0; i < 10; i++) {
+        //     n++;
+        //     console.log(n);
+        // }
+
+        // 让n 从 0 加到 10
+        // var n = 0;
+        // function add() {
+        //     // 递归的结束条件
+        //     if(n>=10) {
+        //         return;
+        //     }
+        //     // add每执行一次 就让变量n 加1
+        //     n++;
+        //     console.log('n',n);
+        //     add(); //在函数体中 调用自身
+        // }
+        // add();
+
+
+        // function fe()  {
+        //     return 123;
+        // }
+        // // 函数名() 这个整体代表的是 函数执行后返回值
+        // console.log(100 + fe());
+        // var a = fe();
+
+
+        // 从1累加到5  5 + 4 + 3 + 2 + 1
+        // function sum(n) {
+        //   if (n === 1) {
+        //     return 1
+        //   }
+
+        //   return n + sum(n - 1)
+        // }
+
+        // console.log(sum(5))
+
+        // sum执行 每一次返回都是 n + sum(n - 1) 这个表达式
+
+        // n = 5    5 + sum(4)
+        // n = 4    5 + 4 + sum(3)
+        // n = 3    5 + 4 + 3 + sum(2)
+        // n = 2    5 + 4 + 3 + 2 + sum(1)
+        // n = 1    5 + 4 + 3 + 2 + 1
+
+        // 从n累加到1
+        // function sum(n) {
+        //     // 如果此时n的值是1 就直接返回1 结束递归求和
+        //     if (n === 1) {
+        //         return 1;
+        //     }
+        //     // 每次用n的值 加上sum(n-1)的返回值
+        //     return n + sum(n - 1);
+        // }
+        // console.log(sum(3)); //n + sum(n - 1)
+
+        // 当sum(3) n = 3   return 3 + sum(2)
+        // 当 n = 2  return 3 + 2 + sum(1)
+        // 当 n = 1  return 3 + 2 + 1
+
+        // var total = 0;
+        // for(var i = 1; i<=5;i++ ) {
+        //     total += i; //total = total + i;
+        // }
+        // console.log(total);
+
+        // 将1到100中所有偶数累加求和
+        var total = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2) {
+                total += i;
+            }
+        }
+
+        // 从1到n中所有偶数 累加求和
+        function sum(n) {
+            // 最终递归结束条件
+            if (n === 1) {
+                return 0;
+            }
+            // 如果是偶数 就进行累加
+            if (n % 2 === 0) {
+                return n + sum(n - 1);
+            }
+            // 如果是奇数的时候 直接看下一个数
+            return sum(n - 1);
+        }
+        console.log(sum(5));
+
+        // n = 5  sum(5) => sum(5-1)
+        // n = 4  sum(4) => 4 + sum(4-1)
+        // n = 3  4 + sum(3) => 4 + sum(3-1)
+        // n = 2  4 + sum(2) => 4 + 2 + sum(2-1)
+        // n = 1  4 + 2 + sum(1) => 4 + 2 + 0
+
+        // 从1到100 能够3和5整除的数累加求和
+        function add(n) {
+            if (n < 1) {
+                return 0;
+            }
+            if (n % 3 === 0 && n % 5 === 0) { //等价于 n % 15 === 0
+                return n + add(n - 1);
+            }
+            return add(n - 1);
+        }
+        console.log(add(100));
+
+        var su = 0;
+        for (var i = 0; i <= 100; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+                su += i;
+            }
+        }
+        console.log(su);
+
+        //  function fe () {
+        //    return 123
+        //  }
+
+        // 函数名() 这个整体代表的是 函数执行后返回值
+        //  console.log(100 + fe())
+        //  var a = fe()
+
+
+        // Just Do It
+
+        // 从1到100 能够3和5整除的数累加求和
+
+        var total = 0
+        for (var i = 1; i <= 100; i++) {
+            if (i % 15 === 0) {
+                total += i
+            }
+        }
+    </script>
+</body>
+
+</html>

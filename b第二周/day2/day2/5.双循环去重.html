@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 外层循环出来每一个当前项cur, 内层循环循环出来当前项的每个后一项last
+
+    // 用当前项cur和 每个后一项last 分别比较===
+    // 如果有相同的(===) 就删除这一项 splice(j, 1)
+
+    // var arr = [1, 1, 2, 2, 3, 2, 3, 4, 4, 4]
+
+    // var arr = [1, 1, 1, 1]
+
+    // cur = 1 (a)
+    // // 内层循环 j = 0 + 1
+    // last = 1 (b)
+
+    // if cur === last
+    // arr.splice(j, 1)
+    // // [1, 1, 1] 
+
+    // j++ // j = 2
+
+    // // [1, 1, 1] 
+    // // 内层循环第二次 j = 2
+    // cur = 1 (0)
+    // last = 1 (2)
+
+    // if cur === last
+    // arr.splice(j, 1)
+    // // [1, 1] 
+
+    // j++ // j = 3
+
+    // 3 < 2 
+    
+
+
+   
+
+    // 当我们用splice删除前面某一项时候 后面的就会往前挪一位，数组塌陷
+
+    // 用于我们再删除的时候 后面的会往前挪一位
+    // 我们需要再删除的时候 让我们再从当前这个索引位置比较一次
+
+    // j = 1
+    // var arr = [2, 2, 2, 2]
+    // j = 1
+    // j++ j = 2
+
+    // for (var i = 0; i < arr.length - 1; i++) {
+    //   // 当前项 i当前项索引
+    //   var cur = arr[i]
+    //   console.log('大循环cur', cur)
+      
+    //   // 把当前项cur的后一项依次取出来进行比较
+    //   for (var j = i + 1; j < arr.length; j++) {
+    //     var last = arr[j]
+
+    //     // 数组中有和当前项 重复的值
+    //     if (cur === last) {
+    //       arr.splice(j, 1)
+    //       j--
+    //     }
+    //   }
+    // }
+
+
+
+    // i++
+    // i= i + 1
+    var arr = [2, 2, 2, 2]
+
+    for (var i = 0; i < arr.length - 1; i++) {
+      // 当前项 i当前项索引
+      var cur = arr[i]
+      console.log(i)
+      console.log('大循环cur', cur)
+      
+      // 把当前项cur的后一项依次取出来进行比较
+      for (var j = i + 1; j < arr.length;) {
+        var last = arr[j]
+
+        // 数组中有和当前项 重复的值 就删除这一项
+        cur === last ? arr.splice(j, 1) : j++
+        // if (cur === last) {
+        //   arr.splice(j, 1)
+        // } else {
+        //   j++
+        // }
+      }
+    }
+    console.log(arr)
+
+    for (var i = 0; i < arr.length - 1; i++) {
+      var cur = arr[i]
+    
+      for (var j = i + 1; j < arr.length;) {
+        cur === arr[j] ? arr.splice(j, 1) : j++
+      }
+    }
+  </script>
+</body>
+</html>

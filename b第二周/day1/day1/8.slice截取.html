@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // slice() 截取、克隆
+    // 不会影响原数组
+    // 返回值 新数组
+
+
+    // 情况一 克隆
+    // slice()/slice(0)/slice(null)
+    // 按照原数组 完全克隆一份 组成新数组返回
+
+    // var arr = ['a', 'b', 'c', 'd']
+
+    // console.log('原数组', arr)
+
+    // var res = arr.slice(null)
+
+    // console.log('返回值', res) // 克隆后的新数组
+
+    // console.log(res === arr) // false
+
+
+    // slice(x)
+    // 从索引x处开始，截取到末尾，将截取到的内容 组成新数组返回
+
+    // var arr = ['a', 'b', 'c', 'd', 'e', 'f']
+
+    // var res = arr.slice(2)
+
+    // console.log('返回值', res) // ['c', 'd', 'e', 'f']
+
+    // slice(-x) 支持负数 相当于倒着截取x个值
+
+    // slice(-x) => slice(arr.length + (-x))
+    // var arr = ['a', 'b', 'c', 'd', 'e', 'f']
+
+
+    // var res = arr.slice(-2) // 4
+
+    // console.log('返回值', res) // ['e', 'f']
+
+
+    // 情况三
+    // slice(x, y) 从索引x处开始，截取到索引y处（注意：不包含索引y 这一项）
+    // x起始索引位置 y结束索引位置
+    // 从第1个 截取到第3个
+    var arr = ['a', 'b', 'c', 'd', 'e', 'f']
+
+    var res = arr.slice(0, 3)
+
+    console.log('返回值', res) // ['b', 'c']
+
+    // slice(-x, -y)
+
+    // slice(ary.length - x, ary.length - y)
+
+    // 如果起始索引 大于 结束索引 不会截取到任何内容 直接返回一个新的空数组
+
+  </script>
+</body>
+</html>

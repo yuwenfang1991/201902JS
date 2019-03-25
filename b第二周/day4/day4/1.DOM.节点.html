@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 注释内容 -->
+  <h2>h2h2</h2>
+  <h3 class="title" id="title"><span>span</span>我是文本节点</h3>
+  <h4>h4h4</h4>
+
+  <ul id="list">
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+    <li>item4</li>
+    <li>item5</li>
+    <li>item6</li>
+    <li>item7</li>
+    <li>item8</li>
+    <li>item9</li>
+    <li>item10</li>
+  </ul>
+  <script>
+    // react DOM DIFF算法
+    // createElement('h3', {className: 'title'}, '我是文本节点')
+    
+
+    // {
+    //   type: 'h3',
+    //   props: {className: 'title'},
+    //   children: ['我是文本节点']
+    // }
+
+    // {
+    //   type: 'h3',
+    //   props: {className: 'title'},
+    //   children: ['改后的内容']
+    // }
+
+
+    // 整个文档中 把 HTML 抽象为一个DOM树
+    // html元素属于 根元素
+
+    // HTML文档中所有事物 都被称为是节点
+
+    // 节点划分
+    // 1.document 文档节点
+    // 2.元素节点 HTML标签
+    // 3.文本节点 文本内容
+    // 4.注释节点 注释内容
+    // 5.属性节点 标签上的属性
+
+    // 元素节点
+    var title = document.getElementById('title')
+    // console.dir(title)
+    // title.nodeType // 1
+
+    title.childNodes[0].nodeType
+    title.previousSibling.nodeType
+    title.attributes[1].nodeType
+    document.nodeType
+
+    // 节点名称     nodeType     nodeName    nodeValue
+    // 元素节点        1         大写标签名     null
+    // 文本节点        3         "#text"       文本内容
+    // 注释节点        8         "#comment"    注释内容
+    // 属性节点        2          属性名称      属性值
+    // 文档节点        9         "#document"   null
+ 
+
+    // 通过节点关系 获取节点（元素 文本 注释 属性）
+
+    // 获取父节点
+    title.parentNode
+
+    // 获取一个节点所有子节点
+    title.childNodes
+
+    // 获取上一个兄弟节点
+    title.previousSibling
+
+    // 获取下一个兄弟节点
+    title.nextSibling
+
+    // 获取第一个子节点
+    list.firstChild
+
+    // 获取最后一个子节点
+    list.lastChild
+
+
+    // 针对元素节点
+
+    // 获取父元素节点
+    title.parentElement
+
+    // 获取所有子元素节点
+    list.children
+
+    // 上一个兄弟元素节点（哥哥元素节点）
+    title.previousElementSibling
+
+    // 下一个兄弟元素节点（弟弟元素节点）
+    title.nextElementSibling
+
+    // 第一个子元素节点
+    list.firstElementChild
+
+    // 最后一个子元素节点
+    list.lastElementChild
+  </script>
+</body>
+</html>

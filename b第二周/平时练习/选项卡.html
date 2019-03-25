@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .news {
+            width: 750px;
+            height: 750px;
+            margin: 0px auto;
+            /* text-align: center; */
+        }
+
+        .news #list {
+            width: 306px;
+            margin: 50px auto;
+            /* overflow: hidden; */
+        }
+
+        .news #list li {
+            text-align: center;
+            display: block;
+            width: 100px;
+            height: 30px; 
+            float: left;
+            border: 1px solid darkgoldenrod;
+            font-size: 18px;
+           
+
+        }
+
+        .news #panel div {
+            margin: auto;
+            text-align: center;
+            width: 300px;
+            height: 200px;
+            border: 1px solid tomato;
+            line-height: 150px;
+            display: none;
+        }
+
+        .news #list li.active {
+            background-color: gold;
+            height: 32px;
+            border: none;
+        }
+
+        .news #panel div.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news">
+        <ul id="list">
+            <li class="active">国际</li>
+            <li>军事</li>
+            <li>财经</li>
+        </ul>
+        <div id="panel">
+            <div class="active">国际</div>
+            <div>军事</div>
+            <div>财经</div>
+        </div>
+    </div>
+    <script>
+        // 获取操作元素
+        var list = document.getElementById('list');
+        var tabList = list.getElementsByTagName('li');
+        var panel = document.getElementById('panel');
+        var panelList = panel.getElementsByTagName('div');
+        // 先给li绑定点击事件
+        function changeList() {
+            for (var i = 0; i < tabList.length; i++) {
+                // 把当前索引 保存到当前li元素对象自身
+                tabList[i].ind = i;
+                tabList[i].onclick = function () {
+                    // 先将所有 li 和所有div类名清空
+                    for (var j = 0; j < tabList.length; j++) {
+                        tabList[j].className = '';
+                        panelList[j].className = '';
+                    }
+                    // 给相应元素添加类名
+                    // 当前点击哪个li 这个this就是谁
+                    this.className = 'active';
+                    // 根据当前点击的li元素的索引 找到对应div面板 给它添加选中样式
+                    // this.ink里面的 this 指的是当前点击哪个li 这个this就是谁
+                    panelList[this.ind].className = 'active';
+                }
+
+            }
+
+        }
+        changeList();
+    </script>
+</body>
+
+</html>

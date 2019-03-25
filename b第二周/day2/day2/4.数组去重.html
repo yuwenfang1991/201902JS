@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = [1, 1, 2, 2, 3, 2, 3, 4, 4, 4]
+
+    function unique(ary) {
+      var newArr = []
+      var obj = {}
+
+      for (var i = 0; i < ary.length; i++) {
+        var cur = ary[i]
+
+        if (!obj[cur]) {
+          newArr.push(cur)
+          obj[cur] = true
+        }
+
+      }
+
+      obj = null
+      return newArr
+    }
+
+    var ary = unique(arr)
+    console.log('ary', ary)
+
+
+    //  var newArr = []
+    //  var obj = {}
+
+    //  for (var i = 0; i < arr.length; i++) {
+    //    var cur = arr[i] // 1 1 2 2
+
+    //   // 如果对象中不存在这个属性 说明我们没有添加过
+    //   // !obj[1] => !true => false
+    //   // !obj[2] => !undefined => true
+    //   // !obj[2] => !true => false
+    //    if (!obj[cur]) { 
+    //      newArr.push(cur) // [1, 2]
+    //      obj[cur] = true // {1: true, 2: true}
+    //    }
+
+    //  }
+    //  console.log(newArr)
+
+    //  // 由于这个对象没用了 通常我们会 释放内存
+    //  obj = null
+  </script>
+</body>
+
+</html>

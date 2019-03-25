@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+    // str.length 62
+    // str 索引 (0 ~ str.length-1)
+    // 1.生成四个随机索引 根据索引找到相应字符 拼接起来
+    // 2. 0 ~ str.length-1 随机整数
+
+    //  var str = ''
+    //  str += 'a'
+    //  str += 'b'
+    //  str += 'c'
+    //  console.log(str) // "abc"
+
+    // 生成四个随机索引 0 ~ str.length-1   0 ~ 61
+
+    // var strCode = ''
+    // for (var i = 0; i < 4; i++) {
+    //   // 生成一个 0~61的随机索引
+    //   var ind = Math.round(Math.random() * str.length - 1)
+    //   // 根据索引ind 获取相应的字符
+
+    //   // 将每一次得到的字符拼接起来
+    //   strCode += str[ind]
+    // }
+    // console.log(strCode)
+
+
+    var strCode = ''
+
+    for (var i = 0; i < 4; i++) {
+      var ind = Math.round(Math.random() * str.length - 1)
+      strCode += str[ind]
+    }
+
+    console.log(strCode)
+
+
+    function createCode(len) {
+
+      // 如果传递进来的值 不是数字类型 或者是NaN 我们需要设置一个默认值4
+      if (typeof len !== "number" || isNaN(len)) {
+        len = 4
+      }
+
+      var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+      var strCode = ''
+      for (var i = 0; i < len; i++) {
+        var ind = Math.round(Math.random() * str.length - 1)
+        strCode += str[ind]
+      }
+      return strCode
+    }
+  </script>
+</body>
+
+</html>

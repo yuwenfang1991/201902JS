@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text"><button id="btn">添加</button>
+    <h4>列表</h4>
+    <ul id="list"></ul>
+    <script>
+        // 1.给按钮绑定 点击事件
+        // 2.当点击添加时 将input的内容 以li元素的形式 li.innerHTML = input的内容
+        // 3.添加到页面ul列表中
+
+        // 获取操作元素
+        var text = document.getElementById('text');
+        var btn = document.getElementById('btn');
+        var list = document.getElementById('list');
+        btn.onclick = function () {
+            // 创建li
+            var li = document.createElement('li');
+            var val = text.value;
+            if (val.length > 0) {
+                li.innerHTML = val;
+                list.appendChild(li);
+                text.value = "";
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        // window对象上提供的两个方法
+        // window.setTimeout() 
+        // window.setInterval()
+
+
+        // setTimeout()
+        // setInterval()
+        // setTimeout() 间隔时间内 只执行一次
+        // setTimeout(函数,间隔时间(单位：毫秒))
+        // setTimeout(function() {
+        //     alert('hello world!');
+        // },3000)
+        var box = document.getElementById('box');
+        // var init = 100;
+        var left = 100;
+        var boxTimer = setInterval(function () {
+            // init +=100;
+            // box.style.height = `${init}px`;
+            left += 10;
+            box.style.left = `${left}px`;
+        }, 1000)
+        box.onclick = function () {
+            window.clearInterval(boxTimer);
+        }
+
+
+        // 浏览器会为每个定时器 分配一个id 用来标识这个定时器
+        // var timer1 = setTimeout(fe, 3000);
+        // console.log(timer1);
+
+        // var timer2 = setTimeout(fe, 3000)
+        // console.log(timer2)
+
+
+        // 一般都会把用完的定时器 清除掉
+        // 清除定时器
+        // window.clearTimeout(定时器id)
+        // function fn() {
+        //     alert('hello world!');
+        // }
+        // setTimeout(fn,3000);
+        // 清除定时器
+        // window.clearTimeout(定时器id);
+        // setInterval() 每间隔一段时间内 就执行一次
+        // setInterval(函数,间隔时间(单位:毫秒))
+        // var time3 = setInterval(function() {
+        //     console.log('hello.world');
+        // },1000)
+    </script>
+</body>
+
+</html>

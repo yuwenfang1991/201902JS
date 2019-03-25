@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3 class="title" id="title" zi='zi'></h3>
+  <a id="link" href="https://www.baidu.com">beidu</a>
+  <script>
+    // html属性：直接写在标签上的属性
+    var title = document.getElementById('title')
+
+    // DOM属性
+    console.dir(title)
+
+    // getAttribute('属性名')
+    // setAttribute('属性名', '属性值')
+    // removeAttribute('属性名')
+
+    // 获取标签属性
+    title.getAttribute('class') // "title"
+    title.getAttribute('zi') // "zi"
+
+    // 设置属性
+    link.setAttribute('href', 'https://www.sogou.com')
+
+    // 删除属性
+    link.removeAttribute('href')
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+
+    <script>
+        var list = document.getElementById('list');
+
+        var item1 = list.children[0];
+        var item2 = list.children[1];
+        var item3 = list.children[2];
+        // cloneNode默认情况 不能克隆里面的子孙节点（后代）
+        // cloneNode(true) 要想克隆后代节点 传入一个true
+        var item11 = item1.cloneNode(true);
+        console.log(item11);
+
+        // 克隆节点 不能克隆事件
+        list.appendChild(item11);
+    </script>
+
+</body>
+
+</html>

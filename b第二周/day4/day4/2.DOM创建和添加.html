@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box">
+    <h2>boxbox</h2>
+  </div>
+  <script>
+    // 创建元素 createElement
+    var h3 = document.createElement('h3')
+    // 给元素添加内容
+    h3.innerHTML = '我是一个h3'
+    console.log(h3)
+
+    // appendChild() 追加/添加子节点
+    // 追加到容器末尾
+
+    // 父容器.appendChild(子节点)
+    // 将h3元素 追加到body底部
+    // document.body.appendChild(h3)
+
+    // box.appendChild(h3)
+
+    // insertBefore 
+    // 插入到指定节点的前面
+    // 父容器.insertBefore(新元素, 旧元素（参照元素）)
+    
+    // 通过节点关系获取子元素
+    var h2 = box.children[0]
+
+    setTimeout(function() {
+      box.insertBefore(h3, h2)
+    }, 2000)
+  </script>
+</body>
+</html>

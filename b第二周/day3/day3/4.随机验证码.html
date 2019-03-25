@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .char-code {
+      width: 150px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 25px;
+      text-align: center;
+      border: 1px solid pink;
+      margin: 20px auto;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="charCode" class="char-code">获取验证码</div>
+  <script>
+
+
+    // createCode 用来生成验证码
+    function createCode(len) {
+      // 处理函数的默认参数
+      var len = len || 4
+
+      // 索引范围 0到str.length-1
+      var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+      var codeStr = ''
+      for (var i = 0; i < len; i++) {
+        // 生成一个随机索引
+        var ind = Math.round(Math.random() * (str.length-1))
+        // codeStr = codeStr + str[ind]
+        codeStr += str[ind] 
+      }
+      return codeStr
+    }
+
+    // createCode()
+
+    // 1.点击div时 生成验证码 并且输出到这个div中
+
+    var charCode = document.getElementById('charCode')
+
+    charCode.onclick = function () {
+      this.innerHTML = createCode()
+    }
+
+  </script>
+</body>
+</html>

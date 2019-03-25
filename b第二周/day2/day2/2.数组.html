@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [1, 2, 3, 4, 5, 6]
+
+    // 获取数组中某一项 数组[索引]
+    // arr[0]
+    // arr[1]
+    // arr[2]
+    // arr[3]
+
+    // 循环遍历
+    // for循环 依次循环出 数组中的每一项
+    for (var i = 0; i < arr.length; i++) {
+      // console.log(i, arr[i])
+    }
+
+    var likeAry = {
+      0: 'a',
+      1: 'b',
+      2: 'c',
+      3: 'd',
+      length: 4
+    }   
+
+    for (var j = 0; j < likeAry.length; j++) {
+      // console.log(j, likeAry[j])
+    }
+
+ 
+
+    // 对象名.属性名 （不支持数字属性）
+    // 对象名['属性名']
+    // obj.id
+    // obj.title
+
+    var obj = {
+      id: 1,
+      title: 'zhufeng',
+      name: 'bei',
+      age: 10,
+      1: 100,
+      2: 200
+    }
+
+    for (var key in obj) {
+      // console.log(key, obj[key])
+      // 1 => 100
+      // 2 => 200
+      // id => 1
+      // title => zhufeng
+      // name => bei
+      // age => 10
+    }
+
+    // for in 遍历对象
+    // 它是将 对象里属性名依次遍历出来
+    // for (var key in obj) {
+    //   // key 属性名  obj[key] 属性值
+    //   console.log(key, obj[key])
+    // }
+
+    // 第一次循环时 key => id
+
+
+    // 数组自带的遍历方法
+    // forEach
+    var arr = [10, 20, 30, 40, 50, 60]
+
+    // 数组中有多少项 这个函数就执行多少次
+    arr.forEach(function(item, index, oldArr) {
+      // item 遍历出来的每一项 index 每一项的索引 oldArr 原数组 等于arr
+      // console.log(item, index)
+    })
+
+    // map 修改
+    var arr = [10, 20, 30, 40, 50, 60, 70]
+
+    // 数组中有多少项 就执行多少次这个函数 
+    // 并且item 代表每一项 index代表每一项的索引 oldArr原数组
+
+    // 基于原数组 每一项 乘以三 组成新数组返回
+    var result = arr.map(function(item, index, oldArr) {
+      return item * 3
+    })
+
+    // [10, 20, 30, 40, 50, 60, 70]
+    console.log('原数组', arr)
+
+    // [30, 60, 90, 120, 150, 180, 210]
+    console.log('返回值', result)
+
+
+    
+    // Array.prototype._forEach = function (fn) {
+    //   // this代表是当前的数组
+    //   for (var i = 0; i < this.length; i++) {
+    //     fn(this[i], i, this)
+    //   }
+    // }
+
+    // var arr2 = [100, 200, 300]
+    // arr2._forEach(function(item, ind, old) {
+    //   console.log(item, ind, old)
+    // })
+    // arr._forEach()
+
+    // for循环
+    // 数组方法 forEach map
+    // 遍历对象 for in
+  </script>
+</body>
+</html>

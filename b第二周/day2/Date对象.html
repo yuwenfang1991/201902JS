@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建Date对象
+        // var now = new Date();
+        // console.log(typeof now);
+        // console.log(now); // 代表的是 当前时间对象
+        // Tue Feb 26 2019 16:47:03 GMT+0800 (中国标准时间)
+
+
+        // 获取毫秒数
+        // Date.now();
+        // 时间对象.getTime()
+
+        // 当前时间 距离 1970年1月1日 00:00:00 的毫秒数
+        // console.log(Date.now());
+
+        var n = new Date();
+        // console.log(n.getTime());
+
+
+        // 格式化时间
+        // 将毫秒数 格式化成 时间对象
+        // var dd = new Date(1550171443214);
+        // console.log(dd); // Fri Feb 15 2019 03:10:43 GMT+0800 (中国标准时间)
+        // console.log(typeof dd);
+
+
+        // 操作方法
+        var now = new Date();
+
+        // 获取日期
+        console.log('几号', now.getDate());
+
+        //获取星期  0 ~ 6 （0代表的是周日）
+        console.log('星期', now.getDay());
+
+        // 获取月份 0 ~ 11 （0代表1月份 11代表12月份）
+        console.log('月份', now.getMonth());
+
+        // 获取年份
+        console.log('年份', now.getFullYear());
+
+        // 获取小时
+        console.log('小时', now.getHours());
+
+       // 获取分钟
+        console.log('分钟', now.getMinutes());
+
+        // 获取秒
+        console.log('秒', now.getSeconds());
+
+        // 获取毫秒
+        console.log('毫秒', now.getMilliseconds());
+
+        // 获取毫秒数 距离 1970
+        console.log(now.getTime());
+
+        // 把date对象转换为字符串
+        date.toString(); // Fri Nov 30 2018 15:15:55 GMT+0800 (中国标准时间)
+
+        // 把Date对象的时间部分转换为字符串
+        date.toTimeString(); // 15:16:07 GMT+0800 (中国标准时间)
+
+        // 把 Date 对象的日期部分转换为字符串。
+        date.toDateString(); // Fri Nov 30 2018
+
+        // 根据本地时间格式，把 Date 对象转换为字符串。
+        date.toLocaleString(); // 2018/11/30 下午3:16:10
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 注释内容 -->
+  <div id="box">文本内容</div>
+  <h3 id="title">文本内容</h3>
+
+  <ul id="list"><li>1111</li><li id="two">222</li><li>333</li><li>444</li></ul>
+  <script>
+    // 在html中 每个都是一个节点 节点：元素节点 文本节点 注释节点 属性节点 文档节点
+
+    var box = document.getElementById('box')
+
+    var title = document.getElementById('title')
+    // console.dir(box)
+    // console.dir(title)
+
+
+    // 根据节点关系 获取节点
+
+    // 获取一个节点的父节点
+    console.log('parentNode', box.parentNode)
+
+    // 获取一个节点的所有子节点
+    console.log(list.childNodes)
+
+    // 获取一个节点的第一个子节点
+    console.log(list.firstChild);
+
+    // 获取一个节点的最后一个子节点
+    console.log(list.lastChild);
+
+
+    // 获取下一个弟弟节点
+    console.log(two.nextSibling);
+
+    // 获取上一个哥哥节点
+    console.log(two.previousSibling);
+  </script>
+</body>
+</html>

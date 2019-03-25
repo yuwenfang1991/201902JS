@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 把数组中重复项去掉
+    // [1, 2, 3]
+
+    // indexOf
+
+    // [1, 2, 3]
+    // 定义一个新数组 var newArr = []
+    // 循环arr里面的每一项 var item = arr[i]
+    // 判断新数组中是否已经存在 item newArr.indexOf(item) === -1
+    // 如果不存在 再往里面添加  newArr.push(item)
+
+    var arr = [1, 1, 1, 2, 3, 2, 3, 2, 3, 4, 4, 4]
+    var arr2 = [10, 10, 10, 2, 3, 2, 3, 2, 3, 4, 4, 4]
+    var arr3 = [100, 100, 100, 2, 3, 2, 3, 2, 3, 4, 4, 4]
+
+    // 一次封装 多次复用
+    // 想给谁去重 就把谁当做实参传递进来unique(arr) 用形参变量ary接收
+    function unique(ary) {
+      var newArr = []
+      for (var i = 0; i < ary.length; i++) {
+        var item = ary[i];
+        // indexOf
+        if (newArr.indexOf(item) === -1) {
+          // push 向数组末尾添加一项或多项 返回值是添加后的数组长度
+          newArr.push(item)
+        }
+      }
+      return newArr
+    }
+
+   var a1 = unique(arr)
+   console.log('a1', a1)
+
+   var a2 = unique(arr2)
+   console.log('a2', a2)
+
+
+    // var newArr = []
+    // for (var i = 0; i < arr.length; i++) {
+    //   var item = arr[i] // 1 1 1 2
+
+    //   // [1].indexOf(1) 0 === -1
+    //   // [1].indexOf(2) -1 === -1
+    //   if (newArr.indexOf(item) === -1) {
+    //     newArr.push(item) // [1, 2]
+    //   }
+    // }
+
+    // console.log(newArr)
+
+    
+  </script>
+</body>
+
+</html>

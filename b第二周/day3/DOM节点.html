@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 注释内容 -->
+  <div id="box">文本内容</div>
+  <h3 id="title">文本内容</h3>
+
+  <ul id="list">
+    <li>1111</li>
+    <li id="two">222</li>
+    <li>333</li>
+    <li>444</li>
+  </ul>
+  <script>
+    // 在html中 每个都是一个节点 节点：元素节点 文本节点 注释节点 属性节点 文档节点
+
+    var box = document.getElementById('box');
+
+    var title = document.getElementById('title');
+    // console.dir(box)
+    // console.dir(title)
+
+    // IE6~8 不兼容
+    // 根据节点关系 获取节点
+    // 节点关系：描述节点间关系的属性
+    // 元素.parentNode：获取的当前元素的父亲节点对象
+    // 获取一个节点的父节点
+    console.log('parentNode', box.parentNode);
+
+    // 元素.childNodes获取当前元素所有的子节点的集合，不仅是元素，还有文本，注释...
+    // 获取一个节点的所有子节点
+    console.log(list.childNodes);
+
+    // 元素.children:获取当前元素的所有元素子节点的集合
+    console.log(list.children);
+
+    // 元素.firsChild:获取当前元素的第一个儿子节点
+    // 获取一个节点的第一个子节点
+    console.log(list.firstChild);
+
+    // 元素.lastChild:获取当前元素的最后一个子节点
+    // 获取一个节点的最后一个子节点
+    console.log(list.lastChild);
+
+    // IE6~8不兼容
+    // 注意：上面属性获取不到是null
+    // 元素.firstElementChild:当前元素的第一个元素子节点
+    console.log(list.firstElementChild);
+    
+    // 元素.lastElementChild:当前元素的第一个元素子节点
+    console.log(list.lastElementChild);
+
+    // 元素.nextSibling: 获取当前元素的弟弟节点，不一定是元素
+    // 获取下一个弟弟节点
+    console.log(two.nextSibling);
+
+    // 元素.previousSibling:获取当前元素的哥哥节点，不一定是元素
+    // 获取上一个哥哥节点
+    console.log(two.previousSibling);
+
+    // IE6~8 不兼容
+    // 元素.previousElementSibling:上一个元素哥哥节点
+    console.log(two.previousElementSibling);
+
+    // 元素.nextElementSibling:下一个元素弟弟节点
+    console.log(two.nextElementSibling);
+  </script>
+</body>
+
+</html>

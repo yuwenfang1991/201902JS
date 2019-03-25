@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    // 相对比较 ==
+    // 绝对比较 ===
+
+    // NaN 跟任何数据类型都不相等 包括自己
+    // NaN === NaN
+
+    // null 和 undefined 相对比较时 相等，但是它俩和其他任何类型都不相等
+    // null == undefined // true
+    // null === undefined // false
+    // null == 0 // false
+
+    // 其他类型 和 数字类型进行比较时 都是转化为数字(Number()) 再进行比较
+    1 == '1'; // true 1 == Number('1')
+    [] == 0 // true Number([]) == 0
+
+    // 1 == Number([1, 2, 3].toString()) => 1 == Number("1,2,3")
+    1 == [1, 2, 3] // false
+
+    // 布尔值和其他类型比较时 都是转化为数字(Number()) 再进行比较
+    // Number(true) => 1
+    // Number(false) => 0
+    true == [1]; // Number(true) == Number([1].toString())
+    false == 0; // true
+    [] == false; // true
+
+    // 字符串和引用类型比较时，将引用类型转换为字符串(toString()) 再进行比较
+    '1' == [1] // true '1' == [1].toString()
+    "1,2,3" == [1, 2, 3]
+
+    // 普通对象 toSring() 得到都是 "[object Object]"
+    '1' == {id: 1} // '1' == "[object Object]"
+    "[object Object]" == {name: 'hello'}
+
+    // 引用类型和引用类型比较时比较的是引用地址
+    {} == {} // false
+
+    // 你需要掌握 Number方法和toString方法 转换机制
+
+    var obj = {}
+    // obj.toString = function () {
+    //   return 'abc'
+    // }
+    // obj == "[object Object]"
+    // 'abc' == "[object Object]"
+    //
+    // obj.toString = function () {
+    //   return 'abc'
+    // }
+    // obj == 'abc' // true
+    //
+    // var arr = [1]
+    // arr.toString = function () {
+    //   return '2'
+    // }
+    // arr == '1'
+
+
+  </script>
+</body>
+
+</html>

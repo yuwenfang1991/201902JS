@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Boolean: true(真) false(假)
+        // 其他类型都可以转换为boolean值（true 或 false）
+        // 0 '' null undefined NaN 这五个值转换为 Boolean 值 都是 false 其余都是 true
+        // 转换方法
+        // Boolean()
+        // Boolean(0)
+        // Boolean('')
+        // Boolean(null)
+        // Boolean(undefined)
+        // Boolean(NaN)
+
+        // !! 等价于Boolean方法
+        // ! 取反(先转换为Boolean值 再取反)
+        // !0 // true
+        // !null // true
+        // !'' // true
+        // !undefined // true
+        // !NaN// true
+
+        // 0 '' null undefined NaN 这五个值取反都是 true 其余都是 false
+
+        // [] == false; // true 两边都转换为数字Number([]) == Number(false)
+
+        // 注意 先取反 然后再进行比较运算
+        ![] == false; // true false == false
+    </script>
+</body>
+
+</html>

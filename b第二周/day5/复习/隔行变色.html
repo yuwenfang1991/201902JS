@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .bg0 {
+      background-color: pink;
+    }
+    .bg1 {
+      background-color: violet
+    }
+
+    .hover {
+      background-color: red;
+      color: #ffffff;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <ul id="list">
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+    <li>item4</li>
+    <li>item5</li>
+    <li>item6</li>
+    <li>item7</li>
+    <li>item8</li>
+    <li>item9</li>
+    <li>item10</li>
+  </ul>
+  <script>
+    // 获取操作元素
+    var list = document.getElementById('list')
+    var listItem = list.getElementsByTagName('li')
+
+    for (var i = 0; i < listItem.length; i++) {
+
+      // bg0 bg1
+      var cn = `bg${i % 2}`
+      listItem[i].className = cn
+
+      // 给元素自身 添加一个自定义属性 保存当前类名
+      listItem[i].cn = cn
+
+      // 保存索引
+      listItem[i].idx = i
+
+      // 绑定鼠标滑入事件
+      listItem[i].onmouseover = function() {
+        // 事件函数中 this 指向的是当前绑定事件的元素
+        this.className = 'hover'
+      }
+
+      // 绑定鼠标划出事件
+      listItem[i].onmouseout = function () {
+        this.className = this.cn
+      }
+
+      listItem[i].onclick = function() {
+        alert(this.idx + 1)
+      }
+    }
+  </script>
+</body>
+</html>

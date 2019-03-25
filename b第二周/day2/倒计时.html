@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+    <!-- <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #btn{
+            width: 50px;
+            height: 30px;
+            
+        }
+        #text{
+            width: 100px;
+            height: 30px;
+            margin-left: 140px;
+            margin-top: 20px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <!-- <input type="text" id="text"> -->
+    <!-- <input type="button" id="btn"value="确认"> -->
+    <h3 id="countDate"></h3>
+    <script>
+        function countTime(targetDate) {
+            // 获取当前时间对象
+            var now = new Date();
+            // 将目标时间字符串 格式化成目标时间对象
+            var target = new Date(targetDate);
+            // 计算毫秒差
+            var diffTime = target - now;
+            // 如果目标时间 小于 当前时间
+            if (diffTime <= 0) {
+                window.clearInterval(timerID)
+                alert('本期活动已结束，敬请期待下次~');
+                return '本期活动已结束，敬请期待下次~';
+
+            }
+            // 一天所需要的秒数
+            var d = 60 * 60 * 24;
+            // 一小时需要的秒数
+            var h = 60 * 60;
+            // 将毫秒转换成秒
+            diffTime = Math.floor(diffTime / 1000);
+            // 将秒数换算成天
+            var day = Math.floor(diffTime / d);
+            // 计算出换算成天后 剩下的秒数
+            diffTime %= d; // diffTime = diffTime % d;
+            // 将秒数换算成小时
+            var hour = Math.floor(diffTime / h);
+            // 换算成小时后 剩下的秒数
+            diffTime %= h;
+            // 将秒数换算成分钟
+            var minutes = Math.floor(diffTime / 60);
+            // 最终的秒数
+            var seconds = diffTime % 60;
+            return `倒计时：${day}天${hour}小时${minutes}分${seconds}秒`;
+
+        }
+        var countDate = document.getElementById('countDate');
+        // var text = document.getElementById('text').value;
+        var timerID = setInterval(function () {
+            countDate.innerHTML = countTime('2019/3/28 00:00:00');
+        }, 1000)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var obj = {
+      id: 1,
+      num: 100,
+      text: 'beijing',
+      1: '数字'
+    }
+
+    // 获取
+    console.log(obj.id)
+    console.log(obj['id'])
+    console.log(obj[1])
+
+    obj.title = 'title'
+    obj.id = 2
+
+    for (var key in obj) {
+      console.log(key, obj[key])
+    }
+
+    // in 检测一个属性 是否属于这个对象
+    // 语法: '属性名' in 对象
+    'age' in obj // false
+    'id' in obj // true
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="code"></div>
+    <script>
+        function createCode(len) {
+            len = len || 4;
+            // 索引范围 0 到 str.length-1
+            var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var codeStr = '';
+            while (codeStr.length<len) {
+                var n = Math.round(Math.random() * (str.length - 1));
+                // 根据随机索引获取一个字符
+                var char = str[n];
+                // 如果当前拼接字符串中出现 codeStr 不存在这个字符char时我们在拼接
+                // 为了避免验证码里出现重复的字符
+                if (codeStr.indexOf(char) === -1) {
+                    codeStr += char;
+                }
+            }
+            return codeStr;
+        }
+        // var code = document.getElementById('code');
+        // code.innerHTML = createCode(5);
+    </script>
+</body>
+
+</html>

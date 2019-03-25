@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 什么是字符串
+        // 用"" '' ``包起来的字符内容 就是字符串
+        // '1'
+        // 字符串的length
+        var str = 'hello 2018';
+        // 字符个数 包含空格
+        // console.log(str);
+        // 字符串也有索引 根据索引 获取其中的一个字符
+        // console.log(str[0]);
+        // 字符串是只读的 不能被修改
+        // str[0] = 'w';
+        // console.log(str);
+
+        // var arr = [22,3,1,5];
+        // arr[0] = 2;
+        // console.log(arr);
+        // 字符串中的 加号 拼接字符 不是用来求和的
+        // console.log(1+'1') //'11'
+        
+        // 字符中拼接变量
+        // ES6里面提供了模板字符串
+       
+        var title = 'xiaoming';
+         // `${变量/表达式}`
+        var str = `My name is ${title}`;
+        console.log(str);
+
+
+        // 字符串中的操作方法都存储在String.prototype
+        console.log(String.prototype);
+    </script>
+</body>
+</html>

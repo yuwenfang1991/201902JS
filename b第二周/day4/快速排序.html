@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>快速排序</title>
+</head>
+
+<body>
+    <script>
+        // left = [] right = []
+        // 从数组中 选出一个 中间项作为 参照点mid   
+        // 用数组其他项 和 它mid 进行比较 
+        // 比他小的 放在left数组里 比他大的 放在right数组里
+        // 对于left right数组也要 根据上述过程 进行排序
+
+        var arr = [29, 10, 45, 35, 75, 49, 26];
+
+        // 得到中间项的索引 Math.floor(arr.length/2)
+
+        function quickSort(ary) {
+            // 如果当前数组中 只有一项直接返回 递归结束条件
+            if (ary.length <= 1) {
+                return ary;
+            }
+            // 得到当前数组中间项索引
+            var midIndex = Math.floor(ary.length / 2);
+            // 取出中间项
+            var mid = ary.splice(midIndex, 1)[0];
+
+            var left = [];
+            var right = [];
+
+            // ary[29, 10, 45, 75, 49, 26]
+            for (var i = 0; i < ary.length; i++) {
+                if (ary[i] < mid) {
+                    left.push(ary[i]);
+                } else {
+                    right.push(ary[i]);
+                }
+            }
+            return quickSort(left).concat(mid, quickSort(right));
+        }
+        console.log(quickSort(arr));
+         // 正宗的快速排序 原数组里排序
+    </script>
+</body>
+
+</html>

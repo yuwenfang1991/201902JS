@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    ul li {
+      list-style: none;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .bg0 {
+      background-color: red;
+    }
+
+    .bg1 {
+      background-color: pink;
+    }
+
+    .bg2 {
+      background-color: orange;
+    }
+
+    .hover {
+      background-color: blue;
+    }
+/* 
+    ul li:hover {
+      background-color: blue;
+    } */
+  </style>
+</head>
+<body>
+  <ul id="news">
+    <li>习近平这样擘画京津冀协同发展1</li>
+    <li>习近平这样擘画京津冀协同发展2</li>
+    <li>习近平这样擘画京津冀协同发展3</li>
+    <li>习近平这样擘画京津冀协同发展4</li>
+    <li>习近平这样擘画京津冀协同发展5</li>
+    <li>习近平这样擘画京津冀协同发展6</li>
+    <li>习近平这样擘画京津冀协同发展7</li>
+    <li>习近平这样擘画京津冀协同发展8</li>
+    <li>习近平这样擘画京津冀协同发展9</li>
+    <li>习近平这样擘画京津冀协同发展10</li>
+  </ul>
+  <script>
+    var news = document.getElementById('news')
+    var list = news.getElementsByTagName('li')
+
+    for (var i = 0; i < list.length; i++) {
+
+      // 计算出当前元素类名
+      var c = `bg${i % 2}`
+
+      // 实现隔行变色
+      list[i].className = c
+    
+      // 顺便 将类名保存到 元素自身
+      list[i].c = c
+
+      list[i].onmouseover = function () {
+        this.className = 'hover'
+      }
+
+      list[i].onmouseout = function () {
+        this.className = this.c
+      }
+
+    }
+
+    // 不积跬步无以至千里 不积小流无以成江海
+
+    // for (var i = 0; i < list.length; i++) {
+    //   // 实现隔行变色
+    //   list[i].className = `bg${i % 2}`
+    
+    //   // 保存索引
+    //   list[i].ind = i
+
+    //   list[i].onmouseover = function () {
+    //     this.className = 'hover'
+    //   }
+
+    //   list[i].onmouseout = function () {
+    //     this.className = `bg${this.ind % 2}`
+    //   }
+
+    // }
+  </script>
+</body>
+</html>

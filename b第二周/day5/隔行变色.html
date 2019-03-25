@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list {
+            margin: auto;
+            width: 300px;
+            text-align: center;
+
+        }
+
+        .list li {
+            padding: 2px 5px;
+            font-size: 15px;
+            height: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .hover {
+            background: rgb(7, 255, 193) !important;
+
+        }
+
+        .bg0 {
+            background-color: blanchedalmond;
+        }
+
+        .bg1 {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="news" class="list">
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+        <li>为创新人才当好“接线员” 提建议有股“执拗劲”</li>
+    </ul>
+    <script>
+        // 获取操作元素
+        var list = document.getElementById('news');
+        var listItem = list.getElementsByTagName('li');
+        for (var i = 0; i < listItem.length; i++) {
+            // var bg = `bg${i%2}`;
+            listItem[i].className = `bg${i%2}`;
+
+            // 给元素自身 添加一个自定义属性 保存当前类名
+            listItem[i].ind = i;
+            // 绑定鼠标滑入事件
+            listItem[i].onmouseover = function () {
+                // 事件函数中 this 指向的是当前绑定事件的元素
+                this.className = 'hover';
+            }
+            // 绑定鼠标滑出事件
+            listItem[i].onmouseout = function () {
+                this.className = `bg${this.ind%2}`;
+            }
+            // 鼠标点击某个li 显示点击的是第几个li
+            listItem[i].onclick = function () {
+                console.log(this.ind + 1);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function createCode(len) {
+      len = len || 4;
+      // 索引范围 0 到 str.length - 1
+      var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      // 用来拼接每次取出来的随机字符
+      strCode = '';
+      // 只要拼接的字符串的长度 不够 len个 就继续循环下去
+      while (strCode.length < len) {
+        var n = Math.round(Math.random() * (str.length - 1));
+        // 每次循环获取一个随机索引
+        // 根据随机索引 获取一个字符
+        var char = str[n];
+        // 如果拼接的字符串code中 还没有这个字符char 我们在进行拼接
+        if (!strCode.includes(char)) {
+          strCode += char;
+          console.log(strCode);
+        }
+       
+      }
+      return strCode;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    // 如果当前拼接字符串中codeStr 不存在这个字符char时 我们再拼接
+    // 为了避免验证码里出现重复的字符
+
+    // function createCode(len) {
+    //   len = len || 4
+
+    //   // 索引范围 0 到 str.length - 1
+    //   var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    //   var codeStr = ''
+
+    //   while(codeStr.length < len) {
+    //     var n = Math.round(Math.random() * 61)
+    //     codeStr += str[n]
+    //   }
+
+    //   return codeStr
+    // }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    
+        <ul id="list">
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+        </ul>
+    
+    <script>
+        var list = document.getElementById('list')
+
+        var item1 = list.children[0]
+        var item2 = list.children[1]
+        var item3 = list.children[2]
+
+        // removeChild
+        // 父节点.removeChild(子节点)
+        // var item = list.removeChild(item1)
+        // console.log(item) // 返回值就是删除的那个子节点
+
+        var item
+        setTimeout(function () {
+            item = list.removeChild(item1)
+        }, 2000)
+
+        setTimeout(function () {
+            // list.insertBefore(item, item2)
+            list.appendChild(item)
+        }, 5000)
+    </script>
+</body>
+
+</html>

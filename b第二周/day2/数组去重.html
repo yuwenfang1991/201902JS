@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr1 = [1, 1, 1, 2, 3, 2, 3, 2, 3, 2, 3, 1];
+        var arr2 = [10, 10, 10, 20, 30, 20, 30, 20, 30, 20, 30, 10];
+        var arr3 = [100, 100, 100, 200, 300, 200, 300, 200, 300, 200, 300, 100];
+        // 把数组中重复项去掉
+        // [1,2,3]
+        // indexOf
+        // [1,2,3]
+        // 定义一个新数组 var newArr = []
+        
+        // 循环arr里面的每一项 arr[i]
+        /*   for (var i = 0; i < arr.length; i++) {
+             if(newArr.indexOf(arr[i]) === -1) {
+                 newArr.push(arr[i]);
+             } else {
+
+             }
+             
+         }
+         console.log(newArr);
+         // 判断新数组中是否已经存在 newArr.indexOf(item) === -1
+         // 如果不存在 再往里面添加  newArr.push(item */
+        //  一次封装多次复用
+
+        function unique(ary) {
+            var newArr = [];
+            for (var i = 0; i < ary.length; i++) {
+                if (newArr.indexOf(ary[i]) === -1) {
+                    newArr.push(ary[i]);
+                } else {
+
+                }
+            }
+            return newArr;
+        }
+        var a1 = unique(arr1);
+         console.log(a1);
+        var a2 = unique(arr2);
+        console.log(a2);
+        var a3 = unique(arr3);
+        console.log(a3);
+    </script>
+</body>
+
+</html>

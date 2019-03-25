@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .char-code {
+      width: 150px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 25px;
+      text-align: center;
+      border: 1px solid pink;
+      margin: 20px auto;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="charCode" class="char-code">获取验证码</div>
+  <script>
+
+    // codeStr 这个字符串里如果已经有这个字符了 就不拼接
+
+    function createCode(len) {
+      var len = len || 4
+      var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+      var codeStr = ''
+      for (var i = 0; i < len;) {
+        var ind = Math.round(Math.random() * (str.length-1))
+        var char = str[ind] 
+
+        // 如果codeStr 不存在这个字符 再进行拼接
+        if (!codeStr.includes(char)) {
+          // 进行字符拼接
+          codeStr += char
+          i++ // 拼接一次就累加1
+        }
+
+      }
+      return codeStr
+    }
+
+    var charCode = document.getElementById('charCode')
+
+    charCode.onclick = function () {
+      this.innerHTML = createCode(6)
+    }
+
+  </script>
+</body>
+</html>

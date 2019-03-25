@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr1 = [1, 1, 1, 2, 3, 2, 3, 2, 3, 2, 3, 1];
+        var arr2 = [10, 10, 10, 20, 30, 20, 30, 20, 30, 20, 30, 10];
+        var arr3 = [100, 100, 100, 200, 300, 200, 300, 200, 300, 200, 300, 100];
+
+        function unique(ary) {
+            var newArr = [];
+            var obj = {};
+            for (var i = 0; i < ary.length; i++) {
+                var cur = ary[i];
+                // 如果对象中不存在这个属性 说明我们没有添加过
+                // !obj[1] => !true => false
+                // !obj[2] => !undefined => true
+                // !obj[2] => !true => false
+                // 第一种
+                // if (!obj[cur]) {
+                //     obj[cur] = true;
+                //     newArr.push(cur);
+                // }
+                // 第二种
+                obj[cur] = cur;
+            }
+            var newArr2 = [];
+            for (var key in obj) {
+                newArr2.push(obj[key]);
+            }
+            // 由于这个对象没用了 通常我们会释放内存
+            // obj = null;
+            // return后面的代码不会执行
+            return newArr2;
+
+        }
+        var a1 = unique(arr1);
+        console.log(a1);
+        var a2 = unique(arr2);
+        console.log(a2);
+        var a3 = unique(arr3);
+        console.log(a3);
+    </script>
+</body>
+
+</html>

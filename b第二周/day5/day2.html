@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一周第二天</title>
+</head>
+
+<body>
+    <script>
+        // Number: 数字(正数 负数 小数 0) NaN(Not a Number)表示非数字
+
+        // 将其他类型转换为数字(主要是指字符串)
+        // Number() 严格转换 只要字符串中包含非有效数字字符 就返回NaN
+        Number('10') //10
+        Number('10px') //NaN
+        Number('10x') //NaN
+
+        Number('') //0
+        Number('null') //0
+        Number([]) //0
+        Number(true) //1
+        Number('false') //0
+        Number({}) //NaN
+
+        // 对于数组 先隐式调用toString()转换成字符串 在转换成数字
+        Number([]) // Number('') => 0
+        Number([100]) // Number('100') => 100
+        // 改写自身的toString方法
+        var arr = [100];
+        arr.toString = function () {
+            return '200';
+        }
+        Number(arr); //200
+
+        // parseInt 不能够识别小数点
+        // parseFloat 支持小数
+        // 从左到右进行提取,只要遇到非有效数字字符 就停止提取
+        // 并且将提取到的内容以数字的形式返回
+        parseInt('10px'); //10
+        parseInt('10.55px'); //10
+        parseInt('a10.55px'); //NaN
+
+        parseFloat('10.55px'); //10.55
+
+        // 如果提取不到任何数字内容 直接返回NaN
+        parseInt(''); //NaN
+        parseInt(null); //NaN
+
+        // isNaN() 用来检测一个值是不是NaN
+        // isNaN() 
+        // 如果返回 true 说明是NaN
+        // 如果返回 false 说明是有效数字
+
+        isNaN(NaN); //true
+        isNaN('1') //false 说明是有效数字
+        // isNaN()在检测时 先将值 用Number() 转换一下 然后判断是不是NaN, 返回 true 或 false
+        var num = Number('10x');
+        if(num === 10) {
+            console.log(10);
+        } else if(num === NaN) {
+            console.log(NaN);
+        }else if(num === '10px') {
+            console.log('10px');
+        } else {
+            console.log(hello);
+        }
+    </script>
+</body>
+
+</html>

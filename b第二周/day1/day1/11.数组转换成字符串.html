@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 将数组转换成字符串 原数组不会发生改变
+
+    // toString()
+    // join()
+
+    // toString()
+
+    // var arr = [1, 2, 3]
+
+    // var res = arr.toString()
+
+    // console.log('返回值', res) // "1,2,3"
+
+
+    // join(连接符)
+    // 根据指定的连接符 组成新字符串
+
+    var arr = [1, 2, 3]
+
+    arr.join() // "1,2,3" 相当于toString()
+
+    arr.join('') // "123"
+
+    arr.join('+') // "1+2+3"
+    arr.join('*') // "1*2*3"
+
+    // eval() 将字符串 当做JS代码（表达式）来执行
+    // 相当于小型JS解释器
+
+    eval("1+2+3") // 6
+    eval("1*2*3") // 6
+
+    // 对数组中每一项 进行求和
+    var a = [10, 20, 100, 30, 100]
+
+    var total = eval(a.join('+')) // eval("10+20+100+30+100")
+    console.log(total) // 260
+
+    console.log(eval(a.join('*'))) // 60000000
+
+
+    // 相当于声明了一个变量
+    eval('var num = 1000')
+
+    console.log(num)
+  </script>
+</body>
+</html>

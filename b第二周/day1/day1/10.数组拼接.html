@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+   // concat() 拼接
+   // 不会影响原数组
+   // 返回值：拼接好的内容 组成的新数组
+
+   var arr1 = [1, 2, 3]
+   var arr2 = [6, 7, 8]
+
+  //  var res1 = arr1.concat(arr2, 2, 'df') 
+
+  //  console.log('返回值', res1) // [1, 2, 3, 6, 7, 8, 2, 'df']
+
+
+  //  var res2 = arr2.concat(arr1)
+
+  //  console.log('返回值', res2) // [6, 7, 8, 1, 2, 3]
+
+  //  console.log('arr1', arr1)
+  //  console.log('arr2', arr2)
+
+
+  var arr = [1]
+
+  // var res = arr.concat([100], 300, 'hello')
+  // console.log(res) // [1, 100, 300, "hello"]
+
+  // concat() 拼接时 只能展开一层数组
+  var res = arr.concat([[100]], [300])
+
+  console.log(res) // [1, [100], 300]
+
+  </script>
+</body>
+</html>

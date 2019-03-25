@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="box">
+        <h3></h3>
+    </div>
+    <div id="box">
+        <h3> hello </h3>
+        <h3> hello </h3>
+        <h3> hello </h3>
+        <h3> hello </h3>
+        </div>
+
+        <script>
+            // 浏览器解析时候 将我们整个HTML文档 抽象为DOM树
+            // 在JS中提供一个叫做 document的对象
+
+            // document对象 包含整个HTML文档 同时 提供了操作html元素的属性和方法
+
+            // 在整个HTML文档内，查找元素
+            //  document.getElementById('box')
+            //  document.getElementsByTagName('box')
+
+            // 获取html根元素
+            // document.documentElement
+
+            // 获取body
+            console.log(document.body)
+
+            // 获取head
+            console.log(document.head)
+
+            // 根据css选择器获取元素
+
+            // 获取单个元素
+            console.log(document.querySelector('#box h3'))
+
+            // 获取多个元素 以元素集合的形式返回
+            console.log(document.querySelectorAll('#box h3'))
+
+            // 根据ID名获取
+            document.getElementById('id名')
+
+            // 根据class名获取
+            document.getElementsByClassName('class名')
+
+            // 根据标签名获取
+            document.getElementsByTagName('标签名')
+        </script>
+</body>
+
+</html>

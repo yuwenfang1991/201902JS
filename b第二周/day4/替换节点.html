@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+    </ul>
+
+    <script>
+        var list = document.getElementById('list');
+
+        var item1 = list.children[0];
+        var item2 = list.children[1];
+        var item3 = list.children[2];
+        // replaceChild()替换节点
+        // 父节点.replaceChild(新节点(替换),旧节点(被替换))
+        var item22 = document.createElement('li');
+        item22.innerHTML = '我是item22222';
+        // 用新节点 替换 旧节点
+        list.replaceChild(item22,item2);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机验证码</title>
+    <style>
+        .char-code {
+            width: 150px;
+            height: 25px;
+            line-height: 35px;
+            font-size: 25px;
+            text-align: center;
+            /* border: 1px solid blanchedalmond; */
+            margin: 20px auto;
+            cursor: pointer;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="char-code" id="charCode"></div>
+    <input type="button" value="开始" id="btn1">
+    <input type="button" value="停止" id="btn2">
+    <script>
+        function createCode(len) {
+            if (typeof len !== 'number' || isNaN(len)) {
+                len = 4;
+            }
+            var str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var strCode = '';
+            while (strCode.length < len) {
+                var ind = Math.round(Math.random() * (str.length - 1));
+                var char = str[ind];
+                if (!strCode.includes(char)) {
+                    strCode += char;
+                }
+            }
+            return strCode;
+        }
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var charCode = document.getElementById('charCode');
+        var time;
+        var flag = true
+        btn1.onclick = function () {
+            if (flag) {
+                time = setInterval(function () {
+                    charCode.innerHTML = createCode();
+                    flag = false
+                }, 100)
+            }
+
+        }
+        btn2.onclick = function () {
+            flag = true
+            window.clearTimeout(time);
+        }
+    </script>
+</body>
+
+<html>
