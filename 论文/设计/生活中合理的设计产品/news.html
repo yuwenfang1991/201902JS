@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/main.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <!--bannner-->
+    <div class="banner">
+        <!-- 导航条-->
+        <div class="nav">
+            <div class="container clearfix">
+            </div>
+        </div>
+        <div class="slide rlt">
+            <img src="img/product.jpg" width="1920px" height="300px" alt="" />
+        </div>
+    </div>
+
+    <!--main-->
+    <div class="news-center">
+        <div class="container clearfix">
+            <h2>生活中合理的设计</h2>
+            <h4>Rational design</h4>
+            <div class="news-item">
+                <ul>
+                    <li class="active">生活产品</li>
+                    <li>创意设计</li>
+                </ul>
+            </div>
+            <script>
+                let item = document.querySelector('.news-item');
+                let itemList = document.querySelectorAll('li');
+                for (let i = 0; i < itemList.length; i++) {
+                    itemList[i].onclick = function () {
+                        for (let j = 0; j < itemList.length; j++) {
+                            itemList[j].className = '';
+                        }
+                        this.className = 'active';
+                    }
+                }
+            </script>
+            <!-- 新闻-->
+            <article class="clearfix">
+                <div class="post-image fl">
+                    <a href="img/知趣天气.jpg"><img src="img/知趣天气.jpg" width="500px" height="210px"></a>
+                </div>
+                <div class="post-content-wrap fr">
+                    <header class="post-header">
+                        <div class="post-date">
+                            <a class="date"><strong>18</strong><i>三月</i></a>
+                        </div>
+                        <h3 class="content-title">
+                            <div class="dth"></div>
+                            <a href="news-detail.html" class="ellipsis">知趣天气的小彩蛋</a>
+                        </h3>
+                        <div class="blog-entry-meta">
+                            <div class="blog-entry-meta-author">
+                                <i class="iconfont">&#xe675;</i>
+                                <a href="#" class="blog-entry-meta-author">作者：克己复礼</a>
+                            </div>
+                            <div class="blog-entry-meta-tags">
+                                <i class="iconfont">&#xe65e;</i>
+                                <a href="http://www.woshipm.com/pd/1064429.html">查看详细</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>
+                            知趣天气的小细节，今天又发现了一个小彩蛋，那就是点击这个图标会出现很有趣的文案，而且多点击几下文案会变。那么问题来了，要点击多少下才会变文案呢？产品中一些隐藏的小彩蛋可以增加用户的粘性，提高用户的留存率。
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="clearfix">
+                <div class="post-image fl">
+                    <a href="img/iPhone.jpg"><img src="img/iPhone.jpg" width="500" height="210"></a>
+                </div>
+                <div class="post-content-wrap fr">
+                    <header class="post-header">
+                        <div class="post-date">
+                            <a class="date"><strong>18</strong><i>三月</i></a>
+                        </div>
+                        <h3 class="content-title">
+                            <div class="dth"></div>
+                            <a href="news-detail.html" class="ellipsis">iPhone手机的开机小细节</a>
+                        </h3>
+                        <div class="blog-entry-meta">
+                            <div class="blog-entry-meta-author">
+                                <i class="iconfont">&#xe675;</i>
+                                <a href="#" class="blog-entry-meta-author">作者：克己复礼</a>
+                            </div>
+                            <div class="blog-entry-meta-tags">
+                                <i class="iconfont">&#xe65e;</i>
+                                <a href="http://www.woshipm.com/pd/1064429.html">查看详细</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>
+                        不知道大家有没有发现，不同颜色的iPhone手机的开机背景色不一样，比如白色的手机开机是白色背景黑色Logo，而黑色的手机是黑色背景白色Logo。这样做让屏幕和手机看起来整体感更强，任何一个小的细节体验iPhone都不会放过！
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="clearfix">
+                <div class="post-image fl">
+                    <a href="img/天气魔方.jpg"><img src="img/天气魔方.jpg" width="500" height="210"></a>
+                </div>
+                <div class="post-content-wrap fr">
+                    <header class="post-header">
+                        <div class="post-date">
+                            <a class="date"><strong>18</strong><i>三月</i></a>
+                        </div>
+                        <h3 class="content-title">
+                            <div class="dth"></div>
+                            <a href="http://news.qz828.com/system/2017/02/03/011264804.shtml" class="ellipsis">Weather Cube天气魔方</a>
+                        </h3>
+                        <div class="blog-entry-meta">
+                            <div class="blog-entry-meta-author">
+                                <i class="iconfont">&#xe675;</i>
+                                <a href="#" class="blog-entry-meta-author">天气魔方</a>
+                            </div>
+                            <div class="blog-entry-meta-tags">
+                                <i class="iconfont">&#xe65e;</i>
+                                <a href="http://news.qz828.com/system/2017/02/03/011264804.shtml">查看详细</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>
+                            概念及众筹The Weather Cube by庄愉&佐藤仁美这是一款可以显示温度和时间的Weather Cube天气魔方，更重要的是它通过超声波影响玻璃盒子里水的状况来显示天气。晴天时水面平静，起风时水面也有波浪，到了雨天则玻璃上挂满水滴，让天气和时间的信息都浓缩在一个小的盒子里，是一组可视化的设计。这个概念产品由两位设计师合作打造，设计师庄愉出生于浙江，目前在日本东京工作。
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="clearfix">
+                <div class="post-image fl">
+                    <a href="img/置物系统.jpg"><img src="img/置物系统.jpg" width="500" height="210"></a>
+                </div>
+                <div class="post-content-wrap fr">
+                    <header class="post-header">
+                        <div class="post-date">
+                            <a class="date"><strong>18</strong><i>三月</i></a>
+                        </div>
+                        <h3 class="content-title">
+                            <div class="dth"></div>
+                            <a href="http://news.qz828.com/system/2017/02/03/011264804.shtml" class="ellipsis">模块化置物系统</a>
+                        </h3>
+                        <div class="blog-entry-meta">
+                            <div class="blog-entry-meta-author">
+                                <i class="iconfont">&#xe675;</i>
+                                <a href="#" class="blog-entry-meta-author">文章出处</a>
+                            </div>
+                            <div class="blog-entry-meta-tags">
+                                <i class="iconfont">&#xe65e;</i>
+                                <a href="http://news.qz828.com/system/2017/02/03/011264804.shtml">查看详细</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>Zodiac Grid by Luca Nichetto意大利设计师Luca Nichetto以浩瀚的星系为灵感，为造作设计了一套名为Zodiac Grid的模块化置物系统。它由一个蜂巢结构的架子和六款极简风格的配件组成，配件包括了两种形状和大小的隔板、衣帽钩、镜子以及储物盒，允许用户在墙面上根据自己的需要建立起一个私人“小宇宙”。
+                        </p>
+                    </div>
+                </div>
+            </article>
+            <article class="clearfix">
+                <div class="post-image fl">
+                    <a href="news-detail.html"><img src="img/木琴.jpg" width="500" height="210"></a>
+                </div>
+                <div class="post-content-wrap fr">
+                    <header class="post-header">
+                        <div class="post-date">
+                            <a class="date"><strong>18</strong><i>三月</i></a>
+                        </div>
+                        <h3 class="content-title">
+                            <div class="dth"></div>
+                            <a href="news-detail.html" class="ellipsis">智能木质乐器</a>
+                        </h3>
+                        <div class="blog-entry-meta">
+                            <div class="blog-entry-meta-author">
+                                <i class="iconfont">&#xe675;</i>
+                                <a href="#" class="blog-entry-meta-author">木质乐器</a>
+                            </div>
+                            <div class="blog-entry-meta-tags">
+                                <i class="iconfont">&#xe65e;</i>
+                                <a href="http://news.qz828.com/system/2017/02/03/011264804.shtml">查看详细</a>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="post-content">
+                        <p>Hundo by Henry & Jack Madin来自澳大利亚墨尔本的Henry和 Jack Madin两兄弟都是当地乐队Harpoons的成员，凭借着对音乐的热爱，喜欢动手制作新玩意儿的Henry创造了两款造型简单的智能木制乐器，并和Jack一起成立了Hundo这一品牌。Hundo基础款(Basic)是一个四格的电子鼓垫，另一款名为Marimba，是一个没有固定音律设定的木琴，有九个可以随意设置的木制琴键。虽然这两种乐器都需要配套的木槌以及音频软件进行配合，在声音呈现上不受限制这一点还是为演奏提供了更大的发挥空间。
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!--foot-->
+    <div class="foot">
+        <div class="container">
+        <p style="text-align: center;padding-bottom: 10px;">Copyright © 石家庄邮电职业技术学院</p>
+    </div>
+</body>
+
+</html>
