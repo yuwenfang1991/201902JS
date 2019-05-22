@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <a id="link" href="javaScript:;">搜狗sogou</a> -->
+  <a id="link" href="https://www.sogou.com">搜狗sogou</a>
+  <div id="box">我是div <h3>我是h3</h3>
+  </div>
+  <script>
+    var box = document.getElementById('box');
+    var link = document.getElementById('link');
+
+    link.onclick = function (ev) {
+      ev = ev || window.event;
+      // ev.preventDefault()
+      // ev.returnValue = false
+      // ev.preventDefault ? ev.preventDefault() : ev.returnValue = false
+      alert('搜狗');
+      // return false // 通用阻止默认行为
+    }
+
+    function win(attr) {
+      return document.documentElement[attr] || document.body[attr];
+    }
+
+    document.documentElement.onclick = function () {
+      console.log('=> => => html click');
+    }
+    document.body.onclick = function () {
+      console.log('=> => body click');
+    }
+
+    box.onclick = function (ev) { // event事件对象
+      ev = ev || window.event;
+      ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true;
+      console.log('=> box click');
+
+      // console.log(ev) // 关于当前事件的信息
+      // console.log(window.event)
+      // 事件对象的兼容  IE6 ~ IE8不支持ev
+      // ev = ev || window.event
+      // 事件源的兼容 IE6 ~ IE8 不支持target属性
+      ev.target = ev.target || ev.srcElement;
+
+      // pageX/pageX 兼容 IE6 ~ IE8 没有pageX/pageY属性
+      ev.pageX = ev.pageX || ev.clientX + win('scrollLeft');
+      ev.pageY = ev.pageY || ev.clientY + win('scrollTop');
+
+      // console.log(ev.offsetX)
+      // 阻止默认行为
+      ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+      // 通用
+      // return false
+
+      // 阻止冒泡传播
+      ev.stopPropagation ? ev.stopPropagation() : ev.cancelBubble = true;
+    }
+    /**
+    * event
+      target 事件源
+
+      client 相对于可视窗口左上角
+      clientX 鼠标位置距离可视窗口左边边缘的距离
+      clientY 鼠标位置距离可视窗口上边边缘的距离
+
+      page 相对于页面body左上角
+      pageX 鼠标位置距离页面body左边边缘的距离
+      公式：pageX = clientX + ele.scrollLeft
+      pageY 鼠标位置距离页面body上边边缘的距离
+      公式：pageY = clientY + ele.scrollTop
+
+      offset 相对于当前元素
+      offsetX 鼠标位置距离当前元素左边边缘的距离 offsetX = pageX - ele.offsetLeft
+      offsetY 鼠标位置距离当前元素上边边缘的距离 offsetY = pageY - ele.offsetTop
+
+      preventDefault() 阻止事件默认行为 比如 a标签默认点击跳转
+      stopPropagation() 阻止事件冒泡
+    */
+  </script>
+</body>
+
+</html>

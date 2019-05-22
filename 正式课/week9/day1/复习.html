@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2 v-for="(item, index) in [12,2,53,78,41,25]" :key="index"></h2>
+
+        {{123|myMoney(1,2,3,4)|myMoney}}
+
+        <input type="text" v-model="name">
+        <input type="text" v-model="age">
+        <!-- 几种方式实现字符串 反转 -->
+        <h3>{{name.split('').reverse().join('')}}</h3>
+        <h3>{{name2}}</h3>
+        <h4>{{nameMethods()}}</h4>
+        <i>{{name|myName}}</i>
+
+    </div>
+<script>
+
+    // data computed methods 这三个属性中的属性名 是不能重复的
+    // 因为这三个中的属性 最终都是挂载到了 当前的实例身上
+    Vue.filter('myMoney', function(val,n) {
+        // val 是管道符前边的值
+        return 1000;
+    })  
+
+    Vue.filter('myName', function(val) {
+        console.log('filter')
+        return val.split('').reverse().join('');
+    })
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"hello world",
+            age:23
+        },
+
+        filters: {
+
+        },
+
+        methods: {
+            nameMethods() {
+                console.log('methods');
+                return this.name.split('').reverse().join('');
+            }
+        },
+
+        computed: {
+            // 业务上存在 依赖关系的 我们要优先使用 计算属性
+            // 只有依赖发生改变 该函数才会执行
+            name2() {
+                console.log('computed')
+                return this.name.split('').reverse().join('');
+            },
+
+            name3:{
+                get() {
+                    // name3 的值 是该函数的返回值
+                },
+
+                set(val) {
+                    // val 就是给name3 赋予的那个值
+                }
+            }
+        },
+    })
+</script>
+</body>
+</html>

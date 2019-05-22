@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            class 类名 {
+                constructor(name){
+                    this.name = name;//私有属性
+                    var age = 20; //变量
+                }
+                getName(){
+                    // 公有属性
+                }
+                static getName(){
+                    // 静态属性，把Person当作对象处理的；
+                }
+            }
+
+            class 类名2 extends 类名 {
+                constructor(){
+                    super(111);// 指的就是父类的 constructor
+                }
+                getName2(){
+
+                }
+                static getName2(){
+
+                }
+            }
+
+            箭头函数 是把 this 和 arguments当作 普通变量来处理的；
+          */
+        class Person {
+            constructor(name) {
+
+            }
+        }
+
+        class Person2 extends Person {
+            constructor() {
+                super()
+            }
+        }
+
+        let per1 = new Person('小明');
+        class Tab {
+            constructor(id) {
+                //获取元素
+                this.all = document.getElementById(id);
+                this.allInput = this.all.getElementsByTagName('input');
+                this.allDiv = this.all.getElementsByTagName('div');
+                this.init();
+            }
+
+            init() {
+                //公共
+                for (let i = 0; i < this.allInput.length; i++) {
+                    // this.allInput[i].onclick = function () {
+                    //     this.hide();
+                    //     this.show(i);
+                    // }.bind(this);
+                    this.allInput[i].onclick = () => {
+                        this.hide();
+                        this.show(i);
+                    };
+                }
+            }
+
+            //显示
+            show(index) {
+                this.allInput[index].className = 'active';
+                this.allDiv[index].style.display = 'block';
+            }
+
+            //隐藏
+            hide() {
+                for (let i = 0; i < this.allInput.length; i++) {
+                    this.allInput[i].className = '';
+                }
+
+                for (let j = 0; j < this.allDiv.length; j++) {
+                    this.allDiv[j].style.display = 'none';
+                }
+            }
+        }
+
+        // new Tab('first');
+
+        class Tab2 {
+            constructor(options) {
+                this._options = options;
+                this._querySelector()
+                this._bindEvent()
+
+            }
+
+
+            _querySelector() {
+                let el = this._options.el
+                let ele = document.querySelector(el)
+                this.headerList = ele.querySelectorAll('.header>li')
+                this.panelList = ele.querySelectorAll('.panel>div')
+
+            }
+            _bindEvent() {
+                let headerList = this.headerList
+                for (let i = 0; i < headerList.length; i++) {
+                    headerList[i].onclick = () => {
+                        this._clearClass()
+                        this._addClass(i)
+                    }
+                }
+            }
+            _addClass(idx) {
+                this.headerList[idx].className = 'active'
+                this.panelList[idx].className = 'active'
+            }
+
+            _clearClass() {
+                let headerList = this.headerList
+                let panelList = this.panelList
+                for (let i = 0; i < headerList.length; i++) {
+                    headerList[i].className = ''
+                    panelList[i].className = ''
+                }
+            }
+        }
+        // new Tab2({
+        //     el: '#Tab1'
+        // });
+        
+        // 手动封装一个bind;
+        let f1 = function(){
+            console.log(this);
+            console.log(arguments);
+        }
+        let obj = {
+            name:123
+        }
+
+        let f2 = f1.bind(obj,1,2,3,4);// 用法跟call一致；但是返回值是一个新函数
+        f2(6,7,8,9);// 函数的实参 是 位于 默认实参的后边
+
+
+        // call apply bind 只要改变过this指向之后 再去改变，就不再起作用了
+        let o1 = {name:123},o2 = {age:123};
+        let fn1 = function () {
+            console.log(this);
+        }
+        let fn2 = fn1.bind(o1);// fn2() --> o1
+        let fn3 = fn2.bind(o2); // fn3() --> o1
+        let fn4 = fn1.bind(o2); // fn4() --> o2
+
+
+
+        function myBind() {
+            // bind执行结果是一个新的函数
+            let _this = arguments[0]||window;
+            // this  要去改变的 this指向的 那个函数；
+            let that = this;
+
+            let ary = [].slice.call(arguments,1);// arguments.slice(1)
+            return function(){
+                //当 f3 执行的时候  我们需要让 改变this 之后的 f1 执行；
+                // that 就是 f1; _this 是要改变成为的 那个 this指向；
+                // arguments 5 6 7
+                // that.call(_this,arguments)
+                let ary2 = [].slice.call(arguments);//arguments.slice();
+                that.apply(_this,ary.concat(ary2));
+            }
+        }
+        Function.prototype.mybind = myBind;
+        let f3 = f1.mybind(obj,1,2,3);
+        f3(5,6,7)
+
+
+
+
+        let q1 = {
+            a:{
+                b:{
+                    name:123
+                }
+            }
+        }
+        let q2 = {};
+        for(let k in q1){
+            q2[k] = q1[k]
+        }
+
+        let q3 = JSON.parse(JSON.stringify(q1))//最简单的深拷贝 
+    
+        console.log(q1.a == q3.a)
+        console.log(q1.a.b == q3.a.b)
+    </script>
+</body>
+
+</html>

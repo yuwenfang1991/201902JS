@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 400px;
+            background: red;
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box"></div>
+    <script>
+        // 当事件执行的时候，浏览器会默认给事件函数 传递一个参数对象，称为事件对象
+        // 事件对象中 很多关于当前事件 信息
+
+        /**事件对象
+         * type: 事件名称
+         * target 事件源(目标元素)
+         * client 相对于浏览器窗口左上角
+         * clientX 鼠标位置距离窗口左边边缘的距离
+         * clientY 鼠标位置距离窗口上边边缘的距离
+         * 
+         * page 相对于整个页面body左上角
+         * pageX 鼠标位置距离body左边边缘的距离 pageX = clientX + scrollLeft
+         * pageY 鼠标位置距离body上边边缘的距离 pageY = clientY + scrollTop
+         * 
+         * offset 相对于当前元素
+         * offsetX 鼠标位置距离当前元素左边边缘的距离 offsetX = pageX - ele.offsetLeft(距离body)
+         * offsetY 鼠标位置距离当前元素上边边缘的距离 offsetY = pageY - ele.offsetTop(距离body)
+         * screenX/screenY 针对整个桌面屏幕的距离
+         * 
+         * preventDefault() 阻止事件默认行为 比如阻止a标签默认点击跳转 
+         * 
+         * stopPropagation() 
+         * 
+        */
+
+        box.onclick = function (event) { // 事件函数 event 事件对象
+            console.log(event)
+        }
+
+    </script>
+</body>
+
+</html>

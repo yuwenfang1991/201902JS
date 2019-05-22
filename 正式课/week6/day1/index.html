@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list {
+            width: 150px;
+            height: 120px;
+            background: antiquewhite;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header main footer nav语义化标签 article section progress audio video-->
+    <input type="color" id="inp">
+    <input type="file">
+    <input type="date">
+    <input type="search">
+    <input type="range">
+    <input type="text" list="ppp">
+    <datalist id="ppp">
+        <option value="1">q1</option>
+        <option value="12">q1</option>
+        <option value="13">q1</option>
+    </datalist>
+
+    <h2 id="h2">珠峰培训</h2>
+    <input type="text" id="text">
+    <ul id="list"></ul>
+    <audio src=""></audio>
+    <video src=""></video>
+
+
+
+    <script>
+        // map forEach 区别
+        // map可以修改值
+        const inp = document.getElementById('inp');
+        const h2 = document.getElementById('h2');
+        const text = document.getElementById('text');
+        let list = document.getElementById('list');
+        // onchange 只有当内容改变 并且失去焦点时才会触发
+        inp.onchange = function (e) {
+            e = e || window.event;
+            let target = e.target || e.srcElement
+            h2.style.color = target.value;
+            // h2.style.color = this.value;
+            // console.log(color);
+
+        }
+
+        let ary = [
+            { value: 1, text: 'qq' },
+            { value: 21, text: 'www' },
+            { value: 23, text: 'aaaa' }
+        ];
+        function giveHTML(arr) {
+            let str = ``;
+            arr.forEach(item => {
+                str += `<li>${item.text}</li>`;
+            });
+            list.innerHTML = str;
+        }
+        text.onfocus = function () {
+            // 获取焦点
+            list.style.display = 'block';
+            giveHTML(ary);
+        }
+        text.onblur = function () {
+            // 失去焦点
+            list.style.display = 'none';
+        }
+
+        text.oninput = function () {
+            let arr = ary.filter(item => {
+                let inpV = this.value;
+                // toString() 显示转换
+                // '' 隐式转换
+                // return item.value.toString().indexOf(inpV) === -1 ? false : true;
+                return (item.value + '').includes(inpV);
+            })
+            giveHTML(arr);
+        }
+
+
+        // navigator 获取设备信息的一个属性
+        // window.navigator.geolocation{} 获取
+        // navigator.userAgent 设备信息
+        // hybird App 混合App开发 
+        // webview 手机浏览器内核 
+
+
+
+
+    </script>
+</body>
+
+</html>

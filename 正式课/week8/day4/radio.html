@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="radio" v-model="fruit" value="apple"> 苹果
+        <input type="radio" v-model="fruit"  value="banana"> 香蕉
+        <input type="radio" v-model="fruit" value="watermelon"> 西瓜
+        <input type="radio" v-model="fruit" value="orange"> 橙子
+        <h2>{{fruit}}</h2>
+        <!-- 对于单选框 绑定同一个变量 每个input都有一个value -->
+    </div>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"hello world",
+            fruit:'apple'
+        }
+    })
+</script>
+</body>
+</html>

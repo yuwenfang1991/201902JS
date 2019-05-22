@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            width: 600px;
+            margin: 30px auto;
+            border: 1px solid red;
+            font-size: 18px;
+            text-align: center;
+            list-style: none;
+        }
+
+        #list li {
+            color: #ffffff;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #list li:nth-child(odd) {
+            background: palevioletred;
+        }
+
+        #list li:nth-child(even) {
+            background: darkslateblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>习近平检阅中国人民解放军海军仪仗队item1</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item2</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item3</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item4</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item5</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item6</li>
+    </ul>
+    <script>
+        const list = document.getElementById('list');
+        const lists = list.getElementsByTagName('li');
+        
+        // for (let i = 0; i < lists.length; i++) {
+        //     lists[i].onclick = function () {
+        //         alert(this.innerHTML);
+        //     }
+        // }
+
+        // 利用事件委托 保证我们追加的内容 依然有点击事件
+        list.onclick = function({ target }) {
+            
+            if(target.tagName.toUpperCase() === 'LI') {
+                alert(target.innerHTML);
+            }
+        }
+
+        // 写一个函数 每执行一次 就往list里面追加5条li
+        function loadMore() {
+            // 文档碎片 一个临时DOM容器 解决动态创建导致多次DOM回流问题
+            let fragment = document.createDocumentFragment();
+            let num = lists.length;
+            let li = null;
+            for (let i = 0; i < 5; i++) {
+                li = document.createElement('li');
+                li.innerHTML = `习近平检阅中国人民解放军海军仪仗队item${++ num}`;
+                // li.onclick = function() {
+                //     alert(this.innerHTML);
+                // }
+                //每appendChild 一次 就会触发DOM回流 
+                fragment.appendChild(li)
+            }
+            // 将文档碎片的元素 一次性 追加到页面当中
+            list.appendChild(fragment);
+            
+        }
+        // 非常耗费性能
+        // DOM回流: 页面中 添加DOM元素 删除DOM元素都会导致 整个HTML重新加载一遍
+        // DON重绘不一定导致 DOM回流 reflow
+        // DOM回流一定会导致 DOM重绘 repaint
+        loadMore();
+        // 动态绑定数据
+        // 1. 字符串拼接 先获取已有内容  再拼接新的内容 最后重新输出到页面中
+        // 字符串拼接方式
+        // 缺点: 会导致原有的li被全新的渲染一遍 以致于丢失了 绑定事件
+        // let num = 6
+        // function loadMore() {
+        //     // code
+        //     let str = ''
+        //     for (let i = 0; i < 5; i++) {
+        //         str += `<li>习近平检阅中国人民解放军海军仪仗队item${++num}</li>`
+        //     }
+        // list.innerHTML = list.innerHTML + str 拼接成一个全新li列表
+        // 浏览器会把这拼接好的 li当做是一个全新 li列表进行重新渲染一遍 覆盖掉之前
+        //     list.innerHTML += str;
+        // 追加完后 重新循环每个li 绑定点击事件
+        // for (let i = 0; i < lists.length; i++) {
+        //     lists[i].onclick = function () {
+        //         alert(this.innerHTML);
+        //     };
+        // }
+        // }
+        // 2.动态创建 document.createElement(li) appendChild(li);
+    </script>
+</body>
+
+</html>

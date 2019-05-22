@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <style>
+        .odd {
+            background: palevioletred;
+        }
+
+        .event {
+            background: darkorange;
+        }
+
+        ul {
+            background: aqua;
+            color: azure;
+
+        }
+
+        ul.white {
+            background: aliceblue;
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click='fn'>换肤</button>
+        <ul style="list-style:none;" :class="{white:flag}">
+            <!-- <li v-for="(item, index) in ary" :key="index" :class="index % 2 ? 'odd' : 'event'">
+                我会{{item}}
+            </li> -->
+            <!-- <li v-for="(item, index) in ary" :key="index" :class="{odd:index%2===0, event:index%2===1}"> -->
+            <li v-for="(item, index) in ary" :key="index">
+                我会{{item}}
+            </li>
+            <!-- 
+                :class="对象" 对象的属性名是要添加的类名 
+                属性值(布尔)是控制要不要把属性名当做类名加上
+            -->
+        </ul>
+
+        <h2 :style='"color:" + color'>hello world</h2>
+        <h2 :style='{color: color}'>hello world</h2>
+        <!-- 
+            vue 针对style 添加了一种对象的写法; 属性名是对应的css属性名
+            属性值 可以是变量 也可以是字符串 所代表的值都是css的属性值
+        
+        -->
+    </div>
+    <script>
+        // {v-on:}的简写 @ 
+        // {v-bind:}的简写 :
+        // :class 三元表达式 对象
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                ary: ['css', 'js', 'html', 'vue', 'react', 'node'],
+                flag: false,
+                color:'orange'
+            },
+
+            methods: {
+                fn() {
+                    this.flag = !this.flag;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

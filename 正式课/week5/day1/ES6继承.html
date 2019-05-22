@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES5 一个函数就是一个类
+        // ES6 如何创建类 借鉴后端语言
+        // ES6类继承:寄生组合式继承
+        class Super {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            // 原型方法
+            say() {
+                console.log('say');
+            }
+        }
+        //    const sup = new Super('wenli',18);
+        //    console.log(sup);
+        // 创建一个Sub 继承 Super
+        class Sub extends Super {
+            constructor(name, age) {
+                // 继承时 ,使用this之前 必须先调用super父类
+                // super代表父类的构造函数
+                // Super.call(this, name, age);
+                super(name, age);  //借用构造函数继承 Super.call(this)
+                // console.log(this);
+            }
+        }
+        let sub1 = new Sub('wenli', 15);
+        console.log(sub1);
+        let sub2 = new Sub('张华', 5);
+        console.log(sub2);
+
+        // react ES6类
+    </script>
+</body>
+
+</html>

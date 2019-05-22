@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">注销</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // cookie storage 的区别
+        // cookie 前端存储数据的地方, 前端可以种植cookie 后端也可以种植;
+        // 会随着请求发给后台(占用带宽), cookie 有明显的大小限制;
+        // cookie 有同域的限制
+        // 前端获取cookie document.cookie;
+        // getCookie setCookie removeCookie
+
+        function getCookie(key) {
+            let str = document.cookie; // 只会获取同域下的cookie
+            let reg = new RegExp(`(^| )${key}=([^;]+)(;|$)`);
+            let ary = str.match(reg);
+            return ary ? ary[2] : null;
+        }
+
+        function setCookie(key, value, day) {
+            // 时间戳的两种写法 (1) new Date().getTime() (2) Date.now()
+            let t = new Date().getTime(); // 当前时间戳
+            let duration = t + day * 24 * 60 * 60 * 1000;
+            document.cookie = `${key}=${value};expires=${new Date(duration)}`;
+        }
+
+        function removeCookie(key) {
+            document.cookie = `${key}='';expires=${new Date(1970)}`;
+        }
+
+        // storage 是h5 新增的api 也是让前端存储数据的地方
+        // 不会随着请求发给后台,后台也不能操作里面的内容; 大小限制比cookie大得多 大概在5兆左右
+        // localStorage sessionStorage
+        // setItem() getItem() removeItem() clear()
+        // 数据获取 先看本地有没有 有的话就不请求 没有的话再去 请求
+        if (localStorage.getItem('userInfo')) {
+            // console.log(localStorage.getItem('userInfo'));
+
+        } else {
+            axios({
+                method: 'post',
+                url: 'https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/promovie/api/box/second.json',
+            }).then((data)=> {
+                let obj = data.data;
+                localStorage.setItem('userInfo',JSON.stringify(obj));
+            });
+        }
+
+        btn.onclick = function() {
+            localStorage.removeItem('userInfo');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #img{
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="http://b.hiphotos.baidu.com/image/pic/item/03087bf40ad162d93b3a196f1fdfa9ec8b13cde9.jpg" alt="" id="img">
+    <script src="utils.js"></script>
+    <script>
+        const { css } = window._utils
+
+        var timer = window.setInterval(() => {
+            let op = css(img, 'opacity')
+            op += 0.1
+            css(img, 'opacity', op)
+
+            if (op >= 1) {
+                window.clearInterval(timer)
+            }
+        }, 1000)
+
+    </script>
+</body>
+
+</html>

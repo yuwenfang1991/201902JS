@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>\(^o^)/~</title>
+    <link rel="stylesheet" href="./node_modules/swiper/dist/css/swiper.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
+    <script src="js/flexible.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <section class="app swiper-container">
+
+        <header class="header_box">
+            <div class="name_box">
+                <div class="music_icon"></div>
+            </div>
+        </header>
+        <div class="swiper-wrapper">
+            <main class="swiper-slide">
+                <div class="content_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                    swiper-animate-delay="0.5s">
+                    <div class="one_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                        swiper-animate-delay="0.5s"></div>
+                    <ul class="font_box">
+                        <li class="one ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="1s">致</li>
+                        <li class="two ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s"
+                            swiper-animate-delay="1.5s">青</li>
+                        <li class="three ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2s"
+                            swiper-animate-delay="2s">春</li>
+                        <li class="four ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="2s"
+                            swiper-animate-delay="1s"> <span>纪/念/相/册</span></li>
+                    </ul>
+                </div>
+            </main>
+
+            <main class="swiper-slide">
+                <div class="middle_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                    swiper-animate-delay="0.5s">
+                    <div class="right_top ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="2s"
+                        swiper-animate-delay="1s">
+                        <span>纪/念/相/册</span>
+                    </div>
+
+                    <div class="border_box"></div>
+                    <div class="content_pic">
+                        <img src="./image/cat2.webp" class="pic_one">
+                        <img src="./image/cat1.webp" class="pic_two">
+                    </div>
+                    <div class="solid_inside"></div>
+                    <div class="little_box">
+                        <ul>
+                            <li class="one ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s"
+                                swiper-animate-delay="1s">致</li>
+                            <li class="two ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s"
+                                swiper-animate-delay="1.5s">青</li>
+                            <li class="three ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2s"
+                                swiper-animate-delay="2s">春</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </main>
+
+            <main class="swiper-slide">
+                <div class="mask"></div>
+                <div class="second_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                    swiper-animate-delay="0.5s">
+                </div>
+                <div class="third_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                    swiper-animate-delay="2s">
+                    <img src="./image/last.webp" alt="">
+                </div>
+                <div class="bottom_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                    swiper-animate-delay="1.5s">
+                    <img src="./image/last.gif" alt="">
+                </div>
+
+            </main>
+        </div>
+
+    </section>
+    <script src="./node_modules/swiper/dist/js/swiper.js"></script>
+    <script src="./js/swiper.animate.min.js"></script>
+    <script>
+        //Swiper4.x
+        var mySwiper = new Swiper('.swiper-container', {
+            direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            on: {
+                init: function () {
+                    swiperAnimateCache(this); //隐藏动画元素 
+                    this.emit('slideChangeTransitionEnd');//在初始化时触发一次slideChangeTransitionEnd事件
+                },
+                slideChangeTransitionEnd: function () {
+                    swiperAnimate(this); //每个slide切换结束时运行当前slide动画
+                    // this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
+                }
+            }
+        }) 
+    </script>
+
+
+</body>
+
+</html>

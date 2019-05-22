@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        // 把A当做父类 B当做子类
+        // B类要继承 A类
+        /* 原型链继承
+            将子类的原型 重写成A父类的一个实例 new A
+            特点:将父类的私有属性和公有属性 都继承为自己的原型属性(公有属性)
+        */
+        // function A() {
+        //     // 给当前实例添加私有属性text
+        //     this.text = '我是A类的 text';
+        // }  
+        // A.prototype.age = 19;  
+        // A.prototype.say = function () {
+        //     console.log('我是A类原型 say');
+        // }
+        // function B() {
+            
+        // }
+        // // 将B类原型对象改写成 A的实例
+        // let obj = new A();
+        // B.prototype = obj; // obj instanceof A => true
+        // // 手动指定constructor
+        // B.prototype.constructor = B; 
+        // const b = new B();
+        // const b1 = new B();
+        // // 实例 b 想使用A类上的属性方法
+        // console.log(b.text); // A类的私有属性
+        // console.log(b1.say);
+        // console.log(b.age); //A类的公有属性
+        // console.log(b1.say === b.say); // true
+        
+        // Super父类;Sub子类
+        // 原型链继承:将Super类的实例对象 改写成Sub类的原型对象
+        // 把Super类上的私有属性和公有属性, 都继承为Sub类的原型属性
+        function Super() {
+            this.name = 'Super';
+        }
+        Super.prototype.age = 18;
+        function Sub() {
+            
+        }
+        Sub.prototype = new Super();
+        Sub.prototype.constructor = Sub;
+        console.log(Sub.prototype instanceof Super);
+        const s = new Sub();
+        console.log(s.age);
+        console.log(s.name);
+        // 子类重写父类 会影响到父类的所有实例 
+        Sub.prototype.__proto__.age = 38;
+        console.log(Super.prototype.age);
+        let a = new Super();
+        console.log(a.age);
+        
+
+    </script>
+</body>
+</html>

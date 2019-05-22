@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        // 你对h5 有哪些了解
+        /*
+            标签语义化 header footer main section nav
+            input 进行了增强 color date range datalist
+         */
+        //  你对css3有哪些了解
+        /*
+            线性渐变 盒子阴影 圆角 文本阴影 c3选择器
+            transition 过渡, animation 动画, transform变换
+            transition: width 1s(过度时间) 10s(延迟) linear(动效),opacity 2s ease-in
+            document.addEventListener('webkitTransitionEnd', function() {},false)
+            transform: scale(缩放) rotate() skew() translate()
+
+            animation: name(自定义的动画名) 1s 2s liner infinite
+            @keyframs move132{
+                form{
+
+                }
+                to{
+
+                }
+            }
+            常用的动画库 animate.css
+
+            offsetLeft通过这个属性我们可以找到 元素距离 body 的左偏移量
+            上述属性 是获取不到translate的偏移
+            offsetLeft 在table 中有bug, offsetLeft拿不准; td 的上级就是tr(不管tr是否有定位)
+         */
+        //  @media 媒体查询
+        //  rem 依赖的是 html 的font-size属性
+        // em 
+        // 1rem = 100px : 在设计稿上量出 200px; css 对应 2rem 
+        // 750 w
+        // 100 x //===> x = 100 * w / 750
+        
+        // 一屏 10个 rem : 设计稿上量出  150px; css对应 2rem
+        // flexiable.js
+        var a = 0.300004;
+
+        console.log(a.toFixed(2));// 0.30
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <style>
+    .box {
+      width: 200px;
+      height: 50px;
+      border: 1px solid #ccc;
+    }
+
+    ul li {
+      list-style: none;
+      border: 1px solid salmon;
+      height: 30px;
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{name}}</h1>
+    <select v-model="selected">
+      <option value="1">css</option>
+      <option value="2">js</option>
+      <option value="3">html</option>
+    </select>
+    <h2>{{selected}}</h2>
+    <!-- 使用vue 实现一个select 下拉框 -->
+    <div class="box" @click='fn'>{{str}}</div>
+    <ul v-show="isShow">
+      <li v-for="(item, index) in ary" :key="index" @click='select(item)'>{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        isShow: false,
+        name: "hello world",
+        selected: '',
+        ary: ['css', 'js', 'html'],
+        str:''
+      },
+      methods: {
+        fn() {
+          this.isShow = !this.isShow;
+        },
+        select(item) {
+          // 1、把item 放到div里面
+          // 2、让盒子消失
+          this.isShow = false;
+          this.str = item;
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

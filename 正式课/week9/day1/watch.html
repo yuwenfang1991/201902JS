@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <i v-show="false">{{name2}}</i>
+        <!-- 
+            v-show 都加载 控制的是显示 隐藏
+            v-if 整个不加载
+            需要频繁切换的 我们最好用  v-show
+            不用切换的 最好用 v-if 
+        -->
+    </div>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"hello world"
+        },
+        computed: {
+            name2() {
+                // 变量name2 依赖于this.name
+                // 只要name 发生改变 就会触发该函数
+                console.log(222);
+                return this.name + '666'
+            }
+        },
+        watch: {
+            name() {
+                // 监听data中的 name 属性;
+                // 只要name 发生改变, 就会触发该函数
+                console.log(111);
+                setTimeout(() => {
+                    console.log(666);
+                    
+                }, 1000);
+                
+            }
+        },
+    })
+</script>
+</body>
+</html>

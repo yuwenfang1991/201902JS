@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid palevioletred;
+            background: sandybrown;
+            color: aqua;
+            margin: 30px auto;
+        }
+
+        .box::after {
+            content: "珠峰";
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">我是box</div>
+    <a href="javascript:;" id="lin" class="lin">hello world</a>
+    <script>
+        const box = document.getElementById('box');
+        // const lin = document.getElementById('lin');
+        //ele.style 获取或设置行内样式
+        // console.log(box.style.width);
+        // box.style.height = '500px';
+        // 1. ele.style(可读可写) 只能获取或设置行内样式
+        // 2. window.getComputedStyle() (只读)
+        // 获取最终经过浏览器计算后的样式(最终渲染到页面后的样式)
+        // 语法
+        // window.getComputedStyle(元素对象,伪类)
+        // 如果用不到伪类,就设为null
+        // window.getComputedStyle(元素对象,null)
+        const styles = window.getComputedStyle(box, null);
+        console.log(styles.width);
+        // console.log(styles.marginTop); // 30px
+        // console.log(styles['margin-top']); // 30px
+        
+        // styles返回值 包含当前元素所有的样式,这个对象是CSSStyleDeclaration的一个实例对象
+        // 获取伪类样式
+        // const styles = window.getComputedStyle(box, "link");
+        // console.log(styles['content'],'\n',styles);
+        // window.getComputedStyle() IE低版本不支持
+        // IE6-8
+        // window上是没有 getComputedStyle() 这个属性方法
+        // IE下用 元素.currentStyle['样式属性'] IE中元素独有
+        // 只能用 元素.currentStyle['样式属性'] 获取样式
+        // console.log(box.currentStyle);
+        
+        // 获取样式
+        // ele.style 获取行内样式
+        // window.getComputedStyle() IE6-8不支持
+        // ele.currentStyle IE独有的 只读的 
+        
+    </script>
+</body>
+
+</html>

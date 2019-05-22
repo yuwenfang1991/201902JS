@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            position:absolute;
+            top:0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <script src="utils.js"></script>
+    <script>
+        const { win, css } = window._utils;
+        const box = document.getElementById('box');
+        // 最大left
+        // 目标值
+        const target = win('clientWidth') - box.offsetWidth;
+        // console.log(box.offsetWidth);
+        const step = 17;
+        let curLeft = css(box, 'left');
+        console.log(box, 'left', 120);
+        
+        const timer = setInterval(() => {
+            // console.log(curLeft);
+            curLeft += step;
+            // console.log(curLeft);
+            if (curLeft >= target) {
+                css(box, 'left', target);
+                clearInterval(timer);
+                return;
+            }
+            css(box, 'left', curLeft);
+        },15);
+    </script>
+</body>
+</html>

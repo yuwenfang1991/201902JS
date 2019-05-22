@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>{{name2}}</h2>
+        <input type="text" v-model="name">
+        <i>{{name3}}</i>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+            computed: {
+                name2() {
+                    // 挂载到了vm实例上
+                    // this是当前实例 
+                    // 也不能重名(methods data)
+                    // 当该函数的依赖发生改变的时候 会执行该函数
+                    // 依赖: 函数用到哪些属性 就是 依赖哪些属性
+                    // name2 在页面上展示出来的值 是该函数的返回值
+                    // console.log(this.name);
+                    return this.name + '哈哈哈';
+                },
+
+                name3: {
+                    // 这种是计算属性的全写方式
+                    // 简写方式 只是相当于写了一个get 但没有set
+                    // 凡是 涉及到 需要给 某个计算属性赋值时; 一定要写set函数
+                    get() {
+                        // 使用 name3时 会触发该函数
+                        // 该函数中使用了哪个属性 就是依赖于哪个属性
+                        console.log('get');
+                        return this.name + 'name3';
+                    },
+                    set(val) {
+                        // 设置 name3时 会触发该函数
+                        console.log('set:', val);
+                        this.name = val;
+
+                    }
+                }
+            },
+        })
+
+    // 京东购物车的全选功能 和 总价功能 改成计算属性的方式
+    </script>
+</body>
+
+</html>

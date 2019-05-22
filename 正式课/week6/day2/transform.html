@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 500px;
+            height: 350px;
+            margin: 100px auto;
+            background: gold;
+        }
+        
+        
+        .box1 {
+            width: 400px;
+            height: 250px;
+            margin: 100px auto;
+            background: aquamarine;
+            transition: all 2s linear;
+            /* transform-origin: left bottom; */
+            position: relative;
+
+        }
+        
+        div:hover .box1 {
+            /* transform: skewX(30deg); */
+            /* transform: scale(0.5); */
+            transform: translate(-30px, -60px);
+        }
+        .qq{
+            position: absolute;
+            left: 50%;/* 父盒子宽度的50% */
+            transform: translateX(-50%);/* 自己的宽度的50% */
+            width: 100px;
+            height: 100px;
+            background: violet;
+            /* JS 中的offsetLeft 不会包含translate的移动 */
+            /* offsetLeft 在 table中的 bug */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="box1">
+            <div class="qq"></div>
+        </div>
+    </div>
+</body>
+
+</html>

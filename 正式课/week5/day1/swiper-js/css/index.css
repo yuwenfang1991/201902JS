@@ -1,0 +1,77 @@
+.container {
+    position: relative;
+    width: 700px;
+    height: 300px;
+    margin: 30px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 3500px;
+    height: 100%;
+}
+
+.wrapper>img {
+    display: block;
+    width: 700px;
+    height: 100%;
+}
+
+.container .left, 
+.container .right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 35px;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+}
+.container .left {
+    left: 5px;
+}
+.container .right {
+    right: 5px;
+}
+.container:hover .left,
+.container:hover .right {
+    display: block;
+}
+
+.container .focus {
+    position: absolute;
+    /* display: flex; */
+    bottom: 10px;
+    left: 50%;
+    font-size: 0;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, .5);
+    border-radius: 12px;
+    padding: 3px 5px;
+
+}
+
+.container .focus span {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 1px;
+    cursor: pointer;
+}
+
+.container .focus span.active {
+    background-color: orangered;
+}

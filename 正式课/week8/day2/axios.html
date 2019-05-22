@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // axios : get(url,{params:{}}); post(url,{}) 
+
+        // 请求拦截 所有的axios请求发送之前会被拦截一次
+        // 响应拦截 所有的axios响应时, 在then 接收之前可以被统一拦截一次
+        // axios.defaults.baseURL 设置默认请求路径
+        // axios 的post请求发给后台 的数据格式默认是JSON 字符串
+        //  fetch
+        // get传参放到 url后边, post传参 body属性
+        /* fetch(url,{
+            method:'post'
+            body:'a=12&b=13'
+        }).then((data)=> {
+            return data.data.json()
+        }).then((data)=>{
+           console.log(data);
+        })
+
+         */
+    </script>
+</body>
+</html>

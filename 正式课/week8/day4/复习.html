@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <input type="text" v-model='name2'>
+    <h1>{{name}}</h1>
+    <h2 v-text='name2' v-once></h2>
+
+    <h2 v-html='name2'></h2>
+    <i>name2:{{obj.name2}}</i> -->
+    <!-- 在vue的模板中 不会出现 undefined, 当是undefined时,显示的是空字符串 -->
+    <div>{{ary}}</div>
+    <div>{{obj}}</div>
+    <span style="display: none">{{t}}</span>
+    <button @click='fn'>按钮1</button>
+    <button @click='fn()'>按钮2</button>
+    <button @click='fn(123)'>按钮3</button>
+    <button @click='fn($event, 123)'>按钮4</button>
+
+    <h2>你点击了{{count}}次</h2>
+    <button @click='add'>累加</button>
+    <button @click='count++'>累加2</button>
+  </div>
+  <script>
+    /*
+      new Vue({
+        对象中的函数名都是vue 规定的
+        el: 规定vue渲染的模板 
+        template: 指定渲染模板 一般不用写
+        data: { vue变量 }
+        methods:{ vue实例中的函数 }
+        指令: vue规定的一些元素的行内属性 都是v-开头
+        v-model 表单元素身上 v-model='vue变量'
+        v-text 相当于原生的innerText v-text='vue变量'
+        v-html 相当于原生的 innerHTML v-html='vue变量'
+        v-cloak 解决小胡子的显示问题 结合css [v-cloak]{display:none}
+        v-once 有这个指令的元素 内容只渲染一次
+
+        小胡子语法中可以放置 JS表达式
+
+        数据更新视图
+            1、给对象后增加的属性, 这些属性值的改变不会触发视图的更新
+            2、数组通过索引直接修改某一项 也不会触发视图更新
+            3、通过数组的非变异方法修改数组 不会触发视图更新
+        数据改变 触发视图更新的大前提是 数据在页面结构上使用了, 后边才看 有没有get set属性
+
+        事件绑定 v-on:click='fn'
+            简写 @click = 'fn' // 会默认传一个事件对象
+                @click = 'fn()' // 什么都不会传 
+                @click = 'fn(123)' // 传固定实参 
+                @click = 'fn($event,123,123)' // $event 是vue规定的传事件对象
+                  
+        })
+    */
+    let vm = new Vue({
+      // 数据劫持, 在初始化时,会把data中属性都加上 get 和set 属性
+      el: '#app',
+      data: {
+        name: "hello world",
+        name2: '12345',
+        t: 0,
+        obj: {
+          name: 123
+        },
+        ary: [1, 2, 3],
+        count:0
+      },
+      methods: {
+        fn() {
+          // this 是当前vue 实例
+          console.log(arguments);
+        },
+        add() {
+          this.count ++;
+        }
+
+      }
+    })
+
+    // vm.$set(vm.obj,'name2',123);
+
+    // 事件绑定传参
+    // div.onclick = fn.bind(div,'参数')
+  </script>
+</body>
+
+</html>

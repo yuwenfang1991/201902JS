@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        // 页面中的DOM文件资源 都加载完后才执行
+        window.onload = function () { //确保DOM 其他资源成功加载后执行
+            console.log(document.getElementById('title'));
+        }
+    </script>
+</head>
+
+<body>
+    <h3 id="title">页面内容</h3>
+    <img src="http://www.pptok.com/wp-content/uploads/2012/08/xunguang-4.jpg" alt="" id="img">
+   
+
+    
+    <script>
+        const img = document.getElementById('img');
+
+    </script>
+</body>
+
+</html>

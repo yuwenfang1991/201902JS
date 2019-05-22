@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //寄生组合式继承 原型式继承 + 借用构造函数继承 
+        function A() {
+            this.private = '私有属性';
+        }
+        A.prototype.public = '公有属性'
+        // 原型式继承 把父类公有 继承为自己的公有
+        B.prototype = Object.create(A.prototype);
+        B.prototype.constructor = B;
+        console.log(B.prototype.__proto__ === A.prototype);
+        function B() {
+            this.name = 'B的私有';
+            // 借用构造函数继承 把父类的私有属性继承为子类实例的私有属性
+            A.call(this);
+        }
+        let a = new A();
+        let b = new B();
+        console.log(b.private); // 继承过来的私有属性
+        console.log(b.public); // 继承过来的公有属性
+
+    </script>
+</body>
+
+</html>

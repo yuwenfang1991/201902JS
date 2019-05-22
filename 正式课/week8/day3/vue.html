@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 小胡子语法 -->
+    name:{{name}}
+    <input type="text" v-model='name'>
+    <!-- 
+        在vue 中 : 行内属性 v-xxx 我们成为vue指令
+        v-model 是绑定在表单元素身上的行内属性 后边跟着的值 是一个用引号(单双无所谓)包含的字符
+        这个字符是vue的变量(data中的属性)
+        视图通过input框 改变了name的值 name的值改变又重新改变了视图
+     -->
+    </div>
+
+    <div id="app2">
+        {{name}}
+    </div>
+    <script>
+        // 引入了一个 Vue 的类
+        // vue 是一个 渐进式的声明式 的框架
+        // vue 全家桶, 
+        // vue 核心模块 
+        // vue-router 路由
+        // vuex 公用状态管理器
+        // axios ajax请求
+        // 声明式 编程式
+        // for循环 编程式
+        // forEach map ... 声明式
+        let vm = new Vue({
+            // 该对象中的属性名 都是vue规定的;
+            // el: '#app', // el 是指定渲染模板的 不能写html 或者 body
+            // template:'<h1>hello world{{name}}</h1>', // 指定渲染模板
+            // 没有该属性的时候,会把'#app'里面的 DOM结构当做模板
+            // 有的话 就以指定元素结构作为渲染模板,结构中只能有一个根元素
+            data: {
+                // 这里放置的是 渲染模板中要用到的数据
+                // data 中的数据 是被 vue挂载到 vue 实例上了
+                name: '珠峰',
+
+            }
+        }).$mount('#app2');
+        // el 的优先级 高于 $mount
+    </script>
+</body>
+
+</html>

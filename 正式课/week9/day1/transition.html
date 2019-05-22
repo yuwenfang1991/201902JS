@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <style>
+        .myFade-enter {
+            /* xx-enter 刚要显示的时候的样式 */
+            opacity: 0;
+            /* transform: translateX(-300px); */
+            transform: rotateZ(-30deg);
+        }
+
+        .myFade-enter-active {
+            /* 贯穿始终 */
+            transition: all 1s;
+        }
+
+        .myFade-enter-to {
+            /* xx-enter-to 显示之后的样式*/
+            opacity: 1;
+            /* transform: translateX(0); */
+            transform: rotateZ(0)
+        }
+
+        .myFade-leave {
+            opacity: 1;
+            /* transform: translateX(0); */
+            transform: rotateZ(0);
+        }
+
+        .myFade-leave-active {
+            transition: all 1s;
+        }
+
+        .myFade-leave-to {
+            opacity: 0;
+            /* transform: translateX(-300px); */
+            transform: rotateZ(-30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="myFade">
+            <h1 v-show="flag">{{name}}</h1>
+        </transition>
+        <button @click='flag = !flag'>显示/隐藏</button>
+        <transition name="myFade">
+            <h2 v-show="flag">{{name}}</h2>
+        </transition>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                flag: true
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('get','', true);
+        // 同步只会触发一次状态改变 就是变成4的那次
+        // 异步2 3 4 都会触发一次
+        xhr.onreadystatechange = function() {
+            // 状态1 是由open之后变成1的
+            // 状态2/3/4 是由http响应改变的
+            console.log(this.readyState);
+            // xhr.status
+            // 2xx 成功    http 状态码
+            // 301 302 304
+            // 404 405
+            // 5xx
+            
+        }
+        xhr.send();
+
+        // get get head delete
+        // post put option
+
+        // 给后台传参 是根据接口文档来定义的
+        // get 传参 url传参; 大小限制 相对不安全 缓存
+        // post 请求体中传参 大小没有明确限制; 相对安全 没有缓存
+
+    </script>
+</body>
+</html>

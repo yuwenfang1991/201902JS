@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // client 
+        // clientWidth: 内容宽度 + 左右padding
+        // clientHeight: 内容高度 + 上下padding
+        // clientLeft: 左边边框宽度
+        // clientTop: 上边框宽度
+
+        // offset
+        // offsetWidth: clientWidth(内容宽度 + padding) + 左右边框宽度  
+        // offsetHeight: clientHeight(内容高度 + padding) + 上下边框宽度
+
+        // offsetLeft/offsetTop
+        // offsetLeft 左偏移值: 元素的左边框距离 父级参照物左边距离(y轴)
+        // offsetTop 上偏移值: 元素上边框距离 父级参照物上边的距离(x轴)
+        // offsetParent 父级参照物
+
+        // scroll
+        // scrollTop: 纵向滚动条 滚出去的距离
+        // scrollLeft: 横向滚动条 滚出去的距离
+        // 有内容溢出的时候
+        // scrollHeight === clientHeight + scrollTop(最大值)
+        // scrollWidth === clientWidth + scrollLeft(最大值)
+        // 没有内容溢出的时候
+        // scrollHeight === clientHeight
+        // scrollWidth === clientWidth
+
+        // 获取浏览器窗口宽度和高度
+        // document.documentElement.clientWidth || document.body.clientWidth
+        // document.documentElement.clientHeight || document.body.clientHeight
+
+        // 获取浏览器窗口盒模型属性
+        // function win(attr, val) {
+        //     if (typeof val === 'undefined') {
+        //         return document.documentElement[attr] || document.body[attr]
+        //     }
+        //     document.documentElement[attr] = val
+        //     document.body[attr] = val
+        // }
+        // win("scrollTop", val)
+
+        // 获取当前元素距离body 左偏移或上偏移
+
+        // function offset(ele) {
+        //     let left = ele.offsetLeft
+        //     let top = ele.offsetTop
+        //     let parent = ele.offsetParent
+        //     while (parent && parent.nodeName.toLowercase() !== 'body') {
+        //         left += parent.offsetLeft
+        //         top += parent.offsetTop
+        //         parent = parent.offsetParent
+        //     }
+        //     return { left, top }
+        // }
+        // offset(ele)
+    </script>
+</body>
+
+</html>

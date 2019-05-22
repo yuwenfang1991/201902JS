@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <!-- <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">{{name}}</div>
+        <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">{{name}}</div>
+        <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">{{name}}</div>
+        <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">{{name}}</div>
+        <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">{{name}}</div> 
+        <div v-if="name.length > 2" style="font-size: 22px; color:aqua;">
+            <div v-for="(item, index) in 5" :key="index">{{name}}</div>
+        </div> -->
+
+        <!-- 可以使用 template标签 整体包含一部分元素 -->
+        <!-- <template v-if="name.length > 5">
+            <div v-for="(item, index) in 5" :key="index" style="font-size: 22px; color:palegreen;">{{name}}</div>
+        </template> -->
+
+
+        <!-- <span></span> v-if 和 另外两个指令(v-else-if v-else)之间 不能有其他元素-->
+        <!-- <div v-else-if="name.length == 2" style="font-size: 26px; color: orange;">{{name}}</div>
+        <div v-else style="font-size: 18px; color:rgb(255, 72, 0);">{{name}}</div> -->
+
+        <template v-if="flag">
+            <span>请输入姓名:</span>
+            <input type="text" key=12>
+        </template>
+        <template v-else>
+            <span>请输入邮箱:</span>
+            <input type="text" key=13>
+        </template>
+        <!-- 若展示的是输入姓名; 则按钮展示的文本是 "我要输入邮箱" -->
+        <!-- 若展示的是输入 邮箱; 则按钮展示的文本是 "我要输入姓名" -->
+
+        <button @click="flag = !flag">{{text}}</button>
+        <button @click="fn">{{text}}</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                flag: true
+            },
+
+            computed: {
+                text() {
+                    return this.flag ?  '我要输入邮箱' : '我要输入姓名';
+                }
+            },
+
+            methods: {
+                fn() {
+                    this.flag = !this.flag;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

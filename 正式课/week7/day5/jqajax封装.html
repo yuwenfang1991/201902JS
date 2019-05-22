@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // $.ajax({
+        //     url: 'https://www.souyidai.com/export/invest/p2pData',
+        //     type: 'post',
+        //     data: 'id=123&name=234', // 传给后台的数据
+        //     async: true, // 同步异步
+        //     cache: true, // 是否走缓存
+        //     success: function (data) {
+        //         console.log(data);
+
+        //     },
+        //     error: function () {
+
+        //     }
+        // })
+        // 目的是封装一个ajax 函数实现下方的功能
+
+        /*
+         * url
+         * type
+         * async
+         * cache
+         * success:
+         * error
+         */
+
+        function ajax(options) {
+            let {
+                url, // url 是路径
+                type = 'GET', // 请求类型
+                data = {}, // 发给后台的数据
+                async = true, // 是否同异步
+                cache = false, // 是否走缓存
+                success, // 成功的回调
+                error  // 失败的回调
+            } = options; // 使用解构赋值 方便赋默认值
+            // 对于 data 属性的处理 若是get 则拼接到 url后边, 若是post 则放到 send() 里面
+
+            let str = '';
+            if (typeof (data) === "object") {
+                for (const k in data) {
+                    if (data.hasOwnProperty(k)) {
+                        str += `${k}=${data[k]}&`;
+                    }
+                }
+                str = str.replace(/&$/, '');
+            } else {
+                str += data;
+            }
+
+
+            if (type.toLowerCase() === 'get') {
+                // 拼接之前 先判断url 上 是否有问号 若有的话 就补一个&; 若没有补一个 问号
+                if (url.includes('?')) {
+                    url = url + '&' + str;
+                } else {
+                    url = url + '?' + str;
+                }
+
+                // 判断是否走缓存 只有get 才需要判断是否走缓存
+                if (!cache) {
+                    url += '&_=' + Math.random();
+                }
+            }
+
+
+
+            let xhr = new XMLHttpRequest();
+
+            xhr.open(type, url, async);
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && /2\d{2}|304/.test(this.status)) {
+                    // 请求成功 接下来让 success 执行
+                    let str = xhr.responseText; // json 字符串
+                    // let obj = JSON.parse(str);  // 把json 字符串 转成对象
+                    let obj = null;
+                    try {
+                        obj = JSON.parse(str);
+                    } catch (error) {
+                        obj = xhr;
+                    }
+                    success && success(obj); // success 存在 才会执行后边的代码
+                } else if (this.readyState === 4 && /[45]\d{2}/.test(this.status)) {
+                    error && error(xhr); // error 函数存在 才会执行后边的代码
+                }
+            }
+            xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded; charset = utf-8');
+            xhr.send(str); // str 是拼接好的字符串 因为get请求 在这里写参数没有用, 不会给后台发数据
+            // 所以这个判断就可以省略
+        }
+
+        ajax({
+            url: 'https://www.souyidai.com/export/invest/p2pData',
+            type: 'post',
+            data: 'id=123&name=234'
+
+        })
+    </script>
+</body>
+
+</html>

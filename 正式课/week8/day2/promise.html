@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        let p1 = new Promise(function (res, rej) {
+            $.ajax({
+                url: 'https://f.3.cn/index-floor-scene?argv=coupon&',
+                dataType: 'jsonp',
+                jsonp: 'callback',
+                success: function (data) {
+                    res(data);
+
+                },
+                error: function (err) {
+                    rej(err);
+                }
+
+            });
+        });
+
+        p1.then((data) => {
+            console.log(data);
+
+        }).catch((err) => {
+            console.log(err);
+
+        });
+
+        /* Promise.all([一个一个的Promise实例]).then(()=>{ 
+            所有的实例都成功之后触发该函数; data也是一个数组,数组中的每一项对应参数中的数组中的实例 
+        }).catch(()=> {
+            只要有一个失败 就会走该函数
+        }); */
+        /* 
+        Promise.race([一个一个的Promise实例]).then(()=>{
+            第一个完成的 并且是成功的状态 才会执行该函数
+        }).catch(()=> {
+            第一个完成的请求失败的状态 就会走该函数
+        }); 
+        */
+
+        // 基于Promise封装 ajax
+
+        // 四步, 返回值必须是一个Promise实例
+        function PromiseAjax(options) {
+            let {
+                method = 'GET',
+                url,
+                data = {},
+                async = true,
+                cache = false
+            } = options;
+
+            let str = '';
+            if(typeof data === "object") {
+                for (const key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        str += `${k}=${data[key]}&`;
+                    }
+                }
+                str = str.replace(/&$/,'');
+            } else {
+                str += data;
+            }
+
+            if(method.toLowerCase() == 'get') {
+                if(url.includes('?')) {
+                    url += "&"+str;
+                } else {
+                    url += '?' + str;
+                }
+
+                if(!cache) {
+                    url += "&_"+Math.random();
+                }
+            }
+
+
+
+            return new Promise(function (res, rej) {
+                let xhr = new XMLHttpRequest();
+                xhr.open(method, url, async);
+                xhr.onreadystatechange = function () {
+                    if (this.readyState === 4) {
+                        if (/2\d{2}|304/.test(this.status)) {
+                            let str = this.response;
+                            let obj = null;
+                            try {
+                                obj = JSON.parse(str);
+                            } catch (error) {
+                                obj = this;
+                            }
+                            res(obj);
+                        } else if(/[45]\d{2}/.test(this.status)) {
+                            rej(this)
+                        }
+                    }
+
+                }
+                xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+                xhr.send(str);
+            })
+        }
+
+        // class FN{
+        //     constructor() {
+        //         // 私有属性 this.xxx = xxx;
+        //     }
+
+        //     f() {
+        //         // 公有属性
+        //     }
+
+        //     static f() {
+        //         // 静态属性
+        //     }
+        // }
+
+        // class FN2 extends FN {
+        //     constructor () {
+        //         super();
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

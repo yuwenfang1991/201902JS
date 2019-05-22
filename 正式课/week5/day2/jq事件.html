@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">点击</button>
+    <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // $btn 标识这是一个jq对象(jQuery实例)
+            const $btn = $('#btn');
+            // 回调函数: 把一个函数作为一个参数 传入到另一个函数里面执行
+            //     $btn.on('click', function(){
+            //         console.log('click');
+            //     }).click(click2);
+            //     function click2() {
+            //         console.log('click2'); 
+            //     }
+            //     $btn.off('click', click2)
+            // })
+
+            $btn.one('click', function () {
+                console.log('one');
+            });
+        })
+        // 绑定点击事件 on('事件名称',事件函数)
+        // 移除事件 off('事件名称'[, 事件函数])
+        // one 一次性事件
+    </script>
+</body>
+
+</html>

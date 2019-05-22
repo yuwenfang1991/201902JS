@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 局部刷新 全局刷新
+        // async javascript and xml
+        // ajax
+        // ajax的四步
+        // 创建ajax 实例
+        let xhr = new XMLHttpRequest();
+        // 执行open 方法 确定 要访问的链接 以及同步异步
+        xhr.open('GET', './json.json', true);   
+        // 监听请求状态
+        xhr.onreadystatechange = function() {
+            // if(xhr.readyState === 4 && /2\d{2}/.test(xhr.status)) {
+            //     console.log(xhr);
+                
+            // }
+            console.log(xhr);
+            
+        }
+        // 发送请求
+        xhr.send();
+        // readyState open函数执行之后变成1 
+        // 2 3 4 都是http请求重置的
+
+        // DONE: 4 接收完成之后
+        // HEADERS_RECEIVED: 2 接收响应头之后 变成 2
+        // LOADING: 3  正在接收响应体(Response)
+        // OPENED: 1  open 函数执行之后
+
+        // status: http 状态码 
+        // 1xx 未确定的一个状态
+        // 2xx 代表请求成功 
+        
+        // 301 永久重定向
+        // 302 临时重定向
+        // 304 走缓存 服务器接收到请求之后 发现 本次需要返回的数据跟上次一样; 则直接返回304
+        // 404 路径错误
+        // 405 请求方法错误, 后台要求get 你用了post
+        // 5xx 都是后台的服务问题; 
+
+        // 接口文档 前后端约定的一个协议
+    </script>
+</body>
+</html>

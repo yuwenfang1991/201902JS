@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{name}}</h1>
+    <p>这本书的价格是${{(money/100).toFixed(2)}}</p>
+    <p>这本书的价格是${{(money/100).toFixed(2)}}</p>
+    <p>这本书的价格是${{money|myMoney(3)}}</p>
+    <i>名字{{123|myName|myName}}</i>
+    <!-- 123|myName  ==> 珠峰123 -->
+    <!-- 珠峰123|myName ==> 珠峰珠峰123 -->
+    <!-- 
+          我们把 | 称为管道符; 管道符后边跟着的是 一个过滤器;
+          当前位置展示的是 过滤器 返回值; 过滤器的回调函数第一项实参就是管道符前边的值
+        -->
+  </div>
+  <script>
+    // 全局过滤器 私有过滤器
+    // Vue.filter('过滤器名',回调函数) // 回调函数的第一个实参 是管道符前边的那个值
+    // 最终展示出来的是 过滤器的 返回值
+    // 过滤器使用时 可以传参数 但是传进来的参数位于 val(管道符前边的值)的后边
+    Vue.filter('myName', function (val) {
+      // console.log(arguments);
+      // return 'hello'
+      return '珠峰' + val
+
+    })
+
+    // n = 2; 相当于 n = n || 2
+    Vue.filter('myMoney', function (val, n = 2) {
+      console.log(arguments);
+
+      return (val / 100).toFixed(n);
+    });
+
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: "hello world",
+        money: 12300
+      },
+      filters: {
+        zf(val) {
+          return 'zf' + val
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

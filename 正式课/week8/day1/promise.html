@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let p1 = new Promise(function (res, rej) {
+            setTimeout(() => {
+                res(123);
+            }, 2000);
+        });
+
+        // pending resolved rejected 
+        p1.then((data) => {
+
+        }).then((data) => {
+
+        }).catch((err) => {
+            // catch 会捕获上边的未捕获到的异常信息
+        });
+
+        // Promise.all([都是Promise实例])
+
+        let p2 = new Promise(function (res, rej) {
+            // 该函数(实参)是同步执行的
+            setTimeout(() => {
+                res(123);
+            }, 3000);
+        })
+
+        let p3 = new Promise(function (res, rej) {
+            setTimeout(() => {
+                res(234);
+            }, 5000);
+        })
+
+        let p4 = new Promise(function (res, rej) {
+            setTimeout(() => {
+                res(456);
+            }, 6000);
+        })
+
+        Promise.all([p2, p3, p4]).then((data) => {
+            // all 是在当所有的Promise 实例都完成之后才会执行,
+            // data 也是一个数组;数组中的值对应 各自的Promise执行结果
+            console.log(data);
+
+        }).catch((err) => {
+            // 数组中只要有一个走失败了; 那么就会走到该函数
+            console.log(err);
+
+        })
+
+        // Promise.race  赛跑
+
+        Promise.race([p2, p3, p4]).then((data) => {
+            // race 参数跟 all保持一致 它是当第一个实例完成之后就会执行后边的then 回调 
+            // 把ajax和定时器放在一起 在请求超时的 处理
+            // 类似于Promise.all(), 区别在于 它有任意一个返回成功后，就算完成，但是 进程不会立即停止
+            // 常见使用场景：把异步操作和定时器放到一起，如果定时器先触发，认为超时，告知用户
+            console.log(data);
+
+        }).catch((err) => {
+            // 数组中只要有一个走失败了; 那么就会走到该函数
+            console.log(err);
+
+        })
+
+        // 对Promise有哪些了解
+        // Promise 是ES6 新增的类; 在使用的时候 我们可以new 一个Promise实例
+        // new 时传递的参数是一个函数体f, f有两个形参; 分别是成功的回调resolve 和失败的回调 reject
+        // 具体是执行成功函数 还是失败函数 都根据自己的业务逻辑来判断
+        // res rej 对应的 函数函数体 就是第一个 then中的两个实参
+        // then 中可以有两个回调函数, 也可以只有一个; 只有一个时 我们可以同 catch这个方法来对应
+        // 上边的rej函数; catch 函数是能捕获上边所有的异常
+        // all race 这两个是Promise 的静态方法; 两个函数的实参都是一个数组,
+        // 数组中存放的都是 Promise 实例;
+        // 数组中存放的都是 Promise 实例
+        // all 数组中的 所有的实例都执行成功之后, 才会触发后边then中的成功回调
+        // 只要有一个失败, 就会走失败的回调
+        // race 数组中的一个实例执行完成就会触发后边的回调; 具体走成功还是失败,
+        // 需要根据第一个实例的执行结果
+
+        // promise存在的问题
+        // promise一旦执行，无法中途取消
+        // promise的错误无法在外部被捕捉到，只能在内部进行预判处理
+        // promise的内如何执行，监测起来很难
+
+
+    </script>
+</body>
+
+</html>

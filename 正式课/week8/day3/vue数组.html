@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div class="app">
+        {{ary}}
+    </div>
+    <script>
+        let vm = new Vue({
+            el:'.app',
+            data:{
+                ary:[1,2,3,4,5]
+            }
+        });
+
+        // vm.ary.pop();
+        // 1、  let arr = vm.ary.slice();
+        //      arr[0] = 100;
+        //      vm.ary = arr;
+        
+        // 2、vm.ary.splice(0,1,100);
+
+        // 3、自定义属性的方式
+        
+        // 对于数组来说 只有 pop push shift unshift reverse sort splice
+        // 原生的自带的 改变原有数组的方法
+        // 这些数组变异的方法 可以触发视图的更新
+        // 数组中直接改变数组中的项 是不会触发 视图更新的
+
+        /**
+         *  改变数据不触发视图更新的操作
+         *  大前提: 在页面结构中使用过
+         *  1、给已有对象添加一个属性
+         *  2、通过非变异函数 改变数组的方式
+         *  3、直接通过索引更改 对应的值
+         *  通用方式是: 加一个 无关属性 t
+        */
+    </script>
+</body>
+</html>

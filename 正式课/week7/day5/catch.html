@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise(function (res,rej) {
+            setTimeout(()=> {
+                res({name:123})
+            },3000);
+        });  
+        p.then((data)=>{
+            console.log(data);
+            
+        }).then((data)=> {
+            console.log(data2);
+            
+        }).catch((err)=>{
+            // 失败会调用的函数
+            // 捕获上边任何 
+            console.log(err);
+            
+        })
+
+        Promise.all();
+        class fn{
+            constructor(a) {
+                this.a = a;
+                // 私有属性
+            }
+            static f() {
+                // 静态属性: 是在 把该类当做对象存起来的
+                // 是在Fn自己身上存着的
+            }
+            f2() {}
+        }
+
+        class Fn2 extends Fn{
+            // Fn2 继承 Fn
+            // 把Fn实例的私有属性变成 Fn2实例的私有属性‘
+            // 把Fn实例的共有属性变成 Fn2实例的共有属性 
+            // 把Fn的静态方法变成 Fn2的静态方法
+            constructor() {
+                // 写了constructor 必写 super
+                super(10); // super 就是Fn的 constructor
+                // 相当于在这写了一个 this.a = 10
+                this.b = b;
+            }
+        }
+        let fn = new Fn(2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 面向对象 三大要素 (类 实例)
+        // 继承 子类继承父类
+        // 封装 原型方法 实例属性方法
+        // 多态(重写 重载) 
+        // 继承:两个类 A B, 想让B类的实例 使用A类上的属性和方法
+        // B类继承 A类
+        // A类 称为父类 Super(超类) B类称为子类 Sub
+        function A() {
+            
+        }
+        A.prototype.say = () => {console.log('hi hello')};
+
+        function B() {
+            
+        }
+        const b = new B();
+        // B类的实例想
+        console.log(b.say);
+        
+    </script>
+</body>
+</html>

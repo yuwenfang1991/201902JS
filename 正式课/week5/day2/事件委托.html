@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            width: 600px;
+            height: 600px;
+            margin: 30px auto;
+            border: 1px solid red;
+            font-size: 18px;
+            text-align: center;
+            list-style: none;
+        }
+
+        #list li {
+            color: #ffffff;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #list li:nth-child(odd) {
+            background: darkgoldenrod;
+        }
+
+        #list li:nth-child(even) {
+            background: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>习近平检阅中国人民解放军海军仪仗队item1</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item2</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item3</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item4</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item5</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item6</li>
+    </ul>
+    <script>
+        const list = document.querySelector('#list');
+        const lists = document.querySelectorAll('#list > li');
+        // 点击哪个li 就弹出哪个li的文本内容
+        // 一个一个绑定点击事件
+        // for(let i = 0; i < lists.length; i++) {
+        //     lists[i].onclick = function() {
+        //         alert(this.innerHTML);
+        //     }
+        // }
+        list.onclick = function(event) {
+            // console.log('ul',event.target); // 目标元素
+            // console.log(event.target.innerHTML);
+            const { target } = event;
+            // 根据事件源的tagName来区分 当前是哪个元素
+            if(target.tagName.toLowerCase() === 'li') {
+                alert(target.innerHTML);
+            }
+            
+        }
+        // 事件委托:利用事件冒泡传播的机制,给里面每个子元素绑定相同的事件行为时,绑定给它们共同的上级元素,在上级元素中利用event.target来判断 当前点击元素是谁
+        // 利用事件委托 比我们一个一个绑定点击事件效率很高
+        // 有什么好处(数据绑定 加载更多时)
+    </script>
+</body>
+
+</html>

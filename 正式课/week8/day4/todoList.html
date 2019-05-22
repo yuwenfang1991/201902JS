@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div class="app">
+    <input type="text" v-model="todo" @keydown.enter='fn'>
+    <ul>
+      <li v-for="(item, index) in ary" :key="index">
+        <!-- 
+          按键修饰符
+          @keyup.13='fn' 只有按键的keyCode==13的时候才会触发该函数fn
+          @keyup.enter ='fn' vue对于特殊的几个按键做了专门的处理
+          space enter left up right down tab delete(捕获"删除"和"退格键")
+         -->
+        {{item.todo}}--------{{item.time}}
+        <button @click='del(index)'>删除</button>
+      </li>
+    </ul>
+
+    <input type="text" @keydown.q ='fn2'>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '.app',
+      data: {
+        todo: '',
+        ary: []
+      },
+      methods: {
+        fn2() {
+          console.log(123);
+          
+        },
+        fn(e) {
+          //若按下是回车键， 把todo 的内容添加到一个数组中
+          // li 循环展示 该数组 即可
+          if(!this.todo) return; // 防止输入为空
+          // if (e.keyCode === 13) {
+            // this.ary.push(this.todo);
+            // this.todo = ''; // 清空input框
+            let obj = {
+              time:new Date().toDateString(),
+              todo:this.todo
+            }
+            this.ary.push(obj);
+            this.todo = ''
+          // }
+
+        },
+        del(n) {
+          // n 就是要删除的那一项的索引
+          // this.ary.splice(n, 1); // splice删除
+          this.ary = this.ary.filter((item, index)=>{
+            // 返回若是true 则把 item当前项 复制一份放到新数组中
+            // filter 的返回值是一个新数组
+            return index != n;
+          })
+        }
+
+      },
+
+    });
+  </script>
+</body>
+
+</html>

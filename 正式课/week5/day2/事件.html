@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: darkorange;
+        }
+        #input{
+            width: 50%;
+            height: 50%;
+            border: 2px solid darkorange;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="box"></div> -->
+    <input type="text" id="input">
+    <script>
+        // 事件:一些相关的浏览器行为
+        // 元素
+        const box = document.getElementById('box');
+        const input = document.getElementById('input');
+        // console.dir(box);
+        // 如何绑定事件
+        // 元素.事件名称 = 事件处理函数
+        // box.onclick = function () {
+        //     // 点击事件触发时,就会执行这个函数
+        //     console.log('点我点我');
+        // } 
+
+        // 后面的会把前面的覆盖掉
+        // box.onclick = function() {
+        //     console.log('我是老张');
+        // }
+
+        // function say() {
+        //     console.log('hello 老张');
+        //     return function() {
+        //         console.log('内部函数');
+        //     }
+        // }
+        // box.onclick = say;
+        // box.onclick = say();
+
+        // box.ondblclick = function() {
+        //     console.log('双击');
+        // }
+        // box.onclick = function() {
+        //     console.log('单击');
+        // }
+        
+        // 鼠标滑入
+        // box.onmouseover = function() {
+        //     console.log('鼠标滑入');
+        // }
+        // // 鼠标滑出
+        // box.onmouseout = function() {
+        //     console.log('鼠标滑出');
+        // }
+        // 鼠标滑入
+        // box.onmouseenter = function() {
+        //     console.log('鼠标滑入');
+        // }
+        // // 鼠标滑出
+        // box.onmouseleave = function() {
+        //     console.log('鼠标离开');
+        // }
+        
+        // 鼠标移动事件
+        // box.onmousemove = function() {
+        //     console.log('鼠标移动');
+        // }
+        
+        // 鼠标滚轮事件
+        // window.onmousewheel = function() {
+        //     console.log('滚轮事件');
+        // }
+        
+        // 需要记住的鼠标事件 onmouseover onmouseout onmouseenter onmouseleave onmousemove
+        
+        // onchange 改变内容并且失去焦点时触发
+        // input.onchange = function() {
+        //     console.log('onchange');
+        // }
+        
+        // oninput 输入事件
+        // input.oninput = function() {
+        //     console.log(this.value); // 获取表单内容
+        // }
+
+        // onfocus 获取光标焦点
+        // input.onfocus = function() {
+        //     console.log('获取焦点');
+        // }
+        // onblur 失去光标焦点
+        // input.onblur = function() {
+        //     console.log('失去焦点');
+        // }
+
+        // input.onchange = function() {
+        //     console.log('onchange');
+        // }
+        
+        // onkeydown 键盘按下事件
+        // input.onkeydown = function() {
+        //     console.log('onkeydown');
+        // }
+        
+        // onkeyup 键盘按下抬起事件
+        // input.onkeyup = function() {
+        //     console.log('键盘按下抬起事件');
+        // }
+        
+        // 
+        input.onkeypress = function() {
+            console.log('press');
+        }
+        // 常用的事件
+        // onclick ondblclick(双击)
+        // 滑入/滑出 onmouseover/onmouseout onmouseenter/onmouseleave
+        // 鼠标按下 移动 松开 右键按下
+        // onmousedown onmouseup onmousemove oncontextmenu
+        // 表单事件 onchange(表单内容改变) oninput(实时输入时) onfocus(获取焦点) onblur(失去焦点) onsubmit(提交表单事件)
+        // onscroll 滚动条滚动事件
+        // onload 加载成功事件
+        // ajax状态码 0 1 2 3 4 xhr.readystatechange === 4 (响应数据可以正常使用)
+        // onreadystatechange ajax状态改变事件
+        // 键盘 onkeydown onkeyup
+
+        // 类似于 onmousedown onmousemove onmouseup
+        // 移动事件 touchstart touchmove touchend
+        
+    </script>
+</body>
+</html>

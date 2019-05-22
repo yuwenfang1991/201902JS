@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 原型链继承 + 借用构造函数继承
+        // 原型链继承负责 将父类公有和私有 都继承为子类的共有属性
+        // 借用构造函数继承 负责将父类私有 继承为子类的私有属性
+        // 缺点
+        // 1.会把父类的私有继承过来两份 一份作为自己的私有 一份作为自己的公有
+        // 2.继承时,调用了两次父类
+
+        function A() {
+            this.a = '私有';
+        }
+        A.prototype.text = '共有';
+        // 原型链继承 负责继承共有
+        B.prototype = new A();
+        B.prototype.constructor = B;
+        function B() {
+            // 借用构造函数继承 负责继承私有
+            A.call(this);
+        }
+        let b = new B();
+        // text属性 利用原型链继承 从父类继承过来的共有属性
+        console.log(b.text); // '共有' 
+        // a属性是利用借用构造函数 从父类继承过来的私有属性   
+        console.log(b.a); // '私有'
+            
+    </script>
+</body>
+</html>

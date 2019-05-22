@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./css/rest.css" />
+    <link rel="stylesheet" href="css/index.css">
+    <!-- <style>
+      .container {
+        position: relative;
+        width: 700px;
+        height: 300px;
+        margin: 30px auto;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        width: 3500px;
+        height: 300px;
+      }
+
+      .wrapper > img {
+        display: block;
+        width: 700px;
+      }
+
+      .focus {
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 3px;
+        border-radius: 8px;
+      }
+
+      .focus span {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #ffffff;
+        margin: 0 3px;
+        cursor: pointer;
+      }
+
+      .focus span.active {
+        background-color: orange;
+      }
+
+      .container .left, .container .right {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 30px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 35px;
+        font-weight: 100;
+        color: #ffffff;
+        background: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+      }
+
+      .container .left {
+        left: 5px;
+      }
+
+      .container .right {
+        right: 5px;
+      }
+    </style> -->
+  </head>
+  <body>
+    <!-- 轮播窗口 -->
+    <div id="container" class="container">
+      <!-- 轮播容器 -->
+      <div class="wrapper">
+        <!-- <img src="./image/1.jpg" alt="" />
+        <img src="./image/2.jpg" alt="" />
+        <img src="./image/3.jpg" alt="" />
+        <img src="./image/4.jpg" alt="" />
+        <img src="./image/1.jpg" alt="" /> -->
+      </div>
+      <!-- 轮播焦点(分页器) -->
+      <div class="focus">
+        <!-- <span class="active"></span>
+        <span></span>
+        <span></span>
+        <span></span> -->
+      </div>
+      <!-- 左右切换 -->
+      <a class="left" href="javascript:;"> < </a>
+      <a class="right" href="javascript:;"> > </a>
+    </div>
+    <script src="./js/utils.js"></script>
+    <script src="./js/animate.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

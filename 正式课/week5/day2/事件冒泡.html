@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .outer{
+            box-sizing: border-box;
+            width: 500px;
+            height: 500px;
+            background: salmon;
+            margin: 50px auto;
+            padding: 50px;
+            font-size: 18px;
+            color: aliceblue;
+        }
+        .inner {
+            width: 400px;
+            height: 400px;
+            background: darkkhaki;
+            font-size: 20px;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer" class="outer">
+        outer
+        <div id="inner" class="inner">inner</div>
+    </div>
+    <script>
+        // 事件冒泡: 从里层到外层 当前元素的相关行为(click)触发 也会导致它所有的上级元素的相关事件行为触发 一直到window为止 
+        const outer = document.getElementById('outer');
+        const inner = document.getElementById('inner');
+        // 从当前元素开始 往外冒泡
+        inner.onclick = function() {
+            console.log('inner');
+        }
+        outer.onclick = function() {
+            console.log('outer'); 
+        }
+        document.body.onclick = function() {
+            console.log('body');
+        }
+        document.documentElement.onclick = function() {
+            console.log('documentElement');
+        }
+        document.onclick = function() {
+            console.log('document');
+        }
+        window.onclick = function() {
+            console.log('window');
+            
+        }
+    </script>
+</body>
+</html>

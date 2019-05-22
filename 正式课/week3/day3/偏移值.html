@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .outer {
+            position: absolute;
+            top: 150px;
+            left: 100px;
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            border: 10px solid blueviolet;
+            background-color: aqua;
+        }
+
+        .inner {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 300px;
+            height: 300px;
+            border: 10px solid salmon;
+            background-color: lightseagreen;
+            margin: 100px auto;
+        }
+
+        .center {
+            width: 200px;
+            height: 200px;
+            border: 5px solid lightpink;
+            background-color: palegreen;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer" id="outer">
+        <div class="inner" id="inner">
+            <div class="center" id="center"></div>
+        </div>
+    </div>
+    <script>
+        const outer = document.getElementById('outer');
+        const inner = document.getElementById('inner');
+        const center = document.getElementById('center');
+        // offsetLeft/offsetTop
+        // offsetLeft 左偏移值: 元素的左边框距离 父级参照物左边距离(y轴)
+        // offsetTop 上偏移值: 元素上边框距离 父级参照物上边的距离(x轴)
+        // offsetParent 父级参照物
+        // 父级参照物是可以修改的通过position:absolute/relative/fixed
+        // console.log(inner.offsetLeft); // 100
+        // console.log(inner.offsetTop); // 200
+        // 标准浏览器里 父级参照物 默认是body
+        // console.log(inner.offsetParent); // body
+        // center.offsetLeft + center.offsetParent.offsetLeft + center.offsetParent.offsetParent.offsetLeft + center.offsetParent.clientLeft + center.offsetParent.offsetParent.clientLeft;
+        console.log(outer.offsetLeft);
+        
+        // 从当前 元素开始查找父级参照物 一直找到body为止
+        // function offset(ele) {
+        //     let left = ele.offsetLeft;
+        //     let top = ele.offsetTop;
+        //     let parent = ele.offsetParent;
+        //     console.log(left);
+
+        //     // 只要找的的 父级参照物不是body 就继续往上查找(一直循环下去 一直到body为止)
+        //     while (parent && parent.nodeName.toLowerCase() !== "body") {
+        //         left += parent.offsetLeft + parent.clientLeft;
+        //         top += parent.offsetTop + parent.clientTop;
+        //         parent = parent.offsetParent; // parent = outer.offsetParent
+        //         // console.log(parent);
+        //         console.log(parent); // outer
+
+        //     }
+        //     return {
+        //         left,
+        //         top
+        //     }
+        // }
+        // let res1 = offset(center);
+        // // let res2 = offset(inner);
+        // console.log(res1);
+
+
+
+        // 从当前元素开始查找父级参照物 一直到body为止
+        function offset(ele) {
+            let left = ele.offsetLeft // 左偏移
+            let top = ele.offsetTop // 上偏移
+            let parent = ele.offsetParent
+
+            // 只要找到的父级参照物不是body 就继续往上查找（一直循环下去 一直到body为止）
+            while (parent && parent.nodeName.toLowerCase() !== "body") {
+                left += parent.offsetLeft + parent.clientLeft
+                top += parent.offsetTop + parent.clientTop
+
+                parent = parent.offsetParent
+            }
+            return {
+                left,
+                top
+            }
+        }
+        console.log(offset(center))
+        console.log(offset(inner))
+        console.log(offset(outer))
+
+
+    </script>
+</body>
+
+</html>

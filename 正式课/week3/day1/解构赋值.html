@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 解构赋值: 方便对数组和对象进行赋值
+        // 对数组解构赋值
+        // let arr = [20,30,40];
+        // let a = arr[0];
+        // let b = arr[1];
+        // let c = arr[2]; 
+        // 等号右边的值 和等号左边的变量名 是一一对应
+        // let [a, b, c] = arr;
+        // console.log(a, b, c); // 20,30,40
+        // 只想得到第三项 前面两个可以空着
+        // let [, , c] = arr;
+        // console.log(c); // 40
+        // let [, b] = arr;
+        // console.log(b); // 30
+
+        // 只想得到第一项 剩余的统一放在数组里
+        // let [a, b, ...arr] = [10, 20, 30, 40, 50];
+        // console.log(a); // 10
+        // console.log(b); // 20 
+        // console.log(arr); // [30, 40, 50]
+
+        // let ary = [10, [20, 30]];
+        // let [a, b] = ary;
+        // console.log(a); // 10
+        // console.log(b); // [20, 30]
+
+        // let ary = [10, [20, 30]];
+        // let [a, [b, c]] = ary; 
+        // console.log(a, b, c); // 10 20 30
+
+        // 默认值
+        // 只有当结构的值 是undefined的时候 默认值才会生效
+        // let [a, b = 20] = [1];
+        // console.log(a, b); // 1 20
+
+        // 把a 当做 b的默认值
+        // let [a, b = a] = [1];
+        // console.log(a, b);
+
+        // [a = b, b] 由于b还没声明 就使用 默认值生效时就会报错 is not defined
+        // 当解构时没有对于应的值时 默认值才会生效
+        // let [a = b, b] = [];
+        // console.log(a); // b is not defined
+
+        // 1.什么是解构赋值
+        // 2.数组结构赋值 位置一一对应
+        // 3.设置解构赋值
+
+        // 对象的解构赋值
+        // let obj = {属性名: 属性值};
+        // 正常情况下 获取一个属性 是根据属性名
+        // let obj = {
+        //     title: 'zhufeng',
+        //     text: 'hello'
+        // };
+        // let { title, text, num = 100 } = obj;
+        // console.log(title, text, num);
+
+        // let title = 'beijing';
+
+        // let obj = {
+        //     title: 'zhufeng',
+        //     text: 'hello'
+        // }
+        // 重命名 为了避免重复声明
+        // let {title: aa} = obj;
+        // console.log(title);
+        // console.log(aa);
+        // let {text : text2} = obj;
+        // console.log(text2);
+
+        // 对象解构赋值 是根据属性名 let {age} = {age: 10}
+        // 设置默认值 let {age = 20} = {}
+        // 解构时变量 重命名
+        // let age = 20
+
+        // let { age: age2 } = { age: 22 }
+        // console.log(age2) // 22
+
+        // 对象的简洁写法
+        // 如果你的属性名 和变量名如果一样 就可以直接简写为一个变量名
+        // let con = 1;
+        // let id = 2;
+        // let obj2 = {
+        //     con, // con: con => con: 1
+        //     id // id: id => id: 2
+        // }
+        // console.log(obj2);
+
+        // const response = {
+        //     success: true,
+        //     data: {
+        //         list: [
+        //             {
+        //                 moveName: '反贪风暴4'
+        //             },
+        //             {
+        //                 moveName: '大黄蜂'
+        //             }
+        //         ]
+        //     }
+        // }
+
+        // // response.data.list
+        // const { data: { list = [] } } = response
+        // console.log(list)
+
+        // for (let i = 0; i < list.length; i++) {
+
+        // }
+
+        // 字符串
+        // let [a, b, c] = 'hello';
+        // console.log(a, b, c);
+
+        // 函数参数解构赋值
+        // function fe(options) {
+        //     console.log(options); // {name: 'fe', id: 20}
+            
+        // }
+        // function fe({name : nike, id, num = 100}) {
+        //     console.log(nike, id, num);
+            
+        // }
+        // fe({
+        //     name: 'fe',
+        //     id: 20,
+        //     num: 200
+        // })
+
+        // 解构赋值 数组解构赋值 对象解构赋值 函数解构赋值
+        // 默认值 变量重命名
+
+        // let ary = [10,{id : 20}];
+        // let [a, {id}] = ary;
+        // console.log(ary);
+        
+    </script>
+</body>
+
+</html>

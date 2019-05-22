@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabBox{
+            margin: 50px auto;
+            border: 5px solid goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tabBox" class="tabBox">
+        <ul class="header">
+            <li class="active">音乐</li>
+            <li>实事</li>
+            <li>时尚</li>
+        </ul>
+        <div class="panel" id="panel">
+            <div>绿色</div>
+            <div>巴黎圣母院失火</div>
+            <div>滑板鞋时尚</div>
+        </div>
+    </div>
+    <div id="contentFilter">
+        <p class="first">霸道总裁</p>
+        <p></p>
+        <p><span>666</span></p>
+        <p style="display:none">7777</p>
+    </div>
+    <div id="fields">
+        <input type="text" name="man">
+        <input type="text" name="man_use">
+        <input type="text" name="only_man">
+        <input type="text" name="for_man_only">
+        <input type="button" value="点我" id="btn">
+    </div>
+    <ul id="emptyUl"></ul>
+    <!-- jq需要在我们自己写的代码之前引入 -->
+    <script src="js/jquery.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script src="js/jq扩展方法.js"></script>
+</body>
+
+</html>

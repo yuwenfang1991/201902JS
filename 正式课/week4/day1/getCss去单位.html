@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid palevioletred;
+            background: sandybrown;
+            color: aqua;
+            margin: 30px auto;
+            /* IE6-8 不支持opacity */
+            opacity: .5;
+            /* IE6-8; */
+            filter: alpha(opacity=50);
+        }
+
+        .box::after {
+            content: "珠峰";
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">我是box</div>
+    <script>
+        
+    </script>
+</body>
+
+</html>

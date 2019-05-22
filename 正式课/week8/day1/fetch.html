@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // fetch 是ES8新增的 原生API
+        fetch('https://www.easy-mock.com/mock/5cd4df954ed030771266e763/example_copy/test').then(data => {
+            // console.log(data.json());
+            // 想获取后台数据 需要两个then 第一个then的回调函数的返回值 是 data.json()
+            return data.json()
+        }).then(data=>{
+            console.log(data);
+            
+        }).catch(err => {
+            console.log(err);
+            
+        });
+    </script>
+</body>
+</html>

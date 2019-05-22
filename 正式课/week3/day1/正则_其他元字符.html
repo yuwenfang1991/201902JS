@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // x|y 匹配的是x 或者 y 相当于[xy]
+        // [xyz] 匹配的是xyz 中的任意一个字符 相当于 a|b|c
+        // [^xyz] 匹配 除了xyz，以外的的任意一个字符
+        // [a-z] 匹配 a到z中 任意一个字母
+
+
+
+
+
+
+
+
+        // x|y x 或者 y
+        // let reg = /a|b/;
+        // console.log(reg.test('cca')); // true
+        // console.log(reg.test('cbc')); // true
+        // console.log(reg.test('lwl')); // false
+
+        // [xyz] 匹配的是xyz 中的任意一个字符
+        // let reg = /[abc]/;
+        // console.log(reg.test('hello')); // false
+        // console.log(reg.test('com')); // true
+        // console.log(reg.test('brolly')); // true
+
+        // [^xyz] 匹配 除了xyz，以外的的任意一个字符
+        // let reg = /[^xyz]/
+        // console.log(reg.test('x')); // false
+        // console.log(reg.test('y')); // false
+        // console.log(reg.test('a')); // true
+
+        // 只能匹配一个字符串  只要不是xyz中的任何一个都可以
+        // let reg = /^[^xyz]$/
+        // console.log(reg.test('ax')) // false
+        // console.log(reg.test('a')) // true
+        // console.log(reg.test('1')) // true
+        // console.log(reg.test('x')) // false
+
+        // [a-z] 匹配 a到z中 任意一个字母
+        // let reg = /[a-z]/;
+        // console.log(reg.test('123552455')); // false
+        // console.log(reg.test('1235a524c55')); // true
+        
+    </script>
+</body>
+
+</html>

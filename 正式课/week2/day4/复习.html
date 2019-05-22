@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>复习</title>
+</head>
+<body>
+   <script>
+        //面向对象
+        // 类：对JS中事物一个划分 比如 人属于人类、 植物属于植物类
+        // 实例：类中的一个具体的事物（对象类型）比如：人类中某一个人 植物类中某一个植物
+        // 对象：
+        // 原型：函数、类天生自带的一个属性prototype(就是原型)
+        // 原型链：对象属性的查找机制。对象.属性名，首先会查找自身的私有属性，如果私有属性里面有这个属性，就使用这个属性，如果没有，就通过自身__proto__属性去实例所属类的原型上查找，如果还没有就通过原型对象(prototype)的__proto__继续向上查找，一直到Object.prototype,如果还没有就是undefined。
+        // 面向对象描述了类、实例、原型之间的关系
+        // 每一个对象(实例、普通对象、原型对象 、函数对象)都有一个天生自带的一个属性__proto__,指向所属类的原型对象。
+        // 每一个函数(普通函数、类)都有一个天生自带的属性prototype(原型)
+        // 每一个prototype自带两个属性:constructor,指向当前类本身，指向当前类本身，__proto__指向了原型对象所属类的原型。
+        // Function/Object/function
+        // 函数的三种角色：普通函数还是一个类还是一个对象
+        // call/apply/bind 修改函数中的this关键字指向的
+        // call/apply的区别就是:传参的方式不同，call是一个一个的传递，apply通过数组打包传递的。
+        function fn() {
+            console.log(this);
+        }
+        fn.call(null);
+        fn.apply(null); // call apply 会修改fn中的 this，并且把函数指向
+
+        // bind 绑定函数中的this，并不会执行函数
+
+        // 通过call、apply 获取数组中的最小值、最大值
+        var min = Math.min,apply(null,[1,2,4,5,6,7]);
+        var max = Math.max.apply(null,[1,3,4,5,78,9]);
+        // 剩余参数(不定参数)
+        let fun = (a, b, ...arg) => {
+            // arguments 是一个类数组
+            // 剩余参数是一个真正数组
+            console.log(arg);
+        }
+        // 类数组：有索引、有length的一个对象
+        // 类数组转数组
+        // 1.let ary = [...类数组];
+        // 2.for 循环,遍历类数组对象
+        // 3.Array.from(类数组对象)
+        // 4.let ary2 = [].slice.call(类数组对象)
+
+        //箭头函数
+        // 1.没有原型（prototype）、arguments、this
+        // 2.不能通过call/apply/bind 修改this
+   </script> 
+</body>
+</html>

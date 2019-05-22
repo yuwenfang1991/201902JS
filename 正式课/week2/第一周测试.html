@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 一、解答题
+        // 1.什么是变量提升
+        // 2.什么是作用域链
+        // 3.什么是原型链
+        // 4.this几条规则总结
+        // 5.let const var的区别 
+        // 二、作用域 this 原型考察
+        // function fn(i) {
+        //     return function (n) {
+        //         console.log(n + ++i);
+        //     }
+        // }
+        // var f = fn(10);
+        // f(21);
+        // var f2 = f
+        // // fn(23)(40);
+        // f2(32)
+// ===============================================================================
+        // function fn(n) {
+        //     return function (a) {
+        //         a++;
+        //         console.log(n += a);
+        //     }
+        // }
+        // var f = fn(10);
+        // f(1);
+        // f(2);
+        // fn(11)(2)
+// =============================================================================
+        // var num = 1; // 3 5
+        // var obj = { num: 2 }; // 4
+        // obj.fn = (function (num) {  // 1
+        //     // console.log(num);
+        //     this.num += 2; // 3
+        //     return function (n) { 
+        //         this.num += 2; // 5 4
+        //         num--; //0
+        //         console.log(n + ++num);
+        //     }
+        // })(this.num);
+        // var fn = obj.fn;
+        // fn(1);// 2
+        // obj.fn(2); // 3
+        // console.log(num, obj.num); // 5 4
+//============================================================================
+        // function Person() {
+        //     // 属性
+        //     this.username = 'zhangsan';
+        //     // 方法
+        //     this.say = function () {
+        //         console.log(this);
+        //         alert('我叫' + this.username);
+        //     }
+        // }
+
+        // var p = new Person();
+        // console.log(p);
+        // console.log(p.username);
+        // p.say();
+
+        // var p1 = new Person();
+        // p1.say();
+//================================================================================
+        // function fun() {
+        //     this.a = 10;
+        //     this.b = function () {
+        //         console.log(this.a);
+        //     }
+        // }
+        // fun.prototype = {
+        //     b: function () {
+        //         this.a = 20;
+        //         console.log(this.a);
+        //     },
+        //     c: function () {
+        //         console.log(this.a)
+        //         this.a = 30;
+        //     }
+        // }
+        // var my_fun = new fun();
+        // my_fun.c();
+        // my_fun.b();
+// ====================================================================
+        
+    //   function Fn() {
+    //         this.x = 100;
+    //         this.y = 200;
+    //         this.getX = function () {
+    //             console.log(this.x);
+    //         }
+    //     }
+    //     Fn.prototype.y = 400
+    //     Fn.prototype.x = 300
+    //     Fn.prototype.getX = function () {
+    //         console.log(this.x);
+    //     };
+    //     Fn.prototype.getY = function () {
+    //         console.log(this.y);
+    //     };
+    //     var f1 = new Fn;
+    //     var f2 = new Fn;
+    //     console.log(f1.getX === f2.getX); // false 
+    //     console.log(f1.getY === f2.getY); // true
+    //     console.log(f1.__proto__.getY === Fn.prototype.getY);
+    //     console.log(f1.getX === Fn.prototype.getX);
+    //     console.log(f1.constructor);
+    //     f1.getX();
+    //     f1.__proto__.getX();
+    //     f2.getY();
+    //     Fn.prototype.getY();
+
+
+    </script>
+</body>
+
+</html>

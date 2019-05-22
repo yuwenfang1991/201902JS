@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 500px;
+            height: 200px;
+            transition: all 2s linear;
+            background: antiquewhite;
+        }
+        .box1:hover{
+            width: 800px;
+            height: 400px;            
+        }
+
+        .box1 img {
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            /* transition: width 1s, opacity .5s; */
+            /* transition-property:width,opacity; */
+            /* transition: all 5s 2s linear; */
+
+        }
+
+        .box1 img:hover {
+            width: 120%;
+            height: 120%;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <img src="http://pic-bucket.ws.126.net/photo/0025/2019-04-30/EE0C4EF70BGT0025NOS.jpg" alt="">
+    </div>
+    <script>
+        let box1 = document.querySelector('box1');
+        document.addEventListener('webkitTransitionEnd', function() {
+            // 函数的执行是跟 过渡的属性的个数有关系
+            console.log(11111);
+            
+        }, false);
+    </script>
+</body>
+
+</html>

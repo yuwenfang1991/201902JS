@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div[q="12"] {
+            font-size: 30px;
+        }
+
+        div:target {
+            /*目标选择器   
+                a标签的 href 的值 是 #xxx; 
+                则当url后边有 #xxx 时；
+                id 为 xxx 的元素 就是目标元素；
+                就会有 这里的样式 ；
+            */
+            font-size: 50px;
+            width: 500px;
+            height: 500px;
+            text-shadow: 10px 10px 10px darkorange;
+            background-attachment: fixed;
+            /* 背景图固定 */
+            background: -webkit-linear-gradient(-45deg, yellow, red);
+            /* 第一组参数 是起始角度 top:从上到下 */
+            /* background:
+                radial-gradient(black 3px, transparent 4px),
+                radial-gradient(black 3px, transparent 4px),
+                linear-gradient(#fff 4px, transparent 0),
+                linear-gradient(45deg, transparent 74px, transparent 75px, #a4a4a4 75px, #a4a4a4 76px, transparent 77px, transparent 109px),
+                linear-gradient(-45deg, transparent 75px, transparent 76px, #a4a4a4 76px, #a4a4a4 77px, transparent 78px, transparent 109px),
+                #fff;
+            background-size: 109px 109px, 109px 109px, 100% 6px, 109px 109px, 109px 109px;
+            background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px; */
+        }
+
+        div:nth-child(4) {
+            margin-bottom: 1000px;
+        }
+
+        div:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(-30deg, orange, red);
+            box-shadow: 2px 2px 10px 3px aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div q="12">hello</div>
+    <div>world</div>
+    <div id="www">hello world</div>
+    <div id="eee">hello world</div>
+    <a href="#www">跳转</a>
+    <a href="#eee">跳转</a>
+
+</body>
+
+</html>

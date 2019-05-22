@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid palevioletred;
+            background: sandybrown;
+            color: aqua;
+            margin: 30px auto;
+            /* IE6-8 不支持opacity */
+            opacity: .5;
+            /* IE6-8; */
+            filter: alpha(opacity=50);
+        }
+
+        .box::after {
+            content: "珠峰";
+            color: coral;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="box">我是box</div>
+    <!-- <script src="utils.js"></script> -->
+    <script>
+        // getComputedStyle/currentStyle 只能获取样式
+        // 动态添加类名 批量添加样式
+        // 行内样式 element.style[attr] = value;
+        /** 
+         * ele 要操作的元素
+         * attr 要修改的样式
+         * value 修改的值
+        */
+        function setCss(ele, attr, value) {
+            if (attr === 'opacity') {
+                ele.style.filter = 'alpha(opacity=' + value * 100 + ')';
+            }
+            // 把一些常见的样式属性自动添加单位
+            // width height margin padding marginTop paddingTop
+            // left top right bottom
+            let reg = /(width|height)|(margin|padding)?(top|left|right|bottom)?/i;
+            //是否是需要加单位属性
+            if (reg.test(attr)) {
+                // 这个value是否已经有单位
+                if (!isNaN(value)) { // 是有效数字需要加单位
+                    value += 'px';
+                }
+            }
+            ele.style[attr] = value;
+        }
+
+        function setCssBatch(ele, obj) {
+            if (typeof obj !== 'object') return;
+            for (var key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    setCss(ele, key, obj[key]);
+                }
+            }
+        }
+
+        setCssBatch(box, {
+            width: 100,
+            height: '200px',
+            background: 'coral'
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <div>
+        <h2>后端说:</h2> <span id="mp"></span>
+    </div>
+    <script>
+        // websocket   客户端可以发送数据给后端 后端也可以推送数据给前端
+        // https/http 问答的模式 
+        let ws = new WebSocket('wss://echo.websocket.org');
+        ws.onopen = function(e) {
+            console.log('链接成功');
+            
+        }
+        ws.onmessage = function(e) {
+            // 监听后端推送消息
+            console.log(e);
+            mp.innerText = e.data;
+            
+        }
+
+        ws.onclose = function() {
+            // 链接关闭
+        }
+
+        ws.onerror = function() {
+            // 链接异常
+        }
+
+        // ws.send() 前端推给后端信息
+        // ws.close() 前端关闭通道
+        inp.onkeydown = function(e) {
+            // 监听input框的回车事件
+            if(e.keyCode === 13) {
+                ws.send(this.value);
+                this.value = '';
+            }
+        }
+
+        // requestAnimationFrame
+    </script>
+</body>
+</html>

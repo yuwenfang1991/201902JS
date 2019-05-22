@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        // 跨域是浏览器的 安全机制
+        // cors 让后台加个响应头 allow-origin: *
+        // Proxy 代理 请求转接
+        // jsonp 原理是啥
+        // script 标签的src属性 引入其他域的js文件没有跨域的限制
+        // 引进来的js文件中, 里面的js代码是后端生成的; 引入到前端之后
+        // 在浏览器中执行;内容基本都是一个函数的执行,实参是要传递的数据
+        // 函数名一般都是写到url里面的 由前端来决定
+
+        function backFn(data) {
+            // 自己的业务逻辑
+            console.log(data);
+
+        }
+
+        $.ajax({
+            url:'jsonp.js',
+            dataType:'jsonp',
+            jsonp:'cb',
+            jsonpCallback:'backFn',
+            success:function(data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+
+        $.ajax({
+            url:'https://f.3.cn/index-floor-scene?argv=coupon&',
+            dataType:'jsonp',
+            jsonp:'callback',
+            data:{
+                pin:'',
+                uuid:1552634328800957610083
+            },
+            jsonpCallback:'myself', // 可以不写 后端接口支持前端自定义函数名
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    </script>
+    <!-- 引入的js文件是后端生成的; 里边只有一个 函数执行; 需要前端定义一个对应的函数体 -->
+    <script src="jsonp.js?cb="></script>
+</body>
+
+</html>

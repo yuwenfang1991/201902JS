@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a id="link" href="javaScript:;">搜狗sogou</a> -->
+    <a id="link" href="https://www.sogou.com">搜狗sogou</a>
+    <div id="box">我是div <h3>我是h3</h3>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var $link = $('#link')
+            var $box = $('#box')
+
+            $link.click(function (event) {
+                event.preventDefault()
+                alert('sogou')
+            })
+
+            $box.click(function (event) {
+                console.log(event)
+                event.preventDefault()
+                event.stopPropagation()
+            })
+        })
+    </script>
+</body>
+
+</html>

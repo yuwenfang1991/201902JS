@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background: #ccc;
+        }
+
+        #box2 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000000;
+            position: relative;
+            margin: 50px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id='box1' draggable="true"></div>
+    <div id='box2'></div>
+    <script>
+        box1.ondragstart = function (e) {
+            console.log(e);
+
+        }
+        box1.ondrag = function () {
+            console.log('moving');
+
+        }
+        box1.ondragend = function () {
+            console.log('end');
+
+        }
+        // 以上事件 绑定的都是被拖拽的元素
+        box2.ondragenter = function() {
+            console.log('enter');
+            this.style.background = 'red';
+        }
+        box2.ondragleave = function() {
+            this.style.background = ''
+        }
+        box2.ondragover = function(e) {
+            e.preventDefault();
+        }
+        box2.ondrop = function() {
+            console.log('drop');
+            
+        }
+    </script>
+</body>
+
+</html>

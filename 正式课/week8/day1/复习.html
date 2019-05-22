@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+         class 类名 {
+             constructor(name) {
+                this.name = name; // 私有属性
+                var age = 20; // 私有变量
+             }
+
+             getName() {
+                // 共有属性
+             }
+
+             static getName() {
+                //  静态属性, 把 '类名'当做对象处理的
+
+             }
+         }
+
+         class 类名2 extends 类名 {
+             constructor () {
+                 super(); // 指的就是父类的 constructor
+             }
+         }
+
+         箭头函数 是把 this和 arguments当做 当做普通变量处理
+        */
+
+        // class Person {
+        //     constructor (name) {
+
+        //     }
+        // }
+
+        // class Person2 extends Person {
+        //     constructor () {
+        //         super();
+        //     }
+        // }
+
+        // 手动封装一个bind
+        let f1 = function() {
+            console.log(this);
+            console.log(arguments);
+        }
+
+        let obj = {
+            name:123
+        }
+
+        // let f2 = f1.bind(obj, 1,2,3,4); // 用法和call一致 但是返回值是一个函数
+        // f2(5,6,7,8); // 函数的实参 是位于默认实参的后边
+
+        function myBind() {
+            // bind执行的结果是一个新的函数
+            let _this = arguments[0] || window;
+            // this 要去改变的 this指向的 那个函数
+            let that = this;
+
+            // let ary = [].slice.call(arguments,1); // arguments.slice(1)
+            let ary = [...arguments];
+            return function () {
+                // 当f3 执行的时候 我们需要让 改变this 之后的 f1执行
+                // that 就是f1 _this 是要改变成为的 那个this指向
+                // that.call(_this,arguments);
+                let ary2 = [].slice.call(arguments); // arguments.slice();
+                // let ary2 = [].arguments;
+
+                // that.apply(_this,ary.concat(ary2));
+                that.call(_this,ary.concat(ary2));
+            }
+        }
+
+        Function.prototype.mybind = myBind;
+        let f3 = f1.mybind(obj, 1, 2, 3)
+        f3(4,5,6)
+        // call apply bind 只要改变过this 指向之后 再去改变, 就不再起作用了
+        let o1 = { name: 123 }, o2 = { age: 123 };
+        let fn1 = function () {
+            // console.log(this);
+        }
+        let fn2 = fn1.bind(o1);// fn2() --> o1
+        let fn3 = fn2.bind(o2); // fn3() --> o1
+        let fn4 = fn1.bind(o2); // fn4() --> o2
+    </script>
+</body>
+
+</html>

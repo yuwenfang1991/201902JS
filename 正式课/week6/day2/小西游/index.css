@@ -1,0 +1,78 @@
+ *{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.per{
+    width: 200px;
+    height: 180px;
+    background: url("imgs/wk.png") no-repeat 0 0;
+    background-size: cover;
+    animation: wkMove 2s steps(8) infinite;
+    position: absolute;
+    top: 45%;
+    left: 0;
+    z-index: 20;
+    transition: top 0.5s ease;
+}
+@keyframes wkMove {
+    0%{
+        background-position:  0 0;
+    }
+    100%{
+        background-position: -1600px 0;
+    }
+}
+.wk{
+    left: 20%;
+}
+.bj{
+    left: 35%;
+    background: url("imgs/bj.png")no-repeat 0 0;
+}
+.ts{
+    left: 50%;
+    height: 240px;
+    width: 170px;
+    background: url("imgs/ts.png")no-repeat 0 0;
+    animation: tsMove 2s steps(8) infinite;
+}
+@keyframes tsMove {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: -1360px 0;
+    }
+}
+
+.bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.bg ul{
+    width: 3920px;
+    height: 100%;
+    margin-left: -2000px;
+    list-style: none;
+    position: relative;
+    animation: bgMove 15s linear infinite;
+}
+.bg ul li{
+    width: 3920px;
+    height: 100%;
+    background: url("imgs/2.jpg");
+}
+@keyframes bgMove {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 1920px;
+    }
+}

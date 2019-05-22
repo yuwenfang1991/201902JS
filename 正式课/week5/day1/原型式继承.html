@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //原型式继承
+        function A() {
+            this.private = 'private私有';
+        } 
+        A.prototype.public = 'public公有';
+        // 原型链继承 
+        // B.prototype = new A();
+        // B.prototype.constructor = B;
+        // 原型式继承 只负责将父类的公有属性继承为自己的公有属性
+        // 创建了一个对象 作为B类原型对象,并且这个新的对象__proto__ === A.prototype
+        // B.prototype.__proto__ === A.prototype
+        B.prototype = Object.create(A.prototype); // {}.__proto__ === 
+        B.prototype.constructor = B;
+        function B() {
+            
+        }
+        let b = new B();
+        // 创建一个新的对象
+        // 并且这个新的对象__proto__ 指向create的第一个实参 
+        // Object.create();
+        const obj1 = {id:1,name:'obj1'};
+        const obj2 = Object.create(obj1);
+        console.log(obj2.__proto__ === obj1);
+        
+    </script>
+</body>
+</html>

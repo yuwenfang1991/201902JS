@@ -1,0 +1,274 @@
+@r: 75rem;
+// 设计稿是750px; 若量出来是 200px 200 / @r
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.w() {
+    width: 100%;
+    height: 100%;
+}
+
+html,
+body {
+    .w();
+    // 为了防止出现滚动条
+    overflow: hidden;
+}
+
+.app {
+    .w();
+    background: url('../image/bg.gif') no-repeat;
+    background-size: cover;
+
+    .header_box {
+        .name_box {
+            .music_icon {
+                position: fixed;
+                z-index: 999;
+                width: 70/@r;
+                height: 70/@r;
+                background: url('../image/music.svg');
+                background-size: contain;
+                right: 30/@r;
+                top: 50/@r;
+                animation: move123 1s linear infinite;
+                animation-play-state: paused; // 暂停旋转 
+            }
+        }
+    }
+
+    .swiper-wrapper {
+        .swiper-slide {
+            position: relative;
+
+            .content_box {
+                .w();
+                background: url(../image/bj2.webp);
+                background-size: cover;
+                padding: 75/@r 30/@r;
+                box-sizing: border-box;
+                position: relative;
+                overflow: hidden;
+
+                .one_box {
+                    background: url('http://res1.eqh5.com/Ft-apu7XjLeFqhnp7bNx91c-ZDOW?imageMogr2/auto-orient/thumbnail/152x240>/format/webp') no-repeat;
+
+                    background-size: contain;
+                    width: 400/@r;
+                    height: 500/@r;
+                    margin-left: 75/@r;
+                    opacity: 0.7;
+                    position: absolute;
+                    top: 250/@r;
+                }
+
+                .font_box {
+                    .one {
+                        position: absolute;
+                        top: 320/@r;
+                        left: 235/@r;
+                        font-size: 70/@r;
+                        padding: 5/@r;
+                        color: rgb(129, 120, 86);
+                    }
+
+                    .two {
+                        position: absolute;
+                        top: 400/@r;
+                        left: 160/@r;
+                        font-size: 100/@r;
+                        padding: 5/@r;
+                        color: rgb(35, 161, 147);
+                    }
+
+                    .three {
+                        position: absolute;
+                        top: 520/@r;
+                        left: 220/@r;
+                        font-size: 100/@r;
+                        padding: 5/@r;
+                        color: rgb(105, 108, 180);
+                    }
+
+                    .four {
+                        padding: 5/@r;
+                        position: absolute;
+                        width: 210/@r;
+                        height: 24px;
+                        top: 630/@r;
+                        left: 65/@r;
+
+                        span {
+                            width: 100%;
+                            height: 100%;
+                            transform: rotateZ(57deg);
+                            letter-spacing: 10/@r;
+                            color: white;
+                            font-size: 26/@r;
+                            display: block;
+                        }
+
+                    }
+                }
+
+            }
+
+            .mask {
+                .w();
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 2;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .second_box {
+                .w();
+                background: url(../image/bj2.webp);
+                background-size: cover;
+                padding: 75/@r 30/@r;
+                box-sizing: border-box;
+                overflow: hidden;
+
+            }
+
+            .third_box {
+                z-index: 99;
+                position: absolute;
+                top: 240/@r;
+                left: 200/@r;
+
+                img {
+                    border-radius: 5%;
+                    width: 350/@r;
+                    height: 350/@r;
+
+                }
+            }
+
+            .bottom_box {
+                z-index: 99;
+                position: absolute;
+                bottom: 400/@r;
+                left: 50/@r;
+
+                img {
+                    width: 650/@r;
+                    height: 100/@r;
+                }
+            }
+
+            .middle_box {
+                .w();
+                background: url(../image/bj2.webp);
+                background-size: cover;
+                padding: 75/@r 30/@r;
+                box-sizing: border-box;
+                position: relative;
+                overflow: hidden;
+
+                .right_top {
+                    position: absolute;
+                    right: 50/@r;
+                    top: 130/@r;
+                    font-size: 30/@r;
+                    color: white;
+                    letter-spacing: 10/@r;
+
+                }
+
+                .border_box {
+                    width: 680/@r;
+                    height: 80%;
+                    background: url('../image/solid.webp') no-repeat;
+                    box-sizing: border-box;
+                    background-size: contain;
+                    position: absolute;
+                    top: 180/@r;
+                }
+
+                .content_pic {
+                    .pic_one {
+                        border: 15px solid white;
+                        width: 400/@r;
+                        height: 513/@r;
+                        position: absolute;
+                        top: 250/@r;
+                        left: 200/@r;
+                        transform: rotateZ(8deg);
+                    }
+
+                    .pic_two {
+                        border: 15px solid white;
+                        width: 300/@r;
+                        height: 330/@r;
+                        position: absolute;
+                        bottom: 220/@r;
+                        left: 240/@r;
+                        transform: rotateZ(352deg)
+                    }
+                }
+
+                .solid_inside {
+                    width: 1000/@r;
+                    height: 200/@r;
+                    border-bottom: 2px solid white;
+                    transform: rotateZ(90deg);
+                    position: absolute;
+                    top: 400/@r;
+                    left: -330/@r;
+
+                }
+
+                .little_box {
+                    background: url('../image/little.webp');
+                    z-index: 200;
+                    position: absolute;
+                    .one {
+                        position: absolute;
+                        bottom: 300/@r;
+                        left: 120/@r;
+                        font-size: 50/@r;
+                        padding: 5/@r;
+                        color: rgb(129, 120, 86);
+                    }
+
+                    .two {
+                        position: absolute;
+                        top: 400/@r;
+                        left: 160/@r;
+                        font-size: 50/@r;
+                        padding: 5/@r;
+                        color: rgb(35, 161, 147);
+                    }
+
+                    .three {
+                        position: absolute;
+                        top: 520/@r;
+                        left: 220/@r;
+                        font-size: 100/@r;
+                        padding: 5/@r;
+                        color: rgb(105, 108, 180);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+@keyframes move123 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

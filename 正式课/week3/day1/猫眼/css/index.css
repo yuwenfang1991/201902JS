@@ -1,0 +1,218 @@
+.top-content {
+    box-sizing: border-box;
+}
+
+.nav {
+    height: 48px;
+    background-color: #dc3c38;
+}
+
+.nav .nav-header img {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 9px auto;
+}
+
+.nav .nav-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0 .16rem 0 .29rem;
+    width: 104px;
+    height: 28px;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, .8)
+}
+
+.nav .nav-right span {
+    margin-top: 2px;
+    display: block;
+    font-size: 16px;
+    color: #Fff;
+    text-align: center;
+}
+
+.nav .nav-center .menus {
+    display: flex;
+    position: absolute;
+    top: 48px;
+}
+
+.nav .nav-center .menus li {
+    top: 20px;
+    font-weight: 900;
+    padding: 0px 110px;
+    font-size: 16px;
+    line-height: 35px;
+    color: #666;
+
+}
+
+.nav .nav-center .menus li.active {
+    color: #f34d41;
+    border-bottom: 3px solid #f34d41;
+}
+
+.nav .nav-center .menus li:not(.active) {
+    cursor: pointer;
+}
+
+.nav .nav-center .dataBox {
+    color: #666;
+    background-color: #f4f4f4;
+    display: flex;
+    position: absolute;
+    top: 100px;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.nav .nav-center .dataBox li {
+    flex: 1;
+    padding: 0px 169px;
+    border: 0;
+    border-radius: 1rem;
+}
+
+.nav .nav-center .dataBox li.active {
+    background-color: #f34d41;
+    color: #Fff;
+}
+
+.nav .nav-bottom {
+    position: absolute;
+    top: 145px;
+    padding: 0px 15px;
+}
+
+.nav .nav-bottom .big {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.nav .nav-bottom .big span i {
+    color: #dc3c38;
+
+    font-style: normal;
+}
+
+.nav .nav-bottom .small {
+    font-size: 12px;
+    color: #999;
+}
+
+.content {
+    position: absolute;
+    top: 200px;
+    width: 100%;
+}
+
+.content .content-top {
+    display: flex;
+    height: 45px;
+    background-color: #ff7f7f;
+    color: #Fff;
+    align-items: center;
+}
+
+.content .content-top .c1 {
+    flex: 3;
+    padding-left: 15px;
+
+}
+
+.content .content-top .c2,.content .content-top .c3,.content .content-top .c4,.content .content-top .c5{
+    cursor: pointer;
+}
+
+.content .content-top .c2 {
+    flex: 1;
+}
+
+.content .content-top li div {
+    margin: auto 8px;
+}
+
+.content .content-top .c3,
+.content .content-top .c4 {
+    flex: 1;
+}
+
+.content .content-top .c5 {
+    flex: 1;
+    padding-right:10px; 
+}
+
+.content2 {
+    width: 100%;
+    position: absolute;
+    top: 245px;
+}
+
+.content2 ul {
+    display: flex;
+    /* width: 100%; */
+    line-height: 22px;
+    padding-top: 10px;
+}
+
+.content2 ul:nth-child(odd) {
+    background-color: rgb(246, 246, 246);
+}
+
+.content2 #contentList .c1 {
+    flex: 3;
+    padding-left: 15px;
+}
+
+.content2 #contentList .c1 h1 {
+    font-style: normal;
+    color: #333;
+}
+
+.content2 #contentList .c1 span,
+.content2 #contentList .c1 em {
+    color: #999;
+}
+
+.content2 #contentList .c1 span,
+.content2 #contentList .c1 em,
+.content2 #contentList .c2 span,
+.content2 #contentList .c3 span,
+.content2 #contentList .c4 span,
+.content2 #contentList .c5 span {
+    font-family: cs, Arial;
+    font-style: normal;
+    font-size: inherit;
+    text-align: center;
+}
+
+.content2 #contentList .c2 {
+    flex: 1;
+    /* padding-left: 578px; */
+    padding-top: 10px;
+    color: #f34d41;
+}
+
+.content2 #contentList .c3 {
+    flex: 1;
+    /* padding-left: 210px; */
+    padding-top: 10px;
+}
+
+.content2 #contentList .c4 {
+    flex: 1;
+    /* padding-left: 240px; */
+    padding-top: 10px;
+}
+
+.content2 #contentList .c5 {
+    flex: 1;
+    /* padding-left: 230px; */
+    /* padding-right: 33px; */
+    padding-top: 10px;
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <i v-once>{{name}}</i>
+        <input type="text" v-model='name'>
+        {{name2}}
+        {{name > 2 ? name2='hello' : name2='world'}}
+        <!-- 小胡子中可以书写表达式 但是不能写语句 -->
+        <!-- 
+            v-text: innerText
+            v-html: innerHTML
+            v-cloak: 结合css使用 解决小胡子显示的问题
+            [v-cloak]{display: none}
+            v-once 有这个指令的标签,内容只会渲染一次
+         -->
+    </div>
+    <script>
+        // 框架: 框架调用 我们写的代码
+        // 库: 我们调用库中的代码
+        let vm = new Vue({
+            el:'#app',
+            // template:,
+            data: {
+                // vue 变量
+                name:123,
+                name2:0
+
+            }
+        });
+        
+    </script>
+</body>
+</html>

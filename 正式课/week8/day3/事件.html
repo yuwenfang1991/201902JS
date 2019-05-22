@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        {{name}}
+        <!-- 事件函数的传参 直接在函数名后边加小括号 把要传递的参数写进来即可 -->
+        <button v-on:click='fn(1)'>按钮1</button> <!-- 直接传一个实参 -->
+        <!-- v-on 专门用来绑定事件的指令 简写是@ -->
+        <button @click='fn'>按钮2</button> <!-- 默认传一个事件对象 -->
+        <!-- 当我们需要传参时,直接加小括号, 若仍需要事件对象,则 在对应的位置加一个 $event -->
+        <button @click='fn(2,$event)'>按钮3</button> <!--手动传实参和事件对象, 位置自己决定 -->
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '.app',
+            data: {
+                // vue 变量
+                name: '珠峰',
+                //    fn:null
+            },
+            methods: {
+                // vue 中的函数
+                // data中的属性名 是不能跟 methods中的属性名重复的
+                fn(e) {
+                    // 函数中的this 是指向当前实例的
+                    // 默认传递一个事件对象
+                    // console.log(this.name);
+                    // console.log(arguments);
+                    console.log(e, arguments);
+                    
+
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>

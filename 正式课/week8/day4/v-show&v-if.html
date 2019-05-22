@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    header {
+      width: 200px;
+      margin: auto;
+      height: 50px;
+      display: flex;
+    }
+
+    header span {
+      display: block;
+      flex: 1;
+      text-align: center;
+      line-height: 50px;
+      border: 1px solid sandybrown;
+
+    }
+
+    header span.current {
+      background: beige;
+    }
+
+    main {
+      width: 200px;
+      margin: auto;
+      height: 200px;
+      background: skyblue;
+      overflow: hidden;
+    }
+
+    main div {
+      height: 100%;
+      text-align: center;
+      line-height: 200px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{name}}</h1>
+    <h2 v-show="num==0">hello world</h2>
+    <h2 v-if="num"> v-if </h2>
+
+    <!-- v-if 后边若是false 整个结构都不显示; v-show 结构在, 只是display none了 -->
+
+    <button @click='num=!num'>按钮</button>
+
+
+    <!-- 结合v-show、事件实现选项卡 -->
+    <!-- 
+      点击 tab 改变 一个vue变量 num; 在要显示的body中, 加上v-show指令
+      通过v-show后边的表达式 我们去改变 该元素的显示和隐藏
+      v-show = 'num== 要去显示的值'
+     -->
+
+    <header>
+      <span @click='tab(0)'>css</span>
+      <span @click='tab(1)'>javascript</span>
+      <span @click='tab(2)'>html</span>
+    </header>
+
+    <main>
+      <div v-show='num==0'>css盒子</div>
+      <div v-show='num==1'>JavaScript盒子</div>
+      <div v-show='num==2'>HTML盒子</div>
+    </main>
+
+    <header>
+      <span @click='flag=0'>css</span>
+      <span @click='flag=1'>javascript</span>
+      <span @click='flag=2'>html</span>
+    </header>
+
+    <main>
+      <div v-show='flag==0'>css盒子</div>
+      <div v-show='flag==1'>JavaScript盒子</div>
+      <div v-show='flag==2'>HTML盒子</div>
+    </main>
+
+
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: "hello world",
+        num: 0,
+        flag: 0
+      },
+      methods: {
+        tab(n) {
+          // this 是vm实例; 所有挂载到实例上的属性 我们都可以用this 去调取
+          this.num = n;
+        }
+      },
+
+    })
+  </script>
+</body>
+
+</html>

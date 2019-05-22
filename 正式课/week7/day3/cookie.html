@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // cookie 
+        function getCookie(key) {
+            let str = document.cookie;
+            // let reg = /(^| )id=([^;]*)(;|$)/g;
+            // 要不就是以id开头的 要不就是id 前边是个空格
+            // 要不就是以([^;]*)结尾 要不就是([^;]*)后边是个分号
+            let reg = new RegExp(`(^| )${key}=([^;]*)(;|$)`);
+            let ary = str.match(reg);
+            // 防止ary 是null时报错
+            if(ary) {
+                return unescape(ary[2]);
+            } else {
+                return null;
+            }
+        }
+
+        // 添加cookie 
+        // escape 转义汉语 反义词 unescape
+        function addCookie(key, val) {
+            // document.cookie = key + '=' + escape(val); // 不加过期时间
+            document.cookie = key + '=' + escape(val) + ';expires=' + new Date('2020-01-25');
+        }
+
+        // 删除cookie
+        // 把cookie的 expires设置成过期的就可以
+        function removeCookie(key, val) {
+            document.cookie = key + '=' + val +';expires=' + new Date(1970);
+        }
+
+        // localStorage sessionStorage 只能前端操作 后端操作不了 不会发给后台
+        // getItem setItem removeItem(清除一个) clear(清除全部)
+
+        // cookie 和 storage的区别?
+        // cookie 会随着网络请求发给后台 占用带宽; 前后端都可以设置; 有大小限制, 大约在4k左右
+        // storage 不会发给后台, 后台操作不了; 大小在5兆左右;
+
+    </script>
+</body>
+</html>

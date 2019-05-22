@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background-color: sandybrown;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <script src="utils.js"></script>
+    <script src="animate.js"></script>
+    <script>
+        const box = document.getElementById('box');
+        animate({
+            ele: box,
+            target: {
+                left: 600,
+                top: 600,
+                opacity: 1
+            },
+            duration: 2000,
+            after() { // 动画结束后调用函数
+                animate({
+                    ele: box,
+                    target: {
+                        left: 100,
+                        top: 100,
+                        opacity: 0
+                    }
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>

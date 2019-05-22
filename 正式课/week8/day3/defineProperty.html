@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // vue 不兼容ie8; 根本原因 在于Object.defineProperty该方法不兼容 IE8    
+        let obj = {};
+        let value;
+        // 给obj 定义一个myName 属性    
+        Object.defineProperty(obj, 'myName', {
+            // value:'珠峰',
+            // writable:true, // 该属性是否可写,true 可以修改
+            // enumerable:true, // 该属性是否能够遍历出来; 是否可枚举(可不可以循环出来)
+            // configurable:true // 是否可删除
+
+            get() {
+                console.log(123);
+                // 被获取 被调用的时候会触发该函数
+                // 调用时获取到的属性值 就是该函数的 return值
+                return value
+            },
+
+            set(val) {
+                // 当该属性 被赋值时 触发该函数
+                // val 就是被赋予的那个值
+                console.log(arguments);
+                // obj.myName = val; 无限递归调用
+                value = val;
+            }
+        });
+    </script>
+</body>
+
+</html>

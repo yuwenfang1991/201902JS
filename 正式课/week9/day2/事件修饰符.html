@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day1/node_modules/vue/dist/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .outer {
+            width: 400px;
+            height: 400px;
+            background: rgb(196, 114, 6);
+        }
+
+        .center {
+            width: 200px;
+            height: 200px;
+            background: rgb(170, 16, 170);
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background: rgb(9, 157, 202);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div class="outer" @click='fn3'>
+            <div class="center" @click='fn2'>
+                <div class="inner" @click.stop='fn1'></div>
+            </div>
+        </div>
+
+        <a href="https://ww.baidu.com" @click.prevent='fn1'>百度</a>
+
+        <input type="text" v-model.number="name">
+        {{typeof name}}
+        <!-- v-model的 修饰符 -->
+        <!-- .trim去除字符串的首尾空格 -->
+        <!-- .number 转数字 功能和 parseFloat类似 转成功就是数字 不成功就是字符串 -->
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            methods: {
+                fn1() {
+                    console.log(1);
+                    
+                },
+                fn2() {
+                    console.log(2);
+                    
+                },
+                fn3() {
+                    console.log(3);
+                    
+                }
+            },
+        })
+
+        /* 
+            .stop 阻止冒泡
+            .prevent 阻止默认事件
+            .once 对应的函数只能执行一次
+            .self 只有点击自己的时候才会触发
+            .capture 相当于 oDiv.addEventListener('click',function() {}) 在捕获阶段触发该函数
+            .passive 先执行默认 再执行函数
+
+        */
+    </script>
+</body>
+
+</html>

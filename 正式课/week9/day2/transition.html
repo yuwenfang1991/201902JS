@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day1/node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.css">
+
+    <style>
+        div.fade {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            background: rgb(177, 102, 41);
+        }
+
+        .myFade-enter {
+            /* 刚进来第一帧时 的样式 */
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        .myFade-enter-active {
+            transition: all 1s;
+        }
+
+        .myFade-enter-to {
+            opacity: 1;
+            transform: rotate(0);
+        }
+
+        .myFade-leave {
+            opacity: 1;
+            transform: rotate(0);
+        }
+
+        .myFade-leave-active {
+            transition: all 1s;
+        }
+
+        .myFade-leave-to {
+            opacity: 0;
+            transform: rotate(180deg);
+        }
+
+        .myBounce-enter-active {
+            animation: myBounceMove 1s;
+        }
+
+        .myBounce-leave-active {
+            animation: myBounceMove2 1s
+        }
+
+        @keyframes myBounceMove {
+            0% {
+                transform: rotate(0);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes myBounceMove2 {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click='fn'>显示/隐藏</button>
+        <transition name='myFade'>
+            <div v-show="flag" class="fade">{{name}}</div>
+        </transition>
+
+        <transition name='myBounce'>
+            <div v-show="flag" class="fade">{{name}}</div>
+        </transition>
+
+        <!-- <transition enter-active-class="animated zoomInRight" leave-active-class="animated bounceOutRight">
+            <div v-show="flag" class="fade">{{name}}</div>
+        </transition> -->
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                flag: true
+            },
+
+            methods: {
+                fn() {
+                    this.flag = !this.flag;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

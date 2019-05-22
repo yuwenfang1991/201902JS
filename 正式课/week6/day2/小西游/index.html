@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$珠峰培训$</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id='div1'>
+        <div class="wk per"></div>
+        <div class="bj per"></div>
+        <div class="ts per"></div>
+        <div class="bg">
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    // console.log(document.getElementById("div1"))
+    //拿到wk
+    let wk = document.getElementsByClassName('wk')[0];
+    let startT = wk.offsetTop;
+    let direction = -1;
+    wk.onclick = function () {
+        // wk.style.top = '20px';
+        // let t = wk.offsetTop;
+        // if(t <= 0){
+        //     // wk.style.top = '45%';
+        //     direction = 1;
+        // }else if(t > startT){
+        //     direction = -1;
+        // }else {
+        //     if(direction == 1){
+        //         direction = 1
+        //     }else {
+        //         direction = -1;
+        //     }
+        // }
+
+        wk.style.top = t + 50*direction + 'px'
+        // if(t >= startT){
+        //     wk.style.top = t - 50 + 'px';
+        // }else {
+        //     wk.style.top = t - 50 + 'px';
+        // }
+    }
+</script>  

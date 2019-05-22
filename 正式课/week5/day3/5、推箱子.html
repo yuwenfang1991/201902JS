@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 500px;
+            height: 500px;
+            border: 2px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="box" id="box"></div>
+    </div>
+
+    <script>
+        
+
+    //     window.onkeydown=function(e){
+    //        e.preventDefault()
+         
+    // if(event.keyCode===39){
+    //     // console.log(parseFloat(getComputedStyle(box).left))
+    //     box.style.left=parseFloat(getComputedStyle(box).left)+10+"px"
+    // }
+    // if(event.keyCode===37){
+    //     // console.log(parseFloat(getComputedStyle(box).left))
+    //     box.style.left=parseFloat(getComputedStyle(box).left)-10+"px"
+    // }
+
+    // if(event.keyCode===38){
+    //     // console.log(parseFloat(getComputedStyle(box).left))
+    //     box.style.top=parseFloat(getComputedStyle(box).top)-10+"px"
+    // }
+    // if(event.keyCode===40){
+    //     // console.log(parseFloat(getComputedStyle(box).left))
+    //     box.style.top=parseFloat(getComputedStyle(box).top)+10+"px"
+    // }
+
+    //     }
+        // 给window或document加keydown
+        var container = document.getElementById("container")
+        var box = document.getElementById("box")
+
+        var maxL = container.clientWidth - box.offsetWidth;
+        var maxT = container.clientHeight - box.offsetHeight;
+
+        window.onkeydown = function(e){
+            e = e || window.event;
+
+            e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+            var keyCode = e.keyCode;
+
+            var l = parseFloat(getComputedStyle(box).left);
+            var t = parseFloat(getComputedStyle(box).top);
+
+            switch(keyCode){
+                case 37: // 左
+                    l -= 10;
+                break;
+                case 38: // 上
+                    t -= 10;
+                break;
+                case 39: // 右
+                    l += 10;
+                break;
+                case 40: // 下
+                    t += 10;
+                break;
+            }
+
+            l = l < 0 ? 0 : l; // 左边界
+            l = l > maxL ? maxL : l; // 右边界
+            t = t < 0 ? 0 : t; // 上边界
+            t = t > maxT ? maxT : t; // 下边界
+
+            box.style.left = l + "px";
+            box.style.top = t + "px";
+        }
+
+        // 通过e.keyCode判断按下的是那个键，37 == 左 38 == 上 39 == 右 40 == 下
+
+        // 右键，box向右走10px；左的话向左走10px；
+
+        // 设置临界值
+        
+    </script>
+</body>
+</html>

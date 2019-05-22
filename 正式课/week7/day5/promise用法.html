@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  
+            异步
+            事件轮循:
+            宏任务: 定时器 ajax Promise
+            微任务: Promise 的then 和catch
+            宏任务中会包含一部分微任务, 先把宏任务中的微任务执行完毕之后才会执行下一个宏任务
+        */
+        let p = new Promise(function (res, rej) {
+            // console.log(333);
+            // 该实参是同步执行的
+            // 该函数体是实参
+            // Promise 实例有三个状态 resolved rejected pending
+            // 一开始 状态是pending 一旦改变, 就不会再变动
+            // 执行了成功函数状态 由pending  变成resolved 
+            // 执行了失败函数 状态 由pending  变成rejected
+            // 若既不执行成功函数 也不执行失败函数 那么状态一直是pending
+            setTimeout(() => {
+                // console.log(111);
+                res(123)
+            }, 3000);
+            rej(666);
+        });
+        p.then((data) => {
+            // console.log(data);
+
+        }, (err) => {
+            // console.log(err);
+
+        })
+        // console.log(222);
+
+
+        let p2 = new Promise(function (res, rej) {
+            // 当该函数执行失败的时候; 会默认执行 rej
+            console.log(abc);
+
+        }).then((data) => {
+            console.log(data);
+
+        }, (err) => {
+            console.log(err);
+
+        }).then((data) = {
+            // 该data 是上个then回调函数执行的返回值
+        }, () => { })
+    </script>
+
+    <script>
+        /**
+         * function fn() {
+         *      f();
+         * }
+         * 回调函数 : 一个函数f被另外一个函数 fn调用 我们把f 称为 fn的回调函数
+        */
+
+        // 异步: 事件, 定时器 , ajax, Promise
+        // 纯函数: 执行的时候 对外界不会造成任何副作用的函数
+        // 柯里化函数: 一个函数 接收一个或者多个函数作为参数,返回一个新函数
+        // 高阶函数: f()()
+        // var f2 = a => b => c => a + b + c;
+        // var f2 = function (a) {
+        //     return function (b) {
+        //         return function (c) {
+        //             a + b + c;
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

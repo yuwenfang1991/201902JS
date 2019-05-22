@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 正则的简单应用
+        // 1.验证某个号段下的手机号
+        // 188 170 133 手机号总共11位 开头是1
+        // let reg = /^1(88|70|33)\d{8}$/;
+        // console.log(reg.test('18813215612'));
+        // console.log(reg.test('17013214512'));
+        // console.log(reg.test('13313715412'));
+        // console.log(reg.test('18333808365'));
+
+        // 小括号分组捕获
+        // 改变优先级
+        // 分组引用
+        // let reg = /^1(\d)\1\1$/;
+        // console.log(reg.test('1222')); // true
+        // console.log(reg.test('1333')); // true
+
+        // aabb bbcc
+        // let reg = /^([a-z])\1([a-z])\2$/;
+        // console.log(reg.test('aabb')); // true
+        // console.log(reg.test('bbcc')); // true 
+        // console.log(reg.test('abcd')); // false
+
+        // abba
+        // let reg = /^([a-z])([a-z])\2\1$/;
+        // console.log(reg.test('abba')); // true
+        // console.log(reg.test('aabb')); // false
+
+        // 匹配的十位和个位 相同的两位数
+        // let reg1 = /^(\d)\1$/
+        // console.log(reg1.test('11')) // true
+        // console.log(reg1.test('22')) // true
+        // console.log(reg1.test('23')) // false
+
+        // 匹配尾号是连续三位的豹子号 
+        // let reg = /^1(88|70|33)\d{5}(\d)\2\2$/;
+        // console.log(reg.test('18833808999')); // true
+        // 1. 匹配前三位 1(88|70|33)
+        // 2. 匹配中间五位数 \d{5}
+        // 3. 匹配末尾三位数 (\d)\2\2 => 111 222 333
+
+        // 靓号
+        // let reg = /^1(88|70|33)(\d)\2{7}$/
+        // console.log(reg.test('17011111111')) // true
+        // console.log(reg.test('18866666666')) // true
+        // console.log(reg.test('18845678999')) // false
+
+
+        // 验证有效数字(正数 负数 小数 0)
+        // 10 +10 -10 0.12 10.12
+        // let reg = /^[+-]?(\d|[1-9]\d+)(\.\d+)?$/;
+        // console.log(reg.test('12'));
+        // console.log(reg.test('0.12'));
+        // console.log(reg.test('-0.14'));
+        // console.log(reg.test('+0.12'));
+
+        // [+-]? +10 -10 10 匹配数字前的 正号或负号 （正号可有可无）
+        // \d|\d+ 匹配一位或者多位数
+        // \d 匹配一位 
+        // [1-9] 匹配多位数 并且0不能作为开头
+        // \.\d+ 匹配小数部分 小数部分可有可无 最多出现一次
+        // 要想知道是第几个分组 就看左边括号
+        // let reg = /^[+-]?(\d|[1-9]\d+)(\.(\d+))?$/;
+        // ["12.12", "12", ".12", "12"]
+        // console.log(reg.exec('12.12'));
+
+        // 验证某个范围 的数字 28 - 66
+        // let reg = /^(2[89]|[3-5]\d|6[0-6])$/;
+        // console.log(reg.test('29')); // true
+
+        // 154 - 295
+        // 154 - 159 15[4-9]
+        // 160 - 199 1[6-9]\d
+        // 200 - 289 2[0-8]\d
+        // 290 - 295 29[0-5]
+        // let reg = /^(15(4-9)|(1[6-9]|2[0-8])\d|29[0-5])$/;
+        // console.log(reg.test('168')); // true
+
+        // 匹配中文姓名
+        // \u4e00-\u9fa5
+        // 出现2到6位的汉字
+        // let reg = /^[\u4e00-\u9fa5]{2,6}$/;
+        // console.log(reg.test('诸葛孔明'));
+
+        // 验证邮箱
+        // 雅虎邮箱  XXXXXX@yahoo.com.cn
+        // 雅虎邮箱  XXXXXX@yahoo.cn
+        // Google  XXXXX@gmail.com
+        // QQ     XXXXX@qq.com
+        // 网易    XXXXX@126.com
+
+        // 102495553@qq.com
+        // brolly_0204@yahoo.com.cn
+        // wenli-china@gmail.com
+
+        // 数字、字母(大小)作为开头 [a-zA-Z\d]
+        // 中间部分 数字字母下划线 中杠 [-\w]
+        // 结尾 可以是 数字、字母(大小) [a-zA-Z\d]
+        // @[a-zA-Z\d]{2,6} @qq @126
+        // \.[a-z]{2,6}{1,2} .com .cn .com.cn
+        // let reg = /^[a-zA-Z\d][-\w\u4E00-\u9FA5]+[a-zA-Z\d]@[a-zA-Z\d]{2,6}(\.[a-z]{2,6}){1,2}$/;
+        // console.log(reg.test('102495553@qq.com')) // true
+        // console.log(reg.test('brolly_0204@sina.cn')) // true
+        // console.log(reg.test('wenli-china@gmail.com.cn')) // true
+        // console.log(reg.test('wenli-china@163.vip.net')) // true
+        // console.log(reg.test('wenli-china@163.org')) // true
+        // console.log(reg.test('wenli中国china@163.cn')) // true
+
+        // object.prototype.toString.call()
+        // "[object Boolean]"
+        // let reg = /^\[object ([a-zA-Z+])\]$/;
+        // let group1 = reg.exec("[object Boolean]")[1];
+        // console.log(group1.toLowerCase());
+        // 数据类型检测
+        Object.isType = function (val) {
+            let res = Object.prototype.toString.call(val);
+            let reg = /^\[object ([a-zA-Z]+)\]$/;
+            let group1 = reg.exec(res)[1];
+            return group1.toLowerCase();
+        }
+        console.log(Object.isType('1'));
+
+        // 数据类型检测
+        // Object.isType = function (val) {
+        //     let res = Object.prototype.toString.call(val) // "[object xxx]"
+        //     let reg = /^\[object ([a-zA-Z]+)\]$/
+        //     let group1 = reg.exec(res)[1]
+        //     return group1.toLowerCase()
+        // }
+
+        // console.log(Object.isType(1))
+
+    </script>
+</body>
+
+</html>

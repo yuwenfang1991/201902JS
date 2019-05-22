@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    header {
+      width: 200px;
+      margin: auto;
+      height: 50px;
+      display: flex;
+    }
+
+    header span {
+      display: block;
+      flex: 1;
+      text-align: center;
+      line-height: 50px;
+      border: 1px solid sandybrown;
+
+    }
+
+    header span.current {
+      background: beige;
+    }
+
+    main {
+      width: 200px;
+      margin: auto;
+      height: 200px;
+      background: skyblue;
+      overflow: hidden;
+    }
+
+    main div {
+      height: 100%;
+      text-align: center;
+      line-height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{name}}</h1>
+
+    <header>
+      <span v-for="item in ary" :key="item" @click='str=item'>{{item}}</span>
+      
+    </header>
+
+    <main>
+      <div v-for="item in ary" :key="item" v-show="str==item">{{item}}盒子</div>
+    </main>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: "hello world",
+        ary:['css','javascript','html'],
+        str:'css'
+      }
+    })
+  </script>
+</body>
+
+</html>

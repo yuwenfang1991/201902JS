@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/test?name=123',true);    
+        xhr.onreadystatechange = function() {
+            if(this.readyState === 4 && /2\d{2}304/.test(this.status)) {
+                // console.log(xhr.getAllResponseHeaders()); // 获取所有响应头
+                
+            }
+        }
+
+        // 把发给后台的数据 转成 formData 格式; 需要设置一个这种请求头
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+        // xhr.send(JSON.stringify({"id":123,"name":243}));
+        // send 中的 参数 是post 发给后台的数据
+        // xhr.send('id=123&name=hello');
+        let obj = {"name":123,"id":234};
+        let str = '';
+        for (const k in obj) {
+            if (obj.hasOwnProperty(k)) {
+                str += `${k}=${obj[k]}&`;
+            }
+        }
+        // 如何删除最后的&符
+        // 字符串中所有方法都不会改变原有字符串
+        // str = str.substring(0,str.length-1);
+        str = str.replace(/&$/,'');
+        xhr.send(str);
+        
+    </script>
+</body>
+</html>

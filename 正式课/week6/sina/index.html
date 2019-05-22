@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sina</title>
+    <!-- 为了使用新浪的字体图标 -->
+    <link rel="stylesheet" href="../font.css">
+    <script>
+        // 750 / 100 = w / x
+        let x = 100 * (document.documentElement.clientWidth || document.body.clientWidth) / 750;
+        document.documentElement.style.fontSize = x + 'px';
+        // 前提是 有 meta viewport
+    </script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+</head>
+
+<body>
+    <section class="app">
+        <header class="header_box cl">
+            <header class="cl">
+                <a href="javascript:;" class="logo icon_lg lt"></a>
+                <nav class="lt tab">
+                    <a href="javascript:;" class="active">标准版</a>
+                    <a href="javascript:;">智能版</a>
+                </nav>
+                <a href="javascript:;" class="set_icon icon_set rt"></a>
+                <a href="javascript:;" class="user_icon icon_user rt"></a>
+            </header>
+            <nav class="nav_box">
+                <a href="javascript:;">新闻</a>
+                <a href="javascript:;">财经</a>
+                <a href="javascript:;">体育</a>
+                <a href="javascript:;">娱乐</a>
+                <a href="javascript:;">军事</a>
+                <a href="javascript:;">汽车</a>
+                <a href="javascript:;">科技</a>
+                <a href="javascript:;">视频</a>
+                <a href="javascript:;">美图</a>
+                <a href="javascript:;">NBA</a>
+                <a href="javascript:;">博客</a>
+                <a href="javascript:;">房产</a>
+                <a href="javascript:;">股票</a>
+                <a href="javascript:;">游戏</a>
+                <a href="javascript:;">小说</a>
+                <a href="javascript:;">星座</a>
+                <a href="javascript:;">教育</a>
+                <a href="javascript:;">女性</a>
+                <a href="javascript:;">健康</a>
+                <a href="javascript:;">微博</a>
+                <a href="javascript:;">更多</a>
+            </nav>
+        </header>
+        <section class="content_box">
+            <div class="tab_box">
+                <ul class="tab">
+                    <li class="current">今日要闻</li>
+                    <li>高清美图</li>
+                    <li>精选视频</li>
+                </ul>
+                <!-- 下面的ul是悬浮的 tab 只当滑过对应的 -->
+                <ul class="tab fixed hide">
+                    <li class="current">今日要闻</li>
+                    <li>高清美图</li>
+                    <li>精选视频</li>
+                </ul>
+            </div>
+            <div class="tab_body news_box">
+                <div class="banner_box">
+                    <div class="swiper-container container">
+                        <div class="swiper-wrapper">
+                            <!-- <div class="swiper-slide">
+                                <img src="https://k.sinaimg.cn/n/blogapp/transform/310/w710h400/20190502/AtIP-hwfpcxn5196302.jpg/w710h400z1l50t1f93.jpg?by=comos"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://k.sinaimg.cn/n/news/transform/310/w710h400/20190502/MTfh-hwfpcxn4972811.jpg/w710h400z1l50t1f6d.jpg?by=comos"
+                                    alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="https://k.sinaimg.cn/n/news/310/w710h400/20190503/yxYk-hwfpcxn6803995.jpg/w710h400z1l50t1e1e.jpg?by=comos"
+                                    alt="">
+                            </div> -->
+                        </div>
+                        <div class="swiper-pagination bottom"></div>
+                    </div>
+
+                </div>
+                <ul class="list_box">
+                    <!-- <li class="none_pic">
+                        <p>微纪录片：无奋斗 不青春</p>
+                        <div class="comment_box">
+                            <span>138</span>
+                            <span class="icon_com"></span>
+                        </div>
+                    </li>
+                    <li class="one_pic">
+                        <div class="img_box">
+                            <img src="###" alt="图片">
+                        </div>
+                        <div class="content_box">
+                            <p>委反对派领导人瓜伊多终于承认:政变缺乏军方支持</p>
+                            <div class="comment_box">
+                                <span>260</span>
+                                <span class="icon_com"></span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="two_pic">
+                        <div class="img_box">
+                            <img src="##" alt="">
+                        </div>
+                        <div class="img_box">
+                            <img src="##" alt="">
+                        </div>
+                    </li>
+                    <li class="three_pic">
+                        <p></p>
+                        <div class="three_box">
+                            <div class="img_box">
+                                <img src="##" alt="">
+                            </div>
+                            <div class="img_box">
+                                <img src="##" alt="">
+                            </div>
+                            <div class="img_box">
+                                <img src="##" alt="">
+                            </div>
+                        </div>
+                        <div class="comment_box">
+                            <span></span>
+                            <span class="icon_com"></span></div>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="tab_body pic_box hide">2</div>
+            <div class="tab_body video_box hide">3</div>
+        </section>
+    <div class="top"></div>
+
+    </section>
+    <!-- 方便计算到达底部 -->
+    <script src="./js/zepto.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 正则(RegExp):制定的规则,通常是用来处理字符串一些文本内容(查找、效验文本内容是否合法)
+        // 正则组成部分 元字符和修饰符
+        // 字面量方式
+        // let reg = /元字符/修饰符 
+        // 元字符
+        // 特殊元字符(在正则中有特殊意义的字符)
+        // 量词元字符(限定元字符连续出现的次数)
+        // 其他元字符
+        // 普通元字符 /a/
+
+        // 特殊元字符
+        // \ 转义字符(转换成原义)本来的意思
+        // \d 0 到 9 中任意一个数[0~9](包含0和9)
+        // \D 除了0 到 9 数字,以外 任何一个字符
+        // \w 匹配数字、字母(大小写)、下划线 [0-9a-zA-Z_]
+        // \W 匹配除了数字、字母(大小写)、下划线 [0-9a-zA-Z_],以外任意一个字符
+        // \s 匹配空白符(空格 换行符 制表符)
+        // \S 匹配除空白符(空格 换行符 制表符),以外任意字符
+        // \b 匹配单词的边界 'hello world' (每个单词两边就是边界) 
+        // \B 匹配除了单词的边界
+        // \n 匹配换行符
+        // ^  匹配字符串的开头(以什么什么开头)
+        // $  匹配的是 字符串的末尾 (以什么什么结尾)
+        // .  匹配除了\n(换行符),以外的任意字符(默认不是小数点的意思，需要转义为小数点 \.)
+
+        /* 
+           \d 0 到 9 中任意一个数[0~9](包含0和9)
+           let reg = /\d/;
+           console.log(reg.test('1'));// true
+           reg.test('0'); // true
+           reg.test('9'); // true
+           reg.test('a'); // false
+           RegExp.prototype.test 匹配
+           验证字符串是否符合这个正则规则 符合返回true 否则返回false
+           语法: reg.test('字符内容'); 
+       */
+
+        /* 
+           \D 除了0 到 9 数字,以外 任何一个字符
+           let reg = /\D/;
+           console.log(reg.test('-1')); // true
+           console.log(reg.test('a')); //true
+         */
+
+        // \w 匹配数字、字母(大小写)、下划线 [0-9a-zA-Z_]
+        /* 
+          let reg = /\w/;
+          reg.test('1'); // true
+          reg.test('a'); // true
+          reg.test('A'); // true
+          reg.test('_'); // true 
+        */
+
+        // \W 匹配除了数字、字母(大小写)、下划线 [0-9a-zA-Z_],以外任意一个字符
+        /* 
+          let reg = /\W/;
+          reg.test('1'); // false
+          reg.test('a'); // false
+          reg.test('A'); // false
+          reg.test('_'); // false
+          reg.test('='); // true 
+        */
+
+        // \s 匹配空白符(空格 换行符 制表符)
+        //         let reg = /\s/;
+        //         let str = `
+        // `;
+        //         console.log(reg.test(' ')); // true
+        //         console.log(reg.test(str)); // true
+
+        // \S 匹配除空白符(空格 换行符 制表符),以外任意字符
+        // let reg = /\S/;
+        // console.log(reg.test('a')); //true
+        // console.log(reg.test(' ')); //false
+
+        // \b 匹配单词的边界 'hello world' (每个单词两边就是边界)
+        // let reg = /\bworld\b/;
+        // console.log(reg.test('world')); // true
+        // console.log(reg.test('helloworld')); // false
+        // 匹配的字母w 必须在左边边界
+        // let reg = /\bw/;
+        // console.log(reg.test('awc')); // false 在中间没有边界
+        // console.log(reg.test('wc')); // true 在左边边界
+        // console.log(reg.test('cw')); // false 没有左边边界 有右边边界
+        // 匹配的字母w 必须在右边边界
+        // let reg = /w\b/;
+        // console.log(reg.test('awc')); // false 在中间没有边界
+        // console.log(reg.test('wc')); // false 没有右边边界 有左边边界
+        // console.log(reg.test('cw')); // true 在右边边界 
+
+        // \B 匹配除了单词的边界
+        //  匹配 不在左边边界的字符a
+        // let reg = /\Bw/;
+        // console.log(reg.test('w')); // false
+
+        //  \n 匹配换行符
+        //         let reg = /\n/;
+        //         console.log(reg.test('a')); // false
+        //         console.log(reg.test(`
+        // a`)); // true
+
+        // ^匹配字符串的开头(以什么什么开头)
+        // 只要 匹配的字符内容中包含字符a 就返回true
+        // let reg = /a/;
+        // console.log(reg.test('123223a2')); // true
+        // 字符串的开头必须是以a 作为开头的
+        // let reg = /^a/;
+        // console.log(reg.test('12323a3')); // false
+        // console.log(reg.test('a12323a3')); // true
+        // let reg2 = /^world/
+        // console.log(reg2.test('world hello')) // true
+        // console.log(reg2.test('hello world')) // false
+
+        // $ 匹配的是 字符串的末尾 (以什么什么结尾)
+        // let reg = /利$/;
+        // console.log(reg.test('文利')); //true
+        // console.log(reg.test('布罗利')); //true
+        // console.log(reg.test('悟空')); //false
+
+        // 只能是这个字符
+        // let reg = /^hello$/;
+        // console.log(reg.test('hello')); // true 只能匹配 hello 这五个字符
+        // console.log(reg.test('hello hello')); // false
+
+        // .匹配除了\n(换行符),以外的任意字符
+        //  当你回车时，不仅有换行符，还有空格符
+//         let reg = /./;
+//         console.log(reg.test(`
+// `)); // false
+//         console.log(reg.test('a')); // true
+//         console.log(reg.test('.')); // true
+
+        // 只想匹配小数点 需要将.转义
+        // let reg = /\./;
+        // console.log(reg.test('.')); // true
+        // console.log(reg.test('1 ')); // false
+    </script>
+</body>
+
+</html>

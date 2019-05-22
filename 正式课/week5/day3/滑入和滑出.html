@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 600px;
+            height: 600px;
+            margin: 50px auto;
+            background: sandybrown;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        #inner {
+            width: 500px;
+            height: 500px;
+            background: darkgoldenrod;
+            border: 10px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        outer
+        <div id="inner">inner</div>
+    </div>
+    <script>
+        // onmouseover/onmouseout
+        
+        // onmouseenter/onmouseleave 不会冒泡传播
+        // const outer = document.getElementById('outer');
+        // const inner = document.getElementById('inner');
+        // outer.onmouseover = function() {
+        //     console.log('outer');
+        // }
+        // inner.onmouseover = function() {
+        //     console.log('inner');
+        // }
+        // outer.onmouseenter = function() {
+        //     console.log('outer enter');
+        // }
+        // inner.onmouseenter = function() {
+        //     console.log('inner enter');
+        // }
+    </script>
+</body>
+</html>

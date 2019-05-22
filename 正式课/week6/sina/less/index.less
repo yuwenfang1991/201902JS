@@ -1,0 +1,281 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.2rem;
+    box-sizing: border-box;
+    background: #fff;
+    z-index: 100;
+}
+
+a {
+    text-decoration: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+.cl::after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.rt {
+    float: right;
+}
+
+.lt {
+    float: left;
+}
+
+.app {
+    .header_box {
+        width: 100%;
+        min-height: 2rem;
+        background: -webkit-linear-gradient(270deg, #5da2f1, #2ea4f2, #838dfb);
+
+        .logo,
+        .header_box,
+        .app {
+            color: white;
+            font-size: 1.32rem;
+            margin-left: 0.3rem;
+            margin-top: -0.15rem;
+        }
+
+        .tab {
+            height: .44rem;
+            width: 1.98rem;
+            font-size: 0.22rem;
+            line-height: 0.44rem;
+            background: #2c91e0;
+            border-radius: .3rem;
+            position: absolute;
+            left: 50%;
+            top: .36rem;
+            transform: translateX(-50%);
+
+            a {
+                color: #106099;
+                // padding: 0 0.1rem;
+                padding-left: 0.21rem;
+            }
+
+            a.active {
+                color: #fff;
+                font-size: 0.22rem;
+            }
+
+            &::after {
+                // & 代表父节点
+                position: absolute;
+                left: 50%;
+                top: .13rem;
+                content: "";
+                display: block;
+                width: 1px;
+                height: .18rem;
+                background: #6bb0e7;
+            }
+        }
+
+        .set_icon,
+        .user_icon {
+            display: block;
+            width: 0.36rem;
+            height: 0.36rem;
+            font-size: 0.36rem;
+            color: #fff;
+            // line-height: .44rem;
+            margin: 0.36rem 0.36rem 0 0;
+        }
+
+        .nav_box {
+            text-align: center;
+            font-size: 0;
+
+            // 子 inline-block; 父 font-size:0;
+            a {
+                display: inline-block;
+                color: #fff;
+                width: 14%;
+                font-size: 0.32rem;
+                text-align: center;
+                margin-bottom: 0.2rem;
+            }
+        }
+    }
+
+    .content_box {
+        padding: 0 0.2rem;
+
+        .tab_box {
+            width: 100%;
+
+            ul {
+                width: 100%;
+                height: 0.8rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 0.01rem solid #ececec;
+
+                li {
+                    // text-align: center;
+                    font-size: 0.34rem;
+                    line-height: 0.8rem;
+
+                    &.current {
+                        font-size: 0.4rem;
+                        color: #5da2f1;
+                        font-weight: 600;
+
+                        &::after {
+                            content: "";
+                            display: block;
+                            width: 0.5rem;
+                            height: 0.06rem;
+                            background: #2fa4f2;
+                            border-radius: 0.2rem;
+                            position: relative;
+                            left: 50%;
+                            margin-left: -0.25rem;
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .tab_body {
+            padding-top: 0.2rem;
+
+            .banner_box {
+                width: 100%;
+                height: 3.4rem;
+
+                .container {
+                    height: 100%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .bottom {
+                    text-align: right;
+                    position: absolute;
+                    bottom: 0.2rem;
+                    font-size: .4rem;
+                    color: #fff;
+                    box-sizing: border-box;
+                    padding-right: 0.2rem;
+
+                    .swiper-pagination-current {
+                        font-size: 0.5rem;
+                    }
+                }
+            }
+
+            .list_box {
+                li {
+                    border-bottom: 0.01rem solid #ececec;
+                    font-size: 0.25rem;
+                    padding: 0.2rem 0;
+
+                    p {
+                        font-size: 0.34rem;
+                    }
+
+                    .comment_box {
+                        text-align: right;
+                        box-sizing: border-box;
+                        padding-right: 0.2rem;
+                    }
+                }
+
+                .one_pic {
+                    display: flex;
+
+                    .img_box {
+                        width: 2rem;
+                        height: 1.8rem;
+                        overflow: hidden;
+                        // background: aqua;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .content_box {
+                        flex: 1;
+                        height: 1.8rem;
+                        position: relative;
+
+                        .comment_box {
+                            position: absolute;
+                            bottom: 0;
+                            width: 100%;
+                        }
+                    }
+                }
+
+                .two_pic {
+                    display: flex;
+
+                    .img_box {
+                        flex: 1;
+                        background: salmon;
+                        justify-content: space-between;
+                        height: 2.35rem;
+
+                        img {
+                            width: 3.5rem;
+                            height: 100%;
+                        }
+                    }
+
+                    .img_box:nth-child(1) {
+                        margin-right: 0.2rem;
+                    }
+                }
+
+                .three_pic {
+                    .three_box {
+                        display: flex;
+
+                        .img_box {
+                            flex: 1;
+                            height: 1.8rem;
+                            background: navajowhite;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .img_box:nth-child(2) {
+                            margin: 0 0.1rem;
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+    }
+}

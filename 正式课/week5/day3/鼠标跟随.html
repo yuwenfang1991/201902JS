@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: salmon;
+            opacity: .5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // 目标:元素跟随鼠标移动
+        // 前期准备 一个绝对定位的元素
+        // 实施计划(步骤)
+        // 1. 捕捉到鼠标在document中移动 document.onmousemove
+        // 2.得到当前鼠标所在的坐标位置 event.clientX event.clientY
+        // 3.让元素定位,将此时鼠标的clientX 作为元素的left值，鼠标的clientY 作为元素的top值
+        // ele.style.left = event.clientX + 'px';
+        // ele.stye.top = event.clientY + 'px'; 
+
+        // 监听鼠标在document中移动
+        // document.onmousemove = function ({ clientX, clientY }) {
+        const box = document.getElementById('box');
+        document.onmousemove = function (event) {
+            const {
+                clientX,
+                clientY
+            } = event;
+            console.log('move', clientX, clientY);
+            // 那鼠标的坐标位置 作为元素的中心
+            box.style.left = event.clientX - box.offsetWidth / 2 + 'px';
+            box.style.top = event.clientY - box.offsetHeight / 2 + 'px';
+
+            // 把鼠标的坐标位置 作为元素左上角位置
+            // box.style.left = event.clientX + 'px';
+            // box.style.top = event.clientY + 'px';
+        }
+    </script>
+</body>
+
+</html>

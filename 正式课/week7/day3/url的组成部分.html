@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&rsv_idx=1&tn=baidu&wd=珠峰">跳转</a>
+    <a href="#css">css</a>
+    <a href="#html">html</a>
+    <a href="#js">js</a>
+
+    <div>css</div>
+    <div style="display:none">html</div>
+    <div style="display:none">js</div>
+    <script>
+
+        // URL 统一资源定位符    
+        // URN 统一资源名称
+        // URI 统一资源标识符 URI = URL +URN
+
+        // URL的组成部分
+        // https://www.souyidai.com/p2p/#/invest/gs
+
+        // 协议
+        // http 超文本传输协议
+        // https 比http 多了一层 安全套协议(SSL); https 比http更安全
+        // ftp 文件传输 服务器上传文件的协议
+
+        // 域名
+        // www.souyidai.com 
+        // com 顶级域名
+        // souyidai 二级域名
+
+        // 端口 0~65535
+        // 每一个服务对应一个端口
+        // http 默认端口 是 80
+        // https 默认端口是 443
+
+        // ftp 默认端口是 21
+
+        // /p2p/ 路径 服务器 存放文件的路径
+
+        // # 后边 我们成为 hash(哈希)值 改变之后不会触发页面的刷新 路由
+        let oDivs = document.getElementsByTagName('div');
+        window.onhashchange = function (e) {
+            // 监听hash值的改变； 只要hash发生改变 就会触发该函数
+            // console.log(e)
+            let hash = location.hash;
+            // console.log(hash);
+            let o = [...oDivs]; // 不存在DOM映射
+            switch (hash) {
+                case '#css':
+                    [...oDivs].forEach((item, index) => {
+                        if (index === 0) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    break;
+                case '#html':
+                    [...oDivs].forEach((item, index) => {
+                        if (index === 1) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                            item.style.display = 'none';
+                        }
+                    });
+                    break;
+
+                default:
+                    [...oDivs].forEach((item, index) => {
+                        if (index === 2) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                            item.style.display = 'none';
+                        }
+                    });
+                    break;
+            }
+        }
+        // # 前边的 ？ 后边的我们成为 search
+    </script>
+</body>
+
+</html>

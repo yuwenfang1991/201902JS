@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: coral;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">我是div</div>
+    <script>
+        const box = document.getElementById('box');
+        function win(attr) {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        box.onclick = function(event) { // 事件对象 event
+            console.log(event); // 关于当前事件的信息
+            // 事件对象 IE6~8 需要使用window.event得到当前事件信息 兼容写法
+            // 不支持event
+            event = event || window.event;
+            // 事件源的兼容 IE6~8 不支持target属性
+            event.target = event.target || event.srcElement;
+            
+            //pageX/pageY 兼容IE6~8写法  
+        }
+        /**
+         * target 事件源
+         * client 相对于可视窗口左上角
+         * clientX 鼠标位置距离可视窗口左边边缘的距离
+         * clientY 鼠标位置距离可视窗口上边边缘的距离
+         * 
+         * page 相对于页面body左上角
+         * pageX 鼠标位置距离页面body左边边缘的距离
+         * pageY 鼠标位置距离页面body上边边缘的位置
+         * pageX = clientX + ele.scrollLeft
+         * pageY = clientY + ele.scrollTop
+         * 
+         * offset 相对于当前元素
+         * offsetX 鼠标位置距离当前元素左边边缘的距离
+         * offsetY 鼠标位置距离当前元素上边边缘的距离
+         * offsetX = pageX - offsetLeft
+         * offsetY = pageY - offsetTop
+         * 
+         * 
+        */
+    </script>
+</body>
+</html>

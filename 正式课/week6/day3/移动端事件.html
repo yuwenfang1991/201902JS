@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            background: darkcyan;
+            width: 300px;
+            height: 300px;
+            margin: 1000px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">hello world</div>
+    <script>
+        // touchstart touchmove touchend
+        let content = document.querySelector('.content');
+        // content.ontouchstart = function(e) {
+        //     e = e || window.event;
+        //     console.log(e);
+        //     // 事件源 e.target 
+        //     // 手指的位置信息 e.changedTouches[0]
+
+        // }
+
+        // content.ontouchmove = function(e) {
+        //     // e = e || window.event;
+        //     // 该事件 是先执行的默认事件； 在执行绑定的函数
+        //     e.preventDefault();
+        // }
+
+        let fn = function (e) {
+            // touchmove的默认事件 是让页面 可以上下滚动(前提是可以滚动的)
+            e.preventDefault();
+            console.log(e);
+
+        }
+
+        // 需要移除对应的事件时 把回调函数
+        content.addEventListener('touchmove',fn , { passive: false }); // passive 是true 表示先执行默认
+        content.removeEventListener('touchmove',fn , { passive: false }); // passive 是true 表示先执行默认
+
+
+
+        content.addEventListener('touchend', function (e) {
+            // 当手指离开屏幕时触发
+            console.log('touchend触发', e);
+
+
+        }, false);
+
+        // 移动端的 onclick 事件 有300毫秒的延迟; 
+        // 我们可以使用 touchstart 或者 touchend 来代替 onclick
+    </script>
+</body>
+
+</html>

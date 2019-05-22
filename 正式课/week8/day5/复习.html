@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-for="(item, index) in ary" :key="index">
+          {{name}}
+          {{item}}
+        </h1>
+
+        <input type="text" v-if="flag">
+        <input type="text" v-if="!flag">
+        <button @click='flag=!flag'>按钮</button>
+    </div>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"hello world",
+            ary:[1,2,3,5]
+        }
+    })
+
+    /* 
+      v-model v-text v-html
+     */
+</script>
+</body>
+</html>

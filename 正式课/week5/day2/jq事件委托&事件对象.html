@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #list {
+            width: 600px;
+            margin: 30px auto;
+            border: 1px solid red;
+            font-size: 18px;
+            text-align: center;
+            list-style: none;
+        }
+
+        #list li {
+            color: #ffffff;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        #list li:nth-child(odd) {
+            background: pink;
+        }
+
+        #list li:nth-child(even) {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li class="item">习近平检阅中国人民解放军海军仪仗队item1</li>
+        <li class="item">习近平检阅中国人民解放军海军仪仗队item2</li>
+        <li class="item">习近平检阅中国人民解放军海军仪仗队item3</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item4</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item5</li>
+        <li>习近平检阅中国人民解放军海军仪仗队item6</li>
+    </ul>
+    <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        $(function() {
+            const $list = $('#list');
+            // $list.click(function(event) {
+            //     console.log(event.target);
+                
+            // });
+            // jq中的事件委托 事件名称 筛选器 事件函数
+            $list.on('click', 'li.item', function() {
+                console.log(this);
+                
+            });
+        })
+    </script>
+</body>
+
+</html>

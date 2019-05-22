@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            padding-left: 50px;
+            padding-right: 50px;
+            margin: 50px auto;
+            border: 20px solid blueviolet;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box">
+
+    </div>
+    <script>
+        // JS盒模型: 通过JS中的属性和方法 获取元素样式属性信息
+        // const box = document.getElementById('box');
+        // client
+        // 1.clientWidth/clientHeight
+        // clientWidth 内容宽度 + 左右padding
+        // console.log(box.clientWidth); // 600 
+
+        // clientHeight 内容高度 + 上下padding
+        // console.log(box.clientHeight); // 600
+
+        // 2.clientTop/clientLeft
+        // clientTop (上边框宽度)
+        // console.log(box.clientTop); // 20
+        // clientLeft (左边框宽度)
+        // console.log(box.clientLeft); // 20
+
+        // 3.offsetWidth/offsetHeight
+        // offsetWidth clientWidth(内容宽度+左右padding) + 左右边框宽度
+        // console.log(box.offsetWidth); // 500 + 100 + 40
+        // offsetHeight clientHeight(内容高度+上下padding) + 上下边框宽度
+        // console.log(box.offsetHeight); // 500 + 100 + 40
+
+        // 4.scrollLeft(横向滚动条)/scrollTop(纵向滚动条)
+        // 滚动条 滚动的距离 默认 0 
+        // 元素.scrollTop/元素.scrollLeft
+        // 获取浏览器窗口滚动距离
+        // document.documentElement.scrollTop || document.body.scrollTop
+        // 内容宽度和内容高度固定 里面内容溢出的时候出现滚动条
+        // scrollHeight/scrollWidth
+        // 一屏的高度 + 溢出的内容高度
+        // scrollHeight === clientHeight + scrollTop(最大值)
+        // scrollWidth === clientWidth + scrollLeft(最大值)
+
+        //在没有内容溢出的情况
+        // scrollHeight === clientHeight
+        // scrollWidth === clientWidth
+
+        // client 
+        // clientWidth: 内容宽度 + 左右padding
+        // clientHeight: 内容高度 + 上下padding
+        // clientLeft: 左边边框宽度
+        // clientTop: 上边框宽度
+
+        // offset
+        // offsetWidth: clientWidth(内容宽度 + padding) + 左右边框宽度  
+        // offsetHeight: clientHeight(内容高度 + padding) + 上下边框宽度
+
+        // scroll
+        // scrollTop: 纵向滚动条 滚出去的距离
+        // scrollLeft: 横向滚动条 滚出去的距离
+        // 有内容溢出的时候
+        // scrollHeight === clientHeight + scrollTop(最大值)
+        // scrollWidth === clientWidth + scrollLeft(最大值)
+        // 没有内容溢出的时候
+        // scrollHeight === clientHeight
+        // scrollWidth === clientWidth
+
+        // scrollTop/scrollLeft 是可读可写 其余的是 只读的 盒模型属性
+        
+        // 获取浏览器窗口的盒模型属性
+        // 获取浏览器窗口一屏的宽度和高度(可视化区域宽度和高度)
+        // 兼容写法
+        // const winW = document.documentElement.clientWidth || document.body.clientWidth;
+        // const winH = document.documentElement.clientHeight || document.body.clientHeight;
+        // 兼容写法
+        //  document.documentElement.scrollTop || document.body.scrollTop;
+        // document.documentElement.scrollLeft || document.body.scrollLeft;
+
+        // 给函数传一个参数 代表获取值 传两个参数代表设置值
+        // function win(attr, val) {
+        //     if(typeof val === 'undefined') {
+        //         return document.documentElement[attr] || document.body[attr];
+        //     }
+        //     document.documentElement[attr] = document.body[attr] = val;
+        // }
+    </script>
+</body>
+
+</html>

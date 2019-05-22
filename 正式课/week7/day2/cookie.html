@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        
+        // cookie 前端存储数据的地方
+        // 前后端 都可以设置 外界一般说的是 种植cookie
+
+        // 获取cookie
+        // document.cookie 获取本域名下的 cookie
+        // cookie 是在每个人自己的电脑上的
+
+        // 封装一个 getCookie方法  getCookie('u_main')
+        // function parseCookie(key) {
+        //     let cookie = document.cookie,
+        //         pattern = /([^=]+)=([^;]+);?\s*/g,
+        //         result,
+        //         value = {};
+        //     while ((result = pattern.exec(cookie)) != null) {
+        //         value[result[1]] = result[2];
+        //     }
+        //     return value;
+        // }
+
+        function getCookie(key) {
+            let str = document.cookie;
+            //var cookie = "id=123; username=yang; sex=1";
+            let reg4 = new RegExp(`(^| )${key}=([^;]*)(;|$)`);
+        
+            var arr = str.match(reg4); //match方法发挥数组
+           //console.log(reg4,arr);
+           if(arr){
+               // 正则若捕获到了内容 就返回对应内容
+               // 否则返回null
+                return arr[2];
+           }else{
+               return null
+           }
+           
+        }
+
+
+    </script>
+</body>
+
+</html>

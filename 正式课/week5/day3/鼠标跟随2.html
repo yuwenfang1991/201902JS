@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            background: sandybrown;
+            border: 10px solid aqua;
+            margin: 50px auto;
+        }
+
+        #mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* width: 100px;
+            height: 100px; */
+            background: fuchsia;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="mask" style="width: 100px; height: 100px"></div>
+    </div>
+    <script>
+        // 当元素隐藏的时候 display:none 获取不到盒模型属性的 offsetWidth offsetHeight 0
+        const box = document.getElementById('box');
+        const mask = document.getElementById('mask');
+        const minL = 0;
+        const minT = 0;
+        const wid = parseFloat(mask.style.width);
+        const hei = parseFloat(mask.style.height);
+        let maxL = box.clientWidth - wid;
+        let maxT = box.clientHeight - hei;
+        window.onresize = function () {
+            maxL = box.offsetWidth  - wid;
+            maxT = box.offsetHeight - hei;
+        }
+
+        box.onmouseenter = function() {
+            mask.style.display = 'block'; 
+        }
+        box.onmouseleave = function() {
+            mask.style.display = 'none';
+        }
+
+        box.onmousemove = function (event) {
+            const {
+                pageX,
+                pageY
+            } = event;
+            const {
+                style
+            } = mask;
+            const {
+                offsetLeft,
+                offsetTop,
+                clientLeft,
+                clientTop
+            } = this;
+            let offsetX = pageX - offsetLeft - clientLeft;
+            let offsetY = pageY - offsetTop - clientTop;
+            let l = offsetX - wid / 2;
+            let t = offsetY - hei / 2;
+            if (l < minL) {
+                l = minL;
+            } else if (l > maxL) {
+                l = maxL;
+            }
+            if (t < minT) {
+                t = minT;
+            } else if (t > maxT) {
+                t = maxT;
+            }
+
+
+            style.left = l + 'px';
+            style.top = t + 'px';
+        }
+    </script>
+</body>
+
+</html>

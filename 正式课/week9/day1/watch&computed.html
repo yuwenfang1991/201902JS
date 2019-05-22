@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="firstName">
+        <input type="text" v-model="middleName">
+        <input type="text" v-model="lastName">
+
+        <h2>这个人的全名是：{{name1}}</h2>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                firstName: '',
+                middleName: '',
+                lastName: '',
+                name1: ''
+            },
+
+            computed: {
+                fullName() {
+                    // return this.firstName + '·' + this.middleName + '·' + this.lastName
+                    if (this.firstName && !this.lastName) {
+                        return this.firstName + '·' + this.middleName;
+                    } else if (this.lastName && !this.middleName) {
+                        return this.firstName + '' + '·' + this.lastName
+                    } else if (this.middleName && this.lastName) {
+                        return this.firstName + '·' + this.middleName + '·' + this.lastName
+                    }
+
+                    return this.firstName
+                }
+            },
+
+            watch: {
+                // cur 当前值 
+                // prev 改变之前的那个值
+                firstName(val) {
+                    console.log(arguments);
+                    
+                    this.name1 = this.firstName + '·' + this.middleName + '·' + this.lastName
+                },
+                middleName() {
+                    this.name1 = this.firstName + '·' + this.middleName + '·' + this.lastName
+                },
+                lastName() {
+                    this.name1 = this.firstName + '·' + this.middleName + '·' + this.lastName
+                },
+                name1() {
+                    this.name1 = this.firstName + '·' + this.middleName + '·' + this.lastName
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

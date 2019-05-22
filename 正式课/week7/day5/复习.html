@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #text {
+            width: 395px;
+            height: 32px;
+            position: absolute;
+            left: 50px;
+            padding-left: 10px;
+        }
+
+        #list {
+            padding-left: 10px;
+            display: none;
+            width: 396px;
+            position: absolute;
+            left: 50px;
+            top: 35px;
+            background: seashell;
+            border: 1px solid darkolivegreen;
+
+        }
+
+        #list li:hover {
+            background: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="text">
+    <ul id="list"></ul>
+    <script>
+        // 创建实例  open 执行 监听状态 发送请求
+        // get 系列 get head delete
+        // post 系列 post put option(询问 跨域的复杂post 请求) 
+        // form data 发给后台的请求数据
+        // 改成form data 添加一个请求头 content-type: ...www-form...
+        // send(json字符串)
+        // 跨域： 浏览器的安全机制 协议 域名 端口 只要有一个 不同就是跨域
+        // jsonp cors
+        function getData(val) {
+            $.ajax({
+                url: 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=wise_web&sugsid=26524,1432,21091,18559,20697,28518,28775,28722,28964,28836,28585,26350,22160&req=2&csor=5',
+                dataType: 'jsonp',
+                jsonp: 'cb',
+                data: { wd: val, pwd: val },
+                jsonpCallback: 'fn',
+                success: function (data) {
+                    console.log(data);
+                    data.g = data.g || [];
+                    let data1 = data.g;
+                    let str = '';
+                    data1.forEach(item => {
+                        str += `<li>${item.q}</li>`;
+                    });
+
+                    $('#list').html(str);
+                    let $list = $('#list > li');
+                    // console.log($list);
+                    $list.on('mousedown',function () {
+                        $('#text').val($(this).text());
+                    })
+                }
+            });
+        }
+
+
+        $('#text').on('input', function () {
+            getData(this.value);
+        });
+
+        $('#text').on('focus', function () {
+            $('#list').css({
+                display: 'block'
+            });
+        })
+        $('#text').on('blur', function () {
+            $('#list').css({
+                display: 'none'
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>

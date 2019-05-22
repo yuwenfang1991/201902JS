@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象</title>
+</head>
+
+<body>
+    <script>
+        // 面向对象:
+        // 1.创建对象的方式
+        // 1.1 单例模式: 把描述一个事物的属性封装到一个对象中,解决了一个全局变量命名冲突的问题。这个对象的变量名叫做命名空间,原理:不同的堆内存空间相互隔离的;[高级单例模式:]
+        // var obj = {
+        //     name: '珠峰',
+        //     age: '11'
+        // }
+        // var obj2 = (function () { // 高级单例
+        //     return {
+        //         name,
+        //         age
+        //     }
+        // })()
+        // 1.2 单例模式不能批量生产对象,所以产生了工厂模式;将创建一个对象 需要的属性都封装了一个函数,当需要创建的对象时执行这个函数即可
+        // function person(name, age, beautify) {
+        //     return {
+        //         name, age, beautify
+        //     }
+        // }
+        // var p1 = person('MaHuateng','40','handsome');
+        // var p2 = person('Mabin','18','handsome'); // p1 和 p2 是两个不同的对象
+
+        // 1.3 工厂模式 虽然解决了不能批量生产对象的问题,但是存在不能实例区分,即没有类型的概念;所以,我们引入了自定义类型的构造函数模式
+        // function Wealth(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // var w1 = new Wealth('MaHuateng','40');
+        // console.log(w1);
+        // 1.4构造函数模式虽然解决了实例区分,有了类型的概念,但是它不能实现共有属性和方法共有。所以我们引入了"原型模式"(基于函数的原型对象prototype)
+        // function Foo() {
+        //     this.name = 'foo';
+        //     this.age = '18';
+        // }
+        // Foo.prototype.getName = function () {
+        //     // 每个实例
+        //     console.log(this.name);
+        // }
+        // var f = new Foo();
+        // f.getName();
+        // var f1 = new Foo();
+        // f1.getName();
+        // 2.类、实例、对象三者之间的关系
+        // 每一个函数(普通函数、构造函数)都有一个天生自带的属性prototype(原型对象);
+        // 每一个实例都是一个对象,每一个对象(普通对象、实例、原型对象)都有一个天生自带的属性__proto__,指向当前实例所属类的原型(prototype)
+        // 每一个原型对象都是对象数据类型,天生自带两个属性: constructor/__proto__;constructor指向所属类本身,__proto__指向当前原型对象所属类的原型。
+        // 3.this指向
+        // 3.1 事件函数中的this 指向绑定当前事件的元素
+        // 3.2 自执行函数中的this 指向window
+        // 3.3 定时器中的 this指向 window
+        // 3.4 方法调用时(函数名()) this 指向,看方法调用时前面有没有.,如果有,点前面是谁，this就指向谁,如果没有就指向window。要注意[通过[属性名]取得一个方法和对象.属性名取得方法是等价的]问题
+        // 3.5 构造函数中的this 指向当前构造函数的实例
+        // 3.6 箭头函数中的this 指向箭头函数声明时所在作用域中的this
+        // 3.7 全局作用域中的this 就是window
+        // 3.8 call/apply/bind 指定this后,this就指向了他们三个指定的 this
+        // 4. 原型链:对象的属性查找机制
+        // 当访问一个对象的某个属性时,浏览器会在私有属性中查找,如果找到就使用这个私有属性,如果私有属性没有,通过对象的__proto__向当前实例所属类的prototype上查找,如果找到就使用prototype上的属性,如果还没有找到就使用prototype的__proto__继续向上查找,一直找到Object.prototype 上为止, 如果还找不到就返回undefined
+        // 5. call/apply/bind 修改函数中this 指向的
+        // call/apply 修改完this 之后会执行方法,而bind只修改 this不执行方法
+        // call 传参是一个一个的传递,而apply 是传递一个数组
+        // 6. 求数组最大值、最小值
+        // let max = Math.max.apply(null,[12,23,45,1,5,6]);
+        // let min =Math.min.apply(null,[12,14,21,5,87,17,6]);
+        // 7. 类数组转数组 
+        // 7.1 for 循环
+        // 7.2 Array.from(类数组)
+        // 7.3 [].slice.call(类数组)
+        // 7.4 [...类数组]
+
+        // 8.箭头函数和普通函数,使用时务必考虑清楚this
+        // 8.1 没有arguments、this
+        // 8.2 没有原型
+        // 8.3 箭头函数可以使用剩余参数
+        // 8.4 声明箭头函数时只有一个参数,小括号可以省略 a => {return a}
+        // 8.5 如果函数体只有一行代码,花括号和return 关键字 也可以省略 a => a
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        // function Fn() {
+        //     this.x = 100;
+        //     this.y = 200;
+        //     this.getX = function () {
+        //         console.log(this.x);
+        //     }
+        // }
+        // Fn.prototype.y = 400
+        // Fn.prototype.x = 300
+        // Fn.prototype.getX = function () {
+        //     console.log(this.x);
+        // };
+        // Fn.prototype.getY = function () {
+        //     console.log(this.y);
+        // };
+        // var f1 = new Fn;
+        // var f2 = new Fn;
+        // console.log(f1.getX === f2.getX); // false
+        // console.log(f1.getY === f2.getY); // true
+        // console.log(f1.__proto__.getY === Fn.prototype.getY); // true
+        // console.log(f1.getX === Fn.prototype.getX); // false
+        // console.log(f1.constructor); // Fn
+        // f1.getX(); // 100
+        // f1.__proto__.getX(); // 300
+        // f2.getY(); // 200
+        // Fn.prototype.getY(); //400
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////
+        // var num = 10;
+        // var obj = {
+        //     num: 20
+        // };
+        // obj.fn = (function (num) {
+        //     this.num = num * 3;
+        //     num++;
+        //     return function (n) {
+        //         this.num += n;
+        //         num++;
+        //         console.log(num);
+        //     }
+        // })(obj.num);
+
+        // var fn = obj.fn;
+        // fn(5);
+        // obj.fn(10);
+        // console.log(num, obj.num);
+
+        // 第六题
+        // var name = 'window';
+        // var Tom = {
+        //     name: "Tom",
+        //     show: function () {
+        //         console.log(this.name);
+        //     },
+        //     wait: function () {
+        //         var fun = this.show;
+        //         fun();
+        //     }
+        // };
+        // Tom.wait();
+
+        // // 第7题
+        // var fullName = 'language';
+        // var obj = {
+        //     fullName: 'javascript',
+        //     prop: {
+        //         getFullName: function () {
+        //             return this.fullName;
+        //         }
+        //     }
+        // };
+
+        // console.log(obj.prop.getFullName());
+        // var test = obj.prop.getFullName;
+        // console.log(test());
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        // function Foo() {
+        //     getName = function () {
+        //         console.log(1);
+        //     };
+        //     return this;
+        // }
+
+        // Foo.getName = function () {
+        //     console.log(2);
+        // };
+        // Foo.prototype.getName = function () {
+        //     console.log(3);
+        // };
+        // var getName = function () {
+        //     console.log(4);
+        // };
+
+        // function getName() {
+        //     console.log(5);
+        // }
+        // Foo.getName(); // 2
+        // getName(); // 4
+        // Foo().getName(); // 1
+        // getName(); // 1
+        // var f = new Foo();
+        // f.getName(); // 3
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn {
+            width: 200px;
+            height: 200px;
+            background: sandybrown;
+        }
+
+        #btn>h3 {
+            background: darkkhaki;
+        }
+        #btn>h4 {
+            background: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="btn">
+        hello world
+        <h3>点击</h3>
+        <h4>hello</h4>
+    </div>
+    <!-- 默认行为 点击自动跳转 -->
+    <a href="https://www.baidu.com" id="link"> 跳转到百度 </a>
+    <script>
+        // 事件中的事件对象
+        // 事件对象:存储关于事件一些信息(事件名称 事件元素 鼠标坐标 keyCode)
+        // 当我们事件函数触发的时候,浏览器默认为当前事件函数传递第一个实参
+        // 当事件执行的时候,浏览器会默认给事件函数传递一个参数对象,称为事件对象
+        const btn = document.getElementById('btn');
+        const link = document.getElementById('link');
+        btn.onclick = function (event) { // event 接收 事件对象
+            console.log(event);
+        }
+        link.onclick = function() {
+            // 阻止默认行为
+            event.preventDefault();
+            alert('跳转链接');
+        }
+        // btn.onmouseover = function (event) {
+        //     console.log(event);
+        // }
+
+        /**
+         * type: 事件名称
+         * target: 事件目标元素(事件是由哪个元素触发的)
+         * 鼠标相对于浏览器窗口左上角坐标
+         * clientX:相对于浏览器窗口 距离窗口左边边缘的距离
+         * clientY: 相对于浏览器窗口 距离窗口上边边缘的距离
+         * 鼠标相对于body页面左上角的坐标
+         * pageX: 相对于body页面, 距离body左边边缘的距离 pageX = scrollLeft + clientX
+         * pageY: 相对于body页面, 距离body上边边缘的距离 pageY = scrollTop + clientY
+         * 鼠标相对于元素左上角的坐标
+         * offsetX: 相对于当前元素, 距离元素左边边缘的距离 offsetX = pageX - offsetLeft
+         * offsetY: 相对于当前元素,距离元素上边边缘的距离 offsetY = pageY - offsetTop
+         * preventDefault(): 阻止事件默认行为 
+         * stopPropagation(): 阻止事件冒泡
+         */
+    </script>
+</body>
+
+</html>

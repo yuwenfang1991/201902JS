@@ -1,0 +1,86 @@
+@w: 200px; // less 声明一个变量
+@img: '../image/1.jpg'; // '路径'
+@name: qqq; // '类名'
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.qqq_@{name} {
+    width: @w;
+    height: @w/2;
+}
+
+.public {
+    width: 200px;
+    height: 300px;
+    background: darkgoldenrod;
+
+    div {
+        font-size: 100px;
+    }
+}
+
+
+// 混合 
+// ul:extend(.public) {
+// :extend(.public)和直接用 .public; 的区别 在于 是否使用后代样式
+
+.q(@a, @b) {
+    width: @a;
+    height: @b;
+}
+
+
+
+
+
+
+
+
+ul {
+    // .public;
+    .q(300px, 100px);
+    border: 1px solid aqua;
+    margin: auto;
+    background-image: @img;
+
+    li {
+        color: antiquewhite;
+        display: inline-block;
+        width: @w;
+
+        >a {
+            font-size: 20px;
+            color: sandybrown
+        }
+    }
+
+    li:nth-child(2n) {
+        background: goldenrod;
+    }
+
+    li:nth-child(2n+1) {
+        background: deeppink;
+    }
+
+    &::after {
+        // &代表父亲节点
+        content: 'hello 珠峰'
+    }
+}
+
+// ul::after {
+//     content: 'hello 珠峰';
+// }
+
+// 循环
+.ww(@n) when (@n < 5) {
+    .qqq_@{n} {
+        width: 100px * @n;
+    }
+
+    .ww(@n + 1);
+}
+.ww(1);

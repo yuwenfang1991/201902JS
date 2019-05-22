@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            left: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: darkmagenta;
+            margin:100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // 事件冒泡 从里到外
+        // 事件冒泡 当前元素相关事件行为触发时,也会导致它所有的上级元素的相关事件也会触发
+        // 事件捕获 从外到里
+        // 事件捕获 从外到里 一直触发到元素目标为止
+        // 事件三个阶段 捕获阶段 目标阶段 冒泡阶段
+        // 捕获阶段 从外到里
+        // 目标阶段 按照事件绑定顺序
+        // 事件冒泡 从里到外
+        
+        // 先捕获 再冒泡
+        const box = document.getElementById('box');
+        // event.path 当前元素层级关系
+        box.addEventListener ('click',function(event) {
+            console.log('冒泡 => box');
+        }, true)
+        document.body.addEventListener ('click',function() {
+            console.log('冒泡 => => body');
+        }, true)
+        document.documentElement.addEventListener('click', function() {
+            console.log('冒泡 => => => document');
+        }, true)
+        box.addEventListener ('click',function(event) {
+            console.log('冒泡 => box click');
+        }, false)
+        document.body.addEventListener ('click',function() {
+            console.log('冒泡 => => body');
+        }, false)
+        document.documentElement.addEventListener('click', function() {
+            console.log('冒泡 => => => document');
+        }, false)
+    </script>
+</body>
+</html>

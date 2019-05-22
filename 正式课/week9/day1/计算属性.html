@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- 
+            根据 input 的内容长度 来体现 用户输入是否合法
+            姓名的长度不能小于2 也不能大于5
+            小于了 就提示 长度不能小于2
+            合法就是提示姓名可用
+            大于了 就提示 长度不能大于5
+         -->
+        <input type="text" v-model="name">
+        <i>{{str1}}</i>
+        <!-- <i>{{name2}}</i> -->
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                str1: '',
+                timer: null
+            },
+
+            computed: {
+                name2() {
+                    // 计算属性不支持异步
+                    // name2 跟 this.name 的依赖关系
+                    // vue 捕捉不到
+                    let str = '';
+                    if (this.name.length === 0) {
+                        str = '';
+                    } else if (this.name.length < 2) {
+                        str = '长度不能小于2';
+                    } else if (this.name.length > 5) {
+                        str = '长度不能大于5';
+                    } else {
+                        str = '合法'
+                    }
+
+                    return str;
+
+                }
+            },
+
+            watch: {
+                name() {
+                    clearTimeout(this.timer)
+
+                    this.timer = setTimeout(() => {
+                        if (this.name.length === 0) {
+                            this.str1 = '';
+                        } else if (this.name.length < 2) {
+                            this.str1 = '长度不能小于2';
+                        } else if (this.name.length > 5) {
+                            this.str1 = '长度不能大于5';
+                        } else {
+                            this.str1 = '合法'
+                        }
+                    }, 2000);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

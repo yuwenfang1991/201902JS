@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        /* 子元素占用剩余空间 */
+        .box {
+            display: flex;
+        }
+
+        .box li {
+            color: aliceblue;
+            font-size: 15px;
+            text-align: left;
+            flex: 1;
+            line-height: 100px;
+        }
+
+        .box li.item1 {
+            flex: 2;
+            
+        }
+
+        /* .box li.item3 {
+            flex: 2;
+        } */
+
+        .box li:nth-child(odd) {
+            background-color: aquamarine;
+        }
+
+        .box li:nth-child(even) {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- float 浮动 -->
+    <!-- <style>
+        .box {
+            overflow: hidden;
+        }
+
+        .box li {
+            color: aliceblue;
+            font-size: 15px;
+            text-align: center;
+            width: 20%;
+            float: left;
+        }
+    </style> -->
+    <div>
+        <ul class="box">
+            <li class="item1">item1</li>
+            <li>item2</li>
+            <li class="item3">item3</li>
+            <li>item4</li>
+            <li>item5</li>
+        </ul>
+    </div>
+</body>
+
+</html>

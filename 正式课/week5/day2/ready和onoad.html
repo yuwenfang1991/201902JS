@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+         $(document).ready(function() {
+            console.log($('#tittle'));
+        })
+    </script>
+</head>
+
+<body>
+    <h3 id="title">hello world </h3>
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script> -->
+    <script>
+        // $(document).ready 和原生window.onload区别
+        // onload:页面中所有资源DOM 图片 字体 都加载完后执行这个事件
+        // $(document).ready: 只要DOM加载完就执行
+        // DOMContentLoaded: 只要DOM加载完就执行
+        
+        // on DOM0级事件
+        //  DOMContentLoaded DOM2级事件
+        window.addEventListener('DOMContentLoaded', function() {
+            console.log('1235');
+        })
+
+        // jq为了确保你能够 成功获取页面中加载DOM
+        // $(document).ready(function() {
+        //     console.log($('#tittle'));
+        // })
+        // 简洁写法
+        // $(function() {
+
+        // })
+    </script>
+</body>
+
+</html>

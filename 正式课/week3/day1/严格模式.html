@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 默认情况下 JS执行在松散模式下
+        // JS脚本第一行 指定 "use strict" JS要在严格模式下执行
+        // 严格模式:消除一些JS 中的怪异行为
+
+        // 非严格模式下 形参和arguments有一种映射关系
+        // 一个变了 另一个也会变
+
+        // 1.严格模式下 形参和arguments 没有任何映射关系
+        // function fe(a, b, c) {
+        //   console.log(b) // 2
+        //   b = 200
+        //   console.log(b)
+        //   console.log(arguments) // [1, 2, 3]
+        // }
+        // fe(1, 2, 3)
+
+        // 项目中用webpack工具打包编译时，会在脚本头部指定严格模式下执行"use strict"
+
+        // 2.严格模式下this问题
+
+        // "use strict"
+
+        // function fe() {
+        //   console.log(this)
+        // }
+        // fe() // this => undefined
+
+        // 严格模式下 call 方法中不指定this 就是undefined
+        // 指定啥this就是啥 
+        // function f1() {
+        //     console.log(this)
+        // }
+        // f1.call() // this => undefined
+        // f1.call(undefined) // this => undefined
+        // f1.call(null) // this => null
+        
+        // 3.严格模式下 不能直接给未声明的变量 直接赋值
+        // "use strict"
+        // aa = 123; // Uncaught ReferenceError: aa is not defined
+
+        // 捕获异常
+        // try {
+        //     aa = 123
+        // } catch(e) {
+        //     console.log(e);
+        //     console.log('1111');
+        // }
+        // console.log('2222');
+        // throw 抛出异常
+        // 手工抛出一个错误
+        // 抛出一个引用错误
+        // throw new ReferenceError('xx未找到');
+        // 抛出一个类型错误
+        // throw new TypeError('xx not is a function');
+        // 抛出一个普通错误
+        // throw new Error('普通错误');
+
+    </script>
+</body>
+
+</html>

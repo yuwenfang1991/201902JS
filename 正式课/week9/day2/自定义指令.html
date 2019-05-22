@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day1/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-color='"red"'>{{name}}</h1>
+        <h2 v-color>{{name}}</h2>
+        <h3 v-bg>{{name}}</h3>
+        <button @click='flag=!flag'>按钮</button>
+        <input type="text" v-if="flag" v-focus>
+    </div>
+    <script>
+        // 全局自定义属性
+        Vue.directive('color', function (el, obj) {
+            // console.log(arguments);
+            el.style.color = obj.value || 'red';
+        });
+
+        // 全写方式
+        // Vue.directive('focus', {
+        //     // bind inserted update componentUpdated unbind
+        //     inserted(el) {
+        //         // 当 input 插入到父节点时触发该函数
+        //         el.focus();
+        //     },
+
+        //     update(el) {
+        //         // 节点更新时触发
+        //         setTimeout(() => {
+        //             el.focus();
+        //         }, 10);
+        //     },
+        // })
+
+        // 简写
+        Vue.directive('focus', function(el) {
+            setTimeout(() => {
+                el.focus();
+            }, 10);
+        });
+
+        // Vue.directive('focus', {
+        //     bind() {
+        //         // 指令被 绑定时触发
+        //         console.log(1);
+                
+        //     },
+
+        //     inserted() {
+        //         // 有该指令的节点插入到父节点时触发
+        //         console.log(2);
+                
+        //     },
+
+        //     update() {
+        //         // 当前节点更新的时候
+        //         console.log(3);
+                
+        //     },
+
+        //     unbind() {
+        //         // 解绑时触发 (节点消失的时候)
+        //         console.log(4);
+                
+        //     }
+        // });
+
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                flag: 'true'
+            },
+
+            directives: {
+                // 私有自定义指令
+                bg(el, obj) {
+                    el.style.background = obj.val || '#c6f2c1';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

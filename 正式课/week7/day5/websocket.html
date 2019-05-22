@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // websocket 是实现 数据的双向流动的一个协议;
+        // 没有跨域这一说
+        // 参数是一个websocket 的服务地址
+        let ws = new WebSocket('wss://echo.websocket.org');
+        ws.onopen = function(e) {
+            console.log('链接成功', e);
+            
+        };
+
+        ws.onmessage = function(e) {
+            // 接收到信息之后触发 后台给前端推送消息
+            console.log('接收到信息', e);
+            
+        }
+
+        ws.onclose = function(e) {
+            // 链接关闭之后触发
+            console.log('链接已关闭',e);
+            
+        }
+
+        ws.onerror = function(e) {
+            // 链接出错的时候触发
+            console.log('链接信息错误', e);
+            
+        }
+        // send  前端给后端发送信息 ws.send('hello')
+        // close 前端关闭通道 ws.close();
+    </script>
+</body>
+</html>

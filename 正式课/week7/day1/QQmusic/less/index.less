@@ -1,0 +1,166 @@
+@r: 75rem;
+// 设计稿是750px; 若量出来是 200px 200 / @r
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.w() {
+    width: 100%;
+    height: 100%;
+}
+
+html,
+body {
+    .w();
+    // 为了防止出现滚动条
+    overflow: hidden;
+}
+
+.app {
+    .w();
+
+    .mask {
+        .w();
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    background: url(../imgs/bg1.jpg);
+    background-size: cover;
+
+    .header_box {
+        height: 200/@r;
+        background: rgba(2, 168, 66, .3);
+        display: flex;
+        padding: 20/@r;
+        box-sizing: border-box;
+
+        .img_box {
+            width: 160/@r;
+            height: 160@r;
+            overflow: hidden;
+
+            img {
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        .name_box {
+            flex: 1;
+            position: relative;
+
+            h1,
+            h2 {
+                color: aliceblue;
+                padding: 12/@r;
+            }
+
+            h1 {
+                font-size: 40/@r;
+            }
+
+            h2 {
+                font-size: 30/@r;
+                margin-top: 20/@r;
+            }
+
+            .music_icon {
+                position: absolute;
+                width: 70/@r;
+                height: 70/@r;
+                background: url('../imgs/music.svg');
+                background-size: contain;
+                right: 20/@r;
+                top: 50/@r;
+                animation: move123 1s linear infinite;
+                animation-play-state: paused; // 暂停旋转 
+            }
+        }
+    }
+
+    .content_box {
+        padding: 75/@r 30/@r;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+        .lyric_box {
+            transition: all 1s;
+            p {
+                color: #fff;
+                font-size: 35/@r;
+                text-align: center;
+                padding: 20/@r 0;
+            }
+            p.active {
+                color: rgb(0, 148, 57)
+            }
+
+        }
+    }
+
+    .footer_box {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
+
+        .progress_box {
+            display: flex;
+
+            .currentStart,
+            .currentEnd {
+                width: 100/@r;
+                color: aliceblue;
+                font-size: 35/@r;
+                text-align: center;
+            }
+
+            .progressBg {
+                flex: 1;
+                margin: 15/@r 20/@r;
+                height: 15/@r;
+                background: floralwhite;
+                border-radius: 10/@r;
+                overflow: hidden;
+
+                .progressInner {
+                    height: 100%;
+                    background: rgb(0, 99, 0);
+                    width: 0%;
+                }
+            }
+        }
+
+        .download_btn {
+            width: 80%;
+            height: 100/@r;
+            border-radius: 50/@r;
+            margin: 30/@r auto;
+            background: rgb(0, 148, 57) url(../imgs/sprite_play.png) no-repeat;
+            // 既有颜色 也有图片
+            background-size: 80/@r 700/@r;
+            // *** 雪碧图多大 这个地方就写多大
+            background-position: 20px -580/@r;
+            line-height: 100/@r;
+            font-size: 50/@r;
+            text-align: center;
+            color: aliceblue;
+        }
+    }
+}
+
+@keyframes move123 {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

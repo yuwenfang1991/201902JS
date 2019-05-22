@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <span> 请输入您的问题： </span>
+        <input type="text" v-model="question">
+        <div>
+            <span>答案是：</span>
+            <span>{{msg}}</span>
+        </div>
+        <div><img :src="url" alt=""></div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                question: '',
+                msg: '',
+                timer: null,
+                url:''
+            },
+
+            watch: {
+                question() {
+                    // 防抖 onscroll
+                    // 在输入的过程中, question 这个 变量一直在改变;
+                    // 那么该函数就会一直执行, 执行时 先把之前的定时器清除
+                    // 当我们停止输入 2秒之后会执行 最后一个定时器
+                    clearTimeout(this.timer);
+                    this.msg = '等着您输入完成';
+                    this.timer = setTimeout(() => {
+                        // this.question.indexOf('?') === -1
+                        // this.question.endsWidth('?')
+                        if(!this.question.includes('?')) {
+                            // /\?|？/.test(this.question)
+                            this.msg = '您的问题不合法 ';
+                            return; // 问题不合法 直接返回 不再执行下边的代码
+                        }
+
+                        this.msg = '正在搜索';
+                        // 停止输入 2秒 之后才会执行的函数
+                        axios.get('https://yesno.wtf/api').then((data)=> {
+                            console.log(data);
+                            // 请求成功
+                            this.msg = data.data.answer;
+                            this.url = data.data.image;
+                        });
+                    }, 2000);
+                }
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>

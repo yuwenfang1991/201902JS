@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        // 设置基础路径
+        axios.defaults.baseURL = 'https://www.souyidai.com';
+        axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        // 是基本必须设置的
+
+        // axios拦截器
+
+        // 添加请求拦截器
+        axios.interceptors.request.use(function (config) {
+            // 所有的axios 请求在发出去之前 都会走该函数
+            // 在发送请求之前做些什么
+            let obj = config.data;
+            // obj._ = Math.random();
+            // config.data = obj;
+            let str = '';
+            for(let k in obj) {
+                str += `${k}=${obj[k]}&`; // 把对象转变成了 a=12&b=13 
+            }
+            str = str.replace(/&$/, '');
+            config.data = str; // 把data 转换成了 这种字符串
+            return config;
+        }, function (error) {
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+
+        // 添加响应拦截器
+        axios.interceptors.response.use(function (response) {
+            // 对响应数据做点什么
+            // 每一个axios 的响应 都会走该函数
+            response.data.userName = '123';
+            // 若没有登陆 后台返给的字段 response.data 中有个 code=1;
+            if(response.data.code === 1) {
+                location.href = 'https://www.baidu.com';
+            }
+            return response;
+        }, function (error) {
+            // 对响应错误做点什么
+            return Promise.reject(error);
+        });
+
+        // 拦截器: 请求拦截器 响应拦截器 
+        // 请求拦截器 是在所有的axios 请求发出去之前,统一对请求信息做处理
+        // 响应拦截器 是在所有的axios 响应之前,统一对响应信息做处理
+
+
+        /**
+         * axios 的get 请求,若有参数传递给后台, 要不就是把传给后台的参数自己拼接到url后边
+         * 要不就添加一个实参,实参是个对象,对象里有个params属性 值是对象; 把传给后台的参数放到这个对象中即可
+         * 问号 后边的参数 我们一般称为 query传参
+        */
+        // let p1 = axios.get('https://www.souyidai.com/soeasy/invest/fulllist?productType=1&pageNo=0&t=0.08768878922669221');
+        // let p1 = axios.get('/soeasy/invest/fulllist', {
+        //     // get 方式传参, 这个地方必写params: params 的值是个对象, 对象里面放置的 才是传给后台的参数
+        //     params: {
+        //         productType: 1,
+        //         pageNo: 0,
+        //         _: Math.random()
+        //     }
+        // });
+
+
+        // console.log(p1);
+        // p1.then((d) => {
+        //     // d是 axios处理过的一个对象, d.data 才是后台返给前端的内容
+        //     console.log(d);
+
+        // }).catch((err) => {
+        //     console.log(err);
+
+        // });
+
+        // post
+        axios.post('https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/test', {
+            id: 123,
+            name: 234
+            // 发给后台的是一个JSON字符串
+        }).then((data) => {
+            console.log(data.data);
+
+        }).catch((err) => {
+            console.log(err);
+
+        })
+
+        // axios({
+        //     method: 'get',
+        //     url: '/soeasy/invest/fulllist',
+        //     params: {
+        //         productType: 1,
+        //         pageNo: 0,
+        //         _: Math.random()
+        //     }
+        // })
+
+        axios({
+            method: 'post',
+            url: 'https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/test',
+            data: {
+                // post 属性名是 data
+                // get 属性名是 params
+                id: 123,
+                name: 234
+            }
+        })
+
+
+        // axios的默认设置
+        // axios.defaults.baseURL = '';设置基本路径;
+        // axios.defaults['content-type'] = '....';
+
+
+        // axios有两种写法 get 和 post
+        /*
+        get :
+             axios.get(url,{
+            params: {
+                传给后台的参数
+            }
+        }).then().catch()
+
+        axios({
+            method:'get',
+            url:'',
+            params:{
+                传给后台的参数
+            }
+        })
+        */
+        /*
+         post :
+          axios.post(url,{
+              传给后台的参数
+          }).then().catch()
+
+          axios({
+              method: 'post',
+              url:'',
+              data:{
+                  传给后台的数据
+              }
+          })
+        */
+
+
+    </script>
+</body>
+
+</html>

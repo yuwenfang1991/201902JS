@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // push 向数组末尾添加
+        // pop 删除数组最后一项 返回值 删除的那一项
+        // shift 删除数组第一项
+        // unshift 向数组开头添加
+        // sort(function() {}) reverse 
+
+        // 我们把数组中的能够改变原有数组的原生方法称为 数组的变异方法
+        // let arr1 = [12,21,3,75,12,41];
+        // let arr2 = arr1.reverse();
+        // console.log(arr2,arr2 === arr2); // true
+
+        // indexOf slice concat join
+        // 数组中的迭代方法 (循环)
+        // for for in
+        // forEach map 
+        // filter 从数组中找出所有符合指定条件的元素。
+        // forEach 不会改变原有数组
+        // some every reduce
+        // let ary = [{name:1},{name:1},{name:1}];
+        // let ary2 = [1,2,3,4,5,6];
+        // ary.forEach(function(item) {
+        //     // item 代表了 数组中每一个对象的地址
+        //     return item.name += 1;
+        // })
+
+        // ary2.forEach(function(item) {
+        //    return item += 1;
+        // });
+
+        // console.log(ary,ary2);
+
+        // let ary3 = ary2.map(item=> {
+        //     // map 返回值是一个新数组 数组中的项是由回调函数的返回值组成
+        //     return item*2;
+        // })
+
+        // let ary4 = [1,2,3,4,5,6].filter(item=> {
+        //     // 返回一个新数组, 数组中的项是由 回调函数的返回值是true 还是false来决定
+        //     return item > 2;
+        // });
+        
+        // console.log(ary4);
+        
+        // some 返回值布尔值 迭代次数: 找到符合条件的即停止迭代
+        // 只要有一个回调函数的返回值是true 结果就是true
+        // every 返回值是一个布尔值 迭代次数: 找到符合条件(结果是false)的即停止迭代
+        // 只要有一个回调函数的返回值是false 结果就是false
+        // ary2.some((item)=> {
+        //     console.log(item);
+        //     return item < 2;
+        // })
+
+        // ary2.every((item)=> {
+        //     console.log(item);
+        //     return item < 2;
+        // });
+
+        // reduce
+        // let ary5 = [11,22,33,66,55]; 
+        // let ary1 = eval(ary5.join('+')); // 求和
+        
+        // let total = ary5.reduce((prev,next)=> {
+        //     // prev 是上一个回调的return值; 第一个回调函数的prev 是数组中的第一项 
+        //     // next 是当前迭代的项
+        //     // reduce 的第二个参数 存在时, 第一个回调的prev 就是reduce 的第二个参数
+        //     // 不存在时, 第一个回调的prev 是数组中的第一项
+        //     console.log(prev,next);
+        //     return prev + next;
+        // },1000)
+
+        // let ary6 = [{a:1},{a:2}, {a:3}, {a:4}];
+
+        // let total = ary6.reduce((prev,next)=> {
+        //     console.log(prev,next);
+        //     // debugger;
+        //     return prev + next.a;
+        // },0);
+    </script>
+</body>
+
+</html>

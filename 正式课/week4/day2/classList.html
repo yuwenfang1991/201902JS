@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cc {
+            width: 100px;
+            height: 100px;
+            margin: 30px auto;
+            border: 1px solid bisque;
+        }
+
+        .c1 {
+            border: 20px solid darkcyan;
+        }
+
+        .c2 {
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" class="cc">我是个box</div>
+    <script>
+        const box = document.getElementById('box');
+        // 类名的添加
+        // ele.classList.add('类名')
+        // box.classList.add('c1','c2');
+        // console.dir(box);
+
+        // 类名的移除
+        // ele.classList.remove('类名');
+        // box.classList.remove('cc');
+
+        // 类名的切换(之前有就移除,之前没有就添加)
+        // ele.classList.toggle('类名');
+        // box.classList.toggle('cc');
+
+        // 类名是否存在
+        // box.classList.contains('c1');
+
+        // 正则字面量方式 不支持变量
+        // /cn/ cn只是个普通元字符
+
+        // 实例化方式 支持变量
+        // 实例化方式 \d 特殊元字符 需要多加一个斜杠
+        // 检测类名是否存在
+        function hasClass(ele, cn) {
+            let reg = new RegExp(`\\b${cn.trim()}\\b`)
+            return reg.test(ele.className)
+        }
+        // console.log(hasClass(box, 'cc'))
+
+        // "cc c1".split(" ").includes('cc')
+        // var cn = 'cc'
+
+
+        // 添加类名
+        function add(ele, ...cns) {
+            cns.forEach(cn => {
+                if (!hasClass(ele, cn)) {
+                    ele.className += ` ${cn}`
+                }
+            })
+        }
+
+        // 移除类名
+        function remove(ele, ...cns) {
+            cns.forEach(cn => {
+                let reg = new RegExp(`\\b${cn.trim()}\\b`);
+                ele.className = ele.className.replace(reg, '');
+            })
+        }
+        // remove(box, 'cc', 'c1');
+        
+        // 切换单个类名
+        function toggle(ele, cn) {
+           hasClass(ele, cn) ? remove(ele, cn) : add(ele, cn);
+        }
+        // toggle(box,'cc');
+        // toggle(box,'c1');
+
+        //切换多个类名
+        function toggles(ele, ...cns) {
+            cns.forEach(cn => toggle(ele, cn));
+        }
+
+        // 挂载到Element 类原型上
+        Element.prototype.has = function (cn) {
+            let reg = new RegExp(`\\b${cn.trim()}\\b`);
+            return reg.test(this.className)
+        }
+        // console.log(box.has('cc'));
+        
+        Element.prototype.add = function (...cns) {
+            cns.forEach(cn => {
+                if (!this.has(cn)) {
+                    this.className += `${cn.trim()}`;
+                }
+            });
+        }
+
+        Element.prototype.remove = function (...cns) {
+            cns.forEach(cn => {
+                let reg = new RegExp(`\\b${cn.trim()}\\b`);
+                this.className = this.className.replace(reg, '');
+            });
+        }
+
+        Element.prototype.toggle = function (cn) {
+            this.has(cn) ? this.remove(cn) : this.add(cn);
+        }
+
+        Element.prototype.toggles = function (...cns) {
+            cns.forEach(cn => this.toggle(cn));
+            
+        }
+
+        Number.prototype.add = function (num) {
+            return num += this;
+        }
+        let n = 10;
+        n.add(10);
+
+        Number.prototype.reduce = function (num) {
+            return num = this - num;
+        }
+        n.reduce(2).reduce(3)
+    </script>
+</body>
+
+</html>

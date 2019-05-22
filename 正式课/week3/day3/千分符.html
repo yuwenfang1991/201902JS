@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 千分符
+        // let str = 14847112.12;
+        // console.log(str.toLocaleString());
+
+        var str = '26231237233.12';
+        let reg = /\d(?=(?:\d{3})+(\.\d+)?$)/g
+        let str2 = str.replace(reg, '$&,')
+        console.log(str2)
+
+    </script>
+</body>
+
+</html>

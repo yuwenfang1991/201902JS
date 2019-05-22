@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        // location 地址栏的信息
+        // location.href 地址栏中的地址
+        // hash 是#后边的内容
+        // search 是问号后边的内容
+        // 本页面刷新 location.reload() window.location.href = window.location.href 
+        // 新打开标签页 window.open();
+        // location.replace() 不会产生历史的
+        btn.onclick = function () {
+            setTimeout(() => {
+                window.location.href = 'https://www.baidu.com';
+            },2000);
+        }
+
+        // localStorage sessionStorage 前端存储数据的地方
+        // localStorage.getItem('属性名'); 得到的是一个 字符串
+        // localStorage.setItem('属性名','属性值');  属性值必须 是一个字符串,不是字符串的话会默认转化成字符串
+        // 若需要是一个数组或者对象 则调用JSON相关方法 JSON.parse() / 
+        // JSON.parse() 将JSON字符串转换为对象
+        // JSON.stringify() 转换为字符串
+        // remove('属性名')
+        // clear 清空
+
+        // localStorage sessionStorage
+        // 区别: localStorage 不会自动清空； sessionStorage 在页面关闭时会清空
+
+        let s = {name:1,age:2};
+        localStorage.setItem('name',JSON.stringify(s));
+        JSON.parse(localStorage.getItem('name'));
+
+    </script>
+</body>
+
+</html>

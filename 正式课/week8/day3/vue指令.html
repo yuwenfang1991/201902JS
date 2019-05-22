@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <style>
+        [v-cloak] {
+            /* 属性选择器 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1 v-cloak>{{name}}</h1>
+        <textarea v-model="name"></textarea>
+        <!-- v-text跟小胡子功能一样 -->
+        <h2 v-text="name"></h2>
+        <div>{{str}}</div>
+        <div v-html="str"></div>
+        <!-- v-html 后边的字符串 会被当做 HTML 结构渲染到页面上 -->
+        <!-- 
+            v-cloak 
+         -->
+    </div>
+    <script>
+        let vm = new Vue({
+            // vm 是viewModel 简写
+            el:'#app', // vue 获取到该部分的结构, 把其中符合vue语法结构的内容替换; 替换完成之后再放回页面
+            data:{
+                name:123,
+                str:'<i>你好</i>'
+            }
+        });    
+    </script>
+</body>
+</html>

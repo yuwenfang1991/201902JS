@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./3.css">
+</head>
+
+<body>
+    <div class="content">
+        <ul class="list_box">
+            <li class="current">中国</li>
+            <li>美国</li>
+            <li>印度</li>
+            <li>朝鲜</li>
+            <li>俄罗斯</li>
+        </ul>
+    </div>
+
+    <script src="https://static.souyidai.com/wap/js/zepto.min.js"></script>
+
+    <script>
+        // 思路:根据touchmove事件； 来改边 ul的 top 值
+        let $content = $('.content');
+        let $listBox = $('.list_box');
+        let $lis = $listBox.find('li');
+        // 获取$listBox 下的所有li 包括孙子辈元素
+
+        document.body.addEventListener('touchstart', function (e) {
+            // 根据手指移动的距离 来决定 list盒子的 top值；
+            this.pageStart = e.changedTouches[0].pageY; //手指按下时 的手指的位置
+            this.startTop = parseFloat($listBox.css('top'));
+            // 因为$listBox.css('top') 的值带px单位，需要处理下
+
+            $listBox.css({ transition: 'none' });
+        }, false);
+
+        // 为了方便move触发 绑定到body上
+        document.body.addEventListener('touchmove', function (e) {
+            // 根据手指移动的距离 来决定 list盒子的 top值；
+            // 我们需要阻止页面的滚动行为
+            e.preventDefault();
+            this.pageMove = e.changedTouches[0].pageY; //手指移动时 的手指的位置
+            this.top = parseFloat(this.pageMove - this.pageStart);
+            // this.top 是盒子高度的改变值
+            // 想给盒子设置高度,需要在原有的基础上 加 改变的值
+            $listBox.css({ top: this.top + this.startTop });
+
+            let t = this.top + this.startTop;
+            this.n = Math.round(t / 50);
+            let m = Math.abs(this.n);
+            $lis.eq(m).addClass('current').siblings().removeClass('current');
+        }, { passive: false });
+
+        document.body.addEventListener('touchend', function () {
+            $listBox.css({ top: 50 * this.n, transition: 'top 0.5s' });
+        }, false);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='myName'>
+        <h2>{{myName}}</h2>
+        <h3>{{obj}}</h3>
+        <!-- <span style="display: none">{{t}}</span> -->
+        <!-- 数据改变触发视图更新的大前提是 页面结构上有用到该变量 -->
+    </div>
+    <script>
+        /* 
+            {{}}
+            v-model v-text v-html v-once v-cloak
+        */ 
+
+        let vm = new Vue({
+            // vue 会把data中的数据劫持,给他们分别加上get和set
+            // 然后挂载到vm实例上; 只有 有get和set属性的 这些vue变量
+            // 在更改时才能触发视图的更新
+            el:'#app',
+            data:{
+                myName:'珠峰',
+                t:0,
+                obj:{
+                    name:123,
+                    b:{
+                        a:12
+                    }
+                }
+            }
+        });
+
+        // 对于vue中的变量; 要注意若是对象,则给 对象添加属性时; 不会触发视图更新
+        // vm.obj.name2 = 666;
+        // vm.t = Math.random();
+        
+        // 1、在data中 直接把需要的数据先写上; 
+
+        // 2、增加一个无关变量, 每次更改完之后, 同时改变这个无关变量来触发视图的更新
+
+        // 3、$set 官方提供的方式
+        vm.$set(vm.obj,'name2',123);
+        // 4、整个对象的替换
+        vm.obj = {name2:123};
+    </script>
+</body>
+</html>

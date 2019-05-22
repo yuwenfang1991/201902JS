@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../day1/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <ul>
+            <li>全选<input type="checkbox" v-model="all"></li>
+            <li><input type="checkbox" v-model="item.isSelect" v-for="(item, index) in ary" :key="index"></li>
+        </ul>
+    </div>
+    <script>
+        /* 
+            v-model 配合表单元素使用 input textarea select
+            v-text innerText
+            v-html innerHTML
+            {{表达式}}
+            v-cloak [v-cloak]{display:none}
+            v-once 数据更新 视图不更新 增加对象属性 通过索引修改数组的项 通过非变异方法改变数组
+            v-show
+            v-if v-else-if v-else 标签 template
+            v-for 数组 对象 字符串 数字 v-for='(item,index) in ary' :key='index.id'
+            v-on: ===> @ 绑定事件 @click='fn'  @click='fn()'
+            @keyup.enter = 'fn2'
+            v-bind: ===> :  <img :src="url">
+            class :class='flag ? "current" :""' class="prev"  是在原有类名的基础上 添加新类名
+            :class='{current:flag}' current是要添加的类名, flag是控制要不要加上 current类名
+    
+            style :style = '"color:"+col'
+            :style = '{color:col, border:"1px solid #ccc"}'
+            :style = obj     也可以  data:{obj:{background:orange}}
+    
+            实例传参的对象中的属性
+            el:, ==> 指定一个元素
+            template:, ===> 指定渲染模板
+            data:{
+                Vue 变量
+            },
+    
+            methods:{
+                要执行的一些方法
+            },
+            computed:{
+                计算属性
+            },
+    
+            watch:{
+                侦听器
+            },
+    
+            filters:{
+                过滤器
+                私有
+                全局：Vue.filter('过滤器名', function(val,n){})
+                {{name|myName|myAge}} myName 的返回值
+    
+                myAge(val) {
+    
+                }
+            },
+    
+            created() {
+                一进来就执行的一个函数
+            }
+    
+            计算属性: 看出存在依赖关系的 我们就使用计算属性
+    
+         */
+
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                ary: [{ isSelect: true }, { isSelect: false }, { isSelect: false }, { isSelect: true }]
+            },
+
+            computed: {
+                // 简写: 不需要给all 赋值的时候 我们 就是用这个简写的方式
+                // all的值 是该函数中的返回值
+                // 依赖: 只要是在 该函数中写过的属性; 都算是all的依赖; 前提是同步的
+                // 只要依赖发生了改变 all的值就会跟着改变(因为该函数会执行)
+                // 前提是all 在页面结构中使用了
+                all: {
+                    get() {
+                        // 简写的方式 只是相当于写了一个get 没有set
+                        return this.ary.every(item => item.isSelect);
+                    },
+
+                    set(val) {
+                        // 点击全选的那个 checkBox时 会给all 赋值 true 或者 false
+                        this.ary.forEach(item => item.isSelect = val);
+                        // item => item.isSelect = val 相当于：(item)=>{return item.isSelect = val}
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            margin: 20px auto;
+            display: block;
+            width: 300px;
+            height: 300px;
+            border: 1px solid aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+        ctx.beginPath(); // 起笔
+        ctx.arc(150, 150, 75, 0, 1.5 * Math.PI); // 最后一个参数 false代表顺时针 true代表逆时针
+        ctx.stroke();
+        // 确定绘画环境
+    </script>
+</body>
+
+</html>

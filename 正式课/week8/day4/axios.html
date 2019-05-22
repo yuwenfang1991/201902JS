@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./node_modules/axios/dist/axios.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #app {
+      margin: 0 auto;
+      width: 400px;
+      height: 500px;
+      background: rgb(45, 209, 182);
+    }
+
+    #app h2 {
+      text-align: center;
+    }
+
+    #app div {
+      margin: 20px;
+    }
+
+    .text {
+      width: 250px;
+      height: 20px;
+    }
+
+    #select {
+      width: 250px;
+      height: 30px;
+    }
+
+    #submit {
+      width: 100px;
+      height: 35px;
+      background: rgb(255, 195, 127);
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{title}}</h2>
+    <div>课程选择：
+      <span>
+        <input type="checkbox" value="css" v-model="checked"> css
+        <input type="checkbox" value="js" v-model="checked"> js
+        <input type="checkbox" value="vue" v-model="checked"> vue
+        <input type="checkbox" value="react" v-model="checked"> react
+      </span>
+    </div>
+    <div class="radio">
+      性别：
+      <input type="radio" v-model="sex" value="man"> 男
+      <input type="radio" v-model="sex" value="women"> 女
+    </div>
+    <div>
+      输入名字：
+      <input type="text" class="text" v-model="name" placeholder="姓名">
+    </div>
+    <div>
+      选择基础：
+      <select id="select" v-model="select">
+        <!-- <option>会css</option>
+        <option>会js</option>
+        <option>会框架</option>
+        <option>会node</option> -->
+
+        <option :value="item" v-for="(item, index) in ary" :key="index"> {{item}} </option>
+      </select>
+    </div>
+
+    <div>
+      <input type="submit" value="提交" id="submit" @click='fn'>
+    </div>
+
+
+  </div>
+  <script>
+    // v-bind 专门用来 绑定行内属性的 简写时一个 :
+    // 例如 :key='index' :value='变量' :src='变量'
+
+    axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    let vm = new Vue({
+      el: '#app',
+
+      data: {
+        title: '用户注册',
+        ary: [],
+        select: '会js',
+        checked: [],
+        sex: 'man',
+        name: '',
+        select: ''
+      },
+      created() {
+        // 该函数会在页面一加载就会执行, this指向当前实例的
+        this.getData();
+      },
+      methods: {
+
+        getData() {
+          axios.get('https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/data')
+            .then((data) => {
+              this.ary = data.data; // 把从后台获取到的数组赋值给ary
+
+            })
+        },
+        fn() {
+          console.log(this.form);
+          let obj = {
+            class: this.checked,
+            name: this.name,
+            sex: this.sex,
+            select: this.select
+          }
+          let str = '';
+          for (const k in obj) {
+            if (obj.hasOwnProperty(k)) {
+              str += `${k}=${obj[k]}&`;
+            }
+          }
+          str = str.replace(/&$/, '');
+          axios.post('https://www.easy-mock.com/mock/5cd4edc7e393cf7606e9d2f4/nba/promovie/api/box/second.json', str).then((data) => {
+            console.log(data.data);
+
+          });
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>

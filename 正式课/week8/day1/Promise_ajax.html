@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="Promise_ajax.js"></script>
+    <script>
+        ajax({
+            url: 'https://www.easy-mock.com/mock/5cd4df954ed030771266e763/example_copy/testPost',
+            type: 'post',
+            data: { a: 12, b: 13 }
+        }).then((data) => {
+            console.log('success:', data);
+
+        }).catch((err) => {
+            console.log('fail:', err);
+
+        })
+    </script>
+</body>
+
+</html>
