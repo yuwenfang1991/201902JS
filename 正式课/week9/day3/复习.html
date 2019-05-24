@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-color='"blue"'>{{name}}</h1>
+        <input type="text" v-model="age">
+        <input type="text" v-model="name">
+        <h2 :style = '{background:"yellow"}'>{{name|myName(1,2,3)}}</h2>
+    </div>
+    <script>
+        Vue.filter('myName', function(val) {
+            // 过滤器
+            return val + 'hello'
+        });
+        Vue.directive('color', function(el,obj) {
+            // 自定义指令
+            el.style.color = obj.value || 'red';
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                age: 0,
+            },
+
+            computed: {
+                name2() {
+                    // 计算属性不支持异步 是指的 依赖存在于异步中
+                    // 若依赖 在异步外边 那么还是存在依赖的
+                    setTimeout(() => {
+                        console.log(123);
+                        console.log(this.age);
+                        
+                        
+                    }, 200);
+                    return this.name;
+                }
+            },
+
+            watch: {
+                name() {
+
+                }
+            },
+        })
+
+        /*
+        1、根据功能: 确定数据结构text(展示文本) isSelect(是否被勾上) isShow(是否显示input输入框)
+        2、根据敲回车添加数据 添加了一个函数 add-- > 往数组中添加数据项
+        3、结构中 通过v -for 循环数组 把要展示的数据展示到页面上;
+            4、删除数据, 直接改变数组; 通过filter 删除的数据 传进来的是 item(数组中的对象)
+        5、双击控制 input输入框的展示; 执行了一个myChange函数 把要改变的对象传过去
+        6、控制 input输入框失焦时, 再次执行myChange函数; 在这之前 又去增加了一个自动获取焦点的指令
+        7、实现tab 切换; 利用hash 的改变实现; window.onhashchange 事件(一进来就绑定)
+        在这个事件对应的函数中, 我们定义了一个 myHash来存储当前的 hash值
+        然后再结构中 我们使用: class = { current: myHash === 'xxx' } 来实现, 加类名的操作
+        myHash的默认值处理, 一进来 就把当前路径的hash赋给 myHash; 没有hash时，赋给 默认'#all'
+        8、要展示的内容 需要根据不同的hash来决定；创造了一个自定义属性 todoAry; 跟不用hash筛选符合条件的项；
+        后来根据key造成的问题；我们又给数据结构中添加了一个 id; 让 key 的值是每一条数据的ID；
+
+        9、解决数据的存储；利用 localStorage 存储ary数据；
+        刚进页面，我们要从 localStorage中获取数据；let str = localStorage.getItem('todoData')
+        根据 str是否存在 来决定给ary赋初始值；若有 就用 JSON.parse处理，没有就给成[];
+
+        什么时候更新localStorage中的数据；
+        把这个动作放到了 computed计算属性中去了；
+ */
+    </script>
+</body>
+
+</html>

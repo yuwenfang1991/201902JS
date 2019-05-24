@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 id="h1">{{name}}</h1>
+        <h2 ref="myh2">{{name}}</h2>
+        <h2 ref="myh2">{{name}}</h2>
+        <h2 ref="myh2">{{name}}</h2>
+        <h3 ref="myh3" v-for="(item, index) in ary" :key="index">{{name}}</h3>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                ary:[10,20,30]
+            },
+
+            mounted() {
+                let el = document.getElementById('h1');
+                // vue 提供的 获取元素的方法 ref
+                // ref 获取 若是写死到页面上的 通过ref 只能获取一个元素
+                // 若是通过v-for 循环出来的 我们可以获取一组元素
+                // console.log(this.$refs.myh2);
+                console.log(this.$refs.myh3);
+                this.ary.push(40);
+                // DOM的更新是异步执行的
+                console.log(this.$refs.myh3);
+                // $nextTick(回调函数) 回调触发函数会在下一次DOM更新完成之后
+                this.$nextTick(()=> {
+                    console.log('nextTick',this.$refs.myh3);
+                    
+                })
+
+            },
+
+            updated() {
+                // DOM更新完之后触发
+                console.log(this.$refs.myh3);
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

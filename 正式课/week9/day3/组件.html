@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-name></my-name>
+        <zfage></zfage>
+        <!-- 
+            若是驼峰式命名的组件 在html结构中使用时, 需要转成以横杠分割的字符
+            可以书写单标签,但是后边的组件就不在渲染了
+        
+        -->
+    </div>
+    <script>
+        // 模块化开发
+        // SPA 单页面应用
+        // vue组件
+        // 页面级组件 功能性组件
+        // 全局组件 私有组件
+        // 声明一个全局组件
+        // Vue.component('组件名', 对象)
+        // 对象名 在这里不能写驼峰命名
+        // 这个对象 我们可以理解成 new Vue 时传递的对象
+        Vue.component('my-name', {
+            template:'<h1>我的姓名是:{{name}}</h1>',
+            // template中只能有一个根元素
+            // 组件中的data(除了根组件) 对应的值必须是一个函数
+            data() {
+                return {
+                    name:'名字'
+                }
+            }
+
+        })
+
+        Vue.component('myAge', {
+            
+            template:'<h1>我的年龄是:21</h1>'
+
+        })
+
+        Vue.component('zfage', {
+            template:'<span>您好</span>'
+
+        })
+
+        // vm 我们称为根组件
+    
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>

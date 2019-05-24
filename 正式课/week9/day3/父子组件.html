@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-com3></my-com3>
+    </div>
+    <template id="com1">
+        <div>
+            这是组件1
+        </div>
+    </template>
+
+    <template id="com2">
+        <div>
+            这是组件2
+            <!-- 
+                我们把 com2 称为父组件; com1 称为子组件
+                因为 我们在com2 组件中使用了 com1
+             -->
+            <my-com1></my-com1>
+        </div>
+    </template>
+    <template id="com3">
+        <div>
+            这是组件3
+            <com2></com2>
+        </div>
+    </template>
+    <script>
+        let com1 = {
+            template: '#com1'
+        }
+        let com2 = {
+            template: '#com2',
+            components: {
+                'my-com1': com1
+            }
+        }
+        let com3 = {
+            template: '#com3',
+            components: {
+                com2
+                // 相当于写了一个 com2:com2
+            }
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components: {
+                com1,com2,
+                'my-com3':com3
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>您已经读文章{{time}}秒</h2>
+    </div>
+    <script>
+        /* 
+            beforeCreate created
+            beforeMount mounted
+            beforeUpdate updated
+            beforeDestroy destroyed
+    
+            常用的 created mounted
+            不常用的 updated destroyed
+        */
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                time: 0,
+                timer: null
+            },
+
+            methods: {
+                fn() {
+                    this.timer = setInterval(() => {
+                        console.log(111);
+
+                        this.time++;
+                    }, 1000)
+                }
+            },
+            beforeCreate() {
+                // 初始化了一些 vue的原生属性 和方法
+                // 没有$el 和data、methods、computed中的属性
+                console.log(this);
+                // debugger
+            },
+
+            created() {
+                //已经把 data、methods、computed中的属性挂载到了 当前实例上
+                // 在该钩子函数中, 我们经常会发送一些ajax请求
+                // console.log(this);
+                this.fn();
+                // debugger
+            },
+
+            beforeMount() {
+                // 已经有了$el 但是 对应的值是原始的HTML结构
+                // console.log(this);
+                // debugger
+            },
+
+            mounted() {
+                // 这时候 DOM 已经渲染到了页面上; 简单理解 就是DOM已经加载完成
+                // 可以做一些 操作DOM的事情
+                // console.log(this);
+                // debugger
+            },
+
+            beforeUpdate() {
+                // 数据(页面结构中用到的数据)更新之后 DOM 更新之前
+                // console.log(this);
+                // debugger
+            },
+
+            updated() {
+                // DOM更新之后触发
+                // 别写可以触发DOM更新的代码
+                // console.log(this);
+                // this.name = Math.random();
+                // debugger
+            },
+
+            beforeDestroy() {
+                console.log(this);
+                // debugger
+            },
+
+            destroyed() {
+                // 可以用来清除本实例中的 定时器
+                console.log(this);
+                // debugger
+                clearInterval(this.timer);
+
+            },
+        })
+
+        // 你是怎么理解生命周期钩子函数的?
+
+        /* vue的生命周期钩子函数 是在vue实例过程中执行的一些函数,
+            分别有 beforeCreate created beforeMount mounted beforeUpdate updated beforeDestroy destroyed
+        这八个函数是vue规定的函数名
+        beforeCreate 是在vue初始化 内部事件和生命周期之后执行的
+        里边只有一些vue的内部属性和方法  我们一般不用，
+        在 vue把 data、methods、computed中的属性挂载到当前实例之后，
+        会触发 created这个钩子函数，我们一般在这个钩子函数中 发送一些ajax请求；
+        因为ajax请求发出越早越好；而在这个钩子函数中 我们可以调用到对应的属性和方法；
+        在该函数之后，会查看是否有 el template 这个两个属性；
+        然后执行 beforeMount 钩子函数 ；在这个函数中 我们可以调到原始的DOM元素；
+        再之后， vue根据数据渲染虚拟 DOM ；并把渲染好的虚拟DOM展示到页面上，
+        再执行 mounted钩子函数；在这个钩子函数中 我们可以获取已经渲染好的DOM元素   ；
+
+        当在页面上用到的数据更新时 会触发 update对应的两个钩子函数；
+        注意 不能在这两个函数中书写可以触发视图更新的操作
+
+        当 当前实例被销毁时 会触发 destroy对应的两个钩子函数；我们在这里可以做一些
+        清除定时器的操作； */
+
+
+    </script>
+</body>
+
+</html>

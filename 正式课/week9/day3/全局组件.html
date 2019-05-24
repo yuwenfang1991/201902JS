@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <my-name></my-name>
+        <my-name></my-name>
+        <button-count></button-count>
+        <button-count v-for="(item, index) in 5" :key="Math.random()"></button-count>
+
+        <br>
+    </div>
+
+    <template id="myName">
+        <div>
+            <h1>{{name}}</h1>
+            <input type="text" v-model="name">
+            <button-count></button-count>
+
+        </div>
+    </template>
+
+    <template id="button">
+        <div>
+            <button @click='fn'>点击了{{count}}</button>
+        </div>
+    </template>
+
+    <script>
+
+        // let obj ={
+        //     count:0
+        // };
+        Vue.component('my-name', {
+            // template: `
+            //             <div>
+            //                 <h1>我的名字是：{{name}}</h1>
+            //                 <input type="text" v-model="name"></input>
+            //             </div>
+            //           `,
+
+            template: '#myName', // 去找id是 myName 的template标签 当做渲染模板
+            // template 放到'#app'外边
+
+            // 为了保证数据的独立性
+            data() {
+                return {
+                    name: '小明',
+                    count: 0
+                }
+            },
+
+
+        })
+
+        /* 
+            使用组件
+                把组件名当做标签名使用 使用的地方: vue能渲染到的地方
+                vue 会把所有的不是 原生HTML标签的 标签当做组件渲染
+                若没有对应的组件 就会报错 有的话正常使用
+                组件名对应的位置 展示的内容 就是 组件自己的template对应的模板
+        */
+        Vue.component('button-count', {
+            template: '#button',
+            data() {
+                return {
+                    count: 0
+                }
+
+                // return obj
+            },
+
+            methods: {
+                fn() {
+                    this.count++;
+                }
+            },
+
+        })
+
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+            },
+        })
+    </script>
+</body>
+
+</html>
