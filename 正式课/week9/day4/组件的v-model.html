@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-input v-model="name" placeholder1="请输入姓名"></my-input>
+        <!-- 
+            v-model 相当于有两步操作
+            <my-input :value='name' @input='val=>name=val'></my-input>
+        -->
+    </div>
+
+    <template id="inp">
+        <div>
+            这是我自己的input组件
+            <input type="text" :placeholder="placeholder1" :value='value' @input='$emit("input",$event.target.value)'>
+            <!-- 父组件通过placeholder1 传递了一个字符串
+                子组件 通过props 接收placeholder1
+                然后再把 placeholder1赋给 input的 placeholder属性
+            -->
+        </div>
+    </template>
+    <script>
+        // 执行顺序
+        // 父组件created 子组件created 子组件mounted 父组件的mounted
+        let son = {
+            template:'#inp',
+            data() {
+                return {
+                    
+                }
+            },
+
+            created() {
+                console.log('2son created');
+                
+            },
+
+            mounted() {
+                console.log('3son mounted');
+                
+            },
+
+            props:['placeholder1','value']
+
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components:{
+                'my-input':son
+            },
+
+            created() {
+                console.log('1vm created');
+                
+            },
+
+            mounted() {
+                console.log('4vm mounted');
+                
+            },
+        })
+    </script>
+</body>
+
+</html>

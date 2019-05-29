@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div>
+            <router-link to="/home">首页</router-link>
+            <router-link to="/list">列表页</router-link>
+        </div>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <template id="home">
+        <div>
+            <h2>首页</h2>
+            <router-link to="/home/nav1">nav1</router-link>
+            <div>
+                <router-view></router-view>
+            </div>
+        </div>
+    </template>
+    <template id="list">
+        <div>
+            <h2>列表</h2>
+            <router-link to="/list/nav2">nav2</router-link>
+            <span>
+                <router-view></router-view>
+            </span>
+        </div>
+    </template>
+    <template id="nav1">
+        <div>
+            <h3>首页下的子组件</h3>
+        </div>
+    </template>
+    <template id="nav2">
+        <div>
+            <h2>列表页下的子组件</h2>
+        </div>
+    </template>
+    <script>
+        let home = {
+            template: '#home'
+        }
+        let list = {
+            template: '#list'
+        }
+        let nav1 = {
+            template: '#nav1'
+        }
+        let nav2 = {
+            template: '#nav2'
+        }
+
+        // 路由的嵌套可以是无限嵌套的
+        const routes = [{
+            path: '/home',
+            component: home,
+            children: [{
+                path: '/home/nav1',
+                component: nav1
+            }]
+        },
+        {
+            path: '/list',
+            component: home,
+            children: [{
+                path: 'nav2', // 不写斜杠 默认直接从父路由下 往后补
+                component: nav2
+            }]
+        },
+        ];
+
+        const router = new VueRouter({
+            routes,
+            linkActiveClass: 'current'
+
+        })
+        let vm = new Vue({
+            el: '#app',
+            router,
+            data: {
+                name: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>

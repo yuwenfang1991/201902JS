@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- 
+            动态组件 component 是vue的内置组件 (template, slot)
+            行内属性 is后跟的是 对应的组件名
+            写哪个组件名 component这个位置就展示哪个组件
+        -->
+        <!-- 用com2组件 把下边这行替换了 -->
+        <!-- <component is="com2"></component> -->
+        <!-- <com1></com1>
+        <com2></com2> -->
+
+        <button @click='com="com1"'>按钮1</button>
+        <button @click='com="com2"'>按钮2</button>
+        <strong>
+            <keep-alive>
+                <!-- 被keep-alive包含的部分 消失后不会被销毁 -->
+                <component :is="com"></component>
+            </keep-alive>
+        </strong>
+
+    </div>
+    <script>
+        const com1 = {
+            template: `<div>
+                            <h2>组件1</h2>
+                            <input v-model='name'>
+                </div>`,
+            data() {
+                return {
+                    name:'one day'
+                }
+            },
+            created() {
+                console.log('组件1创建');
+
+            },
+            destroyed() {
+                console.log('组件1销毁');
+
+            },
+        }
+        const com2 = {
+            template: `<div>
+                <h2>组件2</h2>
+                <input v-model='name'>
+                </div>`,
+
+            data() {
+                return {
+                    name:'two 组件'
+                }
+            },
+            created() {
+                    console.log('组件2创建');
+
+                },
+    
+            destroyed() {
+                    console.log('组件2销毁');
+
+                },
+            }
+        let vm = new Vue({
+                    el: '#app',
+            data: {
+                    name: "hello world",
+                com: 'com1'
+            },
+
+            components: {
+                    com1, com2
+            }
+        })
+    </script>
+</body>
+
+</html>

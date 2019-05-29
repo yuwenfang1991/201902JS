@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span>输入姓名：</span>
+        <input type="text" v-model="name">
+        <span>输入年龄：</span>
+        <input type="text" v-model="age">
+        <button @click='fn'>提交</button>
+        <adult></adult>
+        <under></under>
+    </div>
+
+    <template id="adult">
+        <div>
+            <h1>成年人</h1>
+            <ul>
+                <li v-for="(item, index) in adultAry" :key="index">
+                    <h2>姓名：{{item.name}}</h2>
+                    <h2>年龄：{{item.age}}</h2>
+
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="under-age">
+        <div>
+            <h1>未成年人</h1>
+            <ul>
+                <li v-for="(item, index) in underAry" :key="index">
+                    <h3>姓名：{{item.name}}</h3>
+                    <h3>年龄：{{item.age}}</h3>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <script>
+        /* 
+            两个子组件 一个子组件展示成年人 一个展示未成年人
+            在根组件中 有两个输入框 一个输入姓名 一个输入年龄
+            下边有一个按钮 点击按钮 根据年龄把成年人展示到 成年组件
+            未成年人 展示到未成年组件
+         */
+
+        let adult = {
+            template: '#adult',
+            data() {
+                return {
+
+                }
+            },
+            computed: {
+                // 成年数组
+                adultAry() {
+                    return this.$store.state.arr.filter(item => {
+                        return item.age >= 18
+                    })
+                }
+            }
+        }
+
+        let under = {
+            template: '#under-age',
+            data() {
+                return {
+
+                }
+            },
+
+            computed: {
+                underAry() {
+                    return this.$store.state.arr.filter(item => {
+                        return item.age < 18 && item.age >= 0;
+                    })
+                }
+            },
+        }
+
+        const store = new Vuex.Store({
+            state: {
+                arr: []
+            },
+            mutations: {
+                changeArr(state, options) {
+                    console.log(arguments);
+                    state.arr.push(options);
+                }
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            store,
+            data: {
+                name: "hello world",
+                age: 0
+            },
+
+            components: {
+                adult, under
+            },
+
+            methods: {
+                fn() {
+                    let obj = {
+                        name: this.name,
+                        age: this.age
+                    }
+                    this.$store.commit('changeArr', obj);
+                    this.name = '';
+                    this.age = '';
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

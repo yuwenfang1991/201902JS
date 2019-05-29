@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <router-link to="/home">组件1</router-link>
+        <router-link :to="{name:'myHome',params:{q:12,w:23}}">组件1</router-link>
+        <router-link to="/nav">组件2</router-link>
+        <router-link :to="{path:'/nav',query:{a:12,b:13}}">组件2</router-link>
+        <router-view></router-view>
+    </div>
+
+    <template id="com1">
+        <div>
+            子(局部)组件1
+            <router-link to="/child">child</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="com2">
+        <div>
+            子(局部)组件2
+        </div>
+    </template>
+    <script>
+
+        // meta很有用的，例如我们可以通过为路由记录添加meta信息来代表该路由所代表的功能模块代码，在addRoutes时判断是否有权限加载此路由记录
+        const com1 = {
+            template: '#com1'
+        }
+        const com2 = {
+            template: '#com2'
+        }
+
+        const child1 = {
+            template: '<h2>组件1下的child</h2>'
+        }
+        const routes = [
+            {
+                path: '/',
+                redirect: '/home'
+            },
+            {
+                path: '/home/:q/:w',
+                component: com1,
+                name: 'myHome',
+                meta: {
+                    myTit: 'home' // meta 路由元信息
+                },
+                children: [
+                    {
+                        path: 'child', // 路径要不就不写斜杠 要写的话就写全
+                        component: child1
+                    }
+                ]
+            },
+            {
+                path: '/nav',
+                component: com2,
+                name: 'myNav',
+                meta: {
+                    myTit: 'nav'
+                }
+
+            },
+            {
+                path: '/*',
+                redirect: '/nav' // 一定要是 已经存在的路径
+            }
+        ]
+
+
+        const router = new VueRouter({
+            routes,
+            mode: 'hash',// 默认hash
+            linkActiveClass: 'active' // 默认 router-link-active
+        })
+
+        router.beforeEach((to, from, next) => {
+            // to 将要跳转的 路由 
+            // from 从哪个路由过来的
+            // next 是必须执行的一个函数
+            // 可以执行一些 修改 title 或者 做一些权限的处理
+            next();
+        })
+        let vm = new Vue({
+            el: '#app',
+            router, // 注入到根实例
+            data: {
+                name: "hello world"
+            }
+        })
+
+        // name path query params router规定的 
+        // 编程式导航 push({}) replace back go // 一般涉及到异步的时候会用到
+    </script>
+</body>
+
+</html>

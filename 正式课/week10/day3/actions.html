@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span>输入姓名：</span><input type="text" placeholder="姓名" v-model="name">
+        <span>输入年龄：</span><input type="number" placeholder="年龄" v-model="age">
+        <button @click='fn'>提交</button>
+        <button @click='fn2'>异步提交</button>
+        <adult></adult>
+        <child></child>
+    </div>
+    <template id="adult">
+        <div>
+            <h2>成年人</h2>
+            <ul>
+                <li v-for="(item, index) in ary" :key="index">
+                    <span>姓名：{{item.name}}</span>
+                    <span>年龄：{{item.age}}</span>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <template id="child">
+        <div>
+            <h2>未成年人</h2>
+            <ul>
+                <li v-for="(item, index) in ary" :key="index">
+                    <span>姓名：{{item.name}}</span>
+                    <span>年龄：{{item.age}}</span>
+                </li>
+            </ul>
+        </div>
+    </template>
+    <script>
+
+        const adult = {
+            template: '#adult',
+            computed: {
+                ary() {
+                    return this.$store.state.adultAry;
+                }
+            },
+
+        }
+        const child = {
+            template: '#child',
+            computed: {
+                ary() {
+                    return this.$store.state.childAry;
+                }
+            }
+
+        }
+
+        const state = {
+            count: 0,
+            adultAry: [],
+            childAry: []
+        }
+
+        const mutations = {
+            changeAdult(state, options) {
+                state.adultAry.push(options.obj);
+            },
+            changeChild(state, options) {
+                state.childAry.push(options);
+            }
+        }
+
+        const actions = {
+            // 这里边存储的也是一些函数 这里的函数可以是异步
+            changeAdultFn(context, options) {
+                // context 包含 commit函数 和 state
+                console.log(arguments);
+
+            },
+            changeAdultFn1({ commit }, options) {
+                // context 包含 commit函数 和 state
+                // 我们可以通过 commit 触发 mutations 中的函数
+                console.log(arguments);
+                axios.get('https://yesno.wtf/api').then((data) => {
+                    // 根据后台返回的yes 或 no 来决定 name属性后边跟的是 男或者 女
+                    if (data.data.answer === 'yes') {
+                        options.name += '_男';
+                    } else {
+                        options.name += '_女';
+                    }
+
+                    // 下一步我们要去 使用 mutations中的方法 改变 state中的数据
+                    if (options.age >= 18) {
+                        commit('changeAdult', { obj: options })
+                    } else {
+                        commit('changeChild', options);
+                    }
+                }).catch(() => {
+                    alert('失败');
+                })
+            },
+            getData() {
+                // 我们一般 把异步请求放到actions
+                return axios.get('https://yesno.wtf/api')
+            }
+        }
+        const store = new Vuex.Store({
+            state: state,
+            mutations: mutations,
+            actions: actions
+        })
+        let vm = new Vue({
+            el: '#app',
+            store,
+            data: {
+                name: "",
+                age: ''
+            },
+            methods: {
+                fn() {
+                    // 根据age 来判断 把数据放到哪个数组
+                    let obj = {
+                        name: this.name,
+                        age: this.age
+                    }
+                    if (this.age >= 18) {
+                        this.$store.commit('changeAdult', { obj: obj });
+                        // 传递的参数
+                    } else {
+                        this.$store.commit('changeChild', obj);
+                    }
+                    // this.name = '';
+                    // this.age = '';
+                },
+
+                fn2() {
+                    // 要触发actions 中的函数 通过this.$store.dispatch('对应的函数名', 要传的参数)
+                    // commit 科密特
+                    // dispatch 迪斯排斥
+                    this.$store.dispatch('changeAdultFn1', { name: this.name, age: this.age });
+                    let p = this.$store.dispatch('getData');
+                    console.log(p);
+                    p.then((data)=> {
+                        // p 就是返回的 Promise 实例
+                        console.log(data);
+                        
+                    })
+                }
+            },
+
+
+            components: {
+                adult, child
+            }
+        })
+    </script>
+</body>
+
+</html>

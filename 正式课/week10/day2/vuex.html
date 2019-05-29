@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+
+<body>
+    <!-- 在子组件中添加一个按钮 点击减少count 再把count展示到 vm根实例中 -->
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click='fn'>增加</button>
+        <h2>{{count}}</h2>
+        <home></home>
+    </div>
+    <template id="home">
+        <div>
+            这是一个子组件
+            {{count}}
+            <button @click='fn'>减少</button>
+        </div>
+    </template>
+    <script>
+
+        let home = {
+            template: '#home',
+            data() {
+                return {
+
+                }
+            },
+
+            created() {
+                console.log(this);
+            },
+
+            computed: {
+                count() {
+                    return this.$store.state.count;
+                }
+            },
+
+            methods: {
+                fn() {
+                    this.$store.commit('reduce');
+                }
+            },
+        }
+        // vuex 是vue的 一个专门用来处理组件之间的数据交互的 插件
+        const store = new Vuex.Store({
+            state: {
+                // 这里是存放公用数据的空间
+                count: 0
+            },
+            mutations: {
+                // 这里边都是一些函数 vuex指定的 唯一的 能够被修改state中的数据的途径
+                myAdd(state, obj) {
+                    // mutations 中的函数 最多只有两个实参 最少有一个
+                    // 第一个实参就是我们的state
+                    // 第二个实参 是通过commit执行该函数时传进来的参数
+                    console.log(arguments);
+                    state.count++;
+
+                },
+
+                reduce(state, obj) {
+                    state.count--;
+                }
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+            store: store, // 前边的这个 属性名是固定的 所有的组件都可以通过this.$store.state 调用state
+            data: {
+                name: "hello world"
+            },
+            mounted() {
+                console.log(this);
+            },
+
+            methods: {
+                fn() {
+                    this.$store.commit('myAdd');
+                    // 我们若想调用mutations中的方法 只能通过 commit 触发
+                    // commit的第一个实参 是mutations中的对应的函数名; 第二个实参是我们
+                    // 传给对应函数的参数
+
+                }
+            },
+            components: {
+                home
+            },
+
+            computed: {
+                count() {
+                    return this.$store.state.count;
+                }
+            },
+        })
+    </script>
+    <!-- 
+        state中 存放数据
+        mutations 中存放修改数据的方法
+        组件通过 this.$store.commit('mutations中的函数名', 要传给该函数的实参(一般是个对象))
+        mutations中的方法 第一个形参是我们的state 第二个形参对应的是 上边传进来的那个参数
+
+     -->
+</body>
+
+</html>

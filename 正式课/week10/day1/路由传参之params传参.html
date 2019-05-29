@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路径 传参</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <style>
+        .current{
+            background: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div>
+            <router-link :to="{path:'/com1'}">跳转com1</router-link>
+            <!-- 
+                params传参 只能结合别名使用 不能使用path;
+                path query name params 都是vue-router规定的
+                params中的属性名 是根据 路由映射表中的 path:'/xxx/:属性名1/:属性名2'
+                属性名1和属性名2
+             -->
+            <router-link :to="{name:'myCom1',params:{a:12,b:13}}">跳转到com1</router-link>
+            <router-link :to="{path:'/com2?a=13'}">跳转com2</router-link>
+            <router-link :to="{path:'/com3'}">跳转com3</router-link>
+        </div>
+
+        <div class="view_box">
+            <router-view></router-view>
+        </div>
+    </div>
+    <script>
+        const com1 = {
+            template: `<h1>组件1</h1>`,
+            created() {
+                console.log(this);
+            },
+        }
+        const com2 = {
+            template: `<h2>组件2</h2>`
+        }
+        const com3 = {
+            template: `<h3>组件3</h3>`
+        }
+
+        const routes = [{
+            path: '/com1/:a/:b',
+            name:'myCom1',
+            component: com1
+        },
+        {
+            path: '/com2',
+            name:'myCom2?a=12', // 别名
+            component: com2
+        },
+        {
+            path: '/com3',
+            name:'myCom3',
+            component: com3
+        },
+        ];
+
+        const router = new VueRouter({
+            routes: routes,
+            linkActiveClass:'current', // 所有的被匹配的路径默认类名改成current
+            // 行内属性 active-class 等级较高
+            linkExactActiveClass:'qqq'
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                name: "hello world",
+                obj: { a: 12, b: 13, c: 14 }
+            }
+        })
+
+        /* 
+            query传参: 使用path 或name 都可以 :to={path:'/xxx',query:{a:12,b:13}}
+                                             :to={name:'别名',query:{a:12,b:13}}
+            获取: 通过 this.$route.query
+            params传参: 只能使用name; :to={name:'别名',params:{a:12,b:13}}
+            需要配合路由映射表来使用,{path:'/xxx/:a/:b',name:'别名',component:xxx}
+            有时也把params传参称为 路径传参
+            获取: 通过 this.$route.params
+        
+        */
+    </script>
+    
+</body>
+
+</html>

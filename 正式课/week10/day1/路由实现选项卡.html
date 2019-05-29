@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+            margin: auto 50%;
+        }
+
+        .one,
+        .two,
+        .three {
+            text-align: center;
+            width: 300px;
+            height: 200px;
+            background: darkgoldenrod;
+        }
+
+        .box {
+            width: 300px;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        .one_box,
+        .two_box,
+        .three_box {
+            padding-left: 10px;
+            flex: 1;
+            text-align: center;
+            background: rgb(206, 206, 206);
+            color: rgb(34, 34, 34);
+            font-size: 18px;
+            border-left: 1px antiquewhite solid;
+            border-right: 1px antiquewhite solid;
+        }
+
+        .current {
+            border-top: 2px darkorange solid;
+            background: rgb(253, 253, 253);
+        }
+
+        .one>span:hover,
+        .two>span:hover,
+        .three>span:hover {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h1>{{name}}</h1> -->
+        <ul class="box">
+            <router-link to="com1" class="one_box" tag="li">直投</router-link>
+            <router-link to="com2" class="two_box" tag="li">投标工具</router-link>
+            <router-link to="com3" class="three_box" tag="li">转让</router-link>
+        </ul>
+
+        <div class="view_box">
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <template id="com1">
+        <div class="one" @click='fn'>
+            <span>com1</span>
+        </div>
+    </template>
+    <template id="com2">
+        <div class="two" @click='fn'>
+            <span>com2</span>
+        </div>
+    </template>
+    <template id="com3">
+        <div class="three" @click='fn'>
+            <span>com3</span>
+        </div>
+    </template>
+    <script>
+        const com1 = {
+            template: '#com1',
+            methods: {
+                fn() {
+                    window.open('https://www.baidu.com/#/id=1223'); 
+                }
+            },
+        }
+        const com2 = {
+            template: '#com2',
+            methods: {
+                fn() {
+                    window.open('https://www.baidu.com/#/id=1223'); 
+                }
+            },
+        }
+        const com3 = {
+            template: '#com3',
+            methods:{
+                fn() {
+                    window.open('https://www.baidu.com/#/id=1223'); 
+                }
+            }
+        }
+
+        const routes = [{
+            path: '/com1',
+            component: com1
+        },
+        {
+            path: '/com2',
+            component: com2
+        },
+        {
+            path: '/com3',
+            component: com3
+        }
+        ];
+
+        const router = new VueRouter({
+            routes,
+            linkActiveClass: 'current',
+        })
+        let vm = new Vue({
+            el: '#app',
+            router,
+            data: {
+                name: "hello world"
+            },
+
+
+        })
+    </script>
+</body>
+
+</html>

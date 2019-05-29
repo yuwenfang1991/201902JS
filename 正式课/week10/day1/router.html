@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/animate.css/3.7.0/animate.css">
+    <style>
+        .router-link-active {
+
+            color: aqua;
+            background: sandybrown;
+        }
+
+        .my-list {
+            font-size: 22px;
+            width: 150px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- 
+            router-link/router-view 是vue-router提供的两个全局组件
+            router-link 控制跳转的按钮, 默认渲染成 a标签; 我们通过行内属性 tag来控制显示元素的标签
+            to 属性控制跳转的路径 可以跟字符串; 也可以跟一个对象, 跟对象时 需要使用v-bind,
+            对象的属性名有一个path, 对应的值是控制的跳转路径
+            router-view 控制对应路径下 要去展示的组件
+            router-link-active 是走到对应的路径下; 会给对应的router-link渲染出来的元素
+            添加的类名
+            我们可以通过 active-class行内属性 来控制对应的 选中类名
+         -->
+        <router-link to="/myHome" tag="div" active-class="my-list">跳到myHome</router-link>
+        <router-link to="/myList" tag="div">跳到myList</router-link>
+        <router-link :to="{path:'/myHome'}">跳到myHome2222</router-link>
+        <transition enter-active-class="animated bounceInRight" leave-active-class="animated bounceOutLeft"
+            mode='out-in'>
+
+            <!-- mode: out-in 先执行消失的动作 消失动作完成后 在执行进入的 动作 -->
+            <router-view></router-view>
+        </transition>
+    </div>
+
+    <script>
+        // 路由的使用步骤
+        // 1、先有对应的要展示的组件
+        // 2、根据组件编写路由映射表(routes) 它是一个数组
+        //  内容是数组包对象, 每一个对象中的属性名都是Vue-router规定的
+        //  path 是我们要跳转的路由, 值是自定义的
+        //  component 是路由对应要展示的组件
+        // 3、根据路由映射表 创建路由实例:
+        // 4、把创建好的路由实例注入到根实例中
+
+        // spa 单页面应用
+        const com1 = {
+            template: '<h1>组件1</h1>',
+            created() {
+                console.log(1);
+
+            },
+        }
+        const com2 = {
+            template: '<h2>组件2</h2>',
+            created() {
+                console.log(2);
+
+            },
+        }
+
+        // 路由映射表
+        let routes = [
+            {
+                path: '/myHome',
+                component: com1
+            },
+            {
+                path: '/myList',
+                component: com2
+            }
+        ];
+
+        const route = new VueRouter({
+            // 属性名routers 属性时router规定的 属性值自己定义
+            routes: routes
+        })
+
+
+        let vm = new Vue({
+            el: '#app',
+            // router属性名 也是规定的
+            router: route,
+            data: {
+                name: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>

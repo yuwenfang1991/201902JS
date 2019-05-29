@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <com1></com1>
+        <hr>
+        <com2></com2>
+    </div>
+
+    <template id="com1">
+        <div>
+            <h1 :style="{color:color}">组件1</h1>
+            <button @click='fn'>改变兄弟的颜色</button>
+        </div>
+    </template>
+    <template id="com2">
+        <div>
+            <h1 :style="{color:color}">组件1</h1>
+            <button @click='fn'>改变兄弟的颜色</button>
+        </div>
+    </template>
+    <script>
+        // 创造一个空的vue实例 存放自定义事件、调用自定义事件用的
+        const temp = new Vue();
+        const com1 = {
+            template: '#com1',
+            data() {
+                return {
+                    color: 'red'
+                }
+            },
+
+            created() {
+                // 在空实例上 订阅了一个事件 事件名是 changeCom1
+                temp.$on('changeCom1', (val) => {
+                    this.color = val;
+                });
+            },
+
+            methods: {
+                fn() {
+                    let str = this.color === 'blue' ? 'red' : 'blue';
+                    // 触发temp中的 changeCom2 事件, 并传过去一个red字符串
+                    temp.$emit('changeCom2','red');
+                }
+            },
+        }
+        const com2 = {
+            template: '#com2',
+            data() {
+                return {
+                    color: 'blue'
+                }
+            },
+
+            created() {
+                // 在空实例上 订阅了一个事件 事件名是 changeCom1
+                temp.$on('changeCom2', (val) => {
+                    this.color = val;
+                });
+            },
+
+            methods: {
+                fn() {
+                    temp.$emit('changeCom1','blue');
+                }
+            },
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components: {
+                com1, com2
+            }
+        })
+    </script>
+</body>
+
+</html>

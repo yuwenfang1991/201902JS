@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <com1></com1>
+        <hr>
+        <com1>
+            <div slot='my_header'>
+                <h2>hello day</h2>
+            </div>
+        </com1>
+        <com1>
+
+            <template v-slot:my_footer>
+                <!-- 新版写法 -->
+                <h2>2019</h2>
+            </template>
+        </com1>
+    </div>
+
+    <template id="com">
+        <div>
+            <h3>匿名插槽</h3>
+            <slot></slot>
+            <hr width="80%" color="red">
+            <h3>具名插槽</h3>
+            <slot name="my_header"></slot>
+            <slot name="my_footer"></slot>
+        </div>
+    </template>
+    <script>
+        const com1 = {
+            template: '#com'
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components: {
+                com1
+            }
+        })
+    </script>
+</body>
+
+</html>

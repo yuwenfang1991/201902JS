@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- 定义的自定义事件名 -->
+        <my-son @son_fn='fn'></my-son>
+    </div>
+
+    <template id="son-com1">
+        <div>
+            <input type="text" v-model="sonName" @input='give'>
+            这是{{sonName}}组件
+        </div>
+    </template>
+    <script>
+        let son = {
+            template: '#son-com1',
+            data() {
+                return {
+                    sonName: '儿子'
+                }
+            },
+
+            methods: {
+                give() {
+                    // 通过$emit 触发自定义事件 第一个参数是我们自己定义的事件名,
+                    // 第二个参数即以后 都是传过去的参数
+                    this.$emit('son_fn', this.sonName);
+                }
+            },
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+
+            },
+
+            methods: {
+                fn(val) {
+                    this.name = val;
+                }
+            },
+            components: {
+                'my-son': son
+            }
+        })
+    </script>
+
+    <!-- 
+    子传父： 现在自组件使用的标签 行内 写一个自定义事件名  @自定义事件=‘父组件的函数fn’
+    在子组件的对应函数内  我们使用 this.$emit('自定义事件名',要传给父组件使用的数据qqq)
+    父组件的函数fn 函数体是： 
+    fn(val,val2,val3){
+        // val 就是 qqq
+        this.xxx = val;
+    }
+    -->
+</body>
+
+</html>

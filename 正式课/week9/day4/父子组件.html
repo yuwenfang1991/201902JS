@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <com3></com3>
+    </div>
+
+    <template id="com1">
+        <div>
+            我是com1组件
+        </div>
+    </template>
+    <template id="com2">
+        <div>
+            我是com2组件
+            <my-com1></my-com1>
+        </div>
+    </template>
+    <template id="com3">
+        <div>
+            我是com3组件
+            <com2></com2>
+        </div>
+        <!-- 
+            局部组件 是在哪个组件用 就必须在哪个组件注册
+            不管组件之间什么关系
+
+         -->
+    </template>
+    <script>
+        let com1 = {
+            template: '#com1',
+            data() {
+                return {
+                    name: '学习com1'
+                }
+            },
+        }
+        let com2 = {
+            template: '#com2',
+            data() {
+                return {
+                    name: '学习com2'
+                }
+            },
+
+            components: {
+                'my-com1':com1
+            }
+        }
+        let com3 = {
+            template: '#com3',
+            data() {
+                return {
+                    name: '学习com3'
+                }
+            },
+
+            components: {
+                com2,com1
+            }
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components: {
+                com3
+            }
+        })
+
+        // 组件独立性 是指 同一个组件使用多次 每次使用的时候相互不影响
+        // 是因为 data的独立性造成的
+        // 组件之间是可以相互调用的 相互调用就会有父子组件的概念
+        // 父子组件是一个相对的概念; A组件使用了 B组件 那么我们把A称为父组件
+    </script>
+</body>
+
+</html>

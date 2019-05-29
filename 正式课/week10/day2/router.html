@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div>
+            <!-- 
+                query传参: url后边 直接拼字符串 to='/home?a=12&b=13' 
+                           使用对象的方式 :to = {path:'/home',query:{a:12,b:13}}
+                           获取:this.$route.query
+                params传参:修改映射表 添加一个name 属性 对于path 后边加'/:变量名' 的方式
+                           使用时只能跟 name搭配使用 不能跟path 搭配使用
+                           :to="{name:'xxx',params:{a:12}}"  √ 对
+                           :to="{name:'/xxx',params:{a:12}}" × 错
+             -->
+            <router-link to="/home?a=12&b=13" active-class="current" tag="button">home</router-link>
+            <router-link to="/list/小明/20">list</router-link>
+            <router-link :to='{name:"my_list",params:{name:"小红",age:20}}'>列表页</router-link>
+            <router-link to="/user">user</router-link>
+            <router-link :to="{name:'my_user',query:{a:12,c:14},params:{name:456}}">user</router-link>
+        </div>
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <template id="home">
+        <div>
+            <h1>这是首页</h1>
+        </div>
+    </template>
+    <template id="list">
+        <div>
+            <h1>这是列表页</h1>
+        </div>
+    </template>
+    <template id="user">
+        <div>
+            <h1>这是用户中心</h1>
+        </div>
+    </template>
+    <script>
+        const home = {
+            template: '#home',
+            data() {
+                return {
+
+                }
+            },
+        }
+
+        const list = {
+            template: '#list',
+            data() {
+                return {
+
+                }
+            },
+        }
+        const user = {
+            template: '#user',
+            data() {
+                return {
+
+                }
+            },
+        }
+
+        // 编写路由映射表
+        const routes = [{
+            path: '/home',
+            component: home
+        },
+        {
+            path: '/list/:name/:age',
+            component: list,
+            name:'my_list'
+        },
+        {
+            path: '/user/:name',
+            component: user,
+            name:'my_user'
+        }
+        ];
+
+        // 创造router实例
+        const router = new VueRouter({
+            // mode:'history',// history 两种模式 默认hash, 
+            // history模式 有利于 seo(搜索)优化 缺点：需要后台配合设置
+            // 开发用hash模式 生产使用history模式
+            
+            routes: routes,
+            linkActiveClass:'active',//统一设置 路径匹配的元素的类名
+        });
+        let vm = new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                name: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>

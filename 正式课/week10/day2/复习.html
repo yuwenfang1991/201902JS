@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <com1>
+            123
+            <div>456</div>
+            <h1 slot="my_h1">我是h1</h1>
+            <template v-slot:my_h3>
+                <h3>我是新版写法</h3>
+            </template>
+
+            <i>789</i>
+        </com1>
+        <com1></com1>
+    </div>
+
+    <template id="com1">
+        <div>
+            <h1>这是个子组件</h1>
+
+            <div>---------------------------</div>
+            <slot>
+                默认内容
+                当com1标签没有包含任何内容时, 就显示当前的文本
+            </slot>
+
+            <slot name="my_h1">
+                <!-- 对于slot标签使用 v-bind的效果 -->
+                my_h1的默认内容
+            </slot>
+            <slot name="my_h3">
+                my_h3的默认内容
+            </slot>
+        </div>
+    </template>
+    <script>
+        /* 
+            组件: 全局组件 局部组件
+            父传子 1、<com1 my_name='1234'></com1> 自定义属性
+            子组件通过props接收 props:['my_name']
+            props:{my_name:{default:'abc'}}
+            props:{
+                my_name:{
+                    type:Number,// [Number,String]
+                    required:true,
+                    default() {
+                        return []
+                    },
+                    validator(val) {
+                        用户自定义规则用的
+                        return false 会报一个红色警告
+                    }
+                }
+            
+                2、1、通过this.$parent 获取父组件, 既可以修改也可以使用 不建议使用
+            子传父: 自定义事件 <com1 @my_event='fn'></com1>
+            子组件 通过触发(this.$emit('my_event,传给父组件的参数'))自定义事件的方式来执行 对应的 fn函数; 然后通过参数传递 把子组件的数据传给父组件
+                    2、this.$refs; ref技能获取元素 也能获取组件
+            eventBus 创造一个空的vue实例 通过$on订阅一个事件;  通过$emit发布对应事件
+            
+            vue 的内部组件 template transition slot component keep-alive
+            <component is='组件名'></component>
+            <keep-alive></keep-alive>保证已加载的组件不被销毁
+        */
+        const com1 = {
+            template: '#com1',
+            data() {
+                return {
+
+                }
+            },
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+            components: {
+                com1
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>{{type}}{{count}}{{type2}}</h2>
+        <button @click='add'>增加</button>
+        <button @click='reduce'>减少</button>
+        
+    </div>
+    <script>
+
+        const store = new Vuex.Store({
+            state: {count:0},
+            mutations: {
+                changeCount(state, options) {
+                    state.count += options;
+                }
+            },
+
+            actions: {
+                changeFn({ commit }, options) {
+                    setTimeout(()=> {
+                        commit('changeCount',options);
+                    },1000)
+                }
+            },
+
+            getters:{                
+                // vuex 的计算属性
+                numType2(state) {
+                    return state.count + 'hello';
+                },
+                numType(state,getters) {
+                    console.log(getters.numType2);
+                    return state.count%2==0 ? '偶数' : '奇数'
+                    
+                    
+                }
+            }
+        })
+        let vm = new Vue({
+            el: '#app',
+            store,
+            data: {
+                name: "hello world"
+            },
+
+            methods: {
+                add() {
+                   this.$store.dispatch('changeFn',1) 
+                },
+
+                reduce() {
+                    this.$store.dispatch('changeFn',-1);
+                }
+            },
+            computed: {
+                count() {
+                    return this.$store.state.count;
+                },
+                type() {
+                    return this.$store.getters.numType;
+                },
+                type2() {
+                    return this.$store.getters.numType2;
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

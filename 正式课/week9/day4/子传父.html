@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>我的年龄是：{{pAge}}</h2>
+        <com1 @my-fn='fn'></com1>
+    </div>
+    <template id="com1">
+        <div>
+            <!-- <h1>我的姓名：</h1> -->
+            <h2>我的年龄：{{age}}</h2>
+            <input type="text" v-model="age" @input='give'>
+            <button>传给父组件age</button>
+        </div>
+    </template>
+    <script>
+        let com1 = {
+            template: '#com1',
+            data() {
+                return {
+                    age: 18
+                }
+            },
+            created() {
+                console.log(this);
+                // this.$parent 就是父组件实例
+                // this.$children 就是他所有的子组件
+                this.$parent.pAge = 100;
+                
+            },
+            methods: {
+                give() {
+                    // 触发定义的自定义事件
+                    // $emit('自定义事件名', 传过去的参数)
+                    this.$emit('my-fn', this.age);
+                }
+            },
+
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                pAge: 18
+            },
+            components: {
+                com1
+            },
+
+            methods: {
+                fn(val) {
+                    console.log(val);
+                    this.pAge = val;
+                }
+            },
+        })
+        /*
+            通过自定义事件的方式传递
+            在行内属性上定义一个 自定义的事件
+            函数体是在父组件定义的 然后在子组件中触发该自定义事件
+            然后 通过传参的方式 把子组件的数据传给父组件
+         */
+
+        //  发布订阅
+        // let ary = [];
+        // function on(f) {
+        //     ary.push(f);
+        // }
+
+        // function fire() {
+        //     ary.forEach(el=>{
+        //         el()
+        //     });
+        // }
+    </script>
+</body>
+
+</html>

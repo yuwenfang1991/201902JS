@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>query 传参</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div>
+            <router-link to="com1?a=12&b=13">跳转com1</router-link>
+            <!-- path 和 query 这两个属性名 都是规定死的 -->
+            <router-link :to="{path:'/com2',query:obj}">跳转com2</router-link>
+            <router-link to="com3">跳转com3</router-link>
+        </div>
+
+        <div class="view_box">
+            <router-view></router-view>
+        </div>
+    </div>
+    <script>
+        let com1 = {
+            template: `<h1>组件1</h1>`,
+            created() {
+                console.log(this);
+                // 每一个正在展示的组件 我们都可以通过 this.$route.query获取参数
+            },
+        }
+        let com2 = {
+            template: `<h2>组件2</h2>`
+        }
+        let com3 = {
+            template: `<h3>组件3</h3>`
+        }
+
+        const routes = [{
+            path: '/com1',
+            component: com1
+        },
+        {
+            path: '/com2',
+            component: com2
+        },
+        {
+            path: '/com3',
+            component: com3
+        },
+        ];
+
+        const router = new VueRouter({
+            routes: routes
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                name: "hello world",
+                obj:{a:12,b:13,c:14}
+            }
+        })
+    </script>
+</body>
+
+</html>

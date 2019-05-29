@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/animate.min.css">
     <script src="js/flexible.js"></script>
     <link rel="stylesheet" href="css/index.css">
+    <script src="./js/zepto.js"></script>
 </head>
 
 <body>
@@ -49,21 +50,39 @@
 
                     <div class="border_box"></div>
                     <div class="content_pic">
-                        <img src="./image/cat2.webp" class="pic_one">
-                        <img src="./image/cat1.webp" class="pic_two">
-                    </div>
-                    <div class="solid_inside"></div>
-                    <div class="little_box">
-                        <ul>
-                            <li class="one ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s"
-                                swiper-animate-delay="1s">致</li>
-                            <li class="two ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s"
-                                swiper-animate-delay="1.5s">青</li>
-                            <li class="three ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2s"
-                                swiper-animate-delay="2s">春</li>
-                        </ul>
+                        <img src="./image/cat2.webp" class="pic_one ani" swiper-animate-effect="flipInY"
+                            swiper-animate-duration="1s" swiper-animate-delay="3s">
+                        <img src="./image/cat1.webp" class="pic_two ani" swiper-animate-effect="bounceInUp"
+                            swiper-animate-duration="2s" swiper-animate-delay="3.5s">
                     </div>
 
+                    <div class="solid_inside ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
+                        swiper-animate-delay="2s"></div>
+
+                    <div class="little_box">
+                        <img src="./image/little.webp" alt="">
+                    </div>
+                    <ul>
+                        <li class="one ani" swiper-animate-effect="slideInRight" swiper-animate-duration="1s"
+                            swiper-animate-delay="1s">致</li>
+                        <li class="two ani" swiper-animate-effect="rotateIn" swiper-animate-duration="1s"
+                            swiper-animate-delay="1.5s">青</li>
+                        <li class="three ani" swiper-animate-effect="rotateIn" swiper-animate-duration="2s"
+                            swiper-animate-delay="2s">春</li>
+                    </ul>
+
+                    <ul class="c-parent">
+                        <li class="c1"></li>
+                        <li class="c2"></li>
+                        <li class="c3"></li>
+                        <li class="c4"></li>
+                        <li class="c5"></li>
+                        <li class="c6"></li>
+                    </ul>
+                    <div class="time ani" swiper-animate-effect="slideInUp" swiper-animate-duration="4s"
+                        swiper-animate-delay="2s">
+                        <span>2010</span>
+                    </div>
                 </div>
             </main>
 
@@ -78,13 +97,14 @@
                 </div>
                 <div class="bottom_box ani" swiper-animate-effect="zoomIn" swiper-animate-duration="2s"
                     swiper-animate-delay="1.5s">
-                    <img src="./image/last.gif" alt="">
+                    <img src="./image/last.gif">
                 </div>
 
             </main>
         </div>
-
+        <div class="swiper-pagination bottom"></div>
     </section>
+    <audio src="./image/thatGirl.m4a" id="audio" preload="auto"></audio>
     <script src="./node_modules/swiper/dist/js/swiper.js"></script>
     <script src="./js/swiper.animate.min.js"></script>
     <script>
@@ -96,6 +116,7 @@
             // 如果需要分页器
             pagination: {
                 el: '.swiper-pagination',
+                type: 'fraction',
             },
 
             on: {
@@ -108,7 +129,28 @@
                     // this.slides.eq(this.activeIndex).find('.ani').removeClass('ani');//动画只展示一次
                 }
             }
-        }) 
+        })
+
+
+        let $audio = $('#audio');
+        let $btn = $('.music_icon');
+        let isRunning = false; // 判断按钮是否在旋转
+        function touchClick() {
+            $btn.on('touchend', function () {
+                if (isRunning) {
+                    $(this).css({ animationPlayState: 'paused' });
+                    isRunning = false;
+                    $audio[0].pause();
+                } else {
+                    $(this).css({ animationPlayState: 'running' });
+                    isRunning = true;
+                    $audio[0].play();
+
+                }
+            });
+        }
+
+        touchClick();
     </script>
 
 

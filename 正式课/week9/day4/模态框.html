@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .con {
+            width: 350px;
+            height: 200px;
+            border: 2px solid antiquewhite;
+            margin-left: 30%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .con>.cont {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .box {
+            display: flex;
+        }
+
+        .btn1 {
+            display: inline;
+            margin-left: 10px;
+            padding: 10px;
+            border: 1px solid cornflowerblue;
+            text-align: center;
+            flex: 1;
+        }
+
+        .btn2 {
+            display: inline;
+            padding: 10px;
+            margin-left: 150px;
+            margin-right: 10px;
+            border: 1px solid cornflowerblue;
+            text-align: center;
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click='fn'>这是一段内容</button>
+        <el-model :title='title' :content='content' @sure='fn1' @cancel='fn2' v-show='show'></el-model>
+    </div>
+
+    <template id="com">
+        <div class="con">
+            <h2>{{title}}:</h2>
+            <div class="cont">{{content}}</div>
+            <div class="box">
+                <div class="btn1" @click='fn'>取消</div>
+                <div class="btn2" @click='fn'>确定</div>
+            </div>
+
+        </div>
+    </template>
+    <script>
+
+        let model = {
+            template: '#com',
+            data() {
+                return {
+
+                }
+            },
+
+            props: ['title', 'content']
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                title: '提示',
+                content: '这是一段内容',
+                show: 'true'
+            },
+
+            components: {
+                'el-model': model
+            },
+
+            methods: {
+                fn1() {
+
+                },
+
+                fn2() {
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

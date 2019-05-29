@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- ref 获取元素 -->
+        <h1 ref="myh1">{{name}}</h1>
+        <h2 ref="myh1">{{name}}</h2>
+        <h3 v-for="(item, index) in ary" :key="index" ref="myh3">{{name}}</h3>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                ary:[1,2,3,5]
+            },
+
+            created() {
+                // 下一次DOM渲染完成之后 才会触发回调函数
+                this.$nextTick(() => {
+                    console.log(this.$refs.myh1);
+                    //this.$ref 写死在结构上的 只能获取一个
+                    // 通过v-for 循环出来的 可以获取一组
+                })
+            },
+
+            mounted() {
+                // DOM更新是异步的
+                console.log(this.$refs.myh1);
+                this.ary.push(10);
+                console.log(this.$refs.myh3);
+                
+
+            },
+        })
+
+        /*
+           常用： created mounted
+           不常用: updated destroyed
+        */
+    </script>
+</body>
+
+</html>

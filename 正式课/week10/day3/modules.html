@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>{{countA}}</h2>
+        <h2>{{numB}}</h2>
+        <button @click='countFn'>改count</button>
+        <button @click='numFn'>改num</button>
+    </div>
+    <script>
+        const myModuleA = {
+            state: {
+                count: 0
+            },
+            mutations: {
+                changeCount(state, options) {
+                    state.count += options;
+                    console.log(this);
+                    
+                }
+            },
+            actions: {}
+        };
+        const myModuleB = {
+            state: {
+                num: 100
+            },
+            mutations: {
+                changeNum(state, options) {
+                    state.num += options;
+                }
+            },
+            actions: {}
+        };
+
+        const store = new Vuex.Store({
+            modules: {
+                a: myModuleA,
+                b: myModuleB
+            },
+        })
+        let vm = new Vue({
+            el: '#app',
+            store,
+            data: {
+                name: "hello world"
+            },
+
+            created() {
+                console.log(this.$store);
+
+            },
+
+            methods: {
+                countFn() {
+                    this.$store.commit('changeCount', 1);
+                },
+                numFn() {
+                    this.$store.commit('changeNum', 100);
+                }
+            },
+            computed: {
+                countA() {
+                    return this.$store.state.a.count;
+                },
+
+                numB() {
+                    return this.$store.state.b.num;
+                }
+            },
+        })
+
+        /*
+            对于 modules 来说 state中的属性 是做了划分的
+            但是 mutations 中和 actions 中的方法 没有做划分 直接用 this.$store.commit('函数名');
+
+         */
+
+         /* 
+            const store = new Vuex.Store({
+                state:{
+                    存储公用数据
+                },
+                mutations:{
+                    官方指定的唯一能够修改 state中数据的 途径
+                    里边的函数都必须是 同步的
+                    函数名(state,options) {}
+                },
+                actions:{
+                    也是一些函数 这些函数可以是异步函数
+                    函数名(context,options){}
+                    函数名({commit},options){}
+                },
+                getters:{
+                    vuex的计算属性
+                },
+                modules:{
+                    自定义属性名:自定义模块
+                }
+            })
+
+          */
+    </script>
+</body>
+
+</html>

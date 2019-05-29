@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <style>
+        * {
+            list-style: none;
+        }
+
+        ul li {
+            display: inline;
+            background: darkgoldenrod;
+            padding: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <tab :data='[11,22,33]' @my-change='fn'></tab>
+    </div>
+
+    <template id="tab-click">
+        <div>
+            <ul>
+                <li v-for="(item, index) in data" :key="index" @click='give(index)'>{{item}}</li>
+            </ul>
+        </div>
+    </template>
+
+    <script>
+        let tab = {
+            template: '#tab-click',
+            props: ['data'],
+            methods: {
+                give(n) {
+                    this.$emit('my-change', n);
+                }
+            },
+        }
+
+
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+            components: {
+                tab
+            },
+
+            methods: {
+                fn(val) {
+                    this.name = val;
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

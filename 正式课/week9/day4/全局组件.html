@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-name>
+
+        </my-name>
+        
+        <my-button></my-button>
+    </div>
+    <script>
+        let com1 = {
+            template:'<h2>这是个局部组件<my-button></my-button></h2>',
+        }
+        // 声明加注册了一个组件
+        // 不能用已有的html标签
+        // 组件的声明需要放在 new Vue的上边
+        Vue.component('my-name', {
+            template:'<h1>我的名字是小明<my-com1></my-com1></h1>',
+            components:{
+                'my-com1':com1
+            },
+            data() {
+                // 保证数据的独立性
+                return {
+                    name:'珠峰'
+                }
+            },
+
+            methods: {
+                
+            },
+        })
+
+        Vue.component('my-button', {
+            template:'<button>按钮</button>'
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+
+        })
+
+        
+    </script>
+</body>
+
+</html>

@@ -149,8 +149,8 @@ body {
   letter-spacing: 0.13333333rem;
 }
 .app .swiper-wrapper .swiper-slide .middle_box .border_box {
-  width: 9.06666667rem;
-  height: 80%;
+  width: 11.33333333rem;
+  height: 13.73333333rem;
   background: url('../image/solid.webp') no-repeat;
   box-sizing: border-box;
   background-size: contain;
@@ -165,6 +165,7 @@ body {
   top: 3.33333333rem;
   left: 2.66666667rem;
   transform: rotateZ(8deg);
+  animation-fill-mode: backwards;
 }
 .app .swiper-wrapper .swiper-slide .middle_box .content_pic .pic_two {
   border: 15px solid white;
@@ -174,44 +175,84 @@ body {
   bottom: 2.93333333rem;
   left: 3.2rem;
   transform: rotateZ(352deg);
+  animation-fill-mode: backwards;
 }
 .app .swiper-wrapper .swiper-slide .middle_box .solid_inside {
-  width: 13.33333333rem;
+  width: 13.06666667rem;
   height: 2.66666667rem;
   border-bottom: 2px solid white;
   transform: rotateZ(90deg);
   position: absolute;
-  top: 5.33333333rem;
-  left: -4.4rem;
+  top: 5.06666667rem;
+  left: -4.13333333rem;
+  animation-fill-mode: backwards;
 }
 .app .swiper-wrapper .swiper-slide .middle_box .little_box {
-  background: url('../image/little.webp');
-  z-index: 200;
   position: absolute;
+  left: 0.13333333rem;
+  bottom: 1.33333333rem;
+  opacity: .5;
 }
-.app .swiper-wrapper .swiper-slide .middle_box .little_box .one {
+.app .swiper-wrapper .swiper-slide .middle_box .little_box img {
+  width: 2.66666667rem;
+}
+.app .swiper-wrapper .swiper-slide .middle_box ul .one {
   position: absolute;
   bottom: 4rem;
-  left: 1.6rem;
-  font-size: 0.66666667rem;
+  left: 1.2rem;
+  font-size: 0.64rem;
   padding: 0.06666667rem;
   color: #817856;
 }
-.app .swiper-wrapper .swiper-slide .middle_box .little_box .two {
+.app .swiper-wrapper .swiper-slide .middle_box ul .two {
   position: absolute;
-  top: 5.33333333rem;
-  left: 2.13333333rem;
-  font-size: 0.66666667rem;
+  bottom: 2.93333333rem;
+  left: 0.53333333rem;
+  font-size: 0.93333333rem;
   padding: 0.06666667rem;
   color: #23a193;
 }
-.app .swiper-wrapper .swiper-slide .middle_box .little_box .three {
+.app .swiper-wrapper .swiper-slide .middle_box ul .three {
   position: absolute;
-  top: 6.93333333rem;
-  left: 2.93333333rem;
-  font-size: 1.33333333rem;
+  bottom: 1.86666667rem;
+  left: 0.93333333rem;
+  font-size: 0.93333333rem;
   padding: 0.06666667rem;
   color: #696cb4;
+}
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent {
+  position: absolute;
+  top: 1.86666667rem;
+  left: 0.93333333rem;
+}
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent li {
+  min-width: 0.26666667rem;
+  min-height: 0.26666667rem;
+  background: #ffffff;
+  border-radius: 50%;
+}
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c1,
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c2,
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c3,
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c4 {
+  margin-top: 1.06666667rem;
+}
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c5,
+.app .swiper-wrapper .swiper-slide .middle_box .c-parent .c6 {
+  margin-top: 0.4rem;
+}
+.app .swiper-wrapper .swiper-slide .middle_box .time {
+  position: absolute;
+  top: 2.86666667rem;
+  left: 1.46666667rem;
+  color: #ffffff;
+  font-size: 0.34666667rem;
+  letter-spacing: 0.13333333rem;
+}
+.app .bottom {
+  font-size: 0.4rem;
+  color: aliceblue;
+  left: 4.4rem;
 }
 @keyframes move123 {
   0% {

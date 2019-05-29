@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-com1>
+            hello {{name}}
+        </my-com1>
+    </div>
+
+    <template id="com1">
+        <div>
+            <h1>子组件</h1>
+            <slot></slot>
+            <!-- 
+                slot 被com1 标签包含的内容
+                匿名插槽
+             -->
+        </div>
+    </template>
+    <script>
+        let com1 = {
+            template: '#com1',
+            data() {
+                return {
+
+                }
+            },
+        }
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "world"
+            },
+
+            components:{
+                'my-com1':com1
+            }
+        })
+
+        // alert('11');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>插槽</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <com1>
+            <div>123</div>
+            <h3>456{{name}}</h3>
+            <button @click='name="546"'>按钮</button>
+            文本
+        </com1>
+        <com1></com1>
+        --------------------------
+        <com1>
+            <div slot='my_header'>用户定义的头部</div>
+            <div slot='my_main'>用户定义的身体</div>
+            <div slot='my_footer'>用户定义的尾部</div>
+            <template v-slot:my_new_header>
+                <h3>这是新版slot写法</h3>
+            </template>
+        </com1>
+
+        <!-- 
+            具名插槽: 在自定义组件包含的内容中 给对应的元素 添加一个行内属性 slot
+            对应的值是自定义的
+            在组件的模板中 使用slot标签, 给slot标签添加一个 对应的name属性 值是刚才自定义的值
+         -->
+    </div>
+    <template id="com1">
+        <div>
+            <h1>这是一个局部组件</h1>
+            <!-- slot vue插槽  把com1标签包含的整体显示到 slot标签位置-->
+            <!-- slot内部 也可以书写内容 不过这部分内容属于 默认的内容
+                默认内容: 当com1 标签不包含任何内容时 才会在slot标签的位置显示默认内容
+            -->
+            <slot>
+                <h1>这是slot的默认内容</h1>
+                <!-- 
+                    不写 name属性 相当于写了一个name='default'
+                    对应的内容是 没有加slot(v-slot)行内属性的那些元素
+                 -->
+            </slot>
+            <slot name="my_new_header"></slot>
+            <header>
+                这是个头部
+                <slot name='my_header'></slot>
+            </header>
+            <main>
+                这是个身体
+                <slot name='my_main'></slot>
+            </main>
+            <footer>
+                这是个尾部
+                <slot name='my_footer'></slot>
+            </footer>
+        </div>
+    </template>
+    <script>
+        const com1 = {
+            template: '#com1',
+            data() {
+                return {
+
+                }
+            },
+            props: ['my-name']
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world"
+            },
+
+            components: {
+                com1
+            }
+        })
+    </script>
+</body>
+
+</html>

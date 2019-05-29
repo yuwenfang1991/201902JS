@@ -182,8 +182,8 @@ body {
                 }
 
                 .border_box {
-                    width: 680/@r;
-                    height: 80%;
+                    width: 850/@r;
+                    height: 1030/@r;
                     background: url('../image/solid.webp') no-repeat;
                     box-sizing: border-box;
                     background-size: contain;
@@ -200,6 +200,7 @@ body {
                         top: 250/@r;
                         left: 200/@r;
                         transform: rotateZ(8deg);
+                        animation-fill-mode: backwards;
                     }
 
                     .pic_two {
@@ -209,56 +210,110 @@ body {
                         position: absolute;
                         bottom: 220/@r;
                         left: 240/@r;
-                        transform: rotateZ(352deg)
+                        transform: rotateZ(352deg);
+                        animation-fill-mode: backwards;
                     }
                 }
 
                 .solid_inside {
-                    width: 1000/@r;
+                    width: 980/@r;
                     height: 200/@r;
                     border-bottom: 2px solid white;
                     transform: rotateZ(90deg);
                     position: absolute;
-                    top: 400/@r;
-                    left: -330/@r;
+                    top: 380/@r;
+                    left: -310/@r;
+                    animation-fill-mode: backwards;
 
                 }
 
+
                 .little_box {
-                    background: url('../image/little.webp');
-                    z-index: 200;
                     position: absolute;
+                    left: 10/@r;
+                    bottom: 100/@r;
+                    opacity: .5;
+
+                    img {
+                        width: 200/@r;
+                    }
+
+                }
+
+                ul {
                     .one {
                         position: absolute;
                         bottom: 300/@r;
-                        left: 120/@r;
-                        font-size: 50/@r;
+                        left: 90/@r;
+                        font-size: 48/@r;
                         padding: 5/@r;
                         color: rgb(129, 120, 86);
                     }
 
                     .two {
                         position: absolute;
-                        top: 400/@r;
-                        left: 160/@r;
-                        font-size: 50/@r;
+                        bottom: 220/@r;
+                        left: 40/@r;
+                        font-size: 70/@r;
                         padding: 5/@r;
                         color: rgb(35, 161, 147);
                     }
 
                     .three {
                         position: absolute;
-                        top: 520/@r;
-                        left: 220/@r;
-                        font-size: 100/@r;
+                        bottom: 140/@r;
+                        left: 70/@r;
+                        font-size: 70/@r;
                         padding: 5/@r;
                         color: rgb(105, 108, 180);
                     }
+                }
+
+                .c-parent {
+                    position: absolute;
+                    top: 140/@r;
+                    left: 70/@r;
+
+                    // transform: rotateZ(90deg);
+                    li {
+                        min-width: 20/@r;
+                        min-height: 20/@r;
+                        background: #ffffff;
+                        border-radius: 50%;
+                    }
+
+                    .c1,
+                    .c2,
+                    .c3,
+                    .c4 {
+                        margin-top: 80/@r;
+                    }
+
+                    .c5,
+                    .c6 {
+                        margin-top: 30/@r;
+                    }
+                }
+
+                .time {
+                    position: absolute;
+                    top: 215/@r;
+                    left: 110/@r;
+                    color: #ffffff;
+                    font-size: 26/@r;
+                    letter-spacing: 10/@r;
                 }
             }
 
         }
 
+    }
+
+    .bottom {
+        font-size: 30/@r;
+        color: aliceblue;
+        left: 330/@r;
+        // bottom: 10/@r;
     }
 
 }

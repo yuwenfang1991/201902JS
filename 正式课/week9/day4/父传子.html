@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model="name">
+        <input type="text" v-model="age">
+        <com1 :my-name='name' :my-age='age' :obj='obj' :ary='ary'></com1>
+    </div>
+    <template id="com1">
+        <div>
+            <h1>我的姓名：{{myName}}</h1>
+            <h2>我的年龄：{{obj.age}}</h2>
+            <!-- <h3>我的年龄：{{ary}}</h3> -->
+            <button @click='fn'>按钮</button>
+        </div>
+    </template>
+    
+    <script>
+        let com1 = {
+            template: '#com1',
+            // props: ['myName', 'myAge','obj','ary'],
+            props: {
+                myName:{
+                    type:String, // 可以用来限制传进来的数据类型; 多个类型用 [Number,String]
+                    default:'这是个默认值', // 当没有给该属性传值的时候 会走这个默认值
+                    // required:true, // 该属性值是否是必传的 
+                    validator(val) {
+                        // 可以自定义 传进来的数据的规则
+                        console.log(val);
+                        return true
+                    }
+                },
+
+                myAge:{
+                    default:21
+                },
+
+                obj:{
+                    default() {
+                        // 若是数组或者对象的时候 默认值必须是一个函数 然后返回一个默认值
+                        return {}
+                    }
+                }
+
+            },
+            /* 
+                props的数据流向 是从父组件流向子组件 不能直接在子组件修改props
+                接收的数据 会有一个警告
+                若是一个引用数据类型, 我们可以直接修改引用数据类型内部的属性
+             */
+            methods: {
+                fn() {
+                    this.ary.push(666);
+                    // this 是指向当前实例的
+                    console.log(this);
+                    
+                }
+            },
+        }
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: "hello world",
+                age: 18,
+                ary:[1,2,3,4]
+            },
+
+            computed: {
+                obj() {
+                    // obj 依赖于name 和 age
+                    return {
+                        name: this.name,
+                        age: this.age
+                    }
+                }
+            },
+            components: {
+                com1
+            }
+        })
+    </script>
+</body>
+
+</html>

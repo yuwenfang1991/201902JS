@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <button @click='fn'>跳转</button>
+        <router-view></router-view>
+    </div>
+
+    <template id="list">
+        <div>
+            当前获取的id是{{id}}
+        </div>
+    </template>
+    <script>
+        /* 
+            假设有一个按钮 点击的时候 先请求接口 然后根据接口返回的内容 再去跳转路径
+         */
+        /* 、
+            当我们把router实例注入到根实例之后 每一个vue组件都会有一个 $route 和 $router 的属性
+            我们一般通过 $route 去获取一些值
+            通过$router 去执行 编程式导航 push replace back go
+         */
+        let list = {
+            template: '#list',
+            data() {
+                return {
+                    // id: ''
+                }
+            },
+
+
+
+            mounted() {
+                console.log(this.$parent);
+                // this.id = this.$route.query.id;
+            },
+
+            // watch: {
+            //     '$route'(to,from) {
+            //         console.log(to);
+            //         console.log(from);
+                    
+                    
+            //     }
+            // },
+            computed: {
+                // 使用计算属性 可以监听到 $route 的改变
+                id() {
+                    return this.$route.query.id;
+                }
+            },
+        }
+
+        const routes = [{
+            path: '/',
+            // redirect: '/list'
+        },
+        {
+            path: '/list',
+            component: list,
+            meta:{
+                myTil:'列表页'
+            }
+        }
+        ];
+
+        const router = new VueRouter({
+            routes
+        })
+
+        // 前置导航守卫(路由的钩子函数)
+        router.beforeEach((to, from, next) => {
+            // 该回调函数 会在页面跳转之前执行
+            // to 要去跳转的路由
+            // from 是指的 从哪个路由 跳过来的
+            // next 是个函数 必须要去执行的一个函数
+            console.log(to);
+            document.title=to.meta.myTil || '编程';
+            next();
+        })
+        let vm = new Vue({
+            el: '#app',
+            router,
+            data: {
+                name: "hello world"
+            },
+            methods: {
+                fn() {
+                    console.log(this);
+                    setTimeout(() => {
+                        let t = Math.random();
+                        // this.$router.push('/list?id='+t);
+                        // this.$router.push({path:'/list',query:{id:t}})
+                        this.$router.replace({path:'/list',query:{id:t}});
+                        // push 传递的参数 跟to后边的参数一样 
+                        // 既可以是一个字符串
+                        // 也可以是一个对象
+                        // replace 参数和push一样 只是不会产生新的历史,也就说不能回退到上一个页面
+                        // back
+                        // this.$router.back(); // 回退一步 相当于浏览器的回退按钮
+                        // go
+                        // this.$router.go(1); // 相当于 back
+                        // go的参数 是正数 就向前走几步 相当于点了几次浏览器的前进按钮
+                        //          负数 就向后走几步 (相当于点了几次浏览器的 回退按钮)
+                    }, 3000)
+                    // this.$router.push('/list');
+
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

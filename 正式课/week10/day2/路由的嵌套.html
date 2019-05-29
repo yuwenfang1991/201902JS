@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <div>
+            <router-link to="/home" active-class="current" tag="button">home</router-link>
+            <router-link :to='{name:"myList",params:{name:"小红",age:20}}'>list</router-link>
+            <router-link to="/user">user</router-link>
+        </div>
+        <div>
+
+            <router-view></router-view>
+        </div>
+    </div>
+
+    <template id="home">
+        <div>
+            <h1>这是首页</h1>
+            <router-link to="/home/nav">nav</router-link>
+            <router-link to="/home/nav1">nav1</router-link>
+            <router-link to="/home/nav2">nav2</router-link>
+            <!-- 这个router-view渲染的是 home下的子路由对应的组件 -->
+            <router-view></router-view>
+
+        </div>
+    </template>
+    <template id="list">
+        <div>
+            <h1>这是列表页</h1>
+            <router-link :to="{name:'myList2'}">list2</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+    <template id="user">
+        <div>
+            <h1>这是用户中心</h1>
+        </div>
+    </template>
+    <template id="nav">
+        <div>
+            <h3>这是二级路由对应的组件1</h3>
+        </div>
+    </template>
+    <template id="nav1">
+        <div>
+            <h3>这是二级路由对应的组件2</h3>
+        </div>
+    </template>
+    <template id="nav2">
+        <div>
+            <h3>这是二级路由对应的组件3</h3>
+        </div>
+    </template>
+    
+    <template id="list2">
+        <div>
+            <h3>这是二级路由对应的组件list2</h3>
+        </div>
+    </template>
+
+    <script>
+
+        const home = {
+            template: '#home',
+            data() {
+                return {
+
+                }
+            },
+        }
+
+        const list = {
+            template: '#list',
+            data() {
+                return {
+
+                }
+            },
+        }
+        const user = {
+            template: '#user',
+            data() {
+                return {
+
+                }
+            },
+        }
+
+        const nav = {
+            template: '#nav',
+            data() {
+                return {
+
+                }
+            },
+        }
+        const nav1 = {
+            template: '#nav1',
+            data() {
+                return {
+
+                }
+            },
+        }
+        const nav2 = {
+            template: '#nav2',
+            data() {
+                return {
+
+                }
+            },
+        }
+        
+        const list2 = {
+            template:'#list2',
+            data() {
+                return {
+                    
+                }
+            },
+        }
+        // 编写路由映射表
+        const routes = [{
+            path: '/home',
+            component: home,
+            children: [
+                {
+                    path: '/home/nav',
+                    component: nav
+                },
+                {
+                    path: '/home/nav1',
+                    component: nav1
+                },
+                {
+                    path: '/home/nav2',
+                    component: nav2
+                },
+
+            ]
+        },
+        {
+            path: '/list/:name/:age',
+            name:'myList',
+            component: list,
+            children:[
+                {
+                    path:'/list/list2',
+                    name:'myList2',
+                    component:list2
+                }
+            ]
+        },
+        {
+            path: '/user',
+            component: user,
+        }
+        ];
+
+        // 创造router实例
+        const router = new VueRouter({
+            routes: routes,
+            linkActiveClass: 'active',//统一设置 路径匹配的元素的类名
+
+        });
+        let vm = new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                name: "hello world"
+            }
+        })
+    </script>
+</body>
+
+</html>
